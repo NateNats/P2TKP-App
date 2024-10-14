@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="formIST" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="786" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="3150d502-8aec-4f53-8ffb-33d1a5295646">
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#D4D7D9">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="penilaian" uuid="cbfebe60-9e16-45b9-b840-ebe5601c219d">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="variabel" class="java.lang.String"/>
+		<field name="nilai" class="java.lang.String"/>
+		<field name="kategori" class="java.lang.String"/>
+		<field name="deskripsi" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="nama" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="datapenilaian" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="80" width="720" height="30" uuid="344164e6-9e2a-4c80-a579-27893ece4e15"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nama}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="10" width="800" height="40" uuid="51ba2e07-2350-42f5-a460-93fa296eeca7"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hasil Tes IST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="70" height="31" uuid="05d93498-64cd-4662-bc56-fa8fd954c1aa"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="70" height="30" uuid="d7eb271f-d215-4a69-8364-2f5f6cd4cac7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="50" width="720" height="30" uuid="9050a494-f407-4fbb-a362-c148becc6741"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/YYYY").format(new Date().getTime())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="70" y="50" width="10" height="30" uuid="6dd5bdd9-1c15-4609-851f-8ba98df63f7c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="80" width="10" height="30" uuid="923d0bd8-4c0a-4528-9220-ae82b7ab92d9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="316" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="785" height="200" uuid="02e4a215-76f9-4274-b535-3c9c87d2492a">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="penilaian" uuid="fad3a7b9-ba4d-43d3-981e-85ec82a15ce5">
+						<dataSourceExpression><![CDATA[$P{datapenilaian}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="210" uuid="be25ef5c-dffd-4a3b-bfd0-970c9fd4e799">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="210" height="30" uuid="def90fc2-7fc6-4f02-9f9b-566d22dc75a6"/>
+								<textElement textAlignment="Center">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Variabel]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="210" height="30" uuid="dc494af4-6833-4592-a115-7921b08c0ea9"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{variabel}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="f9b51f0e-0fa4-47c1-bcbe-842de03a6cf7">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="30" uuid="9da15926-f3d8-45ef-a0e0-abeed8803313"/>
+								<textElement textAlignment="Center">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nilai]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="30" uuid="f5d6dd39-8e88-409e-8fb9-7fc88c7afd71"/>
+								<textElement textAlignment="Center">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nilai}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="ce4c7b8b-bdc5-4a67-891b-92a39b63baef">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="80" height="30" uuid="4e5b5ba9-6c8d-45ce-9d4f-26cf8dd69b15"/>
+								<textElement textAlignment="Center">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Kategori]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="80" height="30" uuid="7b8545cc-6f95-47fb-9e73-8e3c84c204eb"/>
+								<textElement textAlignment="Center">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{kategori}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="450" uuid="247d777b-64d4-4f41-9b96-a719ef4ee231">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="450" height="30" uuid="9ca5f4d2-da9b-44c3-ab60-152b9caf777e"/>
+								<textElement textAlignment="Center">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Deskripsi]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="450" height="30" uuid="96db80a5-0e2e-484f-8585-034b5f5d8a5d"/>
+								<textElement textAlignment="Justified">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{deskripsi}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="800" height="54" uuid="f33e6344-7b96-4815-955d-d94cc49966e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P2TKP Universitas Sanata Dharma]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

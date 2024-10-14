@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hasil" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ea5de1f-910d-4813-98de-f770dd6e167a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="hasil" uuid="6a6694b2-fc34-4a06-a884-a7ab8e07b999">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="variabel" class="java.lang.String"/>
+		<field name="nilai" class="java.lang.String"/>
+		<field name="kategori" class="java.lang.String"/>
+		<field name="deskripsi" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="hasil1" uuid="960e5bbc-78bb-46e2-8f95-dddd64022ebf">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="tanggal" class="java.lang.String"/>
+	<parameter name="nama" class="java.lang.String"/>
+	<parameter name="datapenilaian" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="rw_se" class="java.lang.String"/>
+	<field name="rw_wa" class="java.lang.String"/>
+	<field name="rw_an" class="java.lang.String"/>
+	<field name="rw_ge" class="java.lang.String"/>
+	<field name="rw_me" class="java.lang.String"/>
+	<field name="rw_ra" class="java.lang.String"/>
+	<field name="rw_zr" class="java.lang.String"/>
+	<field name="rw_fa" class="java.lang.String"/>
+	<field name="rw_wu" class="java.lang.String"/>
+	<field name="rw_jml" class="java.lang.String"/>
+	<field name="sw_se" class="java.lang.String"/>
+	<field name="sw_wa" class="java.lang.String"/>
+	<field name="sw_an" class="java.lang.String"/>
+	<field name="sw_ge" class="java.lang.String"/>
+	<field name="sw_me" class="java.lang.String"/>
+	<field name="sw_ra" class="java.lang.String"/>
+	<field name="sw_zr" class="java.lang.String"/>
+	<field name="sw_fa" class="java.lang.String"/>
+	<field name="sw_wu" class="java.lang.String"/>
+	<field name="sw_jml" class="java.lang.String"/>
+	<field name="kua_se" class="java.lang.String"/>
+	<field name="kua_wa" class="java.lang.String"/>
+	<field name="kua_an" class="java.lang.String"/>
+	<field name="kua_ge" class="java.lang.String"/>
+	<field name="kua_me" class="java.lang.String"/>
+	<field name="kua_ra" class="java.lang.String"/>
+	<field name="kua_zr" class="java.lang.String"/>
+	<field name="kua_fa" class="java.lang.String"/>
+	<field name="kua_wu" class="java.lang.String"/>
+	<field name="kua_jml" class="java.lang.String"/>
+	<field name="variabel" class="java.lang.String"/>
+	<field name="nilai" class="java.lang.String"/>
+	<field name="kategori" class="java.lang.String"/>
+	<field name="deskripsi" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="126" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="19" width="553" height="40" uuid="d2fc04f4-00cb-4aeb-ac75-26b379eecbd8"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hasil Tes IST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="65" width="10" height="30" uuid="7719f3cc-9758-4901-912d-505f5a641cc4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="65" width="473" height="30" uuid="f0e8d3e3-3b1c-459d-b8e9-9e1139815e8b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tanggal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="65" width="70" height="30" uuid="5d69cbd7-cd79-4bf0-b35f-901dfc062a08"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="95" width="70" height="31" uuid="c302b7cc-de73-48b6-a75d-a0b737b3acb8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="95" width="473" height="30" uuid="92c19b65-ac25-42aa-b302-c0335c1e59f3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nama}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="70" y="95" width="10" height="30" uuid="1d621006-ed4b-4812-9c56-d87d9a574cef"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="130" splitType="Stretch"/>
+		<band height="270">
+			<componentElement>
+				<reportElement x="0" y="10" width="553" height="200" uuid="73b512d8-2d98-4736-8e5e-a8276395f579">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="hasil" uuid="51e9cd6d-cb71-4cc7-971e-d2b6be7ba9f8">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="100" uuid="f46b466e-bc94-42d1-a991-9a8c3c9b6567">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="100" height="30" uuid="055bece0-fdf3-4d44-b5dd-c3f6e353a3fd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Variabel]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="100" height="30" uuid="0f5cb525-cd7c-48be-9710-be47c6f84e0a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{variabel}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="2a185334-eec2-494d-9d5d-ec3e66c4bbf6">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="100" height="30" uuid="8786868f-dcd9-4b7f-8efb-0b4b1e890f65"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nilai]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="100" height="30" uuid="9045fc31-db74-4086-8729-6ff9b1d959f3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nilai}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="eb6f42e5-1beb-4237-986c-2a02d4486400">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="100" height="30" uuid="0643b3a4-7f50-4ee7-9c14-c9792811ded7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Kategori]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="100" height="30" uuid="2f1a1b02-b482-44ed-aced-5c1f2e3de1d4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{kategori}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="253" uuid="54e1c3fa-cfb5-4be4-9ce3-d95ae460da56">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="253" height="30" uuid="59928ae3-002a-470d-93df-e4b27b44d516"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Deskripsi]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="253" height="30" uuid="ec5dc83b-0753-4960-a64f-dbd3ac3ad1d3"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{deskripsi}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="59" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="2" width="530" height="54" uuid="c43c322c-1daf-486d-8bf5-406e7c0add47"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P2TKP Universitas Sanata Dharma]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50"/>
+	</summary>
+</jasperReport>
