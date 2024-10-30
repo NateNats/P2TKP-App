@@ -5,10 +5,17 @@
 package ist_app;
 
 import test.*;
+import java.util.LinkedList;
 import java.awt.TextArea;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import javax.swing.JTextArea;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.ListIterator;
+import java.util.Set;
 
 /**
  *
@@ -16,6 +23,7 @@ import javax.swing.JTextArea;
  */
 public class editForm2 extends javax.swing.JDialog {
 
+    LinkedList<String> tarKecerdasan, berpikirKompreheren, kemAnalisis, dayaIngat, kreativitas, menilai, mengambilKeputusan, berbahasa, coraBerpikir, jenisKecerdasan, fleksibel, angka;
     int startIndex;
     int endIndex;
     JTextArea[] textAreas;
@@ -23,13 +31,17 @@ public class editForm2 extends javax.swing.JDialog {
     /**
      * Creates new form test_2
      */
+    @SuppressWarnings("empty-statement")
     public editForm2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         inisiasitexfield();
         this.setLocationRelativeTo(null);
-        textAreas = new JTextArea[6];
+        textAreas = new JTextArea[7];
         inisiasiArray();
+
+        inisiasill();
+        text2ll();
 
     }
 
@@ -56,11 +68,14 @@ public class editForm2 extends javax.swing.JDialog {
         jTextArea5 = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea6 = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextArea7 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
+        simpanbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Taraf Kecerdasan", "Kemampuan Analisis", "Kemampuan Berpikir Komprehensif", "Daya Ingat", "Kemampuan berbahasa", "Kreativitas", "Kemampuan menilai", "Kemampuan mengambil keputusan", "Corak/cara berpikir", "Kemampuan berpikir fleksibel" }));
+        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Taraf Kecerdasan", "Kemampuan Analisis", "Kemampuan Berpikir Komprehensif", "Daya Ingat", "Kemampuan berbahasa", "Kreativitas", "Kemampuan menilai", "Kemampuan mengambil keputusan", "Corak/cara berpikir", "Kemampuan berpikir fleksibel", "Kemampuan berhitung / mengolah angka" }));
         combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboboxActionPerformed(evt);
@@ -91,7 +106,12 @@ public class editForm2 extends javax.swing.JDialog {
 
         jTextArea6.setColumns(20);
         jTextArea6.setRows(5);
+        jTextArea6.setAutoscrolls(false);
         jScrollPane6.setViewportView(jTextArea6);
+
+        jTextArea7.setColumns(20);
+        jTextArea7.setRows(5);
+        jScrollPane7.setViewportView(jTextArea7);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,7 +122,9 @@ public class editForm2 extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -114,11 +136,6 @@ public class editForm2 extends javax.swing.JDialog {
                     .addContainerGap()
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,9 +144,13 @@ public class editForm2 extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(190, 190, 190)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(97, 97, 97)
@@ -140,11 +161,6 @@ public class editForm2 extends javax.swing.JDialog {
                     .addGap(183, 183, 183)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(271, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(352, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(102, 102, 102)))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -158,6 +174,14 @@ public class editForm2 extends javax.swing.JDialog {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        simpanbutton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        simpanbutton.setText("Simpan");
+        simpanbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanbuttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,7 +192,8 @@ public class editForm2 extends javax.swing.JDialog {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(simpanbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -180,15 +205,17 @@ public class editForm2 extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(combobox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(simpanbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 288, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 289, Short.MAX_VALUE)))
         );
 
         pack();
@@ -197,10 +224,119 @@ public class editForm2 extends javax.swing.JDialog {
     private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
         kosong();
         String value = combobox.getSelectedItem().toString();
-        String[] output = getTextBySection(value);
 
-        inputToTextF(output);
+        if (value.equals("Taraf Kecerdasan")) {
+            add2F(tarKecerdasan);
+        } else if (value.equals("Kemampuan Analisis")) {
+            add2F(kemAnalisis);
+        } else if (value.equals("Kemampuan Berpikir Komprehensif")) {
+            add2F(berpikirKompreheren);
+        } else if (value.equals("Daya Ingat")) {
+            add2F(dayaIngat);
+        } else if (value.equals("Kemampuan berbahasa")) {
+            add2F(berbahasa);
+        } else if (value.equals("Kreativitas")) {
+            add2F(kreativitas);
+        } else if (value.equals("Kemampuan menilai")) {
+            add2F(menilai);
+        } else if (value.equals("Kemampuan mengambil keputusan")) {
+            add2F(mengambilKeputusan);
+        } else if (value.equals("Corak/cara berpikir")) {
+            add2F(coraBerpikir);
+        } else if (value.equals("Kemampuan berpikir fleksibel")) {
+            add2F(fleksibel);
+        } else if (value.equals("Kemampuan berhitung / mengolah angka")) {
+            add2F(angka);
+        }
+        //LinkedList<String> output = getTextBySection(value);
+        //inputToTextF(output);
     }//GEN-LAST:event_comboboxActionPerformed
+
+    private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
+        try {
+            String a = chVal(tarKecerdasan);
+            write2txt("C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/taraf kecerdasan.txt", a);
+            
+            combobox.setSelectedIndex(0);
+            kosong();
+            inisiasill();
+            text2ll();
+            
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_simpanbuttonActionPerformed
+
+    void write2txt(String filename, String value) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, false))) {
+            writer.write(value);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    String array2str(LinkedList<String> ll) {
+        StringBuilder val = new StringBuilder();
+
+        for (int i = 0; i <= ll.size(); i++) {
+            val.append(ll.get(i));
+            val.append(" ;");
+        }
+
+        System.out.println(val.toString());
+        return val.toString();
+    }
+
+    String chVal(LinkedList<String> ll) {
+        StringBuilder n = new StringBuilder();
+
+        ll = new LinkedList<>();
+        for (int i = 0; i < textAreas.length; i++) {
+            n.append(textAreas[i].getText()).append(";");
+            ll.add(textAreas[i].getText());
+        }
+        System.out.println(n.toString());
+        return n.toString();
+    }
+
+    void add2F(LinkedList<String> ll) {
+        for (int i = 0; i < ll.size(); i++) {
+            try {
+                textAreas[i].setText(ll.get(i));
+                System.out.println(ll.get(i));
+                System.out.println(i + 1);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    void text2ll() {
+        String file1 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/taraf kecerdasan.txt";
+        loadRubrikFile(file1, tarKecerdasan);
+        String file2 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/corak berpikir.txt";
+        loadRubrikFile(file2, coraBerpikir);
+        String file3 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berbahasa.txt";
+        loadRubrikFile(file3, berbahasa);
+        String file4 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan mengambil keputusan.txt";
+        loadRubrikFile(file4, mengambilKeputusan);
+        String file5 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan menilai.txt";
+        loadRubrikFile(file5, menilai);
+        String file6 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kreativitas.txt";
+        loadRubrikFile(file6, kreativitas);
+        String file7 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/daya ingat.txt";
+        loadRubrikFile(file7, dayaIngat);
+        String file8 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan analisis.txt";
+        loadRubrikFile(file8, kemAnalisis);
+        String file9 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt";
+        loadRubrikFile(file9, berpikirKompreheren);
+        String file10 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/jenis kecerdasan.txt";
+        loadRubrikFile(file10, jenisKecerdasan);
+        String file11 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
+        loadRubrikFile(file11, fleksibel);
+        String file12 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
+        loadRubrikFile(file12, angka);
+    }
 
     void inisiasitexfield() {
         jTextArea1.setLineWrap(true);
@@ -226,8 +362,23 @@ public class editForm2 extends javax.swing.JDialog {
         jTextArea6.setText("");
     }
 
+    void inisiasill() {
+        tarKecerdasan = new LinkedList<>();
+        berpikirKompreheren = new LinkedList<>();
+        kemAnalisis = new LinkedList<>();
+        dayaIngat = new LinkedList<>();
+        kreativitas = new LinkedList<>();
+        menilai = new LinkedList<>();
+        mengambilKeputusan = new LinkedList<>();
+        berbahasa = new LinkedList<>();
+        coraBerpikir = new LinkedList<>();
+        jenisKecerdasan = new LinkedList<>();
+        fleksibel = new LinkedList<>();
+        angka = new LinkedList<>();
+    }
+
     void inputToTextF(String[] val) {
-        for (int i = 0; i < val.length-1; i++) {
+        for (int i = 0; i <= val.length; i++) {
             textAreas[i].setText(val[i]);
         }
     }
@@ -239,40 +390,63 @@ public class editForm2 extends javax.swing.JDialog {
         textAreas[3] = (JTextArea) jScrollPane4.getViewport().getView();
         textAreas[4] = (JTextArea) jScrollPane5.getViewport().getView();
         textAreas[5] = (JTextArea) jScrollPane6.getViewport().getView();
+        textAreas[6] = (JTextArea) jScrollPane7.getViewport().getView();
     }
 
-    String[] getTextBySection(String value) {
-        String[] content = null;
-
+//    LinkedList<String> getTextBySection(String value) {
+//        LinkedList<String> content = new LinkedList<>();
+//
+//        try {
+//            BufferedReader br = new BufferedReader(new FileReader("C:/backup/Tugas/Reva/IST_App/src/test/file rubrik.txt"));
+//            String docs;
+//            StringBuilder fullcontent = new StringBuilder();
+//
+//            while ((docs = br.readLine()) != null) {
+//                String teks = br.toString();
+//                String[] oneLine = docs.split(":");
+//                content.add(oneLine[0]);
+//                
+//                //kondisi jika baris tersebut sesuai dengan apa yang kita cari
+//                if (oneLine[0].equals(value)) {
+//                    //findingIndex(docs, br);
+//                    String[] items = oneLine[1].split(";");
+//                    
+//                    for (int i = 0; i < items.length; i++) {
+//                        content.add(items[i]);
+//                    }
+//                    break;
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("error");
+//        }
+//        return content;
+//    }
+    void loadRubrikFile(String filename, LinkedList<String> ll) {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("C:/backup/Tugas/Reva/IST_App/src/test/file rubrik.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(filename));
             String docs;
             StringBuilder fullcontent = new StringBuilder();
 
             while ((docs = br.readLine()) != null) {
                 String teks = br.toString();
-                String[] oneLine = docs.split(":");
+                String[] oneLine = docs.split(";");
 
-                if (oneLine[0].equals(value)) {
-                    //findingIndex(docs, br);
-                    String[] items = oneLine[1].split(";");
-
-                    content = items;
-                    break;
+                for (int i = 0; i < oneLine.length; i++) {
+                    ll.add(oneLine[i]);
                 }
             }
 
         } catch (Exception e) {
             System.out.println("error");
         }
-        return content;
     }
 
     void findingIndex(String line, BufferedReader document) {
         String docs = document.toString();
         int find = docs.indexOf("Sangat mempertimbangkan informasi yang tersedia karena ulet mencari keterkaitan antar informasi.");
         System.out.println(find);
-
     }
 
     /**
@@ -328,11 +502,14 @@ public class editForm2 extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JTextArea jTextArea7;
+    private javax.swing.JButton simpanbutton;
     // End of variables declaration//GEN-END:variables
 }
