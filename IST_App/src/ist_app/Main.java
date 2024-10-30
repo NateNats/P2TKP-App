@@ -4,12 +4,15 @@
  */
 package ist_app;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -32,6 +35,8 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author EddHard
  */
 public class Main extends javax.swing.JFrame {
+
+    LinkedList<String> tarKecerdasan, berpikirKompreheren, kemAnalisis, dayaIngat, kreativitas, menilai, mengambilKeputusan, berbahasa, coraBerpikir, jenisKecerdasan, fleksibel, angka;
 
     private List<KomponenPenilaian> nilai = new ArrayList<>();
     private HashMap<String, String> charNilai = new HashMap<>();
@@ -791,7 +796,7 @@ public class Main extends javax.swing.JFrame {
         parameter.put("datapenilaian", studentCollectionDataSource);
         parameter.put("nama", namaInput.getText());
         parameter.put("tanggal", formattedDate);
-        
+
         //tabel sw
         parameter.put("iq", IQInput.getText());
         parameter.put("charIQ", charIQ);
@@ -804,16 +809,15 @@ public class Main extends javax.swing.JFrame {
         parameter.put("swzr", ZRInput.getText());
         parameter.put("swfa", FAInput.getText());
         parameter.put("swwu", WUInput.getText());
-        
+
         //tabel kua
         String[] key = {"kuase", "kuawa", "kuaan", "kuage", "kuame", "kuara", "kuazr", "kuafa", "kuawu"};
-        
-        for (int i = 0; i < key.length-1; i++) {
+
+        for (int i = 0; i < key.length - 1; i++) {
             System.out.println(key[i] + ": " + charNilai.get(key[i]));
             parameter.put(key[i], charNilai.get(key));
         }
-        
-        
+
         try {
             //            InputStream stream = Main.class.getResourceAsStream(fileName);
             //            JOptionPane.showMessageDialog(this, "aaa!");
@@ -907,6 +911,53 @@ public class Main extends javax.swing.JFrame {
         nilaiRubrik.add(new NilaiRubrik("WU", WUInput.getText()));
     }
 
+    void text2ll() {
+        String file1 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/taraf kecerdasan.txt";
+        loadRubrikFile(file1, tarKecerdasan);
+        String file2 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/corak berpikir.txt";
+        loadRubrikFile(file2, coraBerpikir);
+        String file3 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berbahasa.txt";
+        loadRubrikFile(file3, berbahasa);
+        String file4 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan mengambil keputusan.txt";
+        loadRubrikFile(file4, mengambilKeputusan);
+        String file5 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan menilai.txt";
+        loadRubrikFile(file5, menilai);
+        String file6 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kreativitas.txt";
+        loadRubrikFile(file6, kreativitas);
+        String file7 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/daya ingat.txt";
+        loadRubrikFile(file7, dayaIngat);
+        String file8 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan analisis.txt";
+        loadRubrikFile(file8, kemAnalisis);
+        String file9 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt";
+        loadRubrikFile(file9, berpikirKompreheren);
+        String file10 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/jenis kecerdasan.txt";
+        loadRubrikFile(file10, jenisKecerdasan);
+        String file11 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
+        loadRubrikFile(file11, fleksibel);
+        String file12 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
+        loadRubrikFile(file12, angka);
+    }
+
+    void loadRubrikFile(String filename, LinkedList<String> ll) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String docs;
+            StringBuilder fullcontent = new StringBuilder();
+
+            while ((docs = br.readLine()) != null) {
+                String teks = br.toString();
+                String[] oneLine = docs.split(";");
+
+                for (int i = 0; i < oneLine.length; i++) {
+                    ll.add(oneLine[i]);
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+    }
+
     private void cetak() {
         for (int i = 0; i < nilaiRubrik.size(); i++) {
             System.out.println(nilaiRubrik.get(i));
@@ -919,31 +970,31 @@ public class Main extends javax.swing.JFrame {
 
         if (scoreIQ < 83) {
             Kategori = "KS";
-            deskripsi = "cakupan wawasannya bahkan cukup sulit untuk menyelesaikan persoalan sederhana";
+            deskripsi = tarKecerdasan.get(0);
         } else if (scoreIQ >= 84 && scoreIQ <= 89) {
             Kategori = "K";
-            deskripsi = "cakupan wawasannya hanya cukup untuk menyelesaikan persoalan sederhana";
+            deskripsi = tarKecerdasan.get(1);
         } else if (scoreIQ >= 90 && scoreIQ <= 98) {
             Kategori = "C-";
-            deskripsi = "cakupan wawasannya bisa membantunya menyelesaikan persoalan agak kompleks";
+            deskripsi = tarKecerdasan.get(2);
         } else if (scoreIQ >= 99 && scoreIQ <= 109) {
             Kategori = "C";
-            deskripsi = "cakupan wawasannya bisa membantunya menyelesaikan persoalan cukup kompleks";
+            deskripsi = tarKecerdasan.get(3);
         } else if (scoreIQ >= 110 && scoreIQ <= 119) {
             Kategori = "C+";
-            deskripsi = "cakupan wawasannya bisa membantunya menyelesaikan beberapa persoalan kompleks";
+            deskripsi = tarKecerdasan.get(4);
         } else if (scoreIQ >= 120 && scoreIQ <= 129) {
             Kategori = "B";
-            deskripsi = "cakupan wawasannya cukup membantunya menyelesaikan sebagian besar persoalan kompleks";
+            deskripsi = tarKecerdasan.get(5);
         } else if (scoreIQ >= 130) {
             Kategori = "BS";
-            deskripsi = "cakupan wawasannya membantunya menyelesaikan berbagai persoalan kompleks";
+            deskripsi = tarKecerdasan.get(6);
         }
 
         KomponenPenilaian variabel1 = new KomponenPenilaian("Kecerdasan Umum", nil, Kategori, deskripsi);
         nilai.add(variabel1);
         charIQ = Kategori;
-        
+
         charNilai.put("IQ", Kategori);
     }
 
@@ -953,25 +1004,25 @@ public class Main extends javax.swing.JFrame {
 
         if (ANWU < 83) {
             Kategori = "KS";
-            deskripsi = "sulit membandingkan informasi yang diperoleh, dalam tujuan menemukan persamaan, perbedaan, hubungan, dan pengaruhnya satu sama lain.";
+            deskripsi = kemAnalisis.get(0);
         } else if (ANWU >= 84 && ANWU <= 89) {
             Kategori = "K";
-            deskripsi = "mampu membandingkan beberapa informasi yang diperoleh, untuk menemukan beberapa hal sederhana terkait persamaan, perbedaan, hubungan, dan pengaruhnya satu sama lain.";
+            deskripsi = kemAnalisis.get(1);
         } else if (ANWU >= 90 && ANWU <= 98) {
             Kategori = "C-";
-            deskripsi = "mampu membandingkan sebagian kecil informasi yang diperoleh, untuk menemukan beberapa hal agak kompleks terkait persamaan, perbedaan, hubungan, dan pengaruhnya satu sama lain.";
+            deskripsi = kemAnalisis.get(2);
         } else if (ANWU >= 99 && ANWU <= 109) {
             Kategori = "C";
-            deskripsi = "mampu membandingkan sebagian informasi yang diperoleh, untuk menemukan beberapa hal kompleks terkait persamaan, perbedaan, hubungan, dan pengaruhnya satu sama lain.";
+            deskripsi = kemAnalisis.get(3);
         } else if (ANWU >= 110 && ANWU <= 119) {
             Kategori = "C+";
-            deskripsi = "mampu membandingkan sebagian informasi yang diperoleh, untuk menemukan sebagian hal kompleks terkait persamaan, perbedaan, hubungan, dan pengaruhnya satu sama lain.";
+            deskripsi = kemAnalisis.get(4);
         } else if (ANWU >= 120 && ANWU <= 129) {
             Kategori = "B";
-            deskripsi = "mampu membandingkan sebagian besar informasi yang diperoleh, untuk menemukan sebagian besar persamaan, perbedaan, hubungan, atau pengaruh yang kompleks satu sama lain.";
+            deskripsi = kemAnalisis.get(5);
         } else if (ANWU >= 130) {
             Kategori = "BS";
-            deskripsi = "mampu membandingkan berbagai informasi yang diperoleh, untuk menemukan berbagai persamaan, perbedaan, hubungan, atau pengaruhnya yang kompleks satu sama lain.";
+            deskripsi = kemAnalisis.get(6);
         }
 
         KomponenPenilaian variabel2 = new KomponenPenilaian("Kemampuan Analisis", nil, Kategori, deskripsi);
@@ -985,25 +1036,25 @@ public class Main extends javax.swing.JFrame {
 
         if (GEFA < 83) {
             Kategori = "KS";
-            deskripsi = "sulit mempertimbangkan informasi yang tersedia karena kurang ulet mencari keterkaitan antar informasi.";
+            deskripsi = berpikirKompreheren.get(0);
         } else if (GEFA >= 84 && GEFA <= 89) {
             Kategori = "K";
-            deskripsi = "bisa mempertimbangkan sebagian kecil informasi yang tersedia karena masih bersedia mencari sebagian kecil keterkaitan antar informasi.";
+            deskripsi = berpikirKompreheren.get(1);
         } else if (GEFA >= 90 && GEFA <= 98) {
             Kategori = "C-";
-            deskripsi = "bisa mempertimbangkan beberapa informasi yang tersedia karena masih bersedia mencari beberapa bagian keterkaitan antar informasi.";
+            deskripsi = berpikirKompreheren.get(2);
         } else if (GEFA >= 99 && GEFA <= 109) {
             Kategori = "C";
-            deskripsi = "bisa mempertimbangkan sebagian informasi yang tersedia karena masih bersedia mencari sebagian keterkaitan antar informasi.";
+            deskripsi = berpikirKompreheren.get(3);
         } else if (GEFA >= 110 && GEFA <= 119) {
             Kategori = "C+";
-            deskripsi = "bisa mempertimbangkan sebagian informasi yang tersedia karena masih bersedia mencari sebagian besar keterkaitan antar informasi.";
+            deskripsi = berpikirKompreheren.get(4);
         } else if (GEFA >= 120 && GEFA <= 129) {
             Kategori = "B";
-            deskripsi = "mempertimbangkan sebagian besar informasi yang tersedia karena cukup ulet mencari keterkaitan antar informasi.";
+            deskripsi = berpikirKompreheren.get(5);
         } else if (GEFA >= 130) {
             Kategori = "BS";
-            deskripsi = "sangat mempertimbangkan informasi yang tersedia karena ulet mencari keterkaitan antar informasi.";
+            deskripsi = berpikirKompreheren.get(6);
         }
 
         KomponenPenilaian variabel3 = new KomponenPenilaian("Kemampuan Berpikir Komprehensif/Berpikir Konseptual", nil, Kategori, deskripsi);
@@ -1017,25 +1068,25 @@ public class Main extends javax.swing.JFrame {
 
         if (ME < 83) {
             Kategori = "KS";
-            deskripsi = "daya ingat yang terbatas, akibat sulit berkonsentrasi";
+            deskripsi = dayaIngat.get(0);
         } else if (ME >= 84 && ME <= 89) {
             Kategori = "K";
-            deskripsi = "daya ingat pada hal-hal sederhana, karena agak sulit berkonsentrasi";
+            deskripsi = dayaIngat.get(1);
         } else if (ME >= 90 && ME <= 98) {
             Kategori = "C-";
-            deskripsi = "";
+            deskripsi = dayaIngat.get(2);
         } else if (ME >= 99 && ME <= 109) {
             Kategori = "C";
-            deskripsi = "daya ingat pada hal-hal cukup kompleks, karena bisa berkonsentrasi pada hal-hal cukup kompleks tersebut";
+            deskripsi = dayaIngat.get(3);
         } else if (ME >= 110 && ME <= 119) {
             Kategori = "C+";
-            deskripsi = "daya ingat pada beberapa hal-hal kompleks, karena bisa berkonsentrasi pada beberapa bagian hal-hal  kompleks tersebut";
+            deskripsi = dayaIngat.get(4);
         } else if (ME >= 120 && ME <= 129) {
             Kategori = "B";
-            deskripsi = "daya ingat pada sebagian besar hal-hal kompleks, karena bisa berkonsentrasi pada sebagian besar hal-hal  kompleks tersebut";
+            deskripsi = dayaIngat.get(5);
         } else if (ME >= 130) {
             Kategori = "BS";
-            deskripsi = "daya ingat kuat, karena bisa berkonsentrasi pada berbagai hal.";
+            deskripsi = dayaIngat.get(6);
         }
 
         KomponenPenilaian variabel4 = new KomponenPenilaian("Daya Ingat/Konsentrasi", nil, Kategori, deskripsi);
@@ -1049,25 +1100,25 @@ public class Main extends javax.swing.JFrame {
 
         if (RAZR <= 83) {
             Kategori = "KS";
-            deskripsi = "sulit berpikir teratur dan logis dalam menyelesaikan persoalan perhitungan, baik itu masalah rutin dan masalah insidental.";
+            deskripsi = angka.get(0);
         } else if (RAZR >= 84 && RAZR <= 89) {
             Kategori = "K";
-            deskripsi = "bisa berpikir teratur dan logis dalam menyelesaikan persoalan perhitungan, namun sebatas masalah rutin atau masalah umum.";
+            deskripsi = angka.get(1);
         } else if (RAZR >= 90 && RAZR <= 98) {
             Kategori = "C-";
-            deskripsi = "";
+            deskripsi = angka.get(2);
         } else if (RAZR >= 99 && RAZR <= 109) {
             Kategori = "C";
-            deskripsi = "Bisa berpikir teratur dan logis dalam menyelesaikan persoalan perhitungan, baik itu masalah rutin dan sebagian kecil masalah insidental.";
+            deskripsi = angka.get(3);
         } else if (RAZR >= 110 && RAZR <= 119) {
             Kategori = "C+";
-            deskripsi = "Bisa berpikir teratur dan logis dalam menyelesaikan persoalan perhitungan, baik itu masalah rutin dan sebagian masalah insidental.";
+            deskripsi = angka.get(4);
         } else if (RAZR >= 120 & RAZR <= 129) {
             Kategori = "B";
-            deskripsi = "Bisa berpikir teratur dan logis dalam menyelesaikan persoalan perhitungan, baik itu masalah rutin dan sebagian besar masalah insidental.";
+            deskripsi = angka.get(5);
         } else if (RAZR >= 130) {
             Kategori = "BS";
-            deskripsi = "Bisa berpikir teratur dan logis dalam menyelesaikan persoalan perhitungan, baik itu masalah rutin dan masalah insidental.";
+            deskripsi = angka.get(6);
         }
 
         KomponenPenilaian variabel5 = new KomponenPenilaian("Kemampuan berhitung / mengolah angka", nil, Kategori, deskripsi);
@@ -1081,25 +1132,25 @@ public class Main extends javax.swing.JFrame {
 
         if (WAGE <= 83) {
             Kategori = "KS";
-            deskripsi = "sulit menangkap dan mengekspresikan gagasan, kemauan, dan perasaan dalam bentuk bahasa (verbal), dalam konteks komunikasi.";
+            deskripsi = berbahasa.get(0);
         } else if (WAGE > 83 && WAGE <= 89) {
             Kategori = "K";
-            deskripsi = "mampu menangkap dan mengekspresikan beberapa gagasan, kemauan, dan perasaan dalam bentuk bahasa (verbal) yang sederhana, dalam konteks komunikasi sederhana.";
+            deskripsi = berbahasa.get(1);
         } else if (WAGE > 89 && WAGE <= 98) {
             Kategori = "C-";
-            deskripsi = "mampu menangkap dan mengekspresikan beberapa gagasan, kemauan, dan perasaan dalam bentuk bahasa (verbal), dalam konteks komunikasi agak kompleks.";
+            deskripsi = berbahasa.get(2);
         } else if (WAGE > 98 && WAGE <= 109) {
             Kategori = "C";
-            deskripsi = "";
+            deskripsi = berbahasa.get(3);
         } else if (WAGE > 109 && WAGE <= 119) {
             Kategori = "C+";
-            deskripsi = "Mampu menangkap dan mengekspresikan beberapa gagasan, kemauan, dan perasaan dalam bentuk bahasa (verbal), dalam konteks komunikasi agak kompleks.";
+            deskripsi = berbahasa.get(4);
         } else if (WAGE > 119 & WAGE <= 129) {
             Kategori = "B";
-            deskripsi = "Mampu menangkap dan mengekspresikan sebagian besar gagasan, kemauan, dan perasaan dalam bentuk bahasa (verbal), dalam sebagian besar konteks kecermatan dan komunikasi.";
+            deskripsi = berbahasa.get(5);
         } else if (WAGE > 130) {
             Kategori = "BS";
-            deskripsi = "Mampu menangkap dan mengekspresikan gagasan, kemauan, dan perasaan dalam bentuk bahasa (verbal), dalam berbagai konteks komunikasi.";
+            deskripsi = berbahasa.get(6);
         }
 
         KomponenPenilaian variabel6 = new KomponenPenilaian("Kemampuan Berbahasa", nil, Kategori, deskripsi);
@@ -1113,25 +1164,25 @@ public class Main extends javax.swing.JFrame {
 
         if (FAWU < 83) {
             Kategori = "KS";
-            deskripsi = "sulit membuat perubahan yang mengarah pada perbaikan dan pembaharuan tanpa meniru orang lain.";
+            deskripsi = kreativitas.get(0);
         } else if (FAWU >= 84 && FAWU <= 89) {
             Kategori = "KS";
-            deskripsi = "mampu membuat perubahan yang mengarah pada perbaikan dan pembaharuan, namun kurang orisional.";
+            deskripsi = kreativitas.get(1);
         } else if (FAWU >= 90 && FAWU <= 98) {
             Kategori = "C-";
-            deskripsi = "";
+            deskripsi = kreativitas.get(2);
         } else if (FAWU >= 99 && FAWU <= 109) {
             Kategori = "C";
-            deskripsi = "Mampu membuat beberapa hal kecil mengenai perubahan, yang mengarah pada perbaikan dan pembaharuan yang orisional.";
+            deskripsi = kreativitas.get(3);
         } else if (FAWU >= 110 && FAWU <= 119) {
             Kategori = "C+";
-            deskripsi = "Mampu membuat sebagian perubahan, yang mengarah pada perbaikan dan pembaharuan yang orisional.";
+            deskripsi = kreativitas.get(4);
         } else if (FAWU >= 120 & FAWU <= 129) {
             Kategori = "B";
-            deskripsi = "Mampu membuat sebagian besar perubahan, yang mengarah pada perbaikan dan pembaharuan yang orisional.";
+            deskripsi = kreativitas.get(5);
         } else if (FAWU >= 130) {
             Kategori = "BS";
-            deskripsi = "Mampu membuat berbagai perubahan, yang mengarah pada perbaikan dan pembaharuan yang orisional.";
+            deskripsi = kreativitas.get(6);
         }
 
         KomponenPenilaian variabel7 = new KomponenPenilaian("Kreativitas", nil, Kategori, deskripsi);
@@ -1145,25 +1196,25 @@ public class Main extends javax.swing.JFrame {
 
         if (SE < 83) {
             Kategori = "KS";
-            deskripsi = "Sulit menilai keadaan terkait suatu masalah karena enggan mencari informasi informasi, sehingga kesulitan menetapkan prioritas dan pilihan perhatian serta pilihan solusi, bahkan yang paling sederhana.";
+            deskripsi = menilai.get(0);
         } else if (SE >= 84 && SE <= 89) {
             Kategori = "K";
-            deskripsi = "Masih bisa menilai beberapa keadaan terkait suatu masalah berbekal informasi yang sanggup diakses secara mudah, sehingga masih mampu menetapkan beberapa prioritas dan pilihan perhatian serta pilihan solusi biasa dilakukan sehari-hari.";
+            deskripsi = menilai.get(1);
         } else if (SE >= 90 && SE <= 98) {
             Kategori = "C-";
-            deskripsi = "";
+            deskripsi = menilai.get(2);
         } else if (SE >= 99 && SE <= 109) {
             Kategori = "C";
-            deskripsi = "Mampu menilai sebagian kecil keadaan terkait suatu masalah berbekal beberapa informasi agak aktual, sehingga mampu menetapkan prioritas dan pilihan perhatian serta pilihan solusi agak kompleks.";
+            deskripsi = menilai.get(3);
         } else if (SE >= 110 && SE <= 119) {
             Kategori = "C+";
-            deskripsi = "Mampu menilai sebagian keadaan terkait suatu masalah berbekal beberapa informasi cukup aktual, sehingga mampu menetapkan beberapa prioritas dan pilihan perhatian serta pilihan solusi yang cukup kompleks.";
+            deskripsi = menilai.get(4);
         } else if (SE >= 120 & SE <= 129) {
             Kategori = "B";
-            deskripsi = "Mampu menilai sebagian besar keadaan terkait suatu masalah berbekal berbagai informasi aktual, sehingga mampu menetapkan beberapa prioritas serta pilihan perhatian dan pilihan solusi yang cukup dibutuhkan.";
+            deskripsi = menilai.get(5);
         } else if (SE >= 130) {
             Kategori = "BS";
-            deskripsi = "Mampu menilai keadaan terkait suatu masalah berbekal berbagai informasi aktual, sehingga mampu menetapkan prioritas dan pilihan perhatian serta pilihan solusi yang paling dibutuhkan.";
+            deskripsi = menilai.get(6);
         }
 
         KomponenPenilaian variabel8 = new KomponenPenilaian("Kemampuan Menilai/Judgement", nil, Kategori, deskripsi);
@@ -1178,25 +1229,25 @@ public class Main extends javax.swing.JFrame {
 
         if (SEANWURAZR < 83) {
             Kategori = "KS";
-            deskripsi = "sulit mengambil keputusan, karena enggan memperhitungkan aspek persoalan dan alternatif solusi.";
+            deskripsi = mengambilKeputusan.get(0);
         } else if (SEANWURAZR >= 84 && SEANWURAZR <= 89) {
             Kategori = "K";
-            deskripsi = "butuh waktu cukup lama dalam mengambil keputusan yang sederhana, yang memperhitungkan kebiasaan yang paling mudah dilakukan sebagai rujukan aspek persoalan dan alternatif solusi.";
+            deskripsi = mengambilKeputusan.get(1);
         } else if (SEANWURAZR >= 90 && SEANWURAZR <= 98) {
             Kategori = "C-";
-            deskripsi = "butuh beberapa waktu hingga bisa mengambil keputusan yang agak matang, yang memperhitungkan beberapa aspek persoalan dan beberapa alternatif solusi yang memungkinkan.";
+            deskripsi = mengambilKeputusan.get(2);
         } else if (SEANWURAZR >= 99 && SEANWURAZR <= 109) {
             Kategori = "C";
-            deskripsi = "butuh beberapa waktu hingga bisa mengambil keputusan  yang cukup matang, yang memperhitungkan sebagian aspek persoalan dan sebagian alternatif solusi yang memungkinkan.";
+            deskripsi = mengambilKeputusan.get(3);
         } else if (SEANWURAZR >= 110 && SEANWURAZR <= 119) {
             Kategori = "C+";
-            deskripsi = "cukup cepat mengambil keputusan  yang cukup matang, yang memperhitungkan sebagian aspek persoalan dan sebagian alternatif solusi yang memungkinkan.";
+            deskripsi = mengambilKeputusan.get(4);
         } else if (SEANWURAZR >= 120 && SEANWURAZR <= 129) {
             Kategori = "B";
-            deskripsi = "cukup cepat mengambil keputusan  yang matang, yang memperhitungkan sebagian besar aspek persoalan dan sebagian besar alternatif solusi yang memungkinkan.";
+            deskripsi = mengambilKeputusan.get(5);
         } else if (SEANWURAZR >= 130) {
             Kategori = "BS";
-            deskripsi = "cepat mengambil keputusan  yang matang, yang memperhitungkan semua aspek persoalan dan semua alternatif solusi yang memungkinkan.";
+            deskripsi = mengambilKeputusan.get(6);
         }
 
         KomponenPenilaian variabel9 = new KomponenPenilaian("Kemampuan Mengambil Keputusan", nil, Kategori, deskripsi);
@@ -1217,13 +1268,13 @@ public class Main extends javax.swing.JFrame {
 
         if (nilaiGERA > nilaiANZR) {
             Kategori = "Birokratis-normatif";
-            deskripsi = "Pola berpikirnya adalah normatif, dimana caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, mayoritas mengandalkan pendekatan konsep atau rujukan teori yang sudah mapan.";
+            deskripsi = coraBerpikir.get(0);
         } else if (nilaiGERA < nilaiANZR) {
             Kategori = "Fleksibel";
-            deskripsi = "Cara berpikirnya adalah fleksibel, dimana caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, mayoritas mengandalkan pengenalannya dari sisi kebiasaan sehari-hari dan mengandalkan pendekatan pengalaman yang terbukti pernah berhasil.";
+            deskripsi = coraBerpikir.get(1);
         } else if (Math.abs(nilaiGERA + nilaiANZR) <= toleransi) {
             Kategori = "Belum terarah-belum konsisten";
-            deskripsi = "Corak cara berpikirnya terhitung belumg jelas. Hal tersebut ditandai oleh caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, yang masih belum konsisten untuk diulang kembali di kesempatan lain.";
+            deskripsi = coraBerpikir.get(2);
         }
 
         KomponenPenilaian variabel10 = new KomponenPenilaian("Cara/Corak berpikir", "", "", deskripsi);
@@ -1237,13 +1288,13 @@ public class Main extends javax.swing.JFrame {
 
         if ((nilaiGERA - nilaiANZR) == (-10)) {
             Kategori = "fleksibel";
-            deskripsi = "Cepat mencari jalan keluar ketika ada hambatan.";
+            deskripsi = fleksibel.get(0);
         } else if ((nilaiGERA - nilaiANZR) == (10)) {
             Kategori = "Kaku";
-            deskripsi = "Menggunakan satu jalan keluar yang biasa digunakan ketika ada hambatan.";
+            deskripsi = fleksibel.get(1);
         } else if (((nilaiGERA - nilaiANZR) >= (-10) & (nilaiGERA - nilaiANZR) <= (0)) || ((nilaiGERA - nilaiANZR) <= (10) & (nilaiGERA - nilaiANZR) >= (1))) {
             Kategori = "belum terarah-belum berkembang";
-            deskripsi = "Corak berpikir belum terarah karena masih dalam taraf perkembangan.";
+            deskripsi = fleksibel.get(2);
         }
 
         KomponenPenilaian variabel11 = new KomponenPenilaian("Kemampuan berpikir fleksibel", "", "", deskripsi);
@@ -1256,10 +1307,10 @@ public class Main extends javax.swing.JFrame {
 
         if (nilaiWAGE > nilaiSEAN) {
             Kategori = "Tipe pemikiran teoritis-konseptual";
-            deskripsi = "Menemukan pemecahan masalah tanpa hadirnya objek permasalahan secara nyata, sehingga cenderung efektif dalam menggunakan konsep serta simbol ketika menyelesaikan masalah.";
+            deskripsi = jenisKecerdasan.get(0);
         } else if (nilaiSEAN > nilaiWAGE) {
             Kategori = "Tipe pemikiran praktis";
-            deskripsi = "Menemukan pemecahan masalah wajib menghadirkan objek permasalahan secara nyata, sehingga cenderung efektif dalam menggunakan temuan konkrit ketika menyelesaikan masalah.";
+            deskripsi = jenisKecerdasan.get(1);
         }
 
         KomponenPenilaian variabel12 = new KomponenPenilaian("Jenis kecerdasan", "", Kategori, deskripsi);
