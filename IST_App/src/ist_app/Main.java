@@ -918,7 +918,6 @@ public class Main extends javax.swing.JFrame {
         nilaiRubrik.add(new NilaiRubrik("WU", WUInput.getText()));
     }
 
-<<<<<<< HEAD
     void inisiasill() {
         tarKecerdasan = new LinkedList<>();
         berpikirKompreheren = new LinkedList<>();
@@ -934,8 +933,6 @@ public class Main extends javax.swing.JFrame {
         angka = new LinkedList<>();
     }
 
-=======
->>>>>>> 12c71a68c995d4eefe665e66b1c639e454016dfe
     void text2ll() {
         String file1 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/taraf kecerdasan.txt";
         loadRubrikFile(file1, tarKecerdasan);
