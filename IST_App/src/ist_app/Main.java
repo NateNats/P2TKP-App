@@ -55,11 +55,15 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         Date tglHariIni = new Date();
         tanggalController.setDate(tglHariIni);
+        this.setResizable(false);
         tombolBatal.setEnabled(false);
         tombolHasil.setEnabled(false);
         tombolCetak.setEnabled(false);
         tombolEdit.setEnabled(true);
         resetTable();
+        inisiasill();
+        text2ll();
+
     }
 
     private void resetTable() {
@@ -815,7 +819,7 @@ public class Main extends javax.swing.JFrame {
 
         for (int i = 0; i < key.length - 1; i++) {
             System.out.println(key[i] + ": " + charNilai.get(key[i]));
-            parameter.put(key[i], charNilai.get(key));
+            parameter.put(key[i], charNilai.get(key[i]));
         }
 
         try {
@@ -854,6 +858,7 @@ public class Main extends javax.swing.JFrame {
 
     private void tombolHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHasilActionPerformed
         // TODO add your handling code here:
+        nilai = new ArrayList();
         nilaiMasukArray();
         cetak();
         evaluasiVariabel1();
@@ -887,10 +892,13 @@ public class Main extends javax.swing.JFrame {
 
     private void tombolEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolEditActionPerformed
         EditForm dialog = new EditForm(Main.this, true);
-        dialog.nilai = this.nilai;
+        //dialog.nilai = this.nilai;
         dialog.setVisible(true);
-        this.nilai = dialog.nilai;
-        refreshTable();
+        inisiasill();
+        text2ll();
+        bersihkan();
+        //this.nilai = dialog.nilai;
+        //refreshTable();
     }//GEN-LAST:event_tombolEditActionPerformed
 
     int pilihan = 0;
@@ -911,30 +919,45 @@ public class Main extends javax.swing.JFrame {
         nilaiRubrik.add(new NilaiRubrik("WU", WUInput.getText()));
     }
 
+    void inisiasill() {
+        tarKecerdasan = new LinkedList<>();
+        berpikirKompreheren = new LinkedList<>();
+        kemAnalisis = new LinkedList<>();
+        dayaIngat = new LinkedList<>();
+        kreativitas = new LinkedList<>();
+        menilai = new LinkedList<>();
+        mengambilKeputusan = new LinkedList<>();
+        berbahasa = new LinkedList<>();
+        coraBerpikir = new LinkedList<>();
+        jenisKecerdasan = new LinkedList<>();
+        fleksibel = new LinkedList<>();
+        angka = new LinkedList<>();
+    }
+
     void text2ll() {
-        String file1 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/taraf kecerdasan.txt";
+        String file1 = "./src/ist_app/rubrik/taraf kecerdasan.txt";
         loadRubrikFile(file1, tarKecerdasan);
-        String file2 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/corak berpikir.txt";
+        String file2 = "./src/ist_app/rubrik/corak berpikir.txt";
         loadRubrikFile(file2, coraBerpikir);
-        String file3 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berbahasa.txt";
+        String file3 = "./src/ist_app/rubrik/kemampuan berbahasa.txt";
         loadRubrikFile(file3, berbahasa);
-        String file4 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan mengambil keputusan.txt";
+        String file4 = "./src/ist_app/rubrik/kemampuan mengambil keputusan.txt";
         loadRubrikFile(file4, mengambilKeputusan);
-        String file5 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan menilai.txt";
+        String file5 = "./src/ist_app/rubrik/kemampuan menilai.txt";
         loadRubrikFile(file5, menilai);
-        String file6 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kreativitas.txt";
+        String file6 = "./src/ist_app/rubrik/kreativitas.txt";
         loadRubrikFile(file6, kreativitas);
-        String file7 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/daya ingat.txt";
+        String file7 = "./src/ist_app/rubrik/daya ingat.txt";
         loadRubrikFile(file7, dayaIngat);
-        String file8 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan analisis.txt";
+        String file8 = "./src/ist_app/rubrik/kemampuan analisis.txt";
         loadRubrikFile(file8, kemAnalisis);
-        String file9 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt";
+        String file9 = "./src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt";
         loadRubrikFile(file9, berpikirKompreheren);
-        String file10 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/jenis kecerdasan.txt";
+        String file10 = "./src/ist_app/rubrik/jenis kecerdasan.txt";
         loadRubrikFile(file10, jenisKecerdasan);
-        String file11 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
+        String file11 = "./src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
         loadRubrikFile(file11, fleksibel);
-        String file12 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
+        String file12 = "./src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
         loadRubrikFile(file12, angka);
     }
 
@@ -1093,7 +1116,7 @@ public class Main extends javax.swing.JFrame {
         nilai.add(variabel4);
         charNilai.put("kuaan", Kategori);
     }
-
+    
     private void evaluasiVariabel5() {
         double RAZR = (Double.parseDouble(RAInput.getText()) + Double.parseDouble(ZRInput.getText())) / 2; //Kemampuan berhitung / mengolah angka
         nil = String.valueOf(RAZR);
@@ -1322,7 +1345,7 @@ public class Main extends javax.swing.JFrame {
         tombolBatal.setEnabled(false);
         tombolHasil.setEnabled(false);
         tombolCetak.setEnabled(false);
-        tombolEdit.setEnabled(false);
+        //tombolEdit.setEnabled(false);
         namaInput.setText("");
         ANInput.setText("");
         FAInput.setText("");
