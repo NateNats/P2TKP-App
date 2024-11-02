@@ -55,12 +55,15 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         Date tglHariIni = new Date();
         tanggalController.setDate(tglHariIni);
+        this.setResizable(false);
         tombolBatal.setEnabled(false);
         tombolHasil.setEnabled(false);
         tombolCetak.setEnabled(false);
         tombolEdit.setEnabled(true);
         resetTable();
+        inisiasill();
         text2ll();
+
     }
 
     private void resetTable() {
@@ -816,7 +819,7 @@ public class Main extends javax.swing.JFrame {
 
         for (int i = 0; i < key.length - 1; i++) {
             System.out.println(key[i] + ": " + charNilai.get(key[i]));
-            parameter.put(key[i], charNilai.get(key));
+            parameter.put(key[i], charNilai.get(key[i]));
         }
 
         try {
@@ -855,6 +858,7 @@ public class Main extends javax.swing.JFrame {
 
     private void tombolHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHasilActionPerformed
         // TODO add your handling code here:
+        nilai = new ArrayList();
         nilaiMasukArray();
         cetak();
         evaluasiVariabel1();
@@ -887,11 +891,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tombolBatalActionPerformed
 
     private void tombolEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolEditActionPerformed
-        EditForm dialog = new EditForm(Main.this, true);
-        dialog.nilai = this.nilai;
+        EditForm2 dialog = new EditForm2(Main.this, true);
+        //dialog.nilai = this.nilai;
         dialog.setVisible(true);
-        this.nilai = dialog.nilai;
-        refreshTable();
+        inisiasill();
+        text2ll();
+        //this.nilai = dialog.nilai;
+        //refreshTable();
     }//GEN-LAST:event_tombolEditActionPerformed
 
     int pilihan = 0;
@@ -910,6 +916,21 @@ public class Main extends javax.swing.JFrame {
         nilaiRubrik.add(new NilaiRubrik("ZR", ZRInput.getText()));
         nilaiRubrik.add(new NilaiRubrik("FA", FAInput.getText()));
         nilaiRubrik.add(new NilaiRubrik("WU", WUInput.getText()));
+    }
+
+    void inisiasill() {
+        tarKecerdasan = new LinkedList<>();
+        berpikirKompreheren = new LinkedList<>();
+        kemAnalisis = new LinkedList<>();
+        dayaIngat = new LinkedList<>();
+        kreativitas = new LinkedList<>();
+        menilai = new LinkedList<>();
+        mengambilKeputusan = new LinkedList<>();
+        berbahasa = new LinkedList<>();
+        coraBerpikir = new LinkedList<>();
+        jenisKecerdasan = new LinkedList<>();
+        fleksibel = new LinkedList<>();
+        angka = new LinkedList<>();
     }
 
     void text2ll() {
@@ -1094,7 +1115,7 @@ public class Main extends javax.swing.JFrame {
         nilai.add(variabel4);
         charNilai.put("kuaan", Kategori);
     }
-
+    
     private void evaluasiVariabel5() {
         double RAZR = (Double.parseDouble(RAInput.getText()) + Double.parseDouble(ZRInput.getText())) / 2; //Kemampuan berhitung / mengolah angka
         nil = String.valueOf(RAZR);
@@ -1323,7 +1344,7 @@ public class Main extends javax.swing.JFrame {
         tombolBatal.setEnabled(false);
         tombolHasil.setEnabled(false);
         tombolCetak.setEnabled(false);
-        tombolEdit.setEnabled(false);
+        //tombolEdit.setEnabled(false);
         namaInput.setText("");
         ANInput.setText("");
         FAInput.setText("");

@@ -21,7 +21,7 @@ import java.util.Set;
  *
  * @author nicol
  */
-public class editForm2 extends javax.swing.JDialog {
+public class EditForm2 extends javax.swing.JDialog {
 
     LinkedList<String> tarKecerdasan, berpikirKompreheren, kemAnalisis, dayaIngat, kreativitas, menilai, mengambilKeputusan, berbahasa, coraBerpikir, jenisKecerdasan, fleksibel, angka;
     int startIndex;
@@ -32,11 +32,12 @@ public class editForm2 extends javax.swing.JDialog {
      * Creates new form test_2
      */
     @SuppressWarnings("empty-statement")
-    public editForm2(java.awt.Frame parent, boolean modal) {
+    public EditForm2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         inisiasitexfield();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         textAreas = new JTextArea[7];
         inisiasiArray();
 
@@ -75,7 +76,7 @@ public class editForm2 extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Taraf Kecerdasan", "Kemampuan Analisis", "Kemampuan Berpikir Komprehensif", "Daya Ingat", "Kemampuan berbahasa", "Kreativitas", "Kemampuan menilai", "Kemampuan mengambil keputusan", "Corak/cara berpikir", "Kemampuan berpikir fleksibel", "Kemampuan berhitung / mengolah angka" }));
+        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Taraf Kecerdasan", "Kemampuan Analisis", "Kemampuan Berpikir Komprehensif", "Daya Ingat", "Kemampuan berbahasa", "Kreativitas", "Kemampuan menilai", "Kemampuan mengambil keputusan", "Corak/cara berpikir", "Kemampuan berpikir fleksibel", "Kemampuan berhitung / mengolah angka" }));
         combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboboxActionPerformed(evt);
@@ -85,31 +86,41 @@ public class editForm2 extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
         jTextArea3.setColumns(20);
+        jTextArea3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
 
         jTextArea4.setColumns(20);
+        jTextArea4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
 
         jTextArea5.setColumns(20);
+        jTextArea5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea5.setRows(5);
         jScrollPane5.setViewportView(jTextArea5);
 
         jTextArea6.setColumns(20);
+        jTextArea6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea6.setRows(5);
         jTextArea6.setAutoscrolls(false);
         jScrollPane6.setViewportView(jTextArea6);
 
+        jScrollPane7.setHorizontalScrollBar(null);
+
         jTextArea7.setColumns(20);
+        jTextArea7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea7.setLineWrap(true);
         jTextArea7.setRows(5);
         jScrollPane7.setViewportView(jTextArea7);
 
@@ -262,6 +273,7 @@ public class editForm2 extends javax.swing.JDialog {
             inisiasill();
             text2ll();
             
+            
         } catch(Exception e) {
             System.out.println(e);
         }
@@ -312,29 +324,29 @@ public class editForm2 extends javax.swing.JDialog {
     }
 
     void text2ll() {
-        String file1 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/taraf kecerdasan.txt";
+        String file1 = "./src/ist_app/rubrik/taraf kecerdasan.txt";
         loadRubrikFile(file1, tarKecerdasan);
-        String file2 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/corak berpikir.txt";
+        String file2 = "./src/ist_app/rubrik/corak berpikir.txt";
         loadRubrikFile(file2, coraBerpikir);
-        String file3 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berbahasa.txt";
+        String file3 = "./src/ist_app/rubrik/kemampuan berbahasa.txt";
         loadRubrikFile(file3, berbahasa);
-        String file4 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan mengambil keputusan.txt";
+        String file4 = "./src/ist_app/rubrik/kemampuan mengambil keputusan.txt";
         loadRubrikFile(file4, mengambilKeputusan);
-        String file5 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan menilai.txt";
+        String file5 = "./src/ist_app/rubrik/kemampuan menilai.txt";
         loadRubrikFile(file5, menilai);
-        String file6 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kreativitas.txt";
+        String file6 = "./src/ist_app/rubrik/kreativitas.txt";
         loadRubrikFile(file6, kreativitas);
-        String file7 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/daya ingat.txt";
+        String file7 = "./src/ist_app/rubrik/daya ingat.txt";
         loadRubrikFile(file7, dayaIngat);
-        String file8 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan analisis.txt";
+        String file8 = "./src/ist_app/rubrik/kemampuan analisis.txt";
         loadRubrikFile(file8, kemAnalisis);
-        String file9 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt";
+        String file9 = "./src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt";
         loadRubrikFile(file9, berpikirKompreheren);
-        String file10 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/jenis kecerdasan.txt";
+        String file10 = "./src/ist_app/rubrik/jenis kecerdasan.txt";
         loadRubrikFile(file10, jenisKecerdasan);
-        String file11 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
+        String file11 = "./src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
         loadRubrikFile(file11, fleksibel);
-        String file12 = "C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
+        String file12 = "./src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
         loadRubrikFile(file12, angka);
     }
 
@@ -466,21 +478,23 @@ public class editForm2 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(editForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(editForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(editForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(editForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                editForm2 dialog = new editForm2(new javax.swing.JFrame(), true);
+                EditForm2 dialog = new EditForm2(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
