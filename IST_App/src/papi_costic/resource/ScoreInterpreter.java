@@ -194,13 +194,4 @@ public class ScoreInterpreter {
                 7,
                 "kaku, cenderung normatif, tindakannya harus selalu disesuaikan dengan aturan baku, sehingga tampak kurang ekspresif.")));
     }
-
-    public static void main(String[] args) {
-        ScoreInterpreter si = new ScoreInterpreter();
-        System.out.println(si.interpretScore("I", 1));
-        System.out.println(si.interpretScore("I", 2));
-        System.out.println(si.interpretScore("I", 4));
-        System.out.println(si.interpretScore("I", 6));
-        System.out.println(si.interpretScore("I", 8));
-    }
 }
