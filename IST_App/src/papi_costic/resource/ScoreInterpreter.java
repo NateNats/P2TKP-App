@@ -56,22 +56,24 @@ public class ScoreInterpreter {
 
     private void initializeDefaultInterpretations() {
         // L - Leadership Role
-        interpretations.put("L", new TreeMap<>(Map.of(
-                0, "cenderung enggan menerima peran pemimpin, disertai kurangnya inisiatif menjalankannya.",
-                5, "cenderung mau menerima peran pemimpin serta penuh inisiatif dalam menjalankannya.")));
+        interpretations.put("l", new TreeMap<>(Map.of(
+                0,
+                "cenderung enggan menerima peran pemimpin, disertai kurangnya inisiatif menjalankannya.",
+                5,
+                "cenderung mau menerima peran pemimpin serta penuh inisiatif dalam menjalankannya.")));
         // P - Need to Control Others
-        interpretations.put("P", new TreeMap<>(Map.of(
+        interpretations.put("p", new TreeMap<>(Map.of(
                 0, "enggan mengendalikan orang lain atau tim.",
                 5, "butuh mengendalikan orang lain atau tim.")));
         // I - Ease in Decision Making
-        interpretations.put("I", new TreeMap<>(Map.of(
+        interpretations.put("i", new TreeMap<>(Map.of(
                 0, "enggan untuk berperan sebagai pengambil suatu keputusan.",
                 3,
                 "seringkali tampak sangat ragu saat berperan mengambil keputusan, meski sesekali masih ragu-ragu.",
                 5, "cukup mudah saat berperan mengambil keputusan, meski sesekali masih ragu-ragu.",
                 8, "penuh percaya diri saat berperan sebagai pengambil keputusan.")));
         // F - Need to Support Authority
-        interpretations.put("F", new TreeMap<>(Map.of(
+        interpretations.put("f", new TreeMap<>(Map.of(
                 0,
                 "tidak butuh mendukung pemegang otoritas, karena secara terbuka akan menolak permintaan mengabdikan diri pada kepentingan perusahaan.",
                 3,
@@ -81,33 +83,36 @@ public class ScoreInterpreter {
                 6,
                 "butuh mendukung pemegang otoritas, atas dasar suatu pamrih dari sikap setia dan membantu yang Ia tunjukkan.")));
         // W - Need for Rules and Supervision
-        interpretations.put("W", new TreeMap<>(Map.of(
+        interpretations.put("w", new TreeMap<>(Map.of(
                 0,
                 "kurang butuh aturan dan pengawasan, karena ingin mandiri dalam mencapai suatu tujuan yang diberikan kepadanya.",
-                4, "butuh arahan dan bimbingan terlebih dahulu, baru berani memulai sendiri hingga selesai.",
-                6, "butuh arahan dan perintah sepanjang proses pencapaian suatu tujuan hingga selesai.")));
+                4,
+                "butuh arahan dan bimbingan terlebih dahulu, baru berani memulai sendiri hingga selesai.",
+                6,
+                "butuh arahan dan perintah sepanjang proses pencapaian suatu tujuan hingga selesai.")));
         // T - Pace
-        interpretations.put("T", new TreeMap<>(Map.of(
-                0, "tampak santai, karena ingin tugas diselesaikan menurut ukuran dan kemauannya sendiri.",
+        interpretations.put("t", new TreeMap<>(Map.of(
+                0,
+                "tampak santai, karena ingin tugas diselesaikan menurut ukuran dan kemauannya sendiri.",
                 4, "tampak sibuk, karena ingin tugas diselesaikan secara efektif dan efisien.")));
         // V - Vigorous Type
-        interpretations.put("V", new TreeMap<>(Map.of(
+        interpretations.put("v", new TreeMap<>(Map.of(
                 0, "tampak kurang berdaya dan cenderung akan pasif secara fisik.",
                 5, "tampak penuh semangat dan cenderung akan aktif secara fisik.")));
         // R - Theoretical Type
-        interpretations.put("R", new TreeMap<>(Map.of(
+        interpretations.put("r", new TreeMap<>(Map.of(
                 0,
                 "tampak sebagai praktisi, cenderung mengandalkan pendekatan praktis dalam memecahkan masalah.",
                 5,
                 "tampak sebagai analis-teoris, cenderung mengandalkan penalaran yang logis dalam memecahkan masalah.")));
         // D - Interest in Working With Details
-        interpretations.put("D", new TreeMap<>(Map.of(
+        interpretations.put("d", new TreeMap<>(Map.of(
                 0,
                 "tampak suka gambaran besar, karena sadar perlu bertindak cermat namun enggan memperhatikan detil tindakannya.",
                 4,
                 "tampak suka gambaran detil, karena sadar perlu bertindak cermat disertai upaya untuk memperhatikan detil tindakannya.")));
         // C - Organized Type
-        interpretations.put("C", new TreeMap<>(Map.of(
+        interpretations.put("c", new TreeMap<>(Map.of(
                 0,
                 "tampak suka mengalah, karena penuh kompromi dalam melakukan pengaturan, disertai kurangnya perhatian pada sistematika tindakan.",
                 3,
@@ -115,7 +120,7 @@ public class ScoreInterpreter {
                 6,
                 "tampak suka birokrasi, karena kurang kompromi dalam pengaturan, serta sangat fokus pada terpenuhinya sistematika tindakan secara kaku.")));
         // X - Need to be Noticed
-        interpretations.put("X", new TreeMap<>(Map.of(
+        interpretations.put("x", new TreeMap<>(Map.of(
                 0,
                 "tampak menyendiri, karena cenderung pemalu, serta enggan jadi pusat perhatian.",
                 2,
@@ -125,7 +130,7 @@ public class ScoreInterpreter {
                 6,
                 "tampak membuka diri secara agresif, karena aktif memperoleh perhatian orang lain, hingga semua orang menjadikannya pusat perhatian.")));
         // B - Need to Belong to Groups
-        interpretations.put("B", new TreeMap<>(Map.of(
+        interpretations.put("b", new TreeMap<>(Map.of(
                 0,
                 "tampak menjaga jarak dalam kelompok, pemilih dalam hal bergabung ke kelompok.",
                 4,
@@ -133,7 +138,7 @@ public class ScoreInterpreter {
                 6,
                 "tampak membuka diri sepenuhnya dalam kelompok, karena cenderung sangat butuh disukai dan diakui, sehingga mudah menerima pengaruh dari kelompok yang diikuti.")));
         // O - Need for Closeness and Affection
-        interpretations.put("O", new TreeMap<>(Map.of(
+        interpretations.put("o", new TreeMap<>(Map.of(
                 0,
                 "tampak enggan dekat secara personal, karena tidak suka terlalu dekat secara perorangan.",
                 3,
@@ -141,11 +146,11 @@ public class ScoreInterpreter {
                 5,
                 "tampak sangat aktif berusaha dekat secara personal, karena akan kesepian jika tidak ada yang dekat secara perorangan, serta sangat antusias jika ada yang ingin dekat secara perorangan.")));
         // S - Social Extension
-        interpretations.put("S", new TreeMap<>(Map.of(
+        interpretations.put("s", new TreeMap<>(Map.of(
                 0, "kurang berminat pada hubungan sosial, karena sulit percaya orang lain.",
                 7, "sangat berminat pada hubungan sosial, karena mudah percaya orang lain.")));
         // N - Need to Finish Task
-        interpretations.put("N", new TreeMap<>(Map.of(
+        interpretations.put("n", new TreeMap<>(Map.of(
                 0,
                 "butuh menghindari penyelesaian tugas secara mandiri, karena ingin menunda atau menghindari menyelesaikan pekerjaan, saat diminta menyelesaikan suatu tugas.",
                 4,
@@ -155,18 +160,18 @@ public class ScoreInterpreter {
                 7,
                 "butuh menyelesaikan semua tugas secara mandiri, karena cenderung ingin mengerjakan semua pekerjaan sampai tuntas, saat diminta menyelesaikan suatu tugas.")));
         // A - Need to Achieve
-        interpretations.put("A", new TreeMap<>(Map.of(
+        interpretations.put("a", new TreeMap<>(Map.of(
                 0,
                 "tidak butuh berprestasi, karena prestasi seringkali tidak ingin dicapai karena tujuannya tidak pasti, kurang berambisi, serta mudah puas pada suatu pencapaian yang kurang tinggi.",
                 6,
                 "butuh berprestasi, karena prestasi seringkali mudah dicapai karena tujuannya jelas, berambisi tinggi, serta sangat menginginkan kesuksesan.")));
         // G - Hard Intense Worked
-        interpretations.put("G", new TreeMap<>(Map.of(
+        interpretations.put("g", new TreeMap<>(Map.of(
                 0, "enggan bekerja keras.",
                 3, "bekerja untuk kesenangan saja.",
                 5, "bekerja keras penuh semangat.")));
         // Z - Need for Change
-        interpretations.put("Z", new TreeMap<>(Map.of(
+        interpretations.put("z", new TreeMap<>(Map.of(
                 0,
                 "butuh kestabilan, karena suka hal-hal yang pasti dan tetap tanpa perubahan sama sekali.",
                 3,
@@ -178,7 +183,7 @@ public class ScoreInterpreter {
                 8,
                 "butuh hal dinamis yang Ia bisa kendalikan sepenuhnya, karena enggan berkompromi dengan tuntutan untuk berubah, terutama bila perubahan tersebut mempengaruhi jalan menuju tujuan yang hendak Ia raih.")));
         // K - Need to be Forceful
-        interpretations.put("K", new TreeMap<>(Map.of(
+        interpretations.put("k", new TreeMap<>(Map.of(
                 0,
                 "tidak butuh kendali, karena ingin menjauhi segala hal yang bisa melibatkannya dalam pusat permasalahan.",
                 3,
@@ -190,7 +195,7 @@ public class ScoreInterpreter {
                 8,
                 "butuh kendali sepenuhnya, karena ingin terlibat secara aktif bahkan tampak agresif dalam pusat konflik yang terjadi terkait suatu permasalahan, untuk memastikan masalah selesai sesuai keinginannya, bahkan jika perlu harus menjatuhkan orang lain demi tujuan tersebut.")));
         // E - Emotional Resistant
-        interpretations.put("E", new TreeMap<>(Map.of(
+        interpretations.put("e", new TreeMap<>(Map.of(
                 0,
                 "reaktif, bertindak tergesa-gesa tanpa pikir panjang, sehingga tampak kurang mampu mengontrol gejolak perasaannya.",
                 2,
