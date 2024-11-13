@@ -10,7 +10,8 @@ import papi_costic.resource.PapiCosticInputKeyAdapter;
 import papi_costic.resource.PapiCosticResource;
 
 /**
- *
+ * this class is a panel used to display the PAPI Costic form
+ * 
  * @author Trustacean
  */
 public class PapiCosticForm extends javax.swing.JPanel {

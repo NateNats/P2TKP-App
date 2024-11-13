@@ -9,6 +9,12 @@ import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
+/**
+ *  This class is used to interpret the score of the PAPI Costic test.
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
+ */
+
 public class ScoreInterpreter {
     private static final String DATA_FILE_PATH = "./IST_App/src/papi_costic/resource/data/interpretations.dat";
     private Map<String, NavigableMap<Integer, String>> interpretations = new TreeMap<>();

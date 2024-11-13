@@ -10,6 +10,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
+/**
+ * This class is a resource class for PapiCosticForm. It contains the data and
+ * methods needed to handle user interactions the form.
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
+ */
+
 public class PapiCosticResource {
     public static String nama;
     public static String tglLahir;

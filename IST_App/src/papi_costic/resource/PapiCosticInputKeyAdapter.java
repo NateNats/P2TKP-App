@@ -7,6 +7,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * this class is used to handle the input key adapter for PAPI Costic values in
+ * PAPI Costic form
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
+ */
+
 public class PapiCosticInputKeyAdapter extends KeyAdapter {
     private final JTextField inputField;
     private final char key;
