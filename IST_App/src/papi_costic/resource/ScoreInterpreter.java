@@ -16,17 +16,17 @@ import java.util.TreeMap;
  */
 
 public class ScoreInterpreter {
-    private static final String DATA_FILE_PATH = "./IST_App/src/papi_costic/resource/data/interpretations.dat";
-    private Map<String, NavigableMap<Integer, String>> interpretations = new TreeMap<>();
+    private static final String DATA_FILE_PATH = "./src/papi_costic/resource/data/interpretations.dat";
+    private static Map<String, NavigableMap<Integer, String>> interpretations = new TreeMap<>();
 
-    public ScoreInterpreter() {
+    static {
         if (!loadInterpretationsFromFile()) {
             initializeDefaultInterpretations();
             saveInterpretationsToFile();
         }
     }
 
-    public void saveInterpretationsToFile() {
+    public static void saveInterpretationsToFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE_PATH))) {
             oos.writeObject(interpretations);
         } catch (IOException e) {
@@ -35,7 +35,7 @@ public class ScoreInterpreter {
     }
 
     @SuppressWarnings("unchecked")
-    private boolean loadInterpretationsFromFile() {
+    private static boolean loadInterpretationsFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH))) {
             interpretations = (Map<String, NavigableMap<Integer, String>>) ois.readObject();
             return true;
@@ -45,16 +45,15 @@ public class ScoreInterpreter {
         }
     }
 
-    public String interpretScore(String category, int score) {
-        NavigableMap<Integer, String> interpretationMap = interpretations.get(category);
-        if (interpretationMap == null) {
-            return "Unknown category";
+    public static String getInterpretation(String key, int score) {
+        NavigableMap<Integer, String> interpretation = interpretations.get(key);
+        if (interpretation == null) {
+            return "No interpretation found for key " + key;
         }
-
-        return interpretationMap.floorEntry(score).getValue();
+        return interpretation.floorEntry(score).getValue();
     }
 
-    private void initializeDefaultInterpretations() {
+    private static void initializeDefaultInterpretations() {
         // L - Leadership Role
         interpretations.put("l", new TreeMap<>(Map.of(
                 0,
