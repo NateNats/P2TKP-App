@@ -37,7 +37,6 @@ public class PapiCosticForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         judulPanel = new javax.swing.JPanel();
@@ -1092,32 +1091,32 @@ public class PapiCosticForm extends javax.swing.JPanel {
     }
 
     private void namaInputKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_namaInputKeyReleased
-        PapiCosticResource.nama = namaInput.getText();
+        PapiCosticResource.name = namaInput.getText();
         PapiCosticResource.handleInput(cetakButton);
     }// GEN-LAST:event_namaInputKeyReleased
 
     private void tglLahirInputPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_tglLahirInputPropertyChange
-        PapiCosticResource.tglLahir = PapiCosticResource.handleDateInput(tglLahirInput.getDate());
+        PapiCosticResource.birthDate = PapiCosticResource.handleDateInput(tglLahirInput.getDate());
         PapiCosticResource.handleInput(cetakButton);
     }// GEN-LAST:event_tglLahirInputPropertyChange
 
     private void tglTesInputPropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_tglTesInputPropertyChange
-        PapiCosticResource.tglTes = PapiCosticResource.handleDateInput(tglTesInput.getDate());
+        PapiCosticResource.testDate = PapiCosticResource.handleDateInput(tglTesInput.getDate());
         PapiCosticResource.handleInput(cetakButton);
     }// GEN-LAST:event_tglTesInputPropertyChange
 
     private void pendidikanInputKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_pendidikanInputKeyReleased
-        PapiCosticResource.pendidikan = pendidikanInput.getText();
+        PapiCosticResource.education = pendidikanInput.getText();
         PapiCosticResource.handleInput(cetakButton);
     }// GEN-LAST:event_pendidikanInputKeyReleased
 
     private void kelaminInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_kelaminInputActionPerformed
-        PapiCosticResource.kelamin = kelaminInput.getSelectedItem().toString();
+        PapiCosticResource.gender = kelaminInput.getSelectedItem().toString();
         PapiCosticResource.handleInput(cetakButton);
     }// GEN-LAST:event_kelaminInputActionPerformed
 
     private void tujuanInputKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_tujuanInputKeyReleased
-        PapiCosticResource.tujuan = tujuanInput.getText();
+        PapiCosticResource.purpose = tujuanInput.getText();
         PapiCosticResource.handleInput(cetakButton);
     }// GEN-LAST:event_tujuanInputKeyReleased
 
@@ -1132,41 +1131,7 @@ public class PapiCosticForm extends javax.swing.JPanel {
     }// GEN-LAST:event_editButtonActionPerformed
 
     private void cetakButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cetakButtonActionPerformed
-        PapiCosticResource.nama = namaInput.getText();
-
-        PapiCosticResource.tglLahir = PapiCosticResource.handleDateInput(tglLahirInput.getDate());
-        PapiCosticResource.tglTes = PapiCosticResource.handleDateInput(tglTesInput.getDate());
-        PapiCosticResource.pendidikan = pendidikanInput.getText();
-        PapiCosticResource.kelamin = kelaminInput.getSelectedItem().toString();
-        PapiCosticResource.tujuan = tujuanInput.getText();
-        System.out.println("PAPI COSTIC MAPPING");
-        System.out.println("Nama: " + PapiCosticResource.nama);
-        System.out.println("Tanggal Lahir: " + PapiCosticResource.tglLahir);
-        System.out.println("Tanggal Tes: " + PapiCosticResource.tglTes);
-        System.out.println("Pendidikan Terakhir: " + PapiCosticResource.pendidikan);
-        System.out.println("Jenis Kelamin: " + PapiCosticResource.kelamin);
-        System.out.println("Tujuan Pemeriksaan: " + PapiCosticResource.tujuan);
-        System.out.println("G: " + PapiCosticResource.topRow.get('g'));
-        System.out.println("L: " + PapiCosticResource.topRow.get('l'));
-        System.out.println("I: " + PapiCosticResource.topRow.get('i'));
-        System.out.println("T: " + PapiCosticResource.topRow.get('t'));
-        System.out.println("V: " + PapiCosticResource.topRow.get('v'));
-        System.out.println("S: " + PapiCosticResource.topRow.get('s'));
-        System.out.println("R: " + PapiCosticResource.topRow.get('r'));
-        System.out.println("D: " + PapiCosticResource.topRow.get('d'));
-        System.out.println("C: " + PapiCosticResource.topRow.get('c'));
-        System.out.println("E: " + PapiCosticResource.topRow.get('e'));
-        System.out.println("N: " + PapiCosticResource.bottomRow.get('n'));
-        System.out.println("A: " + PapiCosticResource.bottomRow.get('a'));
-        System.out.println("P: " + PapiCosticResource.bottomRow.get('p'));
-        System.out.println("X: " + PapiCosticResource.bottomRow.get('x'));
-        System.out.println("B: " + PapiCosticResource.bottomRow.get('b'));
-        System.out.println("O: " + PapiCosticResource.bottomRow.get('o'));
-        System.out.println("Z: " + PapiCosticResource.bottomRow.get('z'));
-        System.out.println("K: " + PapiCosticResource.bottomRow.get('k'));
-        System.out.println("F: " + PapiCosticResource.bottomRow.get('f'));
-        System.out.println("W: " + PapiCosticResource.bottomRow.get('w'));
-
+        PapiCosticResource.produceReport();
     }// GEN-LAST:event_cetakButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
