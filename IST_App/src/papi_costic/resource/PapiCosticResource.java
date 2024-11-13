@@ -23,12 +23,12 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 
 public class PapiCosticResource {
-    public static String nama;
-    public static String tglLahir;
-    public static String tglTes;
-    public static String pendidikan;
-    public static String kelamin;
-    public static String tujuan;
+    public static String name;
+    public static String birthDate;
+    public static String testDate;
+    public static String education;
+    public static String gender;
+    public static String purpose;
 
     public static final Map<Character, Integer> topRow = new HashMap<>();
     public static final Map<Character, Integer> bottomRow = new HashMap<>();
@@ -60,12 +60,12 @@ public class PapiCosticResource {
     }
 
     public static void resetValues() {
-        nama = "";
-        tglLahir = null;
-        tglTes = null;
-        pendidikan = "";
-        kelamin = "Laki-laki";
-        tujuan = "";
+        name = "";
+        birthDate = null;
+        testDate = null;
+        education = "";
+        gender = "Laki-laki";
+        purpose = "";
         topRow.replaceAll((k, v) -> 0);
         bottomRow.replaceAll((k, v) -> 0);
     }
@@ -83,8 +83,8 @@ public class PapiCosticResource {
             }
         }
 
-        if (nama.isEmpty() || tglLahir == null || tglTes == null || pendidikan.isEmpty() || kelamin.isEmpty()
-                || tujuan.isEmpty()) {
+        if (name.isEmpty() || birthDate == null || testDate == null || education.isEmpty() || gender.isEmpty()
+                || purpose.isEmpty()) {
             return false;
         }
 
