@@ -1,5 +1,6 @@
 package papi_costic.resource;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -32,6 +33,9 @@ public class PapiCosticResource {
 
     public static final Map<Character, Integer> topRow = new HashMap<>();
     public static final Map<Character, Integer> bottomRow = new HashMap<>();
+
+    private final static String REPORT1_PATH = "./src/papi_costic/resource/report/PapiCosticReport1_v1.12.jasper";
+    private final static String REPORT2_PATH = "./src/papi_costic/resource/report/PapiCosticReport2_v1.12.jasper";
 
     static {
         for (char key : new char[] { 'g', 'l', 'i', 't', 'v', 's', 'r', 'd', 'c', 'e' }) {
@@ -138,6 +142,57 @@ public class PapiCosticResource {
         }
 
         return "";
+
+    }
+
+    public static void produceReport() {
+        File file1 = new File(REPORT1_PATH);
+        File file2 = new File(REPORT2_PATH);
+        if (file1.exists() && file2.exists()) {
+            Map<String, Object> parameter1 = new HashMap<>();
+            parameter1.put("name", name);
+            parameter1.put("birthDate", birthDate);
+            parameter1.put("testDate", testDate);
+            parameter1.put("education", education);
+            parameter1.put("gender", gender);
+            parameter1.put("purpose", purpose);
+            System.out.println(topRow.get('n'));
+            parameter1.put("n", ScoreInterpreter.getInterpretation("n", bottomRow.get('n')));
+            parameter1.put("g", ScoreInterpreter.getInterpretation("g", topRow.get('g')));
+            parameter1.put("a", ScoreInterpreter.getInterpretation("a", bottomRow.get('a')));
+            parameter1.put("l", ScoreInterpreter.getInterpretation("l", topRow.get('l')));
+            parameter1.put("p", ScoreInterpreter.getInterpretation("p", bottomRow.get('p')));
+            parameter1.put("i", ScoreInterpreter.getInterpretation("i", topRow.get('i')));
+            parameter1.put("t", ScoreInterpreter.getInterpretation("t", topRow.get('t')));
+            parameter1.put("v", ScoreInterpreter.getInterpretation("v", topRow.get('v')));
+            parameter1.put("o", ScoreInterpreter.getInterpretation("o", bottomRow.get('o')));
+            parameter1.put("b", ScoreInterpreter.getInterpretation("b", bottomRow.get('b')));
+            parameter1.put("s", ScoreInterpreter.getInterpretation("s", topRow.get('s')));
+
+            Map<String, Object> parameter2 = new HashMap<>();
+            parameter2.put("x", ScoreInterpreter.getInterpretation("x", bottomRow.get('x')));
+            parameter2.put("c", ScoreInterpreter.getInterpretation("c", topRow.get('c')));
+            parameter2.put("d", ScoreInterpreter.getInterpretation("d", topRow.get('d')));
+            parameter2.put("r", ScoreInterpreter.getInterpretation("r", topRow.get('r')));
+            parameter2.put("z", ScoreInterpreter.getInterpretation("z", bottomRow.get('z')));
+            parameter2.put("e", ScoreInterpreter.getInterpretation("e", topRow.get('e')));
+            parameter2.put("k", ScoreInterpreter.getInterpretation("k", bottomRow.get('k')));
+            parameter2.put("f", ScoreInterpreter.getInterpretation("f", bottomRow.get('f')));
+            parameter2.put("w", ScoreInterpreter.getInterpretation("w", bottomRow.get('w')));
+
+            try {
+                JasperPrint jasperPrint1 = JasperFillManager.fillReport(REPORT1_PATH, parameter1,
+                        new JREmptyDataSource());
+                JasperPrint jasperPrint2 = JasperFillManager.fillReport(REPORT2_PATH, parameter2,
+                        new JREmptyDataSource());
+
+                jasperPrint1.addPage(1, jasperPrint2.getPages().get(0));
+
+                JasperViewer.viewReport(jasperPrint1, false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
