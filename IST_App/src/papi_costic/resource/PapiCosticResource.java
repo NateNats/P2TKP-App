@@ -114,9 +114,6 @@ public class PapiCosticResource {
 
     public static void handleInput(JButton button) {
         button.setEnabled(isTopRowValueValid() && isBottomRowValueValid() && isInputValid());
-        System.out.println("Top Row Valid " + isTopRowValueValid());
-        System.out.println("Bottom Row Valid " + isBottomRowValueValid());
-        System.out.println("Input Valid " + isInputValid());
     }
 
     private static void updateMapValue(char key, int value, boolean isTopRow) {
@@ -156,7 +153,6 @@ public class PapiCosticResource {
             parameter1.put("education", education);
             parameter1.put("gender", gender);
             parameter1.put("purpose", purpose);
-            System.out.println(topRow.get('n'));
             parameter1.put("n", ScoreInterpreter.getInterpretation("n", bottomRow.get('n')));
             parameter1.put("g", ScoreInterpreter.getInterpretation("g", topRow.get('g')));
             parameter1.put("a", ScoreInterpreter.getInterpretation("a", bottomRow.get('a')));
