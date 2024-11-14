@@ -39,7 +39,7 @@ public class EditForm extends javax.swing.JDialog {
         this.setResizable(false);
         textAreas = new JTextArea[7];
         inisiasiArray();
-
+        matikan();
         inisiasill();
         text2ll();
 
@@ -234,28 +234,41 @@ public class EditForm extends javax.swing.JDialog {
     private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
         kosong();
         String value = combobox.getSelectedItem().toString();
-
-        if (value.equals("Taraf Kecerdasan")) {
+        
+        if (value.equals("-- PILIH --")) {
+            matikan();
+        }   else if (value.equals("Taraf Kecerdasan")) {
+            hidupkan();
             add2F(tarKecerdasan);
         } else if (value.equals("Kemampuan Analisis")) {
+            hidupkan();
             add2F(kemAnalisis);
         } else if (value.equals("Kemampuan Berpikir Komprehensif")) {
+            hidupkan();
             add2F(berpikirKompreheren);
         } else if (value.equals("Daya Ingat")) {
+            hidupkan();
             add2F(dayaIngat);
         } else if (value.equals("Kemampuan berbahasa")) {
+            hidupkan();
             add2F(berbahasa);
         } else if (value.equals("Kreativitas")) {
+            hidupkan();
             add2F(kreativitas);
         } else if (value.equals("Kemampuan menilai")) {
+            hidupkan();
             add2F(menilai);
         } else if (value.equals("Kemampuan mengambil keputusan")) {
+            hidupkan();
             add2F(mengambilKeputusan);
         } else if (value.equals("Corak/cara berpikir")) {
+            hidupkan();
             add2F(coraBerpikir);
         } else if (value.equals("Kemampuan berpikir fleksibel")) {
+            hidupkan();
             add2F(fleksibel);
         } else if (value.equals("Kemampuan berhitung / mengolah angka")) {
+            hidupkan();
             add2F(angka);
         }
         //LinkedList<String> output = getTextBySection(value);
@@ -265,7 +278,7 @@ public class EditForm extends javax.swing.JDialog {
     private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
         try {
             String a = chVal(tarKecerdasan);
-            write2txt("C:/backup/Tugas/Reva/IST_App/src/ist_app/rubrik/taraf kecerdasan.txt", a);
+            write2txt("./IST_App/src/ist_app/rubrik/taraf kecerdasan.txt", a);
             
             combobox.setSelectedIndex(0);
             kosong();
@@ -401,6 +414,18 @@ public class EditForm extends javax.swing.JDialog {
         textAreas[4] = (JTextArea) jScrollPane5.getViewport().getView();
         textAreas[5] = (JTextArea) jScrollPane6.getViewport().getView();
         textAreas[6] = (JTextArea) jScrollPane7.getViewport().getView();
+    }
+    
+        void matikan() {
+        for (int i = 0; i < textAreas.length; i++) {
+            textAreas[i].setEditable(false);
+        }
+    }
+    
+    void hidupkan() {
+        for (int i = 0; i < textAreas.length; i++) {
+            textAreas[i].setEditable(true);
+        }
     }
 
 //    LinkedList<String> getTextBySection(String value) {
