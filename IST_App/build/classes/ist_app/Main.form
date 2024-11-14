@@ -136,75 +136,71 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="namaLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="namaInput" pref="572" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="tanggalController" pref="180" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="namaLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="SELabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="IQLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="SEInput" pref="0" max="32767" attributes="0"/>
+                          <Component id="IQInput" min="-2" pref="42" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="WALabel" max="32767" attributes="0"/>
+                          <Component id="ANLabel" min="-2" pref="29" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="ANInput" pref="0" max="32767" attributes="0"/>
+                          <Component id="WAInput" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="MELabel" max="32767" attributes="0"/>
+                          <Component id="GELabel" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="MEInput" pref="0" max="32767" attributes="0"/>
+                          <Component id="GEInput" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="namaInput" pref="572" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="RALabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="SELabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="IQLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="SEInput" pref="0" max="32767" attributes="0"/>
-                                  <Component id="IQInput" min="-2" pref="42" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="WALabel" max="32767" attributes="0"/>
-                                  <Component id="ANLabel" min="-2" pref="29" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="ANInput" pref="0" max="32767" attributes="0"/>
-                                  <Component id="WAInput" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="MELabel" max="32767" attributes="0"/>
-                                  <Component id="GELabel" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="MEInput" pref="0" max="32767" attributes="0"/>
-                                  <Component id="GEInput" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="RALabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                      <Component id="ZRLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="ZRInput" pref="0" max="32767" attributes="0"/>
-                                  <Component id="RAInput" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="FALabel" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="WULabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="WUInput" pref="0" max="32767" attributes="0"/>
-                                  <Component id="FAInput" min="-2" pref="41" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Component id="ZRLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="tanggalController" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="ZRInput" pref="0" max="32767" attributes="0"/>
+                          <Component id="RAInput" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="FALabel" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="WULabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="WUInput" pref="0" max="32767" attributes="0"/>
+                          <Component id="FAInput" min="-2" pref="41" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -213,41 +209,37 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="namaLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="namaInput" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="FAInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FALabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RAInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="RALabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="GEInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="GELabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="WAInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="WALabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="IQInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="IQLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="WUInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="WULabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ZRInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ZRLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="MEInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="MELabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ANInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ANLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="SEInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="SELabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="namaLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="namaInput" min="-2" max="-2" attributes="0"/>
                           <Component id="tanggalController" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FAInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FALabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RAInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RALabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="GEInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="GELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="WAInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="WALabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="IQInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="IQLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="WUInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="WULabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZRInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZRLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="MEInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="MELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ANInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ANLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SEInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -452,14 +444,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SEInputKeyReleased"/>
               </Events>
             </Component>
-            <Component class="com.toedter.calendar.JCalendar" name="tanggalController">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
-                </Property>
-              </Properties>
+            <Component class="com.toedter.calendar.JDateChooser" name="tanggalController">
             </Component>
           </SubComponents>
         </Container>
