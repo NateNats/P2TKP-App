@@ -234,10 +234,10 @@ public class EditForm extends javax.swing.JDialog {
     private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
         kosong();
         String value = combobox.getSelectedItem().toString();
-        
+
         if (value.equals("-- PILIH --")) {
             matikan();
-        }   else if (value.equals("Taraf Kecerdasan")) {
+        } else if (value.equals("Taraf Kecerdasan")) {
             hidupkan();
             add2F(tarKecerdasan);
         } else if (value.equals("Kemampuan Analisis")) {
@@ -277,22 +277,57 @@ public class EditForm extends javax.swing.JDialog {
 
     private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
         try {
-            String a = chVal(tarKecerdasan);
-            write2txt("./IST_App/src/ist_app/rubrik/taraf kecerdasan.txt", a);
-            
+            String value = combobox.getSelectedItem().toString();
+
+            if (value.equals("Taraf Kecerdasan")) {
+                write2txt("./src/ist_app/rubrik/taraf kecerdasan.txt", tarKecerdasan);
+            } else if (value.equals("Kemampuan Analisis")) {
+                write2txt("./src/ist_app/rubrik/kemampuan analisis.txt", kemAnalisis);
+            } else if (value.equals("Kemampuan Berpikir Komprehensif")) {
+                write2txt("./src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt", berpikirKompreheren);
+            } else if (value.equals("Daya Ingat")) {
+                write2txt("./src/ist_app/rubrik/daya ingat.txt", dayaIngat);
+            } else if (value.equals("Kemampuan berbahasa")) {
+                write2txt("./src/ist_app/rubrik/kemampuan berbahasa.txt", berbahasa);
+            } else if (value.equals("Kreativitas")) {
+                write2txt("./src/ist_app/rubrik/kreativitas.txt", kreativitas);
+            } else if (value.equals("Kemampuan menilai")) {
+                write2txt("./src/ist_app/rubrik/kemampuan menilai.txt", menilai);
+            } else if (value.equals("Kemampuan mengambil keputusan")) {
+                write2txt("./src/ist_app/rubrik/kemampuan mengambil keputusan.txt", mengambilKeputusan);
+            } else if (value.equals("Corak/cara berpikir")) {
+                write2txt("./src/ist_app/rubrik/corak berpikir.txt", coraBerpikir);
+            } else if (value.equals("Kemampuan berpikir fleksibel")) {
+                write2txt("./src/ist_app/rubrik/kemampuan berfikir fleksibel.txt", fleksibel);
+            } else if (value.equals("Kemampuan berhitung / mengolah angka")) {
+                write2txt("./src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt", angka);
+            }
+
             combobox.setSelectedIndex(0);
             kosong();
             inisiasill();
             text2ll();
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_simpanbuttonActionPerformed
 
-    void write2txt(String filename, String value) {
+    void write2txt(String filename, LinkedList<String> value) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, false))) {
-            writer.write(value);
+            
+            for (int i = 0; i < value.size(); i++) {
+                value.set(i, textAreas[i].getText());
+            }
+            
+            StringBuilder joinedValue = new StringBuilder();
+            
+            for (int i = 0; i < value.size(); i++) {
+                joinedValue.append(value.get(i)).append(";");
+                System.out.println(value.get(i));
+            }
+            
+            writer.write(joinedValue.toString());
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -383,6 +418,7 @@ public class EditForm extends javax.swing.JDialog {
         jTextArea4.setText("");
         jTextArea5.setText("");
         jTextArea6.setText("");
+        jTextArea7.setText("");
     }
 
     void inisiasill() {
@@ -415,13 +451,13 @@ public class EditForm extends javax.swing.JDialog {
         textAreas[5] = (JTextArea) jScrollPane6.getViewport().getView();
         textAreas[6] = (JTextArea) jScrollPane7.getViewport().getView();
     }
-    
-        void matikan() {
+
+    void matikan() {
         for (int i = 0; i < textAreas.length; i++) {
             textAreas[i].setEditable(false);
         }
     }
-    
+
     void hidupkan() {
         for (int i = 0; i < textAreas.length; i++) {
             textAreas[i].setEditable(true);
