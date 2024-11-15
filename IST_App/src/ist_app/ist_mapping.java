@@ -667,6 +667,7 @@ public class ist_mapping extends javax.swing.JPanel {
         resetTable();
         tombolHasil.setEnabled(false);
         tombolBatal.setEnabled(false);
+        tombolCetak.setEnabled(false);
     }//GEN-LAST:event_tombolBatalActionPerformed
 
     private void tombolHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHasilActionPerformed
@@ -683,7 +684,13 @@ public class ist_mapping extends javax.swing.JPanel {
         evalBerpikir();
         evalfleksibel();
         evalJenisKecerdasan();
+        
+        refreshTable();
+        
+        tombolCetak.setEnabled(true);
+        tombolUbah.setEnabled(true);
 
+        JOptionPane.showMessageDialog(this, "Berhasil");
     }//GEN-LAST:event_tombolHasilActionPerformed
 
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
@@ -728,6 +735,17 @@ public class ist_mapping extends javax.swing.JPanel {
     private void tanggalControllerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tanggalControllerKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_tanggalControllerKeyReleased
+
+    private void refreshTable() {
+        try {
+            KomponenPenilaianTableModel model = new KomponenPenilaianTableModel(nilai);
+            tabelHasil.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Data gagal ditampilkan");
+        }
+
+        setTableProperties();
+    }
 
     private void clearAllComp() {
         namaInput.setText("");
@@ -825,7 +843,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
         Result hasil = this.tarKecerdasan.interpret(scoreIQ);
         System.out.println("hasil Taraf Kecerdasan: " + hasil);
-
+        this.nilai.add(new KomponenPenilaian("Taraf Kecerdasan", nil, hasil.getKategori(), hasil.getDeskripsi()));
     }
 
     private void evalAnalisa() {
@@ -834,62 +852,69 @@ public class ist_mapping extends javax.swing.JPanel {
 
         Result hasil = this.kemAnalisis.interpret(ANWU);
         System.out.println("Hasil kemampuan analisis: " + hasil);
+        this.nilai.add(new KomponenPenilaian("Kemampuan analisis", nil, hasil.getKategori(), hasil.getDeskripsi()));
     }
 
     private void evalKomperehensif() {
 
         double GEFA = (Double.parseDouble(GEInput.getText()) + Double.parseDouble(FAInput.getText())) / 2; //Kemampuan berpikir komprehensif
         nil = String.valueOf(GEFA);
-        
+
         Result hasil = this.berpikirKompreheren.interpret(GEFA);
         System.out.println("Hasil Berpikir Komperehensif: " + hasil);
+        this.nilai.add(new KomponenPenilaian("Kemampuan berpikir komprehensif", nil, hasil.getKategori(), hasil.getDeskripsi()));
     }
 
     private void evalDayaIngat() {
         int ME = Integer.parseInt(MEInput.getText()); //Daya ingat
         nil = MEInput.getText();
-        
+
         Result hasil = this.dayaIngat.interpret(ME);
         System.out.println("Hasil Daya Ingat: " + hasil);
+        this.nilai.add(new KomponenPenilaian("Daya Ingat", nil, hasil.getKategori(), hasil.getDeskripsi()));
     }
 
     private void evalMengolahAngka() {
         double RAZR = (Double.parseDouble(RAInput.getText()) + Double.parseDouble(ZRInput.getText())) / 2; //Kemampuan berhitung / mengolah angka
         nil = String.valueOf(RAZR);
-        
+
         Result hasil = this.angka.interpret(RAZR);
         System.out.println("Hasil Mengolah angka: " + hasil);
+        this.nilai.add(new KomponenPenilaian("Kemampuan berhitung / mengolah angka", nil, hasil.getKategori(), hasil.getDeskripsi()));
     }
 
     private void evalBahasa() {
         double WAGE = (Double.parseDouble(WAInput.getText()) + Double.parseDouble(GEInput.getText())) / 2; //Kemampuan berbahasa
         nil = String.valueOf(WAGE);
-        
+
         Result hasil = this.berbahasa.interpret(WAGE);
         System.out.println("Hasil Berbahasa: " + hasil);
+        this.nilai.add(new KomponenPenilaian("Kemampuan berbahasa", nil, hasil.getKategori(), hasil.getDeskripsi()));
     }
 
     private void evalKreativitas() {
         double FAWU = (Double.parseDouble(FAInput.getText()) + Double.parseDouble(WUInput.getText())) / 2; //Kreativitas
         nil = String.valueOf(FAWU);
-        
+
         Result hasil = this.kreativitas.interpret(FAWU);
         System.out.println("Hasil Kreativitas: " + hasil);
+        this.nilai.add(new KomponenPenilaian("Kreativitas", nil, hasil.getKategori(), hasil.getDeskripsi()));
     }
 
     private void evalMenilai() {
         int SE = Integer.parseInt(SEInput.getText()); //Kemampuan menilai
         nil = SEInput.getText();
-        
+
         Result hasil = this.menilai.interpret(SE);
         System.out.println("Hasil Menilai: " + hasil);
+        this.nilai.add(new KomponenPenilaian("Kemampuan menilai", nil, hasil.getKategori(), hasil.getDeskripsi()));
     }
 
     private void evalKeputusan() {
         double SEANWURAZR = (Double.parseDouble(SEInput.getText()) + Double.parseDouble(ANInput.getText())
                 + Double.parseDouble(WUInput.getText()) + Double.parseDouble(RAInput.getText()) + Double.parseDouble(ZRInput.getText())) / 5; //Kemampuan mengambil keputusan
         nil = String.valueOf(SEANWURAZR);
-        
+
         //Result hasil = this.mengambilKeputusan.interpret(SEANWURAZR);
         //System.out.println("Hasil Mengambil Keputusan: " + hasil);
     }
@@ -924,7 +949,7 @@ public class ist_mapping extends javax.swing.JPanel {
         this.tarKecerdasan = new IST_ScoreInterpreter(
                 "./src/ist_app/resource/rubrik/taraf kecerdasan.txt", upperVal, lowerVal, kategori
         );
-        
+
         this.kemAnalisis = new IST_ScoreInterpreter(
                 "./src/ist_app/resource/rubrik/kemampuan analisis.txt", upperVal, lowerVal, kategori
         );
@@ -932,34 +957,33 @@ public class ist_mapping extends javax.swing.JPanel {
         this.dayaIngat = new IST_ScoreInterpreter(
                 "./src/ist_app/resource/rubrik/daya ingat.txt", upperVal, lowerVal, kategori
         );
-        
+
         this.berpikirKompreheren = new IST_ScoreInterpreter(
                 "./src/ist_app/resource/rubrik/kemampuan berpikir kompreherensif.txt", upperVal, lowerVal, kategori
         );
-        
+
         this.kreativitas = new IST_ScoreInterpreter(
                 "./src/ist_app/resource/rubrik/kreativitas.txt", upperVal, lowerVal, kategori
         );
-        
+
         this.menilai = new IST_ScoreInterpreter(
                 "./src/ist_app/resource/rubrik/kemampuan menilai.txt", upperVal, lowerVal, kategori
         );
-        
+
         //error - duplication value with unreasonable things
 //        this.mengambilKeputusan = new IST_ScoreInterpreter(
 //        "./src/ist_app/resource/rubrik/kemampuan mengambil keputusan.txt", upperVal, lowerVal, kategori
 //        );
-        
         this.berbahasa = new IST_ScoreInterpreter(
-        "./src/ist_app/resource/rubrik/kemampuan berbahasa.txt", upperVal, lowerVal, kategori
+                "./src/ist_app/resource/rubrik/kemampuan berbahasa.txt", upperVal, lowerVal, kategori
         );
-        
+
         this.kreativitas = new IST_ScoreInterpreter(
-        "./src/ist_app/resource/rubrik/kreativitas.txt", upperVal, lowerVal, kategori
+                "./src/ist_app/resource/rubrik/kreativitas.txt", upperVal, lowerVal, kategori
         );
-        
+
         this.angka = new IST_ScoreInterpreter(
-        "./src/ist_app/resource/rubrik/Kemampuan berhitung n mengolah angka.txt", upperVal, lowerVal, kategori
+                "./src/ist_app/resource/rubrik/Kemampuan berhitung n mengolah angka.txt", upperVal, lowerVal, kategori
         );
     }
 

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class IST_ScoreInterpreter {
 
-    private final List<Range> ranges;
+    private List<Range> ranges;
     private String filename;
     private LinkedList<String> link;
     private double[] upperVal;
@@ -30,8 +30,15 @@ public class IST_ScoreInterpreter {
         this.upperVal = upperVal;
         this.lowerVal = lowerVal;
         this.kategori = kategori;
-        
+
         this.initializeDefaultInterpretations();
+    }
+
+    public IST_ScoreInterpreter(String filename) {
+        //this.ranges = new ArrayList<>();
+        //this.ranges = new ArrayList<>();
+        //this.link = new LinkedList<>();
+        this.filename = filename;
     }
 
     private void AddRange(double lowerBound, double upperBound, String deskripsi, String kategori) {
@@ -74,6 +81,7 @@ public class IST_ScoreInterpreter {
     }
 
     public static class Result {
+
         private double nilai;
         private String deskripsi;
         private String kategori;
@@ -84,12 +92,25 @@ public class IST_ScoreInterpreter {
             this.kategori = kategori;
         }
 
+        public double getNilai() {
+            return nilai;
+        }
+
+        public String getDeskripsi() {
+            return deskripsi;
+        }
+
+        public String getKategori() {
+            return kategori;
+        }
+        
+        
+
         @Override
         public String toString() {
             return "Result{" + "nilai=" + nilai + ", deskripsi=" + deskripsi + ", kategori=" + kategori + '}';
         }
-        
-        
+
     }
 
     void loadRubrikFile(String filename, LinkedList<String> ll) {
@@ -114,7 +135,7 @@ public class IST_ScoreInterpreter {
 
     private void initializeDefaultInterpretations() {
         loadRubrikFile(this.filename, this.link);
-        
+
         for (int i = 0; i < this.link.size(); i++) {
             try {
                 this.AddRange(this.lowerVal[i], this.upperVal[i], this.link.get(i), this.kategori[i]);
