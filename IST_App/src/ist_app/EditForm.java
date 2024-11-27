@@ -41,7 +41,6 @@ public class EditForm extends javax.swing.JDialog {
         inisiasiArray();
         matikan();
         inisiasill();
-
     }
 
     /**

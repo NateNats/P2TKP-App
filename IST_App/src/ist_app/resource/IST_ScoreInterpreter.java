@@ -35,9 +35,6 @@ public class IST_ScoreInterpreter {
     }
 
     public IST_ScoreInterpreter(String filename) {
-        //this.ranges = new ArrayList<>();
-        //this.ranges = new ArrayList<>();
-        //this.link = new LinkedList<>();
         this.filename = filename;
     }
 
@@ -103,14 +100,36 @@ public class IST_ScoreInterpreter {
         public String getKategori() {
             return kategori;
         }
-        
-        
 
         @Override
         public String toString() {
             return "Result{" + "nilai=" + nilai + ", deskripsi=" + deskripsi + ", kategori=" + kategori + '}';
         }
 
+    }
+
+    public LinkedList<String> modifyFile() {
+        LinkedList<String> ll = new LinkedList<>();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(this.filename));
+            String docs;
+            StringBuilder fullcontent = new StringBuilder();
+
+            while ((docs = br.readLine()) != null) {
+                String teks = br.toString();
+                String[] oneLine = docs.split(";");
+
+                for (int i = 0; i < oneLine.length; i++) {
+                    ll.add(oneLine[i]);
+                }
+            }
+            
+            return ll;
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        
+        return null;
     }
 
     void loadRubrikFile(String filename, LinkedList<String> ll) {

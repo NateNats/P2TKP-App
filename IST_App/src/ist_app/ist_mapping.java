@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import ist_app.resource.IST_ScoreInterpreter;
 import ist_app.resource.IST_ScoreInterpreter.Result;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -684,9 +685,9 @@ public class ist_mapping extends javax.swing.JPanel {
         evalBerpikir();
         evalfleksibel();
         evalJenisKecerdasan();
-        
+
         refreshTable();
-        
+
         tombolCetak.setEnabled(true);
         tombolUbah.setEnabled(true);
 
@@ -706,10 +707,29 @@ public class ist_mapping extends javax.swing.JPanel {
     }//GEN-LAST:event_tombolKeluarActionPerformed
 
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
-        //mengubah isi file rubrik
-        //EditForm dialog = new EditForm(MainFrame.Main.this, true);
-        //dialog.setVisible(true);
-        bersihkan();
+        //input form for password
+
+        JPasswordField passwordField = new JPasswordField();
+        Object[] message = {"Masukkan Password: ", passwordField};
+        String real = "12345";
+        
+        do {
+            int option = JOptionPane.showConfirmDialog(this, message, "Konfirmasi untuk mengubah", JOptionPane.OK_CANCEL_OPTION);
+
+            if (option == JOptionPane.OK_OPTION) {
+                String pw = new String(passwordField.getPassword());
+
+                if (pw.equals(real)) {
+                    JOptionPane.showMessageDialog(null, "Berhasil masuk");
+                            //mengubah isi file rubrik
+                            EditForm dialog = new EditForm(null, true);
+                            dialog.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal masuk");
+                }
+            }
+        } while (!(real.equals(new String(passwordField.getPassword()))));
+         bersihkan();
     }//GEN-LAST:event_tombolUbahActionPerformed
 
     private void tabelHasilMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelHasilMouseMoved
