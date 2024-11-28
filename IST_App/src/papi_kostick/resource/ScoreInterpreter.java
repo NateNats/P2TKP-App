@@ -1,4 +1,4 @@
-package papi_costic.resource;
+package papi_kostick.resource;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,7 +10,7 @@ import java.util.NavigableMap;
 import java.util.TreeMap;
 
 /**
- * This class is used to interpret the score of the PAPI Costic test.
+ * This class is used to interpret the score of the PAPI Kostick test.
  * 
  * @author <a href="https://github.com/Trustacean">Edward</a>
  */
