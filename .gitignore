@@ -8,3 +8,4 @@ dist/
 
 # Ignore library files in Drive (optional, based on your preference)
 Drive/
+IST_App/.vscode/settings.json
