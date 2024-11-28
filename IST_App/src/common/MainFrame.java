@@ -3,6 +3,7 @@ package common;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
 import papi_costic.PapiCosticForm;
+import ist_app.ist_mapping;
 
 /**
  *
@@ -24,8 +25,8 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
 
-        PapiCosticForm papiCosticForm = new PapiCosticForm();
-        cards.add(papiCosticForm, "PapiCosticForm");
+        ist_mapping form = new ist_mapping();
+        cards.add(form, "PapiCosticForm");
 
         // Set layout and add cards to the main content pane
         getContentPane().setLayout(new java.awt.BorderLayout());

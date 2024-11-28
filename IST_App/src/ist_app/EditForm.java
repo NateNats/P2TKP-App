@@ -41,8 +41,6 @@ public class EditForm extends javax.swing.JDialog {
         inisiasiArray();
         matikan();
         inisiasill();
-        text2ll();
-
     }
 
     /**
@@ -56,20 +54,20 @@ public class EditForm extends javax.swing.JDialog {
 
         combobox = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea6 = new javax.swing.JTextArea();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea7 = new javax.swing.JTextArea();
+        KSScroll = new javax.swing.JScrollPane();
+        KSInput = new javax.swing.JTextArea();
+        KScroll = new javax.swing.JScrollPane();
+        KInput = new javax.swing.JTextArea();
+        CMinScroll = new javax.swing.JScrollPane();
+        CMinInput = new javax.swing.JTextArea();
+        CScroll = new javax.swing.JScrollPane();
+        CInput = new javax.swing.JTextArea();
+        CPlusScroll = new javax.swing.JScrollPane();
+        CPlusInput = new javax.swing.JTextArea();
+        BScroll = new javax.swing.JScrollPane();
+        BInput = new javax.swing.JTextArea();
+        BSScroll = new javax.swing.JScrollPane();
+        BSInput = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         simpanbutton = new javax.swing.JButton();
 
@@ -84,44 +82,51 @@ public class EditForm extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        KSInput.setColumns(20);
+        KSInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KSInput.setRows(5);
+        KSInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Kurang Sekali (KS)"));
+        KSScroll.setViewportView(KSInput);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        KInput.setColumns(20);
+        KInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        KInput.setRows(5);
+        KInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Kurang (K)"));
+        KScroll.setViewportView(KInput);
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        CMinInput.setColumns(20);
+        CMinInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CMinInput.setRows(5);
+        CMinInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata bawah (C-)"));
+        CMinScroll.setViewportView(CMinInput);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        CInput.setColumns(20);
+        CInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CInput.setRows(5);
+        CInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata (C)"));
+        CScroll.setViewportView(CInput);
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
+        CPlusInput.setColumns(20);
+        CPlusInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CPlusInput.setRows(5);
+        CPlusInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata atas (C+)"));
+        CPlusScroll.setViewportView(CPlusInput);
 
-        jTextArea6.setColumns(20);
-        jTextArea6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea6.setRows(5);
-        jTextArea6.setAutoscrolls(false);
-        jScrollPane6.setViewportView(jTextArea6);
+        BInput.setColumns(20);
+        BInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        BInput.setRows(5);
+        BInput.setAutoscrolls(false);
+        BInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Baik (B)"));
+        BScroll.setViewportView(BInput);
 
-        jScrollPane7.setHorizontalScrollBar(null);
+        BSScroll.setHorizontalScrollBar(null);
 
-        jTextArea7.setColumns(20);
-        jTextArea7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea7.setLineWrap(true);
-        jTextArea7.setRows(5);
-        jScrollPane7.setViewportView(jTextArea7);
+        BSInput.setColumns(20);
+        BSInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        BSInput.setLineWrap(true);
+        BSInput.setRows(5);
+        BSInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Baik Sekali (BS)"));
+        BSScroll.setViewportView(BSInput);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,46 +135,46 @@ public class EditForm extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
+                    .addComponent(KSScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                    .addComponent(CScroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                    .addComponent(CPlusScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                    .addComponent(BScroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                    .addComponent(BSScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(KScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(CMinScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(KSScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(190, 190, 190)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CPlusScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(BSScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(97, 97, 97)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(KScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(357, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(183, 183, 183)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CMinScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(271, Short.MAX_VALUE)))
         );
 
@@ -207,9 +212,9 @@ public class EditForm extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 175, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 175, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,9 +228,9 @@ public class EditForm extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 288, Short.MAX_VALUE)
+                    .addGap(0, 327, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 289, Short.MAX_VALUE)))
+                    .addGap(0, 327, Short.MAX_VALUE)))
         );
 
         pack();
@@ -280,33 +285,32 @@ public class EditForm extends javax.swing.JDialog {
             String value = combobox.getSelectedItem().toString();
 
             if (value.equals("Taraf Kecerdasan")) {
-                write2txt("./src/ist_app/rubrik/taraf kecerdasan.txt", tarKecerdasan);
+                write2txt("./src/ist_app/resource/rubrik/taraf kecerdasan.txt", tarKecerdasan);
             } else if (value.equals("Kemampuan Analisis")) {
-                write2txt("./src/ist_app/rubrik/kemampuan analisis.txt", kemAnalisis);
+                write2txt("./src/ist_app/resource/rubrik/kemampuan analisis.txt", kemAnalisis);
             } else if (value.equals("Kemampuan Berpikir Komprehensif")) {
-                write2txt("./src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt", berpikirKompreheren);
+                write2txt("./src/ist_app/resource/rubrik/kemampuan berpikir kompreherensif.txt", berpikirKompreheren);
             } else if (value.equals("Daya Ingat")) {
-                write2txt("./src/ist_app/rubrik/daya ingat.txt", dayaIngat);
+                write2txt("./src/ist_app/resource/rubrik/daya ingat.txt", dayaIngat);
             } else if (value.equals("Kemampuan berbahasa")) {
-                write2txt("./src/ist_app/rubrik/kemampuan berbahasa.txt", berbahasa);
+                write2txt("./src/ist_app/resource/rubrik/kemampuan berbahasa.txt", berbahasa);
             } else if (value.equals("Kreativitas")) {
-                write2txt("./src/ist_app/rubrik/kreativitas.txt", kreativitas);
+                write2txt("./src/ist_app/resource/rubrik/kreativitas.txt", kreativitas);
             } else if (value.equals("Kemampuan menilai")) {
-                write2txt("./src/ist_app/rubrik/kemampuan menilai.txt", menilai);
+                write2txt("./src/ist_app/resource/rubrik/kemampuan menilai.txt", menilai);
             } else if (value.equals("Kemampuan mengambil keputusan")) {
-                write2txt("./src/ist_app/rubrik/kemampuan mengambil keputusan.txt", mengambilKeputusan);
+                write2txt("./src/ist_app/resource/rubrik/kemampuan mengambil keputusan.txt", mengambilKeputusan);
             } else if (value.equals("Corak/cara berpikir")) {
-                write2txt("./src/ist_app/rubrik/corak berpikir.txt", coraBerpikir);
+                write2txt("./src/ist_app/resource/rubrik/corak berpikir.txt", coraBerpikir);
             } else if (value.equals("Kemampuan berpikir fleksibel")) {
-                write2txt("./src/ist_app/rubrik/kemampuan berfikir fleksibel.txt", fleksibel);
+                write2txt("./src/ist_app/resource/rubrik/kemampuan berfikir fleksibel.txt", fleksibel);
             } else if (value.equals("Kemampuan berhitung / mengolah angka")) {
-                write2txt("./src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt", angka);
+                write2txt("./src/ist_app/resource/rubrik/Kemampuan berhitung n mengolah angka.txt", angka);
             }
 
             combobox.setSelectedIndex(0);
             kosong();
             inisiasill();
-            text2ll();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -368,57 +372,30 @@ public class EditForm extends javax.swing.JDialog {
             }
         }
     }
-
-    void text2ll() {
-        String file1 = "./src/ist_app/rubrik/taraf kecerdasan.txt";
-        loadRubrikFile(file1, tarKecerdasan);
-        String file2 = "./src/ist_app/rubrik/corak berpikir.txt";
-        loadRubrikFile(file2, coraBerpikir);
-        String file3 = "./src/ist_app/rubrik/kemampuan berbahasa.txt";
-        loadRubrikFile(file3, berbahasa);
-        String file4 = "./src/ist_app/rubrik/kemampuan mengambil keputusan.txt";
-        loadRubrikFile(file4, mengambilKeputusan);
-        String file5 = "./src/ist_app/rubrik/kemampuan menilai.txt";
-        loadRubrikFile(file5, menilai);
-        String file6 = "./src/ist_app/rubrik/kreativitas.txt";
-        loadRubrikFile(file6, kreativitas);
-        String file7 = "./src/ist_app/rubrik/daya ingat.txt";
-        loadRubrikFile(file7, dayaIngat);
-        String file8 = "./src/ist_app/rubrik/kemampuan analisis.txt";
-        loadRubrikFile(file8, kemAnalisis);
-        String file9 = "./src/ist_app/rubrik/kemampuan berpikir kompreherensif.txt";
-        loadRubrikFile(file9, berpikirKompreheren);
-        String file10 = "./src/ist_app/rubrik/jenis kecerdasan.txt";
-        loadRubrikFile(file10, jenisKecerdasan);
-        String file11 = "./src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
-        loadRubrikFile(file11, fleksibel);
-        String file12 = "./src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
-        loadRubrikFile(file12, angka);
-    }
-
+    
     void inisiasitexfield() {
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setWrapStyleWord(true);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setWrapStyleWord(true);
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setWrapStyleWord(true);
-        jTextArea4.setLineWrap(true);
-        jTextArea4.setWrapStyleWord(true);
-        jTextArea5.setLineWrap(true);
-        jTextArea5.setWrapStyleWord(true);
-        jTextArea6.setLineWrap(true);
-        jTextArea6.setWrapStyleWord(true);
+        KSInput.setLineWrap(true);
+        KSInput.setWrapStyleWord(true);
+        KInput.setLineWrap(true);
+        KInput.setWrapStyleWord(true);
+        CMinInput.setLineWrap(true);
+        CMinInput.setWrapStyleWord(true);
+        CInput.setLineWrap(true);
+        CInput.setWrapStyleWord(true);
+        CPlusInput.setLineWrap(true);
+        CPlusInput.setWrapStyleWord(true);
+        BInput.setLineWrap(true);
+        BInput.setWrapStyleWord(true);
     }
 
     void kosong() {
-        jTextArea1.setText("");
-        jTextArea2.setText("");
-        jTextArea3.setText("");
-        jTextArea4.setText("");
-        jTextArea5.setText("");
-        jTextArea6.setText("");
-        jTextArea7.setText("");
+        KSInput.setText("");
+        KInput.setText("");
+        CMinInput.setText("");
+        CInput.setText("");
+        CPlusInput.setText("");
+        BInput.setText("");
+        BSInput.setText("");
     }
 
     void inisiasill() {
@@ -443,13 +420,13 @@ public class EditForm extends javax.swing.JDialog {
     }
 
     void inisiasiArray() {
-        textAreas[0] = (JTextArea) jScrollPane1.getViewport().getView();
-        textAreas[1] = (JTextArea) jScrollPane2.getViewport().getView();
-        textAreas[2] = (JTextArea) jScrollPane3.getViewport().getView();
-        textAreas[3] = (JTextArea) jScrollPane4.getViewport().getView();
-        textAreas[4] = (JTextArea) jScrollPane5.getViewport().getView();
-        textAreas[5] = (JTextArea) jScrollPane6.getViewport().getView();
-        textAreas[6] = (JTextArea) jScrollPane7.getViewport().getView();
+        textAreas[0] = (JTextArea) KSScroll.getViewport().getView();
+        textAreas[1] = (JTextArea) KScroll.getViewport().getView();
+        textAreas[2] = (JTextArea) CMinScroll.getViewport().getView();
+        textAreas[3] = (JTextArea) CScroll.getViewport().getView();
+        textAreas[4] = (JTextArea) CPlusScroll.getViewport().getView();
+        textAreas[5] = (JTextArea) BScroll.getViewport().getView();
+        textAreas[6] = (JTextArea) BSScroll.getViewport().getView();
     }
 
     void matikan() {
@@ -462,62 +439,6 @@ public class EditForm extends javax.swing.JDialog {
         for (int i = 0; i < textAreas.length; i++) {
             textAreas[i].setEditable(true);
         }
-    }
-
-//    LinkedList<String> getTextBySection(String value) {
-//        LinkedList<String> content = new LinkedList<>();
-//
-//        try {
-//            BufferedReader br = new BufferedReader(new FileReader("C:/backup/Tugas/Reva/IST_App/src/test/file rubrik.txt"));
-//            String docs;
-//            StringBuilder fullcontent = new StringBuilder();
-//
-//            while ((docs = br.readLine()) != null) {
-//                String teks = br.toString();
-//                String[] oneLine = docs.split(":");
-//                content.add(oneLine[0]);
-//                
-//                //kondisi jika baris tersebut sesuai dengan apa yang kita cari
-//                if (oneLine[0].equals(value)) {
-//                    //findingIndex(docs, br);
-//                    String[] items = oneLine[1].split(";");
-//                    
-//                    for (int i = 0; i < items.length; i++) {
-//                        content.add(items[i]);
-//                    }
-//                    break;
-//                }
-//            }
-//
-//        } catch (Exception e) {
-//            System.out.println("error");
-//        }
-//        return content;
-//    }
-    void loadRubrikFile(String filename, LinkedList<String> ll) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(filename));
-            String docs;
-            StringBuilder fullcontent = new StringBuilder();
-
-            while ((docs = br.readLine()) != null) {
-                String teks = br.toString();
-                String[] oneLine = docs.split(";");
-
-                for (int i = 0; i < oneLine.length; i++) {
-                    ll.add(oneLine[i]);
-                }
-            }
-
-        } catch (Exception e) {
-            System.out.println("error");
-        }
-    }
-
-    void findingIndex(String line, BufferedReader document) {
-        String docs = document.toString();
-        int find = docs.indexOf("Sangat mempertimbangkan informasi yang tersedia karena ulet mencari keterkaitan antar informasi.");
-        System.out.println(find);
     }
 
     /**
@@ -578,23 +499,23 @@ public class EditForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea BInput;
+    private javax.swing.JTextArea BSInput;
+    private javax.swing.JScrollPane BSScroll;
+    private javax.swing.JScrollPane BScroll;
+    private javax.swing.JTextArea CInput;
+    private javax.swing.JTextArea CMinInput;
+    private javax.swing.JScrollPane CMinScroll;
+    private javax.swing.JTextArea CPlusInput;
+    private javax.swing.JScrollPane CPlusScroll;
+    private javax.swing.JScrollPane CScroll;
+    private javax.swing.JTextArea KInput;
+    private javax.swing.JTextArea KSInput;
+    private javax.swing.JScrollPane KSScroll;
+    private javax.swing.JScrollPane KScroll;
     private javax.swing.JComboBox<String> combobox;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextArea jTextArea6;
-    private javax.swing.JTextArea jTextArea7;
     private javax.swing.JButton simpanbutton;
     // End of variables declaration//GEN-END:variables
 }
