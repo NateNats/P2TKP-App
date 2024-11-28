@@ -6,6 +6,7 @@ package papi_costic;
 
 import java.awt.event.KeyAdapter;
 
+import papi_costic.resource.PapiCosticInputFocusAdapter;
 import papi_costic.resource.PapiCosticInputKeyAdapter;
 import papi_costic.resource.PapiCosticResource;
 
@@ -116,7 +117,7 @@ public class PapiCosticForm extends javax.swing.JPanel {
 
         judul.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        judul.setText("PAPI COSTIC MAPPING");
+        judul.setText("PAPI KOSTICK MAPPING");
 
         javax.swing.GroupLayout judulPanelLayout = new javax.swing.GroupLayout(judulPanel);
         judulPanel.setLayout(judulPanelLayout);
@@ -134,6 +135,7 @@ public class PapiCosticForm extends javax.swing.JPanel {
                                 .addComponent(judul)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">
         masukanPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Masukan"));
         masukanPanel.setToolTipText("");
 
@@ -214,162 +216,202 @@ public class PapiCosticForm extends javax.swing.JPanel {
         gLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gLabel.setText("G");
 
-        gInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(gInput, 'g', true, papiInputPanel, cetakButton,
+        gInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(gInput, 'g', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        gInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(gInput, 'g', true, papiInputPanel, cetakButton, jumlahAtas));
 
         lLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lLabel.setText("L");
 
-        lInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(lInput, 'l', true, papiInputPanel, cetakButton,
+        lInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(lInput, 'l', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        lInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(lInput, 'l', true, papiInputPanel, cetakButton, jumlahAtas));
 
         iLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         iLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iLabel.setText("I");
 
-        iInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(iInput, 'i', true, papiInputPanel, cetakButton,
+        iInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(iInput, 'i', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        iInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(iInput, 'i', true, papiInputPanel, cetakButton, jumlahAtas));
 
         tLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tLabel.setText("T");
 
-        tInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(tInput, 't', true, papiInputPanel, cetakButton,
+        tInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(tInput, 't', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        tInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(tInput, 't', true, papiInputPanel, cetakButton, jumlahAtas));
 
         vLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         vLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vLabel.setText("V");
 
-        vInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(vInput, 'v', true, papiInputPanel, cetakButton,
+        vInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(vInput, 'v', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        vInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(vInput, 'v', true, papiInputPanel, cetakButton, jumlahAtas));
 
         sLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         sLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sLabel.setText("S");
 
-        sInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(sInput, 's', true, papiInputPanel, cetakButton,
+        sInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(sInput, 's', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        sInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(sInput, 's', true, papiInputPanel, cetakButton, jumlahAtas));
 
         rLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         rLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rLabel.setText("R");
 
-        rInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(rInput, 'r', true, papiInputPanel, cetakButton,
+        rInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(rInput, 'r', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        rInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(rInput, 'r', true, papiInputPanel, cetakButton, jumlahAtas));
 
         dLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         dLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dLabel.setText("D");
 
-        dInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(dInput, 'd', true, papiInputPanel, cetakButton,
+        dInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(dInput, 'd', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        dInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(dInput, 'd', true, papiInputPanel, cetakButton, jumlahAtas));
 
         cLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cLabel.setText("C");
 
-        cInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(cInput, 'c', true, papiInputPanel, cetakButton,
+        cInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(cInput, 'c', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        cInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(cInput, 'c', true, papiInputPanel, cetakButton, jumlahAtas));
 
         eLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         eLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         eLabel.setText("E");
 
-        eInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(eInput, 'e', true, papiInputPanel, cetakButton,
+        eInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(eInput, 'e', true, papiInputPanel, cetakButton,
                         jumlahAtas));
+        eInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(eInput, 'e', true, papiInputPanel, cetakButton, jumlahAtas));
 
         nLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nLabel.setText("N");
 
-        nInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(nInput, 'n', false, papiInputPanel, cetakButton,
+        nInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(nInput, 'n', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        nInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(nInput, 'n', false, papiInputPanel, cetakButton, jumlahBawah));
 
         aLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         aLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         aLabel.setText("A");
 
-        aInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(aInput, 'a', false, papiInputPanel, cetakButton,
+        aInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(aInput, 'a', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        aInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(aInput, 'a', false, papiInputPanel, cetakButton, jumlahBawah));
 
         pLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         pLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pLabel.setText("P");
 
-        pInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(pInput, 'p', false, papiInputPanel, cetakButton,
+        pInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(pInput, 'p', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        pInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(pInput, 'p', false, papiInputPanel, cetakButton, jumlahBawah));
 
         xLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         xLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         xLabel.setText("X");
 
-        xInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(xInput, 'x', false, papiInputPanel, cetakButton,
+        xInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(xInput, 'x', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        xInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(xInput, 'x', false, papiInputPanel, cetakButton, jumlahBawah));
 
         bLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         bLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bLabel.setText("B");
 
-        bInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(bInput, 'b', false, papiInputPanel, cetakButton,
+        bInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(bInput, 'b', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        bInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(bInput, 'b', false, papiInputPanel, cetakButton, jumlahBawah));
 
         oLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         oLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         oLabel.setText("O");
 
-        oInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(oInput, 'o', false, papiInputPanel, cetakButton,
+        oInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(oInput, 'o', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        oInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(oInput, 'o', false, papiInputPanel, cetakButton, jumlahBawah));
 
         zLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         zLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         zLabel.setText("Z");
 
-        zInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(zInput, 'z', false, papiInputPanel, cetakButton,
+        zInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(zInput, 'z', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        zInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(zInput, 'z', false, papiInputPanel, cetakButton, jumlahBawah));
 
         kLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         kLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         kLabel.setText("K");
 
-        kInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(kInput, 'k', false, papiInputPanel, cetakButton,
+        kInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(kInput, 'k', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        kInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(kInput, 'k', false, papiInputPanel, cetakButton, jumlahBawah));
 
         fLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         fLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fLabel.setText("F");
 
-        fInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(fInput, 'f', false, papiInputPanel, cetakButton,
+        fInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(fInput, 'f', false, papiInputPanel, cetakButton,
                         jumlahBawah));
+        fInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(fInput, 'f', false, papiInputPanel, cetakButton, jumlahBawah));
 
         wLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         wLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         wLabel.setText("W");
 
-        wInput.addKeyListener(
-                new PapiCosticInputKeyAdapter(wInput, 'w', false, papiInputPanel, cetakButton,
+        wInput.addFocusListener(
+                new PapiCosticInputFocusAdapter(wInput, 'w', false, papiInputPanel, cetakButton,
                         jumlahBawah));
-
+        wInput.addKeyListener(
+                new PapiCosticInputKeyAdapter(wInput, 'w', false, papiInputPanel, cetakButton, jumlahBawah));
+        // </editor-fold>
         javax.swing.GroupLayout papiInputPanelLayout = new javax.swing.GroupLayout(papiInputPanel);
         papiInputPanel.setLayout(papiInputPanelLayout);
         papiInputPanelLayout.setHorizontalGroup(
