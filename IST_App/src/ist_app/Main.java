@@ -4,6 +4,9 @@
  */
 package ist_app;
 
+import ist_app.resource.NilaiRubrik;
+import ist_app.resource.KomponenPenilaianTableModel;
+import ist_app.resource.KomponenPenilaian;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStream;
