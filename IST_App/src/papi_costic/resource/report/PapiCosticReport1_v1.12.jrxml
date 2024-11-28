@@ -178,7 +178,7 @@
 				<textElement verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{birthDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{education}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="2" y="45" width="116" height="15" uuid="35b5f7c0-a033-4eeb-adf4-0c402fb6fa32">
