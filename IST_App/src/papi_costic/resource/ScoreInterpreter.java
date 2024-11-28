@@ -16,7 +16,7 @@ import java.util.TreeMap;
  */
 
 public class ScoreInterpreter {
-    private static final String DATA_FILE_PATH = "./src/papi_costic/resource/data/interpretations.dat";
+    private static final String DATA_FILE_PATH = "./src/storage/kostick_interpretation.dat";
     private static Map<String, NavigableMap<Integer, String>> interpretations = new TreeMap<>();
 
     static {
