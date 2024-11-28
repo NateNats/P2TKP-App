@@ -827,7 +827,7 @@ public class PapiCosticForm extends javax.swing.JPanel {
         aksiPanel.add(resetButton, new java.awt.GridBagConstraints());
 
         editButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        editButton.setText("Edit");
+        editButton.setText("Ubah");
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
