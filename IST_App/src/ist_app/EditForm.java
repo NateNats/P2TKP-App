@@ -4,6 +4,8 @@
  */
 package ist_app;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.LinkedList;
 import java.awt.TextArea;
 import java.io.BufferedReader;
@@ -15,6 +17,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ListIterator;
 import java.util.Set;
+import static javafx.scene.paint.Color.color;
+import javax.swing.BorderFactory;
+import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -41,6 +48,7 @@ public class EditForm extends javax.swing.JDialog {
         inisiasiArray();
         matikan();
         inisiasill();
+        text2ll();
     }
 
     /**
@@ -73,7 +81,7 @@ public class EditForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Taraf Kecerdasan", "Kemampuan Analisis", "Kemampuan Berpikir Komprehensif", "Daya Ingat", "Kemampuan berbahasa", "Kreativitas", "Kemampuan menilai", "Kemampuan mengambil keputusan", "Corak/cara berpikir", "Kemampuan berpikir fleksibel", "Kemampuan berhitung / mengolah angka" }));
+        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Taraf Kecerdasan", "Kemampuan Analisis", "Kemampuan Berpikir Komprehensif", "Daya Ingat", "Kemampuan berbahasa", "Kreativitas", "Kemampuan menilai", "Kemampuan mengambil keputusan", "Corak/cara berpikir", "Kemampuan berpikir fleksibel", "Kemampuan berhitung / mengolah angka", "Jenis kecerdasan" }));
         combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboboxActionPerformed(evt);
@@ -82,50 +90,65 @@ public class EditForm extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        KSScroll.setToolTipText("");
+        KSScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Kurang Sekali (KS)"));
+
         KSInput.setColumns(20);
         KSInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         KSInput.setRows(5);
-        KSInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Kurang Sekali (KS)"));
+        KSInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         KSScroll.setViewportView(KSInput);
+
+        KScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Kurang (K)"));
 
         KInput.setColumns(20);
         KInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         KInput.setRows(5);
-        KInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Kurang (K)"));
+        KInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         KScroll.setViewportView(KInput);
+
+        CMinScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata bawah (C-)"));
 
         CMinInput.setColumns(20);
         CMinInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMinInput.setRows(5);
-        CMinInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata bawah (C-)"));
+        CMinInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         CMinScroll.setViewportView(CMinInput);
+
+        CScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata (C)"));
 
         CInput.setColumns(20);
         CInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CInput.setRows(5);
-        CInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata (C)"));
+        CInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         CScroll.setViewportView(CInput);
+
+        CPlusScroll.setToolTipText("");
+        CPlusScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata atas (C+)"));
 
         CPlusInput.setColumns(20);
         CPlusInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CPlusInput.setRows(5);
-        CPlusInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata atas (C+)"));
+        CPlusInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         CPlusScroll.setViewportView(CPlusInput);
+
+        BScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Baik (B)"));
 
         BInput.setColumns(20);
         BInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BInput.setRows(5);
         BInput.setAutoscrolls(false);
-        BInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Baik (B)"));
+        BInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         BScroll.setViewportView(BInput);
 
+        BSScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Baik Sekali (BS)"));
         BSScroll.setHorizontalScrollBar(null);
 
         BSInput.setColumns(20);
         BSInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BSInput.setLineWrap(true);
         BSInput.setRows(5);
-        BSInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Baik Sekali (BS)"));
+        BSInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         BSScroll.setViewportView(BSInput);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -133,49 +156,40 @@ public class EditForm extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(KSScroll, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CMinScroll, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CPlusScroll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(KSScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                    .addComponent(CScroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                    .addComponent(CPlusScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                    .addComponent(BScroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                    .addComponent(BSScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(KScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(CMinScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(KScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(BSScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(KSScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(190, 190, 190)
-                .addComponent(CScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(KSScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(KScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(CPlusScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CMinScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(CScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(BScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CPlusScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(BScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(BSScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(97, 97, 97)
-                    .addComponent(KScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(357, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(183, 183, 183)
-                    .addComponent(CMinScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(271, Short.MAX_VALUE)))
+                .addComponent(BSScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -203,34 +217,35 @@ public class EditForm extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(simpanbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(simpanbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 175, Short.MAX_VALUE)
+                    .addGap(0, 375, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 175, Short.MAX_VALUE)))
+                    .addGap(0, 375, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(combobox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(simpanbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 327, Short.MAX_VALUE)
+                    .addGap(0, 263, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 327, Short.MAX_VALUE)))
+                    .addGap(0, 263, Short.MAX_VALUE)))
         );
 
         pack();
@@ -275,6 +290,9 @@ public class EditForm extends javax.swing.JDialog {
         } else if (value.equals("Kemampuan berhitung / mengolah angka")) {
             hidupkan();
             add2F(angka);
+        } else if (value.equals("Jenis kecerdasan")) {
+            hidupkan();
+            add2F(jenisKecerdasan);
         }
         //LinkedList<String> output = getTextBySection(value);
         //inputToTextF(output);
@@ -306,11 +324,14 @@ public class EditForm extends javax.swing.JDialog {
                 write2txt("./src/ist_app/resource/rubrik/kemampuan berfikir fleksibel.txt", fleksibel);
             } else if (value.equals("Kemampuan berhitung / mengolah angka")) {
                 write2txt("./src/ist_app/resource/rubrik/Kemampuan berhitung n mengolah angka.txt", angka);
+            } else if (value.equals("Jenis kecerdasan")) {
+                write2txt("./src/ist_app/resource/rubrik/jenis kecerdasan.txt", jenisKecerdasan);
             }
 
             combobox.setSelectedIndex(0);
             kosong();
             inisiasill();
+            text2ll();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -319,18 +340,18 @@ public class EditForm extends javax.swing.JDialog {
 
     void write2txt(String filename, LinkedList<String> value) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, false))) {
-            
+
             for (int i = 0; i < value.size(); i++) {
                 value.set(i, textAreas[i].getText());
             }
-            
+
             StringBuilder joinedValue = new StringBuilder();
-            
+
             for (int i = 0; i < value.size(); i++) {
                 joinedValue.append(value.get(i)).append(";");
                 System.out.println(value.get(i));
             }
-            
+
             writer.write(joinedValue.toString());
         } catch (Exception e) {
             System.out.println(e);
@@ -372,7 +393,7 @@ public class EditForm extends javax.swing.JDialog {
             }
         }
     }
-    
+
     void inisiasitexfield() {
         KSInput.setLineWrap(true);
         KSInput.setWrapStyleWord(true);
@@ -416,6 +437,53 @@ public class EditForm extends javax.swing.JDialog {
     void inputToTextF(String[] val) {
         for (int i = 0; i <= val.length; i++) {
             textAreas[i].setText(val[i]);
+        }
+    }
+
+    void text2ll() {
+        String file1 = "./src/ist_app/resource/rubrik/taraf kecerdasan.txt";
+        loadRubrikFile(file1, tarKecerdasan);
+        String file2 = "./src/ist_app/resource/rubrik/corak berpikir.txt";
+        loadRubrikFile(file2, coraBerpikir);
+        String file3 = "./src/ist_app/resource/rubrik/kemampuan berbahasa.txt";
+        loadRubrikFile(file3, berbahasa);
+        String file4 = "./src/ist_app/resource/rubrik/kemampuan mengambil keputusan.txt";
+        loadRubrikFile(file4, mengambilKeputusan);
+        String file5 = "./src/ist_app/resource/rubrik/kemampuan menilai.txt";
+        loadRubrikFile(file5, menilai);
+        String file6 = "./src/ist_app/resource/rubrik/kreativitas.txt";
+        loadRubrikFile(file6, kreativitas);
+        String file7 = "./src/ist_app/resource/rubrik/daya ingat.txt";
+        loadRubrikFile(file7, dayaIngat);
+        String file8 = "./src/ist_app/resource/rubrik/kemampuan analisis.txt";
+        loadRubrikFile(file8, kemAnalisis);
+        String file9 = "./src/ist_app/resource/rubrik/kemampuan berpikir kompreherensif.txt";
+        loadRubrikFile(file9, berpikirKompreheren);
+        String file10 = "./src/ist_app/resource/rubrik/jenis kecerdasan.txt";
+        loadRubrikFile(file10, jenisKecerdasan);
+        String file11 = "./src/ist_app/resource/rubrik/kemampuan berfikir fleksibel.txt";
+        loadRubrikFile(file11, fleksibel);
+        String file12 = "./src/ist_app/resource/rubrik/Kemampuan berhitung n mengolah angka.txt";
+        loadRubrikFile(file12, angka);
+    }
+
+    void loadRubrikFile(String filename, LinkedList<String> ll) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String docs;
+            StringBuilder fullcontent = new StringBuilder();
+
+            while ((docs = br.readLine()) != null) {
+                String teks = br.toString();
+                String[] oneLine = docs.split(";");
+
+                for (int i = 0; i < oneLine.length; i++) {
+                    ll.add(oneLine[i]);
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("error");
         }
     }
 

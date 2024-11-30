@@ -19,7 +19,19 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import ist_app.resource.IST_ScoreInterpreter;
 import ist_app.resource.IST_ScoreInterpreter.Result;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPasswordField;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -28,7 +40,8 @@ import javax.swing.JPasswordField;
 public class ist_mapping extends javax.swing.JPanel {
 
     private List<KomponenPenilaian> nilai = new ArrayList<>();
-    IST_ScoreInterpreter tarKecerdasan, berpikirKompreheren, kemAnalisis, dayaIngat, kreativitas, menilai, mengambilKeputusan, berbahasa, coraBerpikir, jenisKecerdasan, fleksibel, angka;
+    IST_ScoreInterpreter tarKecerdasan, berpikirKompreheren, kemAnalisis, dayaIngat, kreativitas, menilai, mengambilKeputusan, berbahasa, angka;
+    LinkedList<String> fleksibel, jenisKecerdasan, coraBerpikir;
     private HashMap<String, String> charNilai = new HashMap<>();
 
     public void setNilai(List<KomponenPenilaian> nilai) {
@@ -54,6 +67,8 @@ public class ist_mapping extends javax.swing.JPanel {
         setDate();
         resetTable();
         initializeIntepretations();
+        inisiasill();
+        text2ll();
     }
 
     private void setDate() {
@@ -696,6 +711,81 @@ public class ist_mapping extends javax.swing.JPanel {
 
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
         //Mencetak hasil input ke dalam jasper file
+        String fileName = "ist_app/ISTReport.jasper";
+        //String fileName = "ist_app/formIST.jasper";
+        //String fileName = "ist_app/hasil.jasper";
+        //        String outFile = "./Report" + " - " + namaInput.getText() + ".pdf";
+        //        String outFile = "C:/FormIST/Report" + " - " + namaInput.getText() + ".pdf";
+
+        SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+        String formattedDate = "";
+        SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM yyyy");
+
+        try {
+            Date date = originalFormat.parse(tanggalController.getDate().toString());
+
+            formattedDate = newFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Map<String, Object> parameter = new HashMap<String, Object>();
+
+        JRBeanCollectionDataSource studentCollectionDataSource
+                = new JRBeanCollectionDataSource(nilai);
+
+        parameter.put("datapenilaian", studentCollectionDataSource);
+        parameter.put("nama", namaInput.getText());
+        parameter.put("tanggal", formattedDate);
+
+        //tabel rw
+        parameter.put("iq", IQInput.getText());
+        parameter.put("charIQ", charIQ);
+        parameter.put("rwse", SEInput.getText());
+        parameter.put("rwwa", WAInput.getText());
+        parameter.put("rwan", ANInput.getText());
+        parameter.put("rwge", GEInput.getText());
+        parameter.put("rwme", MEInput.getText());
+        parameter.put("rwra", RAInput.getText());
+        parameter.put("rwzr", ZRInput.getText());
+        parameter.put("rwfa", FAInput.getText());
+        parameter.put("rwwu", WUInput.getText());
+
+        //tabel kua
+        String[] key = {"kuase", "kuawa", "kuaan", "kuage", "kuame", "kuara", "kuazr", "kuafa", "kuawu"};
+
+        for (int i = 0; i < key.length - 1; i++) {
+            System.out.println(key[i] + ": " + charNilai.get(key[i]));
+            parameter.put(key[i], charNilai.get(key[i]));
+        }
+
+        try {
+            //            InputStream stream = Main.class.getResourceAsStream(fileName);
+            //            JOptionPane.showMessageDialog(this, "aaa!");
+            //            JasperReport jasperDesign = JasperCompileManager.compileReport(stream);
+            //            JOptionPane.showMessageDialog(this, "bbb!");
+            //            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperDesign, parameter,
+            //                    new JREmptyDataSource());
+
+            InputStream stream = Main.class.getResourceAsStream(fileName);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    ClassLoader.getSystemResourceAsStream(fileName), parameter,
+                    new JREmptyDataSource());
+
+            //            File file = new File(outFile);
+            //            OutputStream outputSteam = new FileOutputStream(file);
+            //            JasperExportManager.exportReportToPdfStream(jasperPrint, outputSteam);
+            //            outputSteam.close();
+            JOptionPane.showMessageDialog(this, "Berhasil!");
+            bersihkan();
+            JasperViewer.viewReport(jasperPrint, false);
+            //            System.out.println("Data: ");
+            //            for (int i = 0; i < nilai.size(); i++) {
+            //                System.out.println(nilai.get(i));
+            //            }
+        } catch (JRException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_tombolCetakActionPerformed
 
     private void tombolKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKeluarActionPerformed
@@ -712,24 +802,31 @@ public class ist_mapping extends javax.swing.JPanel {
         JPasswordField passwordField = new JPasswordField();
         Object[] message = {"Masukkan Password: ", passwordField};
         String real = "12345";
-        
+        int option = 0;
+
         do {
-            int option = JOptionPane.showConfirmDialog(this, message, "Konfirmasi untuk mengubah", JOptionPane.OK_CANCEL_OPTION);
+            option = JOptionPane.showConfirmDialog(this, message, "Konfirmasi untuk mengubah", JOptionPane.OK_CANCEL_OPTION);
 
             if (option == JOptionPane.OK_OPTION) {
                 String pw = new String(passwordField.getPassword());
 
                 if (pw.equals(real)) {
                     JOptionPane.showMessageDialog(null, "Berhasil masuk");
-                            //mengubah isi file rubrik
-                            EditForm dialog = new EditForm(null, true);
-                            dialog.setVisible(true);
+                    //mengubah isi file rubrik
+                    EditForm dialog = new EditForm(null, true);
+                    dialog.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal masuk");
                 }
+            } else {
+                break;
             }
+
         } while (!(real.equals(new String(passwordField.getPassword()))));
-         bersihkan();
+        bersihkan();
+        inisiasill();
+        text2ll();
+        initializeIntepretations();
     }//GEN-LAST:event_tombolUbahActionPerformed
 
     private void tabelHasilMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelHasilMouseMoved
@@ -839,6 +936,12 @@ public class ist_mapping extends javax.swing.JPanel {
     private javax.swing.JButton tombolUbah;
     // End of variables declaration//GEN-END:variables
 
+    void inisiasill() {
+        coraBerpikir = new LinkedList<>();
+        jenisKecerdasan = new LinkedList<>();
+        fleksibel = new LinkedList<>();
+    }
+
     private void bersihkan() {
         resetTable();
         tombolBatal.setEnabled(false);
@@ -864,6 +967,7 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.tarKecerdasan.interpret(scoreIQ);
         System.out.println("hasil Taraf Kecerdasan: " + hasil);
         this.nilai.add(new KomponenPenilaian("Taraf Kecerdasan", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("IQ", hasil.getKategori());
     }
 
     private void evalAnalisa() {
@@ -873,6 +977,7 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.kemAnalisis.interpret(ANWU);
         System.out.println("Hasil kemampuan analisis: " + hasil);
         this.nilai.add(new KomponenPenilaian("Kemampuan analisis", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("kuase", hasil.getKategori());
     }
 
     private void evalKomperehensif() {
@@ -883,6 +988,7 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.berpikirKompreheren.interpret(GEFA);
         System.out.println("Hasil Berpikir Komperehensif: " + hasil);
         this.nilai.add(new KomponenPenilaian("Kemampuan berpikir komprehensif", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("kuawa", hasil.getKategori());
     }
 
     private void evalDayaIngat() {
@@ -892,6 +998,7 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.dayaIngat.interpret(ME);
         System.out.println("Hasil Daya Ingat: " + hasil);
         this.nilai.add(new KomponenPenilaian("Daya Ingat", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("kuaan", hasil.getKategori());
     }
 
     private void evalMengolahAngka() {
@@ -901,6 +1008,7 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.angka.interpret(RAZR);
         System.out.println("Hasil Mengolah angka: " + hasil);
         this.nilai.add(new KomponenPenilaian("Kemampuan berhitung / mengolah angka", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("kuage", hasil.getKategori());
     }
 
     private void evalBahasa() {
@@ -910,6 +1018,7 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.berbahasa.interpret(WAGE);
         System.out.println("Hasil Berbahasa: " + hasil);
         this.nilai.add(new KomponenPenilaian("Kemampuan berbahasa", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("kuame", hasil.getKategori());
     }
 
     private void evalKreativitas() {
@@ -919,6 +1028,7 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.kreativitas.interpret(FAWU);
         System.out.println("Hasil Kreativitas: " + hasil);
         this.nilai.add(new KomponenPenilaian("Kreativitas", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("kuara", hasil.getKategori());
     }
 
     private void evalMenilai() {
@@ -928,6 +1038,7 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.menilai.interpret(SE);
         System.out.println("Hasil Menilai: " + hasil);
         this.nilai.add(new KomponenPenilaian("Kemampuan menilai", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("kuazr", hasil.getKategori());
     }
 
     private void evalKeputusan() {
@@ -935,6 +1046,7 @@ public class ist_mapping extends javax.swing.JPanel {
                 + Double.parseDouble(WUInput.getText()) + Double.parseDouble(RAInput.getText()) + Double.parseDouble(ZRInput.getText())) / 5; //Kemampuan mengambil keputusan
         nil = String.valueOf(SEANWURAZR);
 
+        //charNilai.put("kuafa", hasil.getKategori());
         //Result hasil = this.mengambilKeputusan.interpret(SEANWURAZR);
         //System.out.println("Hasil Mengambil Keputusan: " + hasil);
     }
@@ -948,16 +1060,51 @@ public class ist_mapping extends javax.swing.JPanel {
         double nilaiANZR = nilaiAN + nilaiZR;
         double toleransi = 0.5;
 
+        double[] nils = {nilaiGE, nilaiRA, nilaiAN, nilaiZR};
+
+        if (nilaiGERA > nilaiANZR) { //ga tau nilainya apa ini
+            Kategori = "Birokratis-normatif";
+            deskripsi = coraBerpikir.get(0);
+        } else if (nilaiGERA < nilaiANZR) {
+            Kategori = "Fleksibel";
+            deskripsi = coraBerpikir.get(1);
+        } else if (Math.abs(nilaiGERA + nilaiANZR) <= toleransi) {
+            Kategori = "Belum terarah-belum konsisten";
+            deskripsi = coraBerpikir.get(2);
+        }
+
+        KomponenPenilaian variabel10 = new KomponenPenilaian("Cara/Corak berpikir", "", "", deskripsi);
+        nilai.add(variabel10);
+        charNilai.put("kuawu", Kategori);
     }
 
     private void evalfleksibel() { // Kemampuan berpikir fleksibel
         double nilaiGERA = Double.parseDouble(GEInput.getText()) + Double.parseDouble(RAInput.getText());
         double nilaiANZR = Double.parseDouble(ANInput.getText()) + Double.parseDouble(ZRInput.getText());
+        double hasil = nilaiGERA - nilaiANZR;
+
+        if (hasil == (-10)) {
+
+        } else if (hasil == 10) {
+
+        } else {
+
+        }
+
     }
 
     private void evalJenisKecerdasan() {
         double nilaiWAGE = Double.parseDouble(WAInput.getText()) + Double.parseDouble(GEInput.getText());
         double nilaiSEAN = Double.parseDouble(SEInput.getText()) + Double.parseDouble(ANInput.getText());
+        
+        if (nilaiWAGE > nilaiSEAN) {
+            Kategori = "Tipe pemikiran teoritis-konseptual";
+            deskripsi = jenisKecerdasan.get(0);
+        } else if (nilaiSEAN > nilaiWAGE) {
+            Kategori = "Tipe pemikiran praktis";
+            deskripsi = jenisKecerdasan.get(1);
+        }
+        nilai.add(new KomponenPenilaian("Jenis kecerdasan", "", Kategori, deskripsi));
     }
 
     private void initializeIntepretations() {
@@ -1007,4 +1154,34 @@ public class ist_mapping extends javax.swing.JPanel {
         );
     }
 
+    void text2ll() {
+        String file2 = "./src/ist_app/rubrik/corak berpikir.txt";
+        loadRubrikFile(file2, coraBerpikir);
+        String file10 = "./src/ist_app/rubrik/jenis kecerdasan.txt";
+        loadRubrikFile(file10, jenisKecerdasan);
+        String file11 = "./src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
+        loadRubrikFile(file11, fleksibel);
+        String file12 = "./src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
+
+    }
+
+    void loadRubrikFile(String filename, LinkedList<String> ll) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String docs;
+            StringBuilder fullcontent = new StringBuilder();
+
+            while ((docs = br.readLine()) != null) {
+                String teks = br.toString();
+                String[] oneLine = docs.split(";");
+
+                for (int i = 0; i < oneLine.length; i++) {
+                    ll.add(oneLine[i]);
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+    }
 }

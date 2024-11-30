@@ -25,21 +25,21 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="combobox" min="-2" pref="246" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="simpanbutton" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Component id="combobox" min="-2" pref="246" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <Component id="simpanbutton" min="-2" pref="480" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="175" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="375" max="32767" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="175" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="375" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -47,10 +47,10 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="combobox" pref="35" max="32767" attributes="0"/>
-                  <Component id="simpanbutton" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="combobox" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="simpanbutton" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
@@ -58,9 +58,9 @@
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="327" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="263" max="32767" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="327" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="263" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -70,7 +70,7 @@
     <Component class="javax.swing.JComboBox" name="combobox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="12">
+          <StringArray count="13">
             <StringItem index="0" value="-- PILIH --"/>
             <StringItem index="1" value="Taraf Kecerdasan"/>
             <StringItem index="2" value="Kemampuan Analisis"/>
@@ -83,6 +83,7 @@
             <StringItem index="9" value="Corak/cara berpikir"/>
             <StringItem index="10" value="Kemampuan berpikir fleksibel"/>
             <StringItem index="11" value="Kemampuan berhitung / mengolah angka"/>
+            <StringItem index="12" value="Jenis kecerdasan"/>
           </StringArray>
         </Property>
       </Properties>
@@ -106,66 +107,62 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="KSScroll" alignment="0" max="32767" attributes="0"/>
+                      <Component id="CMinScroll" alignment="0" max="32767" attributes="0"/>
+                      <Component id="CPlusScroll" alignment="0" pref="400" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="KSScroll" pref="422" max="32767" attributes="0"/>
-                      <Component id="CScroll" alignment="1" pref="422" max="32767" attributes="0"/>
-                      <Component id="CPlusScroll" alignment="0" pref="422" max="32767" attributes="0"/>
-                      <Component id="BScroll" alignment="1" pref="422" max="32767" attributes="0"/>
-                      <Component id="BSScroll" alignment="0" pref="422" max="32767" attributes="0"/>
+                      <Component id="KScroll" min="-2" pref="400" max="-2" attributes="0"/>
+                      <Component id="BScroll" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                      <Component id="CScroll" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="KScroll" pref="372" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="CMinScroll" pref="372" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="BSScroll" min="-2" pref="400" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="KSScroll" min="-2" pref="59" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
-                  <Component id="CScroll" min="-2" pref="59" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="CPlusScroll" min="-2" pref="59" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="BScroll" min="-2" pref="59" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="BSScroll" min="-2" pref="59" max="-2" attributes="0"/>
-                  <EmptySpace pref="96" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                      <Component id="KScroll" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace pref="357" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="KSScroll" min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="KScroll" min="-2" pref="110" max="-2" attributes="0"/>
                   </Group>
-              </Group>
-              <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
-                      <Component id="CMinScroll" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace pref="271" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="CMinScroll" pref="110" max="32767" attributes="0"/>
+                      <Component id="CScroll" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="CPlusScroll" pref="110" max="32767" attributes="0"/>
+                      <Component id="BScroll" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="BSScroll" min="-2" pref="109" max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JScrollPane" name="KSScroll">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Kurang Sekali (KS)"/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -181,7 +178,7 @@
                 <Property name="rows" type="int" value="5"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Kurang Sekali (KS)"/>
+                    <TitledBorder/>
                   </Border>
                 </Property>
               </Properties>
@@ -189,6 +186,13 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="KScroll">
+          <Properties>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Kurang (K)"/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -204,7 +208,7 @@
                 <Property name="rows" type="int" value="5"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Kurang (K)"/>
+                    <TitledBorder/>
                   </Border>
                 </Property>
               </Properties>
@@ -212,6 +216,13 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="CMinScroll">
+          <Properties>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Rata-rata bawah (C-)"/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -227,7 +238,7 @@
                 <Property name="rows" type="int" value="5"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Rata-rata bawah (C-)"/>
+                    <TitledBorder/>
                   </Border>
                 </Property>
               </Properties>
@@ -235,6 +246,13 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="CScroll">
+          <Properties>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Rata-rata (C)"/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -250,7 +268,7 @@
                 <Property name="rows" type="int" value="5"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Rata-rata (C)"/>
+                    <TitledBorder/>
                   </Border>
                 </Property>
               </Properties>
@@ -258,6 +276,14 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="CPlusScroll">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Rata-rata atas (C+)"/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -273,7 +299,7 @@
                 <Property name="rows" type="int" value="5"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Rata-rata atas (C+)"/>
+                    <TitledBorder/>
                   </Border>
                 </Property>
               </Properties>
@@ -281,6 +307,13 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="BScroll">
+          <Properties>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Baik (B)"/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -297,7 +330,7 @@
                 <Property name="autoscrolls" type="boolean" value="false"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Baik (B)"/>
+                    <TitledBorder/>
                   </Border>
                 </Property>
               </Properties>
@@ -306,6 +339,11 @@
         </Container>
         <Container class="javax.swing.JScrollPane" name="BSScroll">
           <Properties>
+            <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Baik Sekali (BS)"/>
+              </Border>
+            </Property>
             <Property name="horizontalScrollBar" type="javax.swing.JScrollBar" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="null"/>
             </Property>
@@ -326,7 +364,7 @@
                 <Property name="rows" type="int" value="5"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Baik Sekali (BS)"/>
+                    <TitledBorder/>
                   </Border>
                 </Property>
               </Properties>
