@@ -4,6 +4,28 @@
  */
 package msdt;
 
+import ist_app.Main;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import msdt.resource.ScoreInterpreter;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author nicol
@@ -13,8 +35,12 @@ public class mapping_msdt extends javax.swing.JPanel {
     /**
      * Creates new form mapping_msdt
      */
+    ScoreInterpreter score;
+
     public mapping_msdt() {
         initComponents();
+
+        score = new ScoreInterpreter();
     }
 
     /**
@@ -28,7 +54,12 @@ public class mapping_msdt extends javax.swing.JPanel {
 
         judul = new javax.swing.JLabel();
         aksiPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        combobox = new javax.swing.JComboBox<>();
+        kepemimpinan = new javax.swing.JLabel();
+        tombolCetak = new javax.swing.JToggleButton();
+        hasilPanel = new javax.swing.JPanel();
+        hasilScrollPane = new javax.swing.JScrollPane();
+        hasilTable = new javax.swing.JTable();
 
         judul.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -36,19 +67,85 @@ public class mapping_msdt extends javax.swing.JPanel {
         judul.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         aksiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Aksi"));
-        aksiPanel.setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Hasil"));
+        combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Deserter", "Compromiser", "Missionary", "Buereaucrat", "Autocrat", "Benevolent Autocrat", "Developer", "Executive" }));
+        combobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        kepemimpinan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        kepemimpinan.setText("Tipe Kepemimpinan:");
+
+        tombolCetak.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tombolCetak.setText("Cetak");
+        tombolCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolCetakActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout aksiPanelLayout = new javax.swing.GroupLayout(aksiPanel);
+        aksiPanel.setLayout(aksiPanelLayout);
+        aksiPanelLayout.setHorizontalGroup(
+            aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aksiPanelLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(kepemimpinan, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112)
+                .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+        aksiPanelLayout.setVerticalGroup(
+            aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aksiPanelLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kepemimpinan)
+                    .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        hasilPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Hasil"));
+
+        hasilTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        hasilTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Aspek Psikologis", "Uraian", "Skor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        hasilScrollPane.setViewportView(hasilTable);
+
+        javax.swing.GroupLayout hasilPanelLayout = new javax.swing.GroupLayout(hasilPanel);
+        hasilPanel.setLayout(hasilPanelLayout);
+        hasilPanelLayout.setHorizontalGroup(
+            hasilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hasilPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(hasilScrollPane)
+                .addContainerGap())
+        );
+        hasilPanelLayout.setVerticalGroup(
+            hasilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hasilPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(hasilScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(251, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -60,7 +157,7 @@ public class mapping_msdt extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
                     .addComponent(aksiPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(hasilPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -69,17 +166,65 @@ public class mapping_msdt extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(judul)
                 .addGap(12, 12, 12)
-                .addComponent(aksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(aksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(hasilPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
+        String val = combobox.getSelectedItem().toString();
+        //TableModel dataModel = new AbstractTableModel();
+        String[] cols = {"Aspek Psikologis", "Uraian", "Skor"};
+
+        if (val.equals("-- PILIH --")) {
+            DefaultTableModel model = new DefaultTableModel(cols, 0);
+            hasilTable.setModel(model);
+
+        } else {
+            hasilTable.setModel(score.chooseCombo(val));
+        }
+
+        //hasilTable.setModel(dataModel);
+    }//GEN-LAST:event_comboboxActionPerformed
+
+    private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
+        String fileName = "ist_app/ISTReport.jasper";
+
+        SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+        String formattedDate = "";
+        SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM yyyy");
+
+//        try {
+//            Date date = originalFormat.parse(tanggalController.getDate().toString());
+//
+//            formattedDate = newFormat.format(date);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+
+//        try {
+//            InputStream stream = Main.class.getResourceAsStream(fileName);
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(
+//                    ClassLoader.getSystemResourceAsStream(fileName), parameter,
+//                    new JREmptyDataSource());
+//
+//            JOptionPane.showMessageDialog(this, "Berhasil!");
+//            JasperViewer.viewReport(jasperPrint, false);
+//        } catch (JRException ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_tombolCetakActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel aksiPanel;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> combobox;
+    private javax.swing.JPanel hasilPanel;
+    private javax.swing.JScrollPane hasilScrollPane;
+    private javax.swing.JTable hasilTable;
     private javax.swing.JLabel judul;
+    private javax.swing.JLabel kepemimpinan;
+    private javax.swing.JToggleButton tombolCetak;
     // End of variables declaration//GEN-END:variables
 }

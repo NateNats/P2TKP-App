@@ -5,7 +5,6 @@
 package ist_app.resource;
 
 import ist_app.resource.KomponenPenilaian;
-import ist_app.resource.KomponenPenilaian;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
