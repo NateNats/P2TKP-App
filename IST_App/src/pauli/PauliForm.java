@@ -8,6 +8,8 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
+import pauli.resource.PauliResource;
+
 /**
  *
  * @author Trustacean
@@ -284,27 +286,27 @@ public class PauliForm extends javax.swing.JPanel {
     }//GEN-LAST:event_keluarButtonActionPerformed
 
     private void kemampuanKerjaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kemampuanKerjaInputActionPerformed
-        // TODO add your handling code here:
+        PauliResource.kemampuanKerja = kemampuanKerjaInput.getSelectedIndex();
     }//GEN-LAST:event_kemampuanKerjaInputActionPerformed
 
     private void kemampuanAdaptasiInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kemampuanAdaptasiInputActionPerformed
-        // TODO add your handling code here:
+        PauliResource.kemampuanAdaptasi = kemampuanAdaptasiInput.getSelectedIndex();
     }//GEN-LAST:event_kemampuanAdaptasiInputActionPerformed
 
     private void ketekunanInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ketekunanInputActionPerformed
-        // TODO add your handling code here:
+        PauliResource.ketekunan = ketekunanInput.getSelectedIndex();
     }//GEN-LAST:event_ketekunanInputActionPerformed
 
     private void konsentrasiInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_konsentrasiInputActionPerformed
-        // TODO add your handling code here:
+        PauliResource.konsentrasi = konsentrasiInput.getSelectedIndex();
     }//GEN-LAST:event_konsentrasiInputActionPerformed
 
     private void manajemenEmosiInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manajemenEmosiInputActionPerformed
-        // TODO add your handling code here:
+        PauliResource.manajemenEmosi = manajemenEmosiInput.getSelectedIndex();
     }//GEN-LAST:event_manajemenEmosiInputActionPerformed
 
     private void motivasiBerprestasiInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_motivasiBerprestasiInputActionPerformed
-        // TODO add your handling code here:
+        PauliResource.motivasiBerprestasi = motivasiBerprestasiInput.getSelectedIndex();
     }//GEN-LAST:event_motivasiBerprestasiInputActionPerformed
 
 
