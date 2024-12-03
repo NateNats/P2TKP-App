@@ -1,6 +1,7 @@
 package pauli.resource;
 
 public class PauliResource {
+    public static int tingkatPercayaDiri;
     public static int kemampuanKerja;
     public static int kemampuanAdaptasi;
     public static int ketekunan;
