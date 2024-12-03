@@ -965,7 +965,7 @@
                   <Properties>
                     <Property name="background" type="java.awt.Color"
                       editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="99" green="ff" red="99" type="rgb" />
+                      <Color blue="99" green="99" red="ff" type="rgb" />
                     </Property>
                     <Property name="font" type="java.awt.Font"
                       editor="org.netbeans.beaninfo.editors.FontEditor">
