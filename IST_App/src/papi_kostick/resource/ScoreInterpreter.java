@@ -1,5 +1,6 @@
 package papi_kostick.resource;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,7 +28,13 @@ public class ScoreInterpreter {
     }
 
     public static void saveInterpretationsToFile() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE_PATH))) {
+        File file = new File(DATA_FILE_PATH);
+        File parentDir = file.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(interpretations);
         } catch (IOException e) {
             System.err.println("Could not save interpretations to file.");
