@@ -1,6 +1,6 @@
 package pauli.resource;
 
-public class PauliFormResource {
+public class PauliResource {
     public static int kemampuanKerja;
     public static int kemampuanAdaptasi;
     public static int ketekunan;
