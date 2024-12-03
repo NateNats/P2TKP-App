@@ -85,7 +85,7 @@ public class PauliForm extends javax.swing.JPanel {
         masukanPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Masukan"));
 
         tingkatPercayaDiriLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tingkatPercayaDiriLabel.setText("Kemampuan Kerja & Motivasi Kerja");
+        tingkatPercayaDiriLabel.setText("Tingkat percaya diri & Inisiatif");
 
         tingkatPercayaDiriInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ha < Rata-rata", "Ha = Rata-rata", "Ha > Rata-rata" }));
         tingkatPercayaDiriInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -176,10 +176,9 @@ public class PauliForm extends javax.swing.JPanel {
                             .addComponent(manajemenEmosiLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(konsentrasiLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(kemampuanAdaptasiLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(masukanPanelLayout.createSequentialGroup()
-                        .addComponent(tingkatPercayaDiriLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(110, 110, 110)))
+                        .addGap(0, 6, Short.MAX_VALUE))
+                    .addComponent(tingkatPercayaDiriLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(kemampuanKerjaInput, 0, 180, Short.MAX_VALUE)
                     .addComponent(kemampuanAdaptasiInput, 0, 1, Short.MAX_VALUE)
