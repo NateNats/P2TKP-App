@@ -39,6 +39,8 @@ public class PauliForm extends javax.swing.JPanel {
         judulPanel = new javax.swing.JPanel();
         judul = new javax.swing.JLabel();
         masukanPanel = new javax.swing.JPanel();
+        tingkatPercayaDiriLabel = new javax.swing.JLabel();
+        tingkatPercayaDiriInput = new javax.swing.JComboBox<>();
         kemampuanKerjaLabel = new javax.swing.JLabel();
         kemampuanKerjaInput = new javax.swing.JComboBox<>();
         kemampuanAdaptasiLabel = new javax.swing.JLabel();
@@ -81,6 +83,17 @@ public class PauliForm extends javax.swing.JPanel {
         );
 
         masukanPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Masukan"));
+
+        tingkatPercayaDiriLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tingkatPercayaDiriLabel.setText("Kemampuan Kerja & Motivasi Kerja");
+
+        tingkatPercayaDiriInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ha < Rata-rata", "Ha = Rata-rata", "Ha > Rata-rata" }));
+        tingkatPercayaDiriInput.setPreferredSize(new java.awt.Dimension(260, 35));
+        tingkatPercayaDiriInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tingkatPercayaDiriInputActionPerformed(evt);
+            }
+        });
 
         kemampuanKerjaLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         kemampuanKerjaLabel.setText("Kemampuan Kerja & Motivasi Kerja");
@@ -154,27 +167,37 @@ public class PauliForm extends javax.swing.JPanel {
             masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(masukanPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(kemampuanKerjaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ketekunanLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(motivasiBerprestasiLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(manajemenEmosiLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(konsentrasiLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(kemampuanAdaptasiLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(masukanPanelLayout.createSequentialGroup()
+                        .addGroup(masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(kemampuanKerjaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ketekunanLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(motivasiBerprestasiLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(manajemenEmosiLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(konsentrasiLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(kemampuanAdaptasiLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(masukanPanelLayout.createSequentialGroup()
+                        .addComponent(tingkatPercayaDiriLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(110, 110, 110)))
                 .addGroup(masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(kemampuanKerjaInput, 0, 180, Short.MAX_VALUE)
                     .addComponent(kemampuanAdaptasiInput, 0, 1, Short.MAX_VALUE)
                     .addComponent(ketekunanInput, 0, 1, Short.MAX_VALUE)
                     .addComponent(konsentrasiInput, 0, 1, Short.MAX_VALUE)
                     .addComponent(manajemenEmosiInput, 0, 1, Short.MAX_VALUE)
-                    .addComponent(motivasiBerprestasiInput, 0, 1, Short.MAX_VALUE))
+                    .addComponent(motivasiBerprestasiInput, 0, 1, Short.MAX_VALUE)
+                    .addComponent(tingkatPercayaDiriInput, 0, 1, Short.MAX_VALUE))
                 .addGap(220, 220, 220))
         );
         masukanPanelLayout.setVerticalGroup(
             masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(masukanPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tingkatPercayaDiriLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tingkatPercayaDiriInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kemampuanKerjaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kemampuanKerjaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,7 +221,7 @@ public class PauliForm extends javax.swing.JPanel {
                 .addGroup(masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(motivasiBerprestasiLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(motivasiBerprestasiInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         aksiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Aksi"));
@@ -309,6 +332,10 @@ public class PauliForm extends javax.swing.JPanel {
         PauliResource.motivasiBerprestasi = motivasiBerprestasiInput.getSelectedIndex();
     }//GEN-LAST:event_motivasiBerprestasiInputActionPerformed
 
+    private void tingkatPercayaDiriInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tingkatPercayaDiriInputActionPerformed
+        PauliResource.tingkatPercayaDiri = tingkatPercayaDiriInput.getSelectedIndex();
+    }//GEN-LAST:event_tingkatPercayaDiriInputActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel aksiPanel;
@@ -331,5 +358,7 @@ public class PauliForm extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> motivasiBerprestasiInput;
     private javax.swing.JLabel motivasiBerprestasiLabel;
     private javax.swing.JButton resetButton;
+    private javax.swing.JComboBox<String> tingkatPercayaDiriInput;
+    private javax.swing.JLabel tingkatPercayaDiriLabel;
     // End of variables declaration//GEN-END:variables
 }
