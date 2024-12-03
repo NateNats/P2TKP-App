@@ -67,7 +67,7 @@ public class PapiKostickResource {
         name = "";
         birthDate = null;
         testDate = null;
-        education = "";
+        education = "SD";
         gender = "Laki-laki";
         purpose = "";
         topRow.replaceAll((k, v) -> 0);
