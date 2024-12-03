@@ -297,7 +297,7 @@ public class PauliForm extends javax.swing.JPanel {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void cetakButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakButtonActionPerformed
-        // TODO add your handling code here:
+        PauliResource.produceReport();
     }//GEN-LAST:event_cetakButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
