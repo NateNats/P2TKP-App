@@ -2,7 +2,7 @@ package common;
 
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-import papi_costic.PapiCosticForm;
+import papi_kostick.PapiKostickForm;
 import ist_app.ist_mapping;
 
 /**
@@ -25,15 +25,15 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
 
-        ist_mapping form = new ist_mapping();
-        cards.add(form, "PapiCosticForm");
+        cards.add(new MainMenuPanel(this.cards, this.cardLayout), "MainMenuPanel");
+        cards.add(new PapiKostickForm(this.cards, this.cardLayout), "PapiKostickForm");
 
         // Set layout and add cards to the main content pane
         getContentPane().setLayout(new java.awt.BorderLayout());
         getContentPane().add(cards, java.awt.BorderLayout.CENTER);
 
         // Show the PapiCosticForm card initially
-        cardLayout.show(cards, "PapiCosticForm");
+        cardLayout.show(cards, "MainMenuPanel");
     }
 
     /**
@@ -43,7 +43,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,13 +52,11 @@ public class MainFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 935, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 935, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 754, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);
