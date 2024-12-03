@@ -4,7 +4,9 @@
  */
 package papi_kostick;
 
-import java.awt.event.KeyAdapter;
+import java.awt.CardLayout;
+
+import javax.swing.JPanel;
 
 import papi_kostick.resource.PapiKostickInputFocusAdapter;
 import papi_kostick.resource.PapiKostickInputKeyAdapter;
@@ -16,11 +18,14 @@ import papi_kostick.resource.PapiKostickResource;
  * @author Trustacean
  */
 public class PapiKostickForm extends javax.swing.JPanel {
-
+    private JPanel cards;
+    private CardLayout cardLayout;
     /**
      * Creates new form PapiKostickForm
      */
-    public PapiKostickForm() {
+    public PapiKostickForm(JPanel cards, CardLayout cardLayout) {
+        this.cards = cards;
+        this.cardLayout = cardLayout;
         initComponents();
     }
 
@@ -984,7 +989,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
     }// GEN-LAST:event_cetakButtonActionPerformed
 
     private void keluarButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_keluarButtonActionPerformed
-        // TODO add your handling code here:
+        cardLayout.show(cards, "MainMenuPanel");
     }// GEN-LAST:event_keluarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
