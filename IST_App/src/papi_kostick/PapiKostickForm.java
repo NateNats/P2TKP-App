@@ -695,7 +695,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
         gap1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gap1.setText(" ");
 
-        jumlahBawah.setBackground(new java.awt.Color(153, 255, 153));
+        jumlahBawah.setBackground(new java.awt.Color(255, 153, 153));
         jumlahBawah.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jumlahBawah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jumlahBawah.setText("0");
