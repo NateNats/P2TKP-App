@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.CardLayout;
 import papi_kostick.PapiKostickForm;
 import ist_app.ist_mapping;
+import pauli.PauliForm;
 
 /**
  *
@@ -27,6 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         cards.add(new MainMenuPanel(this.cards, this.cardLayout), "MainMenuPanel");
         cards.add(new PapiKostickForm(this.cards, this.cardLayout), "PapiKostickForm");
+        cards.add(new PauliForm(this.cards, this.cardLayout), "PauliForm");
 
         // Set layout and add cards to the main content pane
         getContentPane().setLayout(new java.awt.BorderLayout());

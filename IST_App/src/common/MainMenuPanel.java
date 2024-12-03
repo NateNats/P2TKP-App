@@ -160,7 +160,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_jButton3ActionPerformed
 
     private void pauliButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        cardLayout.show(cards, "PauliForm");
     }// GEN-LAST:event_jButton4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
