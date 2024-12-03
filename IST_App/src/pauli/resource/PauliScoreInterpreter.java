@@ -59,7 +59,7 @@ public class PauliScoreInterpreter {
             {
                 put(0, "Kesulitan menyelesaikan target kerja; motivasi kerja rendah.");
                 put(1, "Cukup mampu menyelesaikan sebagian target kerja; motivasi kerja cukup tinggi.");
-                put(3, "Mampu menyelesaikan target kerja seoptimal mungkin; motivasi kerja tinggi.");
+                put(2, "Mampu menyelesaikan target kerja seoptimal mungkin; motivasi kerja tinggi.");
             }
         });
         interpretations.put("kemampuan adaptasi", new HashMap<Integer, String>() {
