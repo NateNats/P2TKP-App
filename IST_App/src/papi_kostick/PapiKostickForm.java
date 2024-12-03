@@ -37,6 +37,9 @@ public class PapiKostickForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -52,7 +55,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
         tglTesLabel = new javax.swing.JLabel();
         tglTesInput = new com.toedter.calendar.JDateChooser();
         pendidikanLabel = new javax.swing.JLabel();
-        pendidikanInput = new javax.swing.JTextField();
+        pendidikanInput = new javax.swing.JComboBox<>();
         kelaminLabel = new javax.swing.JLabel();
         kelaminInput = new javax.swing.JComboBox<>();
         tujuanLabel = new javax.swing.JLabel();
@@ -105,9 +108,10 @@ public class PapiKostickForm extends javax.swing.JPanel {
         gap1 = new javax.swing.JLabel();
         jumlahBawah = new javax.swing.JLabel();
         aksiPanel = new javax.swing.JPanel();
-        cetakButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
+        cetakButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
+        keluarButton = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -125,20 +129,16 @@ public class PapiKostickForm extends javax.swing.JPanel {
                 judulPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(judulPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(judul,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        Short.MAX_VALUE)
+                                .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap()));
         judulPanelLayout.setVerticalGroup(
                 judulPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(judulPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(judul)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        Short.MAX_VALUE)));
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">
         masukanPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Masukan"));
         masukanPanel.setToolTipText("");
 
@@ -146,17 +146,16 @@ public class PapiKostickForm extends javax.swing.JPanel {
         namaLabel.setText("Nama");
 
         namaInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        namaInput.addKeyListener(
-                new KeyAdapter() {
-                    @Override
-                    public void keyReleased(java.awt.event.KeyEvent evt) {
-                        namaInputKeyReleased(evt);
-                    }
-                });
+        namaInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                namaInputKeyReleased(evt);
+            }
+        });
 
         tglLahirLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tglLahirLabel.setText("Tanggal Lahir");
 
+        tglLahirInput.setPreferredSize(new java.awt.Dimension(96, 35));
         tglLahirInput.setDateFormatString("dd MMMM yyyy");
         tglLahirInput.addPropertyChangeListener(
                 new java.beans.PropertyChangeListener() {
@@ -168,6 +167,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
         tglTesLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tglTesLabel.setText("Tanggal Tes");
 
+        tglTesInput.setPreferredSize(new java.awt.Dimension(96, 35));
         tglTesInput.setDateFormatString("dd MMMM yyyy");
         tglTesInput.addPropertyChangeListener(
                 new java.beans.PropertyChangeListener() {
@@ -179,39 +179,43 @@ public class PapiKostickForm extends javax.swing.JPanel {
         pendidikanLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         pendidikanLabel.setText("Pendidikan Terakhir");
 
-        pendidikanInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pendidikanInput.addKeyListener(
-                new KeyAdapter() {
-                    @Override
-                    public void keyReleased(java.awt.event.KeyEvent evt) {
-                        pendidikanInputKeyReleased(evt);
-                    }
-                });
+        pendidikanInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SD",
+                "SMP", "SMA", "D1",
+                "D2", "D3", "D4", "S1",
+                "S2", "S3", "Tidak Bersekolah" }));
+        pendidikanInput.setPreferredSize(new java.awt.Dimension(260, 35));
+        pendidikanInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pendidikanInputActionPerformed(evt);
+            }
+        });
 
         kelaminLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         kelaminLabel.setText("Jenis Kelamin");
 
-        kelaminInput.setModel(
-                new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
-
-        kelaminInput.addActionListener(
-                new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        kelaminInputActionPerformed(evt);
-                    }
-                });
+        kelaminInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
+        kelaminInput.setPreferredSize(new java.awt.Dimension(99, 35));
+        kelaminInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kelaminInputActionPerformed(evt);
+            }
+        });
 
         tujuanLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tujuanLabel.setText("Tujuan Pemeriksaan");
 
         tujuanInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tujuanInput.addKeyListener(
-                new KeyAdapter() {
-                    @Override
-                    public void keyReleased(java.awt.event.KeyEvent evt) {
-                        tujuanInputKeyReleased(evt);
-                    }
-                });
+        tujuanInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tujuanInputKeyReleased(evt);
+            }
+        });
+
+        tujuanInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tujuanInputKeyReleased(evt);
+            }
+        });
 
         papiInputPanel.setPreferredSize(new java.awt.Dimension(711, 200));
 
@@ -434,222 +438,112 @@ public class PapiKostickForm extends javax.swing.JPanel {
         wInput.addKeyListener(
                 new PapiKostickInputKeyAdapter(wInput, 'w', false, papiInputPanel, cetakButton,
                         jumlahBawah));
-        // </editor-fold>
+
         javax.swing.GroupLayout papiInputPanelLayout = new javax.swing.GroupLayout(papiInputPanel);
         papiInputPanel.setLayout(papiInputPanelLayout);
         papiInputPanelLayout.setHorizontalGroup(
                 papiInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(papiInputPanelLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        Short.MAX_VALUE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(gLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(gLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(gInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(gInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
-                                                Short.MAX_VALUE)
-                                        .addComponent(nLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(nInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(nLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(nInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(lLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(lInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
-                                                Short.MAX_VALUE)
-                                        .addComponent(aLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(aInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(aLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(aInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(iLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(iLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(iInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(iInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
-                                                Short.MAX_VALUE)
-                                        .addComponent(pLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(pInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(pLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(pInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(tInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(tLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(xLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(xInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(tLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(xLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(xInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(vLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(vInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(vLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(vInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(bLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(bInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(bLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(sLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(sInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
-                                                Short.MAX_VALUE)
-                                        .addComponent(oLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(oInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(oLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(oInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(rLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(rInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(rLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(rInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(zLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(zInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(zLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(zInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(dInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(dInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(dLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(kLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(kInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(dLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(kLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(kInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(cLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                65, Short.MAX_VALUE)
-                                        .addComponent(cInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                        .addComponent(cInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(fLabel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(fInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(fLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(fInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                false)
-                                        .addComponent(eInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(eInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE)
-                                        .addComponent(eLabel,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                65,
+                                        .addComponent(eLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(wLabel,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                65,
+                                        .addComponent(wLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(wInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                0,
+                                        .addComponent(wInput, javax.swing.GroupLayout.PREFERRED_SIZE, 0,
                                                 Short.MAX_VALUE))
                                 .addGap(77, 77, 77)));
         papiInputPanelLayout.setVerticalGroup(
@@ -657,194 +551,131 @@ public class PapiKostickForm extends javax.swing.JPanel {
                         .addGroup(papiInputPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(eLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(eInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(eInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(cLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(dLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(dInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(dInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(rLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(rInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(rInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(sLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(sInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(sInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(vLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(vInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(vInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(tLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(iLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(iInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(iInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(lLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(gLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(gInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(gInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(papiInputPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(wLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(wInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(wInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(fLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(fInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(fInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(kLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(kInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(kInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(zLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(zInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(zInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(oLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(oInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(oInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(bLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(bInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(bInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(xLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(xInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(xInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(pLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(pInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(pInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(aLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(aInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(aInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(papiInputPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(papiInputPanelLayout.createSequentialGroup()
                                                 .addComponent(nLabel)
-                                                .addPreferredGap(
-                                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(nInput,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(nInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(74, Short.MAX_VALUE)));
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         papiInputContainer.add(papiInputPanel);
 
@@ -854,46 +685,40 @@ public class PapiKostickForm extends javax.swing.JPanel {
         gap2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gap2.setText(" ");
 
+        jumlahAtas.setBackground(new java.awt.Color(255, 153, 153));
         jumlahAtas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jumlahAtas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jumlahAtas.setText("0");
+        jumlahAtas.setOpaque(true);
 
         gap1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         gap1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gap1.setText(" ");
 
+        jumlahBawah.setBackground(new java.awt.Color(153, 255, 153));
         jumlahBawah.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jumlahBawah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jumlahBawah.setText("0");
+        jumlahBawah.setOpaque(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(
-                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(gap2,
-                                                javax.swing.GroupLayout.Alignment.TRAILING,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                65,
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(gap2, javax.swing.GroupLayout.Alignment.TRAILING,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE, 65,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jumlahAtas,
-                                                javax.swing.GroupLayout.Alignment.TRAILING,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                65,
+                                        .addComponent(jumlahAtas, javax.swing.GroupLayout.Alignment.TRAILING,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE, 65,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(gap1,
-                                                javax.swing.GroupLayout.Alignment.TRAILING,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                65,
+                                        .addComponent(gap1, javax.swing.GroupLayout.Alignment.TRAILING,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE, 65,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jumlahBawah,
-                                                javax.swing.GroupLayout.Alignment.TRAILING,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                65,
+                                        .addComponent(jumlahBawah, javax.swing.GroupLayout.Alignment.TRAILING,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE, 65,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap()));
         jPanel1Layout.setVerticalGroup(
@@ -901,14 +726,11 @@ public class PapiKostickForm extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(gap2)
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jumlahAtas)
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(gap1)
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jumlahBawah)
                                 .addContainerGap(76, Short.MAX_VALUE)));
 
@@ -921,20 +743,14 @@ public class PapiKostickForm extends javax.swing.JPanel {
                         .addGroup(masukanPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(masukanPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(masukanPanelLayout
-                                                .createSequentialGroup()
-                                                .addComponent(papiInputContainer,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        881,
-                                                        Short.MAX_VALUE)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(masukanPanelLayout.createSequentialGroup()
+                                                .addComponent(papiInputContainer, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        881, Short.MAX_VALUE)
                                                 .addContainerGap())
-                                        .addGroup(masukanPanelLayout
-                                                .createSequentialGroup()
+                                        .addGroup(masukanPanelLayout.createSequentialGroup()
                                                 .addGroup(masukanPanelLayout
-                                                        .createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(pendidikanLabel)
                                                         .addComponent(namaLabel)
                                                         .addComponent(tglLahirLabel)
@@ -943,107 +759,78 @@ public class PapiKostickForm extends javax.swing.JPanel {
                                                         .addComponent(tujuanLabel))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(masukanPanelLayout
-                                                        .createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(masukanPanelLayout
-                                                                .createSequentialGroup()
-                                                                .addGroup(masukanPanelLayout
-                                                                        .createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                                                false)
-                                                                        .addComponent(kelaminInput,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                150,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(tglLahirInput,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                180,
-                                                                                Short.MAX_VALUE)
-                                                                        .addComponent(tglTesInput,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE))
-                                                                .addGap(0, 533, Short.MAX_VALUE))
-                                                        .addGroup(masukanPanelLayout
-                                                                .createSequentialGroup()
-                                                                .addGroup(masukanPanelLayout
-                                                                        .createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(pendidikanInput)
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(masukanPanelLayout.createSequentialGroup()
+                                                                .addGroup(masukanPanelLayout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
                                                                         .addComponent(namaInput,
                                                                                 javax.swing.GroupLayout.Alignment.TRAILING)
                                                                         .addComponent(tujuanInput))
-                                                                .addContainerGap()))))));
+                                                                .addContainerGap())
+                                                        .addGroup(masukanPanelLayout.createSequentialGroup()
+                                                                .addGroup(masukanPanelLayout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                                        false)
+                                                                        .addComponent(tglLahirInput,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                180, Short.MAX_VALUE)
+                                                                        .addComponent(tglTesInput,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE)
+                                                                        .addComponent(pendidikanInput, 0, 1,
+                                                                                Short.MAX_VALUE)
+                                                                        .addComponent(kelaminInput, 0,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE))
+                                                                .addGap(0, 0, Short.MAX_VALUE)))))));
         masukanPanelLayout.setVerticalGroup(
                 masukanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(masukanPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(masukanPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(namaLabel)
-                                        .addComponent(namaInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(masukanPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tglLahirInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tglLahirInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tglLahirLabel,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                25,
+                                        .addComponent(tglLahirLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(masukanPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(tglTesLabel)
-                                        .addComponent(tglTesInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        .addComponent(tglTesInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(masukanPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(pendidikanLabel)
-                                        .addComponent(pendidikanInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        .addComponent(pendidikanInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(masukanPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(kelaminLabel)
-                                        .addComponent(kelaminInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        .addComponent(kelaminInput, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(masukanPanelLayout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(tujuanLabel)
-                                        .addComponent(tujuanInput,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                35,
+                                        .addComponent(tujuanInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(papiInputContainer,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        275,
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(papiInputContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 242,
                                         Short.MAX_VALUE)
                                 .addContainerGap()));
 
@@ -1052,17 +839,9 @@ public class PapiKostickForm extends javax.swing.JPanel {
         aksiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Aksi"));
         aksiPanel.setLayout(new java.awt.GridBagLayout());
 
-        cetakButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cetakButton.setText("Cetak");
-        cetakButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cetakButtonActionPerformed(evt);
-            }
-        });
-        aksiPanel.add(cetakButton, new java.awt.GridBagConstraints());
-
         resetButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        resetButton.setText("Reset");
+        resetButton.setText("Batal");
+        resetButton.setPreferredSize(new java.awt.Dimension(120, 40));
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
@@ -1070,8 +849,19 @@ public class PapiKostickForm extends javax.swing.JPanel {
         });
         aksiPanel.add(resetButton, new java.awt.GridBagConstraints());
 
+        cetakButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cetakButton.setText("Cetak");
+        cetakButton.setPreferredSize(new java.awt.Dimension(120, 40));
+        cetakButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cetakButtonActionPerformed(evt);
+            }
+        });
+        aksiPanel.add(cetakButton, new java.awt.GridBagConstraints());
+
         editButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         editButton.setText("Ubah");
+        editButton.setPreferredSize(new java.awt.Dimension(120, 40));
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
@@ -1079,46 +869,41 @@ public class PapiKostickForm extends javax.swing.JPanel {
         });
         aksiPanel.add(editButton, new java.awt.GridBagConstraints());
 
+        keluarButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        keluarButton.setText("Keluar");
+        keluarButton.setPreferredSize(new java.awt.Dimension(120, 40));
+        keluarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keluarButtonActionPerformed(evt);
+            }
+        });
+        aksiPanel.add(keluarButton, new java.awt.GridBagConstraints());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(
-                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(judulPanel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(masukanPanel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                        .addComponent(aksiPanel,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(judulPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(masukanPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(aksiPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap()));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(judulPanel,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(masukanPanel,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        Short.MAX_VALUE)
-                                .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(aksiPanel,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        109,
+                                .addComponent(judulPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(masukanPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(aksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 109,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap()));
     }// </editor-fold>//GEN-END:initComponents
@@ -1127,7 +912,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
         namaInput.setText("");
         tglLahirInput.setDate(null);
         tglTesInput.setDate(null);
-        pendidikanInput.setText("");
+        pendidikanInput.setSelectedIndex(0);
         kelaminInput.setSelectedIndex(0);
         tujuanInput.setText("");
         gInput.setText("");
@@ -1169,10 +954,10 @@ public class PapiKostickForm extends javax.swing.JPanel {
         PapiKostickResource.handleInput(cetakButton);
     }// GEN-LAST:event_tglTesInputPropertyChange
 
-    private void pendidikanInputKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_pendidikanInputKeyReleased
-        PapiKostickResource.education = pendidikanInput.getText();
+    private void pendidikanInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_pendidikanInputActionPerformed
+        PapiKostickResource.education = pendidikanInput.getSelectedItem().toString();
         PapiKostickResource.handleInput(cetakButton);
-    }// GEN-LAST:event_pendidikanInputKeyReleased
+    }// GEN-LAST:event_pendidikanInputActionPerformed
 
     private void kelaminInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_kelaminInputActionPerformed
         PapiKostickResource.gender = kelaminInput.getSelectedItem().toString();
@@ -1197,6 +982,10 @@ public class PapiKostickForm extends javax.swing.JPanel {
     private void cetakButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cetakButtonActionPerformed
         PapiKostickResource.produceReport();
     }// GEN-LAST:event_cetakButtonActionPerformed
+
+    private void keluarButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_keluarButtonActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_keluarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aInput;
@@ -1231,6 +1020,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
     private javax.swing.JLabel kLabel;
     private javax.swing.JComboBox<String> kelaminInput;
     private javax.swing.JLabel kelaminLabel;
+    private javax.swing.JButton keluarButton;
     private javax.swing.JTextField lInput;
     private javax.swing.JLabel lLabel;
     private javax.swing.JPanel masukanPanel;
@@ -1244,7 +1034,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
     private javax.swing.JLabel pLabel;
     private javax.swing.JPanel papiInputContainer;
     private javax.swing.JPanel papiInputPanel;
-    private javax.swing.JTextField pendidikanInput;
+    private javax.swing.JComboBox<String> pendidikanInput;
     private javax.swing.JLabel pendidikanLabel;
     private javax.swing.JTextField rInput;
     private javax.swing.JLabel rLabel;
