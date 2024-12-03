@@ -2,6 +2,7 @@
 nbproject/private/
 build/
 dist/
+IST_App/src/storage/
 
 # Ignore class files and other generated binaries
 *.class
