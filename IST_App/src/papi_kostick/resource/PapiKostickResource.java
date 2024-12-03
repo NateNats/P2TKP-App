@@ -56,11 +56,11 @@ public class PapiKostickResource {
     }
 
     public static boolean isTopRowValueValid() {
-        return getTopRowSum() == 45;
+        return getTopRowSum() == 45 && topRow.containsValue(0) == false;
     }
 
     public static boolean isBottomRowValueValid() {
-        return getBottomRowSum() == 45;
+        return getBottomRowSum() == 45 && bottomRow.containsValue(0) == false;
     }
 
     public static void resetValues() {
