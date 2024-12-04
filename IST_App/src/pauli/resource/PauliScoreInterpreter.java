@@ -9,6 +9,12 @@ import java.io.ObjectOutputStream;
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+ * This class is used to interpret the input of the PAULI test.
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
+ */
+
 public class PauliScoreInterpreter {
     private static final String DATA_FILE_PATH = "./src/storage/pauli_interpretation.dat";
     private static final String K_DATA_FILE_PATH = "./src/storage/pauli_ketelitian_interpretation.dat";

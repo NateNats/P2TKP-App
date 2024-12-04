@@ -3,25 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package common;
-
-import java.awt.CardLayout;
-
-import javax.swing.JPanel;
-
 /**
- *
- * @author Trustacean
+ * this class is a panel used to display the Main Menu of the application
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
  */
 public class MainMenuPanel extends javax.swing.JPanel {
-    private JPanel cards;
-    private CardLayout cardLayout;
+    private MainFrame mainFrame;
 
     /**
      * Creates new form MainMenu
      */
-    public MainMenuPanel(JPanel cards, CardLayout cardsLayout) {
-        this.cardLayout = cardsLayout;
-        this.cards = cards;
+    public MainMenuPanel(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         initComponents();
     }
 
@@ -152,7 +146,8 @@ public class MainMenuPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_jButton1ActionPerformed
 
     private void papiButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
-        cardLayout.show(cards, "PapiKostickForm");
+        mainFrame.showCard("PapiKostickForm");
+        mainFrame.setTitle("PAPI Kostick Mapping");
     }// GEN-LAST:event_jButton2ActionPerformed
 
     private void msdtButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
@@ -160,7 +155,8 @@ public class MainMenuPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_jButton3ActionPerformed
 
     private void pauliButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton4ActionPerformed
-        cardLayout.show(cards, "PauliForm");
+        mainFrame.showCard("PauliForm");
+        mainFrame.setTitle("PAULI Mapping");
     }// GEN-LAST:event_jButton4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

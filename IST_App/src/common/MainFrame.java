@@ -7,8 +7,9 @@ import ist_app.ist_mapping;
 import pauli.PauliForm;
 
 /**
- *
- * @author Trustacean
+ * this class is a frame that contains the main menu panel and the other panels
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
  */
 public class MainFrame extends javax.swing.JFrame {
     private JPanel cards;
@@ -26,9 +27,9 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
 
-        cards.add(new MainMenuPanel(this.cards, this.cardLayout), "MainMenuPanel");
-        cards.add(new PapiKostickForm(this.cards, this.cardLayout), "PapiKostickForm");
-        cards.add(new PauliForm(this.cards, this.cardLayout), "PauliForm");
+        cards.add(new MainMenuPanel(this), "MainMenuPanel");
+        cards.add(new PapiKostickForm(this), "PapiKostickForm");
+        cards.add(new PauliForm(this), "PauliForm");
 
         // Set layout and add cards to the main content pane
         getContentPane().setLayout(new java.awt.BorderLayout());
@@ -36,6 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // Show the PapiCosticForm card initially
         cardLayout.show(cards, "MainMenuPanel");
+        this.setTitle("KATEGORISASI MAPPING");
     }
 
     /**
@@ -63,6 +65,10 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    public void showCard(String cardName) {
+        cardLayout.show(cards, cardName);
+    }
 
     /**
      * @param args the command line arguments

@@ -4,10 +4,7 @@
  */
 package papi_kostick;
 
-import java.awt.CardLayout;
-
-import javax.swing.JPanel;
-
+import common.MainFrame;
 import papi_kostick.resource.PapiKostickInputFocusAdapter;
 import papi_kostick.resource.PapiKostickInputKeyAdapter;
 import papi_kostick.resource.PapiKostickResource;
@@ -15,17 +12,16 @@ import papi_kostick.resource.PapiKostickResource;
 /**
  * this class is a panel used to display the PAPI Kostick form
  * 
- * @author Trustacean
+ * @author <a href="https://github.com/Trustacean">Edward</a>
  */
 public class PapiKostickForm extends javax.swing.JPanel {
-    private JPanel cards;
-    private CardLayout cardLayout;
+    private MainFrame mainFrame;
     /**
      * Creates new form PapiKostickForm
      */
-    public PapiKostickForm(JPanel cards, CardLayout cardLayout) {
-        this.cards = cards;
-        this.cardLayout = cardLayout;
+    public PapiKostickForm(MainFrame parentFrame) {
+        this.mainFrame = parentFrame;
+        mainFrame.setTitle("PAPI Kostick Mapping");
         initComponents();
     }
 
@@ -989,7 +985,8 @@ public class PapiKostickForm extends javax.swing.JPanel {
     }// GEN-LAST:event_cetakButtonActionPerformed
 
     private void keluarButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_keluarButtonActionPerformed
-        cardLayout.show(cards, "MainMenuPanel");
+        mainFrame.showCard("MainMenuPanel");
+        mainFrame.setTitle("KATEGORISASI MAPPING");
     }// GEN-LAST:event_keluarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
