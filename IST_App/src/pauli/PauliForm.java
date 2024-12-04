@@ -4,26 +4,22 @@
  */
 package pauli;
 
-import java.awt.CardLayout;
-
-import javax.swing.JPanel;
-
+import common.MainFrame;
 import pauli.resource.PauliResource;
 
 /**
- *
- * @author Trustacean
+ * this class is a panel used to display the PAULI form
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
  */
 public class PauliForm extends javax.swing.JPanel {
-    private JPanel cards;
-    private CardLayout cardLayout;
+    private MainFrame mainFrame;
 
     /**
      * Creates new form PauliForm
      */
-    public PauliForm(JPanel cards, CardLayout cardLayout) {
-        this.cards = cards;
-        this.cardLayout = cardLayout;
+    public PauliForm(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         initComponents();
     }
 
@@ -304,7 +300,8 @@ public class PauliForm extends javax.swing.JPanel {
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void keluarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarButtonActionPerformed
-        cardLayout.show(cards, "MainMenuPanel");
+        mainFrame.showCard("MainMenuPanel");
+        mainFrame.setTitle("KATEGORISASI MAPPING");
     }//GEN-LAST:event_keluarButtonActionPerformed
 
     private void kemampuanKerjaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kemampuanKerjaInputActionPerformed
