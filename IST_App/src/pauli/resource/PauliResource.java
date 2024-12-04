@@ -10,6 +10,13 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
+/**
+ * This class is a resource class for Pauliform. It contains the data and
+ * methods needed to handle user interactions the form.
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
+ */
+
 public class PauliResource {
     public static int tingkatPercayaDiri;
     public static int kemampuanKerja;
