@@ -279,11 +279,6 @@ public class ist_mapping extends javax.swing.JPanel {
         });
 
         IQInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        IQInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IQInputActionPerformed(evt);
-            }
-        });
         IQInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 IQInputKeyReleased(evt);
@@ -570,6 +565,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!FAInput.getText().equals("")) {
                 int data = Integer.parseInt(FAInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             FAInput.setText("");
@@ -583,6 +582,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!WUInput.getText().equals("")) {
                 int data = Integer.parseInt(WUInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             WUInput.setText("");
@@ -596,6 +599,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!RAInput.getText().equals("")) {
                 int data = Integer.parseInt(RAInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             RAInput.setText("");
@@ -609,6 +616,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!ZRInput.getText().equals("")) {
                 int data = Integer.parseInt(ZRInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             ZRInput.setText("");
@@ -622,6 +633,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!GEInput.getText().equals("")) {
                 int data = Integer.parseInt(GEInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             GEInput.setText("");
@@ -635,6 +650,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!MEInput.getText().equals("")) {
                 int data = Integer.parseInt(MEInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             MEInput.setText("");
@@ -648,6 +667,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!WAInput.getText().equals("")) {
                 int data = Integer.parseInt(WAInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             WAInput.setText("");
@@ -661,6 +684,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!ANInput.getText().equals("")) {
                 int data = Integer.parseInt(ANInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             ANInput.setText("");
@@ -670,18 +697,19 @@ public class ist_mapping extends javax.swing.JPanel {
         tombolHasilCetakEnableFalse();
     }//GEN-LAST:event_ANInputKeyReleased
 
-    private void IQInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IQInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IQInputActionPerformed
-
     private void IQInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IQInputKeyReleased
         try {
             if (!IQInput.getText().equals("")) {
                 int data = Integer.parseInt(IQInput.getText());
+
+                // Menambahkan logika untuk cek nilai kurang dari 0 atau lebih dari 20
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException e) {
             IQInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         tombolBatalEnableFalse();
@@ -692,6 +720,10 @@ public class ist_mapping extends javax.swing.JPanel {
         try {
             if (!SEInput.getText().equals("")) {
                 int data = Integer.parseInt(SEInput.getText());
+
+                if (data < 0 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (NumberFormatException eror) {
             SEInput.setText("");
@@ -712,6 +744,28 @@ public class ist_mapping extends javax.swing.JPanel {
 
     private void tombolHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHasilActionPerformed
         //menampilkan hasil dari input ke dalam tabel
+        /**
+         * IST Mapping
+    aspek yang dipake pada norma:
+    - AN
+    - FA
+    - GE
+    - ME
+    - RA
+    - SE
+    - WA
+    - WU
+    - ZR
+    - GESAMT (untuk dapetin IQ)
+
+    keknya perlu bikin input proses masing-masing nilai diatas buat hitung skornya
+
+    note:
+    - skor jenis kecerdasan dan berpikir fleksibel sama
+    - bagaimana cara dapetin skor sw dari tabel yg terbaru
+    - konversi rw ke sw itu pake umur juga, tapi ga tau pengaruhnya besar atau enggak
+    - tambahan input tanggal
+         */
         evalTarKecerdasan();
         evalAnalisa();
         evalKomperehensif();
@@ -724,9 +778,9 @@ public class ist_mapping extends javax.swing.JPanel {
         evalBerpikir();
         evalfleksibel();
         evalJenisKecerdasan();
-        
+
         countSW();
-        
+
         refreshTable();
 
         tombolCetak.setEnabled(true);
@@ -734,11 +788,11 @@ public class ist_mapping extends javax.swing.JPanel {
 
         JOptionPane.showMessageDialog(this, "Berhasil");
     }//GEN-LAST:event_tombolHasilActionPerformed
-    
+
     void countSW() {
-        
+
     }
-    
+
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
         //Mencetak hasil input ke dalam jasper file
         String fileName = "ist_app/resource/report/ISTReport.jasper";
@@ -780,11 +834,8 @@ public class ist_mapping extends javax.swing.JPanel {
         parameter.put("rwzr", ZRInput.getText());
         parameter.put("rwfa", FAInput.getText());
         parameter.put("rwwu", WUInput.getText());
-        
-        //tabel sw
-        
-        
 
+        //tabel sw
         //tabel kua
         //kuawu error
         String[] key = {"kuase", "kuawa", "kuaan", "kuage", "kuame", "kuara", "kuazr", "kuafa", "kuawu"};
@@ -793,7 +844,7 @@ public class ist_mapping extends javax.swing.JPanel {
             System.out.println(key[i] + ": " + charNilai.get(key[i]));
             parameter.put(key[i], charNilai.get(key[i]));
         }
-        
+
         try {
             //            InputStream stream = Main.class.getResourceAsStream(fileName);
             //            JOptionPane.showMessageDialog(this, "aaa!");
@@ -1015,7 +1066,7 @@ public class ist_mapping extends javax.swing.JPanel {
         this.nilai.add(new KomponenPenilaian("Taraf Kecerdasan", nil, hasil.getKategori(), hasil.getDeskripsi()));
         charIQ = hasil.getKategori();
         charNilai.put("IQ", hasil.getKategori());
-        
+
     }
 
     private void evalAnalisa() {
