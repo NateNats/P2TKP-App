@@ -604,6 +604,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
                 if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    RAInput.setText("");
                 }
             }
         } catch (NumberFormatException eror) {
@@ -621,6 +622,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
                 if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    ZRInput.setText("");
                 }
             }
         } catch (NumberFormatException eror) {
@@ -638,6 +640,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
                 if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    GEInput.setText("");
                 }
             }
         } catch (NumberFormatException eror) {
@@ -655,6 +658,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
                 if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    MEInput.setText("");
                 }
             }
         } catch (NumberFormatException eror) {
@@ -672,6 +676,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
                 if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    WAInput.setText("");
                 }
             }
         } catch (NumberFormatException eror) {
@@ -689,6 +694,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
                 if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    ANInput.setText("");
                 }
             }
         } catch (NumberFormatException eror) {
@@ -707,6 +713,7 @@ public class ist_mapping extends javax.swing.JPanel {
                 // Menambahkan logika untuk cek nilai kurang dari 0 atau lebih dari 20
                 if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    IQInput.setText("");
                 }
             }
         } catch (NumberFormatException e) {
@@ -725,6 +732,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
                 if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    SEInput.setText("");
                 }
             }
         } catch (NumberFormatException eror) {
@@ -768,20 +776,34 @@ public class ist_mapping extends javax.swing.JPanel {
     - konversi rw ke sw itu pake umur juga, tapi ga tau pengaruhnya besar atau enggak
     - tambahan input tanggal
          */
-        evalTarKecerdasan();
-        evalAnalisa();
-        evalKomperehensif();
-        evalDayaIngat();
-        evalMengolahAngka();
-        evalBahasa();
-        evalKreativitas();
-        evalMenilai();
-        evalKeputusan();
-        evalBerpikir();
-        evalfleksibel();
-        evalJenisKecerdasan();
+        
+        int[] score = {
+            Integer.parseInt(IQInput.getText()), 
+            Integer.parseInt(SEInput.getText()), 
+            Integer.parseInt(WAInput.getText()), 
+            Integer.parseInt(ANInput.getText()), 
+            Integer.parseInt(GEInput.getText()), 
+            Integer.parseInt(MEInput.getText()), 
+            Integer.parseInt(RAInput.getText()), 
+            Integer.parseInt(ZRInput.getText()), 
+            Integer.parseInt(FAInput.getText()), 
+            Integer.parseInt(WUInput.getText())};
+        
+        ScoreCount(score);
+        
+//        evalTarKecerdasan();
+//        evalAnalisa();
+//        evalKomperehensif();
+//        evalDayaIngat();
+//        evalMengolahAngka();
+//        evalBahasa();
+//        evalKreativitas();
+//        evalMenilai();
+//        evalKeputusan();
+//        evalBerpikir();
+//        evalfleksibel();
+//        evalJenisKecerdasan();
 
-        countSW();
 
         refreshTable();
 
@@ -791,8 +813,10 @@ public class ist_mapping extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Berhasil");
     }//GEN-LAST:event_tombolHasilActionPerformed
 
-    void countSW() {
-
+    void ScoreCount(int[] score) {
+        for (int i = 0; i < 10; i++) {
+            
+        }
     }
 
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
@@ -836,9 +860,11 @@ public class ist_mapping extends javax.swing.JPanel {
         parameter.put("rwzr", ZRInput.getText());
         parameter.put("rwfa", FAInput.getText());
         parameter.put("rwwu", WUInput.getText());
+        
 
         //tabel sw
-        //tabel kua
+        
+        
         //kuawu error
         String[] key = {"kuase", "kuawa", "kuaan", "kuage", "kuame", "kuara", "kuazr", "kuafa", "kuawu"};
 
