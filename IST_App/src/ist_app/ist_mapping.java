@@ -38,7 +38,8 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author nicol
  */
 public class ist_mapping extends javax.swing.JPanel {
-
+    private MainFrame mainFrame;
+    
     private List<KomponenPenilaian> nilai = new ArrayList<>();
     IST_ScoreInterpreter tarKecerdasan, berpikirKompreheren, kemAnalisis, dayaIngat, kreativitas, menilai, mengambilKeputusan, berbahasa, angka;
     LinkedList<String> fleksibel, jenisKecerdasan, coraBerpikir;
@@ -58,7 +59,8 @@ public class ist_mapping extends javax.swing.JPanel {
     /**
      * Creates new form ist_mapping
      */
-    public ist_mapping() {
+    public ist_mapping(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         initComponents();
         tombolBatal.setEnabled(false);
         tombolHasil.setEnabled(false);
@@ -876,10 +878,8 @@ public class ist_mapping extends javax.swing.JPanel {
 
     private void tombolKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKeluarActionPerformed
         //keluar dari panel ist dan kembali ke main
-        int pilih = JOptionPane.showConfirmDialog(this, "Apakah anda yakin akan keluar?", null, JOptionPane.YES_NO_OPTION);
-        if (pilih == JOptionPane.YES_NO_OPTION) {
-            System.exit(0);
-        }
+        mainFrame.showCard("MainMenuPanel");
+        mainFrame.setTitle("KATEGORISASI MAPPING");
     }//GEN-LAST:event_tombolKeluarActionPerformed
 
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
