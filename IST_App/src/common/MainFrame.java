@@ -2,13 +2,14 @@ package common;
 
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-import papi_costic.PapiCosticForm;
-import msdt.mapping_msdt;
+import papi_kostick.PapiKostickForm;
 import ist_app.ist_mapping;
+import pauli.PauliForm;
 
 /**
- *
- * @author Trustacean
+ * this class is a frame that contains the main menu panel and the other panels
+ * 
+ * @author <a href="https://github.com/Trustacean">Edward</a>
  */
 public class MainFrame extends javax.swing.JFrame {
     private JPanel cards;
@@ -26,16 +27,17 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
 
-        ist_mapping form = new ist_mapping();
-        //mapping_msdt form = new mapping_msdt();
-        cards.add(form, "PapiCosticForm");
+        cards.add(new MainMenuPanel(this), "MainMenuPanel");
+        cards.add(new PapiKostickForm(this), "PapiKostickForm");
+        cards.add(new PauliForm(this), "PauliForm");
 
         // Set layout and add cards to the main content pane
         getContentPane().setLayout(new java.awt.BorderLayout());
         getContentPane().add(cards, java.awt.BorderLayout.CENTER);
 
         // Show the PapiCosticForm card initially
-        cardLayout.show(cards, "PapiCosticForm");
+        cardLayout.show(cards, "MainMenuPanel");
+        this.setTitle("KATEGORISASI MAPPING");
     }
 
     /**
@@ -45,7 +47,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,17 +56,19 @@ public class MainFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 935, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 935, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 754, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    public void showCard(String cardName) {
+        cardLayout.show(cards, cardName);
+    }
 
     /**
      * @param args the command line arguments

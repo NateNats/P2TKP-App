@@ -2,9 +2,11 @@
 nbproject/private/
 build/
 dist/
+IST_App/src/storage/
 
 # Ignore class files and other generated binaries
 *.class
 
 # Ignore library files in Drive (optional, based on your preference)
 Drive/
+IST_App/.vscode/settings.json

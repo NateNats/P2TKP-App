@@ -1,4 +1,4 @@
-package papi_costic.resource;
+package papi_kostick.resource;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -17,13 +17,13 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
- * This class is a resource class for PapiCosticForm. It contains the data and
+ * This class is a resource class for PapiKostickForm. It contains the data and
  * methods needed to handle user interactions the form.
  * 
  * @author <a href="https://github.com/Trustacean">Edward</a>
  */
 
-public class PapiCosticResource {
+public class PapiKostickResource {
     public static String name;
     public static String birthDate;
     public static String testDate;
@@ -34,8 +34,8 @@ public class PapiCosticResource {
     public static final Map<Character, Integer> topRow = new HashMap<>();
     public static final Map<Character, Integer> bottomRow = new HashMap<>();
 
-    private final static String REPORT1_PATH = "./src/papi_costic/resource/report/PapiCosticReport1_v1.12.jasper";
-    private final static String REPORT2_PATH = "./src/papi_costic/resource/report/PapiCosticReport2_v1.12.jasper";
+    private final static String REPORT1_PATH = "./src/papi_kostick/resource/report/PapiKostickReport1_v1.12.jasper";
+    private final static String REPORT2_PATH = "./src/papi_kostick/resource/report/PapiKostickReport2_v1.12.jasper";
 
     static {
         for (char key : new char[] { 'g', 'l', 'i', 't', 'v', 's', 'r', 'd', 'c', 'e' }) {
@@ -56,18 +56,18 @@ public class PapiCosticResource {
     }
 
     public static boolean isTopRowValueValid() {
-        return getTopRowSum() == 45;
+        return getTopRowSum() == 45 && topRow.containsValue(0) == false;
     }
 
     public static boolean isBottomRowValueValid() {
-        return getBottomRowSum() == 45;
+        return getBottomRowSum() == 45 && bottomRow.containsValue(0) == false;
     }
 
     public static void resetValues() {
         name = "";
         birthDate = null;
         testDate = null;
-        education = "";
+        education = "SD";
         gender = "Laki-laki";
         purpose = "";
         topRow.replaceAll((k, v) -> 0);
