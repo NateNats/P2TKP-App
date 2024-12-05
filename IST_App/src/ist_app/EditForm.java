@@ -19,6 +19,7 @@ import java.util.ListIterator;
 import java.util.Set;
 import static javafx.scene.paint.Color.color;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;

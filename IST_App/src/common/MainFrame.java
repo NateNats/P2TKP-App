@@ -26,8 +26,8 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
 
-        //ist_mapping form = new ist_mapping();
-        mapping_msdt form = new mapping_msdt();
+        ist_mapping form = new ist_mapping();
+        //mapping_msdt form = new mapping_msdt();
         cards.add(form, "PapiCosticForm");
 
         // Set layout and add cards to the main content pane

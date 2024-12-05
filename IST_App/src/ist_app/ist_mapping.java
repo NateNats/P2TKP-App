@@ -130,6 +130,9 @@ public class ist_mapping extends javax.swing.JPanel {
         IQInput = new javax.swing.JTextField();
         SEInput = new javax.swing.JTextField();
         tanggalController = new com.toedter.calendar.JDateChooser();
+        namaLabel1 = new javax.swing.JLabel();
+        namaLabel2 = new javax.swing.JLabel();
+        tgllahirinput = new com.toedter.calendar.JDateChooser();
         controller = new javax.swing.JPanel();
         tombolBatal = new javax.swing.JButton();
         tombolHasil = new javax.swing.JButton();
@@ -149,11 +152,11 @@ public class ist_mapping extends javax.swing.JPanel {
         judul.setLayout(judulLayout);
         judulLayout.setHorizontalGroup(
             judulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 831, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(judulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(judulLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         judulLayout.setVerticalGroup(
@@ -243,6 +246,11 @@ public class ist_mapping extends javax.swing.JPanel {
         });
 
         GEInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        GEInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GEInputActionPerformed(evt);
+            }
+        });
         GEInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 GEInputKeyReleased(evt);
@@ -295,72 +303,96 @@ public class ist_mapping extends javax.swing.JPanel {
             }
         });
 
+        namaLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        namaLabel1.setText("Tanggal Tes");
+
+        namaLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        namaLabel2.setText("Tanggal lahir");
+
+        tgllahirinput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tgllahirinputKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout masukanLayout = new javax.swing.GroupLayout(masukan);
         masukan.setLayout(masukanLayout);
         masukanLayout.setHorizontalGroup(
             masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(masukanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(namaLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(namaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
-                .addComponent(tanggalController, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                .addGap(23, 23, 23))
-            .addGroup(masukanLayout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SELabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(IQLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                    .addComponent(IQInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(WALabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ANLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ANInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                    .addComponent(WAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(MELabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(GELabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(MEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                    .addComponent(GEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(masukanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(namaLabel1)
+                            .addComponent(namaLabel)
+                            .addComponent(namaLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tanggalController, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tgllahirinput, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(masukanLayout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SELabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(IQLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(SEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(IQInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(RALabel))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masukanLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(ZRLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ZRInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                    .addComponent(RAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FALabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(WULabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(WUInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                    .addComponent(FAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(WALabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ANLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ANInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(WAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(MELabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(GELabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(MEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(GEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(masukanLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(RALabel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masukanLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(ZRLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ZRInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(RAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FALabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(WULabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(WUInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(FAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         masukanLayout.setVerticalGroup(
             masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(masukanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namaLabel)
-                    .addComponent(namaInput)
-                    .addComponent(tanggalController, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(namaLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tgllahirinput, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(namaLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tanggalController, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FAInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,7 +417,7 @@ public class ist_mapping extends javax.swing.JPanel {
                     .addComponent(ANLabel)
                     .addComponent(SEInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SELabel))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
 
         controller.setBorder(javax.swing.BorderFactory.createTitledBorder("Aksi"));
@@ -438,7 +470,7 @@ public class ist_mapping extends javax.swing.JPanel {
         controllerLayout.setHorizontalGroup(
             controllerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controllerLayout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(119, Short.MAX_VALUE)
                 .addComponent(tombolBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tombolHasil, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -507,20 +539,12 @@ public class ist_mapping extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(masukan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(controller, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(controller, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(judul, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(masukan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -528,13 +552,13 @@ public class ist_mapping extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(masukan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(masukan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(controller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                .addGap(35, 35, 35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -700,7 +724,9 @@ public class ist_mapping extends javax.swing.JPanel {
         evalBerpikir();
         evalfleksibel();
         evalJenisKecerdasan();
-
+        
+        countSW();
+        
         refreshTable();
 
         tombolCetak.setEnabled(true);
@@ -708,10 +734,14 @@ public class ist_mapping extends javax.swing.JPanel {
 
         JOptionPane.showMessageDialog(this, "Berhasil");
     }//GEN-LAST:event_tombolHasilActionPerformed
-
+    
+    void countSW() {
+        
+    }
+    
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
         //Mencetak hasil input ke dalam jasper file
-        String fileName = "ist_app/ISTReport.jasper";
+        String fileName = "ist_app/resource/report/ISTReport.jasper";
         //String fileName = "ist_app/formIST.jasper";
         //String fileName = "ist_app/hasil.jasper";
         //        String outFile = "./Report" + " - " + namaInput.getText() + ".pdf";
@@ -750,15 +780,20 @@ public class ist_mapping extends javax.swing.JPanel {
         parameter.put("rwzr", ZRInput.getText());
         parameter.put("rwfa", FAInput.getText());
         parameter.put("rwwu", WUInput.getText());
+        
+        //tabel sw
+        
+        
 
         //tabel kua
+        //kuawu error
         String[] key = {"kuase", "kuawa", "kuaan", "kuage", "kuame", "kuara", "kuazr", "kuafa", "kuawu"};
 
-        for (int i = 0; i < key.length - 1; i++) {
+        for (int i = 0; i < key.length; i++) {
             System.out.println(key[i] + ": " + charNilai.get(key[i]));
             parameter.put(key[i], charNilai.get(key[i]));
         }
-
+        
         try {
             //            InputStream stream = Main.class.getResourceAsStream(fileName);
             //            JOptionPane.showMessageDialog(this, "aaa!");
@@ -853,6 +888,14 @@ public class ist_mapping extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tanggalControllerKeyReleased
 
+    private void tgllahirinputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tgllahirinputKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tgllahirinputKeyReleased
+
+    private void GEInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GEInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GEInputActionPerformed
+
     private void refreshTable() {
         try {
             KomponenPenilaianTableModel model = new KomponenPenilaianTableModel(nilai);
@@ -927,8 +970,11 @@ public class ist_mapping extends javax.swing.JPanel {
     private javax.swing.JPanel masukan;
     private javax.swing.JTextField namaInput;
     private javax.swing.JLabel namaLabel;
+    private javax.swing.JLabel namaLabel1;
+    private javax.swing.JLabel namaLabel2;
     private javax.swing.JTable tabelHasil;
     private com.toedter.calendar.JDateChooser tanggalController;
+    private com.toedter.calendar.JDateChooser tgllahirinput;
     private javax.swing.JButton tombolBatal;
     private javax.swing.JButton tombolCetak;
     private javax.swing.JButton tombolHasil;
@@ -967,7 +1013,9 @@ public class ist_mapping extends javax.swing.JPanel {
         Result hasil = this.tarKecerdasan.interpret(scoreIQ);
         System.out.println("hasil Taraf Kecerdasan: " + hasil);
         this.nilai.add(new KomponenPenilaian("Taraf Kecerdasan", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charIQ = hasil.getKategori();
         charNilai.put("IQ", hasil.getKategori());
+        
     }
 
     private void evalAnalisa() {
@@ -1041,14 +1089,16 @@ public class ist_mapping extends javax.swing.JPanel {
         charNilai.put("kuazr", hasil.getKategori());
     }
 
+//error
     private void evalKeputusan() {
         double SEANWURAZR = (Double.parseDouble(SEInput.getText()) + Double.parseDouble(ANInput.getText())
                 + Double.parseDouble(WUInput.getText()) + Double.parseDouble(RAInput.getText()) + Double.parseDouble(ZRInput.getText())) / 5; //Kemampuan mengambil keputusan
         nil = String.valueOf(SEANWURAZR);
 
-        //charNilai.put("kuafa", hasil.getKategori());
-        //Result hasil = this.mengambilKeputusan.interpret(SEANWURAZR);
-        //System.out.println("Hasil Mengambil Keputusan: " + hasil);
+        Result hasil = this.mengambilKeputusan.interpret(SEANWURAZR);
+        System.out.println("Hasil Keputusan: " + hasil);
+        this.nilai.add(new KomponenPenilaian("Kemampuan mengambil keputusan", nil, hasil.getKategori(), hasil.getDeskripsi()));
+        charNilai.put("kuafa", hasil.getKategori());
     }
 
     private void evalBerpikir() { //corak/cara berpikir
@@ -1073,30 +1123,51 @@ public class ist_mapping extends javax.swing.JPanel {
             deskripsi = coraBerpikir.get(2);
         }
 
-        KomponenPenilaian variabel10 = new KomponenPenilaian("Cara/Corak berpikir", "", "", deskripsi);
-        nilai.add(variabel10);
+        nilai.add(new KomponenPenilaian("Cara/Corak berpikir", "", Kategori, deskripsi));
         charNilai.put("kuawu", Kategori);
     }
 
     private void evalfleksibel() { // Kemampuan berpikir fleksibel
         double nilaiGERA = Double.parseDouble(GEInput.getText()) + Double.parseDouble(RAInput.getText());
         double nilaiANZR = Double.parseDouble(ANInput.getText()) + Double.parseDouble(ZRInput.getText());
-        double hasil = nilaiGERA - nilaiANZR;
 
-        if (hasil == (-10)) {
-
-        } else if (hasil == 10) {
-
-        } else {
-
+        if ((nilaiGERA - nilaiANZR) == (-10)) {
+            Kategori = "fleksibel";
+            deskripsi = fleksibel.get(0);
+        } else if ((nilaiGERA - nilaiANZR) == (10)) {
+            Kategori = "Kaku";
+            deskripsi = fleksibel.get(1);
+        } else if (((nilaiGERA - nilaiANZR) >= (-10) & (nilaiGERA - nilaiANZR) <= (0)) || ((nilaiGERA - nilaiANZR) <= (10) & (nilaiGERA - nilaiANZR) >= (1))) {
+            Kategori = "belum terarah-belum berkembang";
+            deskripsi = fleksibel.get(2);
         }
 
+        KomponenPenilaian variabel11 = new KomponenPenilaian("Kemampuan berpikir fleksibel", "", "", deskripsi);
+        nilai.add(variabel11);
+
+//        double nilaiGERA = Double.parseDouble(GEInput.getText()) + Double.parseDouble(RAInput.getText());
+//        double nilaiANZR = Double.parseDouble(ANInput.getText()) + Double.parseDouble(ZRInput.getText());
+//        double hasil = nilaiGERA - nilaiANZR;
+//
+//        if (hasil == (-10)) {
+//            Kategori = "Fleksibel";
+//            deskripsi = fleksibel.get(0);
+//        } else if (hasil == 10) {
+//            Kategori = "Kaku";
+//            deskripsi = fleksibel.get(1);
+//        } else {
+//            Kategori = "Belum terarah-belum berkembang";
+//            deskripsi = fleksibel.get(2);
+//        }
+//        KomponenPenilaian variabel10 = new KomponenPenilaian("Cara/Corak berpikir", "", "", deskripsi);
+//        nilai.add(new KomponenPenilaian("kemampuan berpikir fleksibel", "", "", deskripsi));
+//        charNilai.put("kuawu", Kategori);
     }
 
     private void evalJenisKecerdasan() {
         double nilaiWAGE = Double.parseDouble(WAInput.getText()) + Double.parseDouble(GEInput.getText());
         double nilaiSEAN = Double.parseDouble(SEInput.getText()) + Double.parseDouble(ANInput.getText());
-        
+
         if (nilaiWAGE > nilaiSEAN) {
             Kategori = "Tipe pemikiran teoritis-konseptual";
             deskripsi = jenisKecerdasan.get(0);
@@ -1138,9 +1209,9 @@ public class ist_mapping extends javax.swing.JPanel {
         );
 
         //error - duplication value with unreasonable things
-//        this.mengambilKeputusan = new IST_ScoreInterpreter(
-//        "./src/ist_app/resource/rubrik/kemampuan mengambil keputusan.txt", upperVal, lowerVal, kategori
-//        );
+        this.mengambilKeputusan = new IST_ScoreInterpreter(
+                "./src/ist_app/resource/rubrik/kemampuan mengambil keputusan.txt", upperVal, lowerVal, kategori
+        );
         this.berbahasa = new IST_ScoreInterpreter(
                 "./src/ist_app/resource/rubrik/kemampuan berbahasa.txt", upperVal, lowerVal, kategori
         );
@@ -1155,13 +1226,13 @@ public class ist_mapping extends javax.swing.JPanel {
     }
 
     void text2ll() {
-        String file2 = "./src/ist_app/rubrik/corak berpikir.txt";
+        String file2 = "./src/ist_app/resource/rubrik/corak berpikir.txt";
         loadRubrikFile(file2, coraBerpikir);
-        String file10 = "./src/ist_app/rubrik/jenis kecerdasan.txt";
+        String file10 = "./src/ist_app/resource/rubrik/jenis kecerdasan.txt";
         loadRubrikFile(file10, jenisKecerdasan);
-        String file11 = "./src/ist_app/rubrik/kemampuan berfikir fleksibel.txt";
+        String file11 = "./src/ist_app/resource/rubrik/kemampuan berfikir fleksibel.txt";
         loadRubrikFile(file11, fleksibel);
-        String file12 = "./src/ist_app/rubrik/Kemampuan berhitung n mengolah angka.txt";
+        String file12 = "./src/ist_app/resource/rubrik/Kemampuan berhitung n mengolah angka.txt";
 
     }
 
