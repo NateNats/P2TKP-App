@@ -152,7 +152,8 @@ public class MainMenuPanel extends javax.swing.JPanel {
     }// GEN-LAST:event_jButton2ActionPerformed
 
     private void msdtButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        mainFrame.showCard("MSDTForm");
+        mainFrame.setTitle("MSDT MAPPING");
     }// GEN-LAST:event_jButton3ActionPerformed
 
     private void pauliButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton4ActionPerformed

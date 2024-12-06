@@ -41,6 +41,7 @@
 		<field name="skor" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="jenis" class="java.lang.String"/>
+	<parameter name="nama" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -59,9 +60,9 @@
 		</band>
 	</title>
 	<columnHeader>
-		<band height="48">
+		<band height="80">
 			<staticText>
-				<reportElement x="-10" y="10" width="140" height="30" uuid="22274cb8-c04d-44e2-8567-c93e83c2f269">
+				<reportElement x="-10" y="40" width="150" height="30" uuid="22274cb8-c04d-44e2-8567-c93e83c2f269">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
@@ -69,10 +70,10 @@
 					<font size="14"/>
 					<paragraph leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<text><![CDATA[Jenis Kepemimpinan:]]></text>
+				<text><![CDATA[Jenis Kepemimpinan :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="133" y="10" width="412" height="30" uuid="530ec35a-18b1-4fb1-9921-f22e7c8ce0fd">
+				<reportElement x="150" y="40" width="395" height="30" uuid="530ec35a-18b1-4fb1-9921-f22e7c8ce0fd">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
@@ -82,12 +83,26 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{jenis}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="-10" y="5" width="150" height="30" uuid="893201b1-0d6f-4d8d-b29c-7c6ceae26a2f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Nama			    :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="5" width="395" height="30" uuid="f199b5bb-95cf-49e5-9401-d67d07b60ec2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nama}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="277" splitType="Stretch">
 			<componentElement>
-				<reportElement x="-10" y="0" width="575" height="200" uuid="557f658a-8522-4b73-b3a9-8b6b05dfcb1f">
+				<reportElement x="-10" y="0" width="575" height="240" uuid="557f658a-8522-4b73-b3a9-8b6b05dfcb1f">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
