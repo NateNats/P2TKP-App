@@ -71,7 +71,7 @@ public class MSDTForm extends javax.swing.JPanel {
         judul.setText("MAPPING MSDT");
         judul.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        aksiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Aksi"));
+        aksiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Masukkan"));
 
         combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Deserter", "Compromiser", "Missionary", "Buereaucrat", "Autocrat", "Benevolent Autocrat", "Developer", "Executive" }));
         combobox.addActionListener(new java.awt.event.ActionListener() {
