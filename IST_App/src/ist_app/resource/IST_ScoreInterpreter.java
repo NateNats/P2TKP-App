@@ -158,7 +158,6 @@ public class IST_ScoreInterpreter {
         for (int i = 0; i < this.link.size(); i++) {
             try {
                 this.AddRange(this.lowerVal[i], this.upperVal[i], this.link.get(i), this.kategori[i]);
-                System.out.println("batas bawah: " + this.lowerVal[i] + ", batas atas: " + this.upperVal[i] + ", deskripsi: " + this.link.get(i) + " Kategori: " + this.kategori[i]);
             } catch (Exception e) {
                 System.out.println(e);
             }
