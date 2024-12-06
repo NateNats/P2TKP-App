@@ -30,6 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
         cards.add(new MainMenuPanel(this), "MainMenuPanel");
         cards.add(new PapiKostickForm(this), "PapiKostickForm");
         cards.add(new PauliForm(this), "PauliForm");
+        cards.add(new ist_mapping(this), "ist_mapping");
 
         // Set layout and add cards to the main content pane
         getContentPane().setLayout(new java.awt.BorderLayout());

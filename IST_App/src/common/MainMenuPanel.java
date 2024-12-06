@@ -142,7 +142,8 @@ public class MainMenuPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void istButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        mainFrame.showCard("ist_mapping");
+        mainFrame.setTitle("IST Mapping");
     }// GEN-LAST:event_jButton1ActionPerformed
 
     private void papiButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
