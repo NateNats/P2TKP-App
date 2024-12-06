@@ -4,6 +4,13 @@
  */
 package msdt.resource;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
@@ -13,15 +20,33 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nicol
  */
-public class ScoreInterpreter {
+public class MSDTScoreInterpreter {
 
-    private static final Map<String, NavigableMap<String, Pair<String, String>>> interpretations = new TreeMap<>();
+    private static final String DATA_FILE_PATH = "./src/storage/MSDT_interpretation.dat";
+    private static Map<String, NavigableMap<String, Pair<String, String>>> interpretations = new TreeMap<>();
 
     static {
-        initializeDefaultInterpretations();
+        if (!loadInterpretationsFromFile()) {
+            initializeDefaultInterpretations();
+            SaveInterpretationsToFile();
+        }
     }
 
-    static void initializeDefaultInterpretations() {
+    public static void SaveInterpretationsToFile() {
+        File file = new File(DATA_FILE_PATH);
+        File parentDir = file.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(interpretations);
+        } catch (IOException e) {
+            System.err.println("could not save interpretations to file.");
+        }
+    }
+
+    private static void initializeDefaultInterpretations() {
         interpretations.put("Deserter", new TreeMap<String, Pair<String, String>>() {
             {
                 put("Dampak dan pengaruh", new Pair<>("Enggan mengarahkan timnya.", "K"));
@@ -123,7 +148,7 @@ public class ScoreInterpreter {
 
     }
 
-    static class Pair<T, U> {
+    static class Pair<T, U> implements Serializable {
 
         private T first;
         private U second;
@@ -143,28 +168,53 @@ public class ScoreInterpreter {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    private static boolean loadInterpretationsFromFile() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH))) {
+            interpretations = (Map<String, NavigableMap<String, Pair<String, String>>>) ois.readObject();
+            return true;
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("could not load interpretations from file, using defaullts.");
+            return false;
+        }
+    }
+
     public DefaultTableModel chooseCombo(String choice) {
-        String[] columns = {"Aspek", "Deskripsi", "Skor"};
-        DefaultTableModel model = new DefaultTableModel(columns, 0);
-        String aspek, deskripsi, skor;
-
-        for (Map.Entry<String, NavigableMap<String, Pair<String, String>>> entry : interpretations.entrySet()) {
-            if (choice.equals(entry.getKey())) {
-                NavigableMap<String, Pair<String, String>> aspects = entry.getValue();
-
-                for (Map.Entry<String, Pair<String, String>> val : aspects.entrySet()) {
-                    aspek = val.getKey();
-                    Pair<String, String> pair = val.getValue();
-                    deskripsi = pair.getFirst();
-                    skor = pair.getSecond();
-
-                    model.addRow(new String[]{aspek, deskripsi, skor});
-                }
-
-                return model;
-            }
+        if (choice == null || choice.isEmpty()) {
+            System.err.println("Error: The choice parameter is null or empty.");
+            return new DefaultTableModel(new String[]{"Aspek", "Deskripsi", "Skor"}, 0);
         }
 
-        return model;
+        try {
+            String[] columns = {"Aspek", "Deskripsi", "Skor"};
+            DefaultTableModel model = new DefaultTableModel(columns, 0);
+            for (Map.Entry<String, NavigableMap<String, Pair<String, String>>> entry : interpretations.entrySet()) {
+                if (choice.equals(entry.getKey())) {
+                    NavigableMap<String, Pair<String, String>> aspects = entry.getValue();
+
+                    for (Map.Entry<String, Pair<String, String>> val : aspects.entrySet()) {
+                        String aspek = val.getKey();
+                        Pair<String, String> pair = val.getValue();
+                        String deskripsi = pair.getFirst();
+                        String skor = pair.getSecond();
+
+                        model.addRow(new String[]{aspek, deskripsi, skor});
+                    }
+
+                    return model;
+                }
+            }
+            System.out.println("Warning: No data found for choice: " + choice);
+            return model;
+
+        } catch (Exception e) {
+            System.err.println("Error: Could not input interpretations to table. " + e.getMessage());
+            return new DefaultTableModel(new String[]{"Aspek", "Deskripsi", "Skor"}, 0);
+        }
+    }
+    
+    public static void main(String[] args) {
+        MSDTScoreInterpreter cc = new MSDTScoreInterpreter();
     }
 }

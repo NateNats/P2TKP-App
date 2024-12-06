@@ -18,7 +18,7 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import msdt.resource.ScoreInterpreter;
+import msdt.resource.MSDTScoreInterpreter;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -35,12 +35,12 @@ public class mapping_msdt extends javax.swing.JPanel {
     /**
      * Creates new form mapping_msdt
      */
-    ScoreInterpreter score;
+    MSDTScoreInterpreter score;
 
     public mapping_msdt() {
         initComponents();
 
-        score = new ScoreInterpreter();
+        score = new MSDTScoreInterpreter();
     }
 
     /**
