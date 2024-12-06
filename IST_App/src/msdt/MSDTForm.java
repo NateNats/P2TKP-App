@@ -30,14 +30,14 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author nicol
  */
-public class mapping_msdt extends javax.swing.JPanel {
+public class MSDTForm extends javax.swing.JPanel {
 
     /**
      * Creates new form mapping_msdt
      */
     MSDTScoreInterpreter score;
 
-    public mapping_msdt() {
+    public MSDTForm() {
         initComponents();
 
         score = new MSDTScoreInterpreter();
@@ -56,10 +56,15 @@ public class mapping_msdt extends javax.swing.JPanel {
         aksiPanel = new javax.swing.JPanel();
         combobox = new javax.swing.JComboBox<>();
         kepemimpinan = new javax.swing.JLabel();
-        tombolCetak = new javax.swing.JToggleButton();
+        namaLabel = new javax.swing.JLabel();
+        namaInput = new javax.swing.JTextField();
         hasilPanel = new javax.swing.JPanel();
         hasilScrollPane = new javax.swing.JScrollPane();
         hasilTable = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        tombolCetak = new javax.swing.JButton();
+        tombolUbah = new javax.swing.JButton();
+        tombolKeluar = new javax.swing.JButton();
 
         judul.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -78,36 +83,36 @@ public class mapping_msdt extends javax.swing.JPanel {
         kepemimpinan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         kepemimpinan.setText("Tipe Kepemimpinan:");
 
-        tombolCetak.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tombolCetak.setText("Cetak");
-        tombolCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolCetakActionPerformed(evt);
-            }
-        });
+        namaLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        namaLabel.setText("Nama                        :");
 
         javax.swing.GroupLayout aksiPanelLayout = new javax.swing.GroupLayout(aksiPanel);
         aksiPanel.setLayout(aksiPanelLayout);
         aksiPanelLayout.setHorizontalGroup(
             aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(aksiPanelLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(kepemimpinan, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(namaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kepemimpinan, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
-                .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(namaInput)
+                    .addComponent(combobox, 0, 463, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         aksiPanelLayout.setVerticalGroup(
             aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(aksiPanelLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aksiPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namaLabel)
+                    .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(aksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kepemimpinan)
-                    .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(kepemimpinan))
+                .addGap(24, 24, 24))
         );
 
         hasilPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Hasil"));
@@ -137,15 +142,68 @@ public class mapping_msdt extends javax.swing.JPanel {
             hasilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hasilPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(hasilScrollPane)
+                .addComponent(hasilScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
                 .addContainerGap())
         );
         hasilPanelLayout.setVerticalGroup(
             hasilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hasilPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(hasilScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addComponent(hasilScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Aksi"));
+
+        tombolCetak.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tombolCetak.setText("Cetak");
+        tombolCetak.setPreferredSize(new java.awt.Dimension(120, 40));
+        tombolCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolCetakActionPerformed(evt);
+            }
+        });
+
+        tombolUbah.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tombolUbah.setText("Ubah");
+        tombolUbah.setPreferredSize(new java.awt.Dimension(120, 40));
+        tombolUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolUbahActionPerformed(evt);
+            }
+        });
+
+        tombolKeluar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tombolKeluar.setText("Keluar");
+        tombolKeluar.setPreferredSize(new java.awt.Dimension(120, 40));
+        tombolKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolKeluarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tombolKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(239, 239, 239))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -157,7 +215,8 @@ public class mapping_msdt extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(judul, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
                     .addComponent(aksiPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(hasilPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(hasilPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -168,8 +227,10 @@ public class mapping_msdt extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addComponent(aksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(hasilPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(hasilPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -190,32 +251,24 @@ public class mapping_msdt extends javax.swing.JPanel {
     }//GEN-LAST:event_comboboxActionPerformed
 
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
-        String fileName = "ist_app/ISTReport.jasper";
+        String fileName = "msdt/resources/report/msdtReport.jasper";
+        
+        try {
+            SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+            String formattedDate = "";
+            SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM yyyy");
+        } catch (Exception e) {
 
-        SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-        String formattedDate = "";
-        SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM yyyy");
-
-//        try {
-//            Date date = originalFormat.parse(tanggalController.getDate().toString());
-//
-//            formattedDate = newFormat.format(date);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-
-//        try {
-//            InputStream stream = Main.class.getResourceAsStream(fileName);
-//            JasperPrint jasperPrint = JasperFillManager.fillReport(
-//                    ClassLoader.getSystemResourceAsStream(fileName), parameter,
-//                    new JREmptyDataSource());
-//
-//            JOptionPane.showMessageDialog(this, "Berhasil!");
-//            JasperViewer.viewReport(jasperPrint, false);
-//        } catch (JRException ex) {
-//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        }
     }//GEN-LAST:event_tombolCetakActionPerformed
+
+    private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tombolUbahActionPerformed
+
+    private void tombolKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKeluarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tombolKeluarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel aksiPanel;
@@ -223,8 +276,13 @@ public class mapping_msdt extends javax.swing.JPanel {
     private javax.swing.JPanel hasilPanel;
     private javax.swing.JScrollPane hasilScrollPane;
     private javax.swing.JTable hasilTable;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel judul;
     private javax.swing.JLabel kepemimpinan;
-    private javax.swing.JToggleButton tombolCetak;
+    private javax.swing.JTextField namaInput;
+    private javax.swing.JLabel namaLabel;
+    private javax.swing.JButton tombolCetak;
+    private javax.swing.JButton tombolKeluar;
+    private javax.swing.JButton tombolUbah;
     // End of variables declaration//GEN-END:variables
 }
