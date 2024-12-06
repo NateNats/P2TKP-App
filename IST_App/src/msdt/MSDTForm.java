@@ -4,6 +4,7 @@
  */
 package msdt;
 
+import common.MainFrame;
 import ist_app.Main;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -31,15 +32,15 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author nicol
  */
 public class MSDTForm extends javax.swing.JPanel {
-
+    private MainFrame mainFrame;
     /**
      * Creates new form mapping_msdt
      */
     MSDTScoreInterpreter score;
 
-    public MSDTForm() {
+    public MSDTForm(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         initComponents();
-
         score = new MSDTScoreInterpreter();
     }
 
@@ -117,7 +118,7 @@ public class MSDTForm extends javax.swing.JPanel {
 
         hasilPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Hasil"));
 
-        hasilTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        hasilTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         hasilTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -149,7 +150,7 @@ public class MSDTForm extends javax.swing.JPanel {
             hasilPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hasilPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(hasilScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(hasilScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,7 +229,7 @@ public class MSDTForm extends javax.swing.JPanel {
                 .addComponent(aksiPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(hasilPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -267,7 +268,8 @@ public class MSDTForm extends javax.swing.JPanel {
     }//GEN-LAST:event_tombolUbahActionPerformed
 
     private void tombolKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKeluarActionPerformed
-        // TODO add your handling code here:
+        mainFrame.showCard("MainMenuPanel");
+        mainFrame.setTitle("KATEGORISASI MAPPING");
     }//GEN-LAST:event_tombolKeluarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
