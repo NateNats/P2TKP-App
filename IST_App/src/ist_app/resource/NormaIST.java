@@ -22,10 +22,52 @@ import javax.swing.table.DefaultTableModel;
 
 public class NormaIST {
 
-    private static Map<String, NavigableMap<Integer, Integer>> dataMap = new TreeMap<>();
+    private static final String DATA_FILE_PATH = "./src/storage/norma_IST.dat";
+    private static Map<String, NavigableMap<Integer, Integer>> interpretations = new TreeMap<>();
+
+    static {
+        if (!loadInterpretationsFromFile()) {
+            initializeDataMap();
+            saveInterpretationsToFile();
+        }
+    }
+
+    private static void saveInterpretationsToFile() {
+        File file = new File(DATA_FILE_PATH);
+        File parentDir = file.getParentFile();
+
+        if (!parentDir.exists()) {
+            parentDir.mkdir();
+        }
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(interpretations);
+        } catch (Exception e) {
+            System.err.println("Could not save interpretations to file.");
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static boolean loadInterpretationsFromFile() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH))) {
+            interpretations = (Map<String, NavigableMap<Integer, Integer>>) ois.readObject();
+            return true;
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Could not load interpretations from file, using defaults.");
+            return false;
+        }
+    }
+
+    public static Integer getInterpretation(String key, int rw) {
+        NavigableMap<Integer, Integer> val = interpretations.get(key);
+        if (interpretations == null) {
+            return null;
+        }
+        return val.get(rw);
+    }
 
     private static void initializeDataMap() {
-        dataMap.put("AN12", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN12", new TreeMap<Integer, Integer>() {
             {
                 put(20, 135);
                 put(19, 135);
@@ -51,7 +93,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("AN13", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN13", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -76,7 +118,7 @@ public class NormaIST {
                 put(0, 77);
             }
         });
-        dataMap.put("AN14", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN14", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -101,7 +143,7 @@ public class NormaIST {
                 put(0, 77);
             }
         });
-        dataMap.put("AN15", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN15", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -126,7 +168,7 @@ public class NormaIST {
                 put(0, 79);
             }
         });
-        dataMap.put("AN16", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN16", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 129);
@@ -151,7 +193,7 @@ public class NormaIST {
                 put(0, 75);
             }
         });
-        dataMap.put("AN17", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN17", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 125);
@@ -176,7 +218,7 @@ public class NormaIST {
                 put(0, 76);
             }
         });
-        dataMap.put("AN18", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN18", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 124);
@@ -201,7 +243,7 @@ public class NormaIST {
                 put(0, 73);
             }
         });
-        dataMap.put("AN19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN19-20", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 123);
@@ -226,7 +268,7 @@ public class NormaIST {
                 put(0, 74);
             }
         });
-        dataMap.put("AN21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN21-25", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 123);
@@ -252,7 +294,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("AN26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN26-30", new TreeMap<Integer, Integer>() {
             {
                 put(20, 125);
                 put(19, 123);
@@ -278,7 +320,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("AN31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN31-35", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 123);
@@ -304,7 +346,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("AN36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN36-40", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 125);
@@ -330,7 +372,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("AN41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN41-45", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 125);
@@ -356,7 +398,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("AN46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN46-50", new TreeMap<Integer, Integer>() {
             {
                 put(20, 128);
                 put(19, 126);
@@ -382,7 +424,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("AN51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("AN51-60", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 130);
@@ -408,7 +450,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA12", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA12", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 134);
@@ -434,7 +476,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA13", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA13", new TreeMap<Integer, Integer>() {
             {
                 put(20, 135);
                 put(19, 135);
@@ -460,7 +502,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA14", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA14", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 131);
@@ -486,7 +528,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA15", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA15", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 129);
@@ -512,7 +554,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA16", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA16", new TreeMap<Integer, Integer>() {
             {
                 put(20, 130);
                 put(19, 127);
@@ -538,7 +580,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA17", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA17", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 124);
@@ -564,7 +606,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA18", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA18", new TreeMap<Integer, Integer>() {
             {
                 put(20, 130);
                 put(19, 127);
@@ -590,7 +632,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA19-20", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 124);
@@ -616,7 +658,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA21-25", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 124);
@@ -642,7 +684,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA26-30", new TreeMap<Integer, Integer>() {
             {
                 put(20, 128);
                 put(19, 125);
@@ -668,7 +710,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA31-35", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 126);
@@ -694,7 +736,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA36-40", new TreeMap<Integer, Integer>() {
             {
                 put(20, 128);
                 put(19, 126);
@@ -720,7 +762,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA41-45", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 127);
@@ -746,7 +788,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA46-50", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 131);
@@ -772,7 +814,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("FA51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("FA51-60", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 132);
@@ -798,7 +840,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME12", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME12", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -824,7 +866,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME13", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME13", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -850,7 +892,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME14", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME14", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 129);
@@ -876,7 +918,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME15", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME15", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 126);
@@ -902,7 +944,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME16", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME16", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 124);
@@ -928,7 +970,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME17", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME17", new TreeMap<Integer, Integer>() {
             {
                 put(20, 123);
                 put(19, 121);
@@ -954,7 +996,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME18", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME18", new TreeMap<Integer, Integer>() {
             {
                 put(20, 121);
                 put(19, 118);
@@ -980,7 +1022,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME19-20", new TreeMap<Integer, Integer>() {
             {
                 put(20, 119);
                 put(19, 117);
@@ -1006,7 +1048,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME21-25", new TreeMap<Integer, Integer>() {
             {
                 put(20, 122);
                 put(19, 119);
@@ -1032,7 +1074,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME26-30", new TreeMap<Integer, Integer>() {
             {
                 put(20, 123);
                 put(19, 120);
@@ -1058,7 +1100,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME31-35", new TreeMap<Integer, Integer>() {
             {
                 put(20, 124);
                 put(19, 122);
@@ -1084,7 +1126,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME36-40", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 124);
@@ -1110,7 +1152,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME41-45", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 124);
@@ -1136,7 +1178,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME46-50", new TreeMap<Integer, Integer>() {
             {
                 put(20, 128);
                 put(19, 126);
@@ -1162,7 +1204,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("ME51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("ME51-60", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 129);
@@ -1188,7 +1230,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA12", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA12", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -1214,7 +1256,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA13", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA13", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 134);
@@ -1240,7 +1282,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA14", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA14", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 134);
@@ -1266,7 +1308,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA15", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA15", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -1292,7 +1334,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA16", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA16", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 131);
@@ -1318,7 +1360,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA17", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA17", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 129);
@@ -1344,7 +1386,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA18", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA18", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 128);
@@ -1370,7 +1412,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA19-20", new TreeMap<Integer, Integer>() {
             {
                 put(20, 130);
                 put(19, 127);
@@ -1396,7 +1438,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA21-25", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 128);
@@ -1422,7 +1464,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA26-30", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 128);
@@ -1448,7 +1490,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA31-35", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 126);
@@ -1474,7 +1516,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA36-40", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 128);
@@ -1500,7 +1542,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA41-45", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 130);
@@ -1526,7 +1568,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA46-50", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 131);
@@ -1552,7 +1594,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("RA51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("RA51-60", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 132);
@@ -1578,7 +1620,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE12", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE12", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 134);
@@ -1604,7 +1646,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE13", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE13", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 134);
@@ -1630,7 +1672,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE14", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE14", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 134);
@@ -1656,7 +1698,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE15", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE15", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -1682,7 +1724,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE16", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE16", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -1708,7 +1750,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE17", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE17", new TreeMap<Integer, Integer>() {
             {
                 put(20, 130);
                 put(19, 127);
@@ -1734,7 +1776,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE18", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE18", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 124);
@@ -1760,7 +1802,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE19-20", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 123);
@@ -1786,7 +1828,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE21-25", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 124);
@@ -1812,7 +1854,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE26-30", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 124);
@@ -1838,7 +1880,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE31-35", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 124);
@@ -1864,7 +1906,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE36-40", new TreeMap<Integer, Integer>() {
             {
                 put(20, 123);
                 put(19, 125);
@@ -1890,7 +1932,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE41-45", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 126);
@@ -1916,7 +1958,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE46-50", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 129);
@@ -1942,7 +1984,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("SE51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("SE51-60", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 131);
@@ -1968,7 +2010,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA12", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA12", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -1994,7 +2036,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA13", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA13", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -2020,7 +2062,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA14", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA14", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 131);
@@ -2046,7 +2088,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA15", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA15", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 131);
@@ -2072,7 +2114,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA16", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA16", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -2098,7 +2140,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA17", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA17", new TreeMap<Integer, Integer>() {
             {
                 put(20, 137);
                 put(19, 133);
@@ -2124,7 +2166,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA18", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA18", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 130);
@@ -2150,7 +2192,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA19-20", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 128);
@@ -2176,7 +2218,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA21-25", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 131);
@@ -2202,7 +2244,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA26-30", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 129);
@@ -2228,7 +2270,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA31-35", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 131);
@@ -2254,7 +2296,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA36-40", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 130);
@@ -2280,7 +2322,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA41-45", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 129);
@@ -2306,7 +2348,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA46-50", new TreeMap<Integer, Integer>() {
             {
                 put(20, 135);
                 put(19, 135);
@@ -2332,7 +2374,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WA51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("WA51-60", new TreeMap<Integer, Integer>() {
             {
                 put(20, 135);
                 put(19, 135);
@@ -2358,7 +2400,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU12", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU12", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -2384,7 +2426,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU13", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU13", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 134);
@@ -2410,7 +2452,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU14", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU14", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -2436,7 +2478,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU15", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU15", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -2462,7 +2504,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU16", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU16", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 131);
@@ -2488,7 +2530,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU17", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU17", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 129);
@@ -2514,7 +2556,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU18", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU18", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 126);
@@ -2540,7 +2582,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU19-20", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 126);
@@ -2566,7 +2608,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU21-25", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 126);
@@ -2592,7 +2634,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU26-30", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 128);
@@ -2618,7 +2660,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU31-35", new TreeMap<Integer, Integer>() {
             {
                 put(20, 130);
                 put(19, 127);
@@ -2644,7 +2686,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU36-40", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 129);
@@ -2670,7 +2712,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU41-45", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 129);
@@ -2696,7 +2738,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU46-50", new TreeMap<Integer, Integer>() {
             {
                 put(20, 134);
                 put(19, 131);
@@ -2722,7 +2764,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("WU51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("WU51-60", new TreeMap<Integer, Integer>() {
             {
                 put(20, 136);
                 put(19, 133);
@@ -2748,7 +2790,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("GE12", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE12", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -2773,7 +2815,7 @@ public class NormaIST {
                 put(0, 77);
             }
         });
-        dataMap.put("GE13", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE13", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -2798,7 +2840,7 @@ public class NormaIST {
                 put(0, 75);
             }
         });
-        dataMap.put("GE14", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE14", new TreeMap<Integer, Integer>() {
             {
                 put(20, 132);
                 put(19, 132);
@@ -2823,7 +2865,7 @@ public class NormaIST {
                 put(0, 74);
             }
         });
-        dataMap.put("GE15", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE15", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 133);
@@ -2848,7 +2890,7 @@ public class NormaIST {
                 put(0, 71);
             }
         });
-        dataMap.put("GE16", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE16", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 131);
@@ -2873,7 +2915,7 @@ public class NormaIST {
                 put(0, 72);
             }
         });
-        dataMap.put("GE17", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE17", new TreeMap<Integer, Integer>() {
             {
                 put(20, 127);
                 put(19, 124);
@@ -2898,7 +2940,7 @@ public class NormaIST {
                 put(0, 74);
             }
         });
-        dataMap.put("GE18", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE18", new TreeMap<Integer, Integer>() {
             {
                 put(20, 125);
                 put(19, 122);
@@ -2923,7 +2965,7 @@ public class NormaIST {
                 put(0, 75);
             }
         });
-        dataMap.put("GE19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE19-20", new TreeMap<Integer, Integer>() {
             {
                 put(20, 124);
                 put(19, 122);
@@ -2948,7 +2990,7 @@ public class NormaIST {
                 put(0, 73);
             }
         });
-        dataMap.put("GE21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE21-25", new TreeMap<Integer, Integer>() {
             {
                 put(20, 125);
                 put(19, 122);
@@ -2973,7 +3015,7 @@ public class NormaIST {
                 put(0, 69);
             }
         });
-        dataMap.put("GE26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE26-30", new TreeMap<Integer, Integer>() {
             {
                 put(20, 124);
                 put(19, 121);
@@ -2998,7 +3040,7 @@ public class NormaIST {
                 put(0, 69);
             }
         });
-        dataMap.put("GE31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE31-35", new TreeMap<Integer, Integer>() {
             {
                 put(20, 126);
                 put(19, 123);
@@ -3024,7 +3066,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("GE36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE36-40", new TreeMap<Integer, Integer>() {
             {
                 put(20, 128);
                 put(19, 125);
@@ -3049,7 +3091,7 @@ public class NormaIST {
                 put(0, 69);
             }
         });
-        dataMap.put("GE41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE41-45", new TreeMap<Integer, Integer>() {
             {
                 put(20, 129);
                 put(19, 126);
@@ -3074,7 +3116,7 @@ public class NormaIST {
                 put(0, 71);
             }
         });
-        dataMap.put("GE46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE46-50", new TreeMap<Integer, Integer>() {
             {
                 put(20, 131);
                 put(19, 128);
@@ -3099,7 +3141,7 @@ public class NormaIST {
                 put(0, 72);
             }
         });
-        dataMap.put("GE51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("GE51-60", new TreeMap<Integer, Integer>() {
             {
                 put(20, 133);
                 put(19, 130);
@@ -3125,7 +3167,7 @@ public class NormaIST {
             }
         });
 
-        dataMap.put("GESAMT12", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT12", new TreeMap<Integer, Integer>() {
             {
                 put(171, 139);
                 put(161, 139);
@@ -3147,7 +3189,7 @@ public class NormaIST {
                 put(1, 68);
             }
         });
-        dataMap.put("GESAMT13", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT13", new TreeMap<Integer, Integer>() {
             {
                 put(171, 133);
                 put(161, 133);
@@ -3169,7 +3211,7 @@ public class NormaIST {
                 put(1, 67);
             }
         });
-        dataMap.put("GESAMT14", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT14", new TreeMap<Integer, Integer>() {
             {
                 put(171, 134);
                 put(161, 134);
@@ -3191,7 +3233,7 @@ public class NormaIST {
                 put(1, 66);
             }
         });
-        dataMap.put("GESAMT15", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT15", new TreeMap<Integer, Integer>() {
             {
                 put(171, 134);
                 put(161, 134);
@@ -3213,7 +3255,7 @@ public class NormaIST {
                 put(1, 64);
             }
         });
-        dataMap.put("GESAMT16", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT16", new TreeMap<Integer, Integer>() {
             {
                 put(171, 134);
                 put(161, 134);
@@ -3235,7 +3277,7 @@ public class NormaIST {
                 put(1, 63);
             }
         });
-        dataMap.put("GESAMT17", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT17", new TreeMap<Integer, Integer>() {
             {
                 put(171, 138);
                 put(161, 133);
@@ -3257,7 +3299,7 @@ public class NormaIST {
                 put(1, 63);
             }
         });
-        dataMap.put("GESAMT18", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT18", new TreeMap<Integer, Integer>() {
             {
                 put(171, 135);
                 put(161, 131);
@@ -3279,7 +3321,7 @@ public class NormaIST {
                 put(1, 64);
             }
         });
-        dataMap.put("GESAMT19-20", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT19-20", new TreeMap<Integer, Integer>() {
             {
                 put(171, 130);
                 put(161, 127);
@@ -3301,7 +3343,7 @@ public class NormaIST {
                 put(1, 67);
             }
         });
-        dataMap.put("GESAMT21-25", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT21-25", new TreeMap<Integer, Integer>() {
             {
                 put(171, 132);
                 put(161, 128);
@@ -3323,7 +3365,7 @@ public class NormaIST {
                 put(1, 67);
             }
         });
-        dataMap.put("GESAMT26-30", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT26-30", new TreeMap<Integer, Integer>() {
             {
                 put(171, 133);
                 put(161, 129);
@@ -3345,7 +3387,7 @@ public class NormaIST {
                 put(1, 67);
             }
         });
-        dataMap.put("GESAMT31-35", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT31-35", new TreeMap<Integer, Integer>() {
             {
                 put(171, 133);
                 put(161, 129);
@@ -3367,7 +3409,7 @@ public class NormaIST {
                 put(1, 70);
             }
         });
-        dataMap.put("GESAMT36-40", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT36-40", new TreeMap<Integer, Integer>() {
             {
                 put(171, 132);
                 put(161, 128);
@@ -3389,7 +3431,7 @@ public class NormaIST {
                 put(1, 73);
             }
         });
-        dataMap.put("GESAMT41-45", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT41-45", new TreeMap<Integer, Integer>() {
             {
                 put(171, 133);
                 put(161, 130);
@@ -3411,7 +3453,7 @@ public class NormaIST {
                 put(1, 75);
             }
         });
-        dataMap.put("GESAMT46-50", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT46-50", new TreeMap<Integer, Integer>() {
             {
                 put(171, 136);
                 put(161, 133);
@@ -3433,7 +3475,7 @@ public class NormaIST {
                 put(1, 76);
             }
         });
-        dataMap.put("GESAMT51-60", new TreeMap<Integer, Integer>() {
+        interpretations.put("GESAMT51-60", new TreeMap<Integer, Integer>() {
             {
                 put(171, 136);
                 put(161, 134);
@@ -3455,6 +3497,9 @@ public class NormaIST {
                 put(1, 80);
             }
         });
-
+    }
+    
+    public static void main(String[] args) {
+        NormaIST norm = new NormaIST();
     }
 }
