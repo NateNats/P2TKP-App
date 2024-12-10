@@ -21,7 +21,7 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="masukanPanel" max="32767" attributes="0"/>
                   <Component id="judulPanel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="aksiPanel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="aksiPanel" alignment="0" pref="903" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -97,37 +97,46 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="kemampuanKerjaLabel" max="32767" attributes="0"/>
-                              <Component id="ketekunanLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="motivasiBerprestasiLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="manajemenEmosiLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="konsentrasiLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="kemampuanAdaptasiLabel" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="tingkatPercayaDiriLabel" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="manajemenEmosiLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="konsentrasiLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ketekunanLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="kemampuanAdaptasiLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="kemampuanKerjaLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="namaLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="tingkatPercayaDiriLabel" alignment="0" pref="255" max="32767" attributes="0"/>
+                      <Component id="motivasiBerprestasiLabel" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="kemampuanKerjaInput" pref="180" max="32767" attributes="0"/>
-                      <Component id="kemampuanAdaptasiInput" pref="0" max="32767" attributes="0"/>
-                      <Component id="ketekunanInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="konsentrasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="manajemenEmosiInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="motivasiBerprestasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="tingkatPercayaDiriInput" pref="0" max="32767" attributes="0"/>
+                      <Component id="namaInput" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="manajemenEmosiInput" alignment="0" pref="175" max="32767" attributes="0"/>
+                                  <Component id="konsentrasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="ketekunanInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="kemampuanAdaptasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="kemampuanKerjaInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="tingkatPercayaDiriInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="motivasiBerprestasiInput" min="-2" pref="175" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="namaLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="namaInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tingkatPercayaDiriLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
@@ -138,7 +147,7 @@
                       <Component id="kemampuanKerjaLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="kemampuanKerjaInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="kemampuanAdaptasiLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="kemampuanAdaptasiInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -163,18 +172,33 @@
                       <Component id="motivasiBerprestasiLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="motivasiBerprestasiInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="221" max="32767" attributes="0"/>
+                  <EmptySpace pref="180" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
+        <Component class="javax.swing.JLabel" name="namaLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Nama"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="namaInput">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="tingkatPercayaDiriLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tingkat percaya diri &amp; Inisiatif"/>
+            <Property name="text" type="java.lang.String" value="Ha vs rata2 ( Ha = Hasil Awal)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="tingkatPercayaDiriInput">
@@ -202,7 +226,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Kemampuan Kerja &amp; Motivasi Kerja"/>
+            <Property name="text" type="java.lang.String" value="Jumlah"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="kemampuanKerjaInput">
@@ -230,7 +254,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Kemampuan Adaptasi"/>
+            <Property name="text" type="java.lang.String" value="Posisi Kolom"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="kemampuanAdaptasiInput">
@@ -258,7 +282,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ketekunan"/>
+            <Property name="text" type="java.lang.String" value="Tingkat Kesalahan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="ketekunanInput">
@@ -286,7 +310,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Konsentrasi"/>
+            <Property name="text" type="java.lang.String" value="Tingkat Pembenaran"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="konsentrasiInput">
@@ -314,7 +338,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Manajemen Emosi"/>
+            <Property name="text" type="java.lang.String" value="Tingkat Penyimpangan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="manajemenEmosiInput">
@@ -342,7 +366,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Motivasi Berprestasi &amp; Kemampuan Mengembangkan Diri"/>
+            <Property name="text" type="java.lang.String" value="Tingkat Tinggi"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="motivasiBerprestasiInput">
@@ -435,18 +459,18 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="keluarButton">
+        <Component class="javax.swing.JButton" name="kembaliButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Keluar"/>
+            <Property name="text" type="java.lang.String" value="Kembali"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 40]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="keluarButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kembaliButtonActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
