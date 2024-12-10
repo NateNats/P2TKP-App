@@ -117,7 +117,7 @@
 					<font size="9"/>
 					<paragraph leftIndent="6"/>
 				</textElement>
-				<text><![CDATA[Tingkat percaya diri & Inisiatif]]></text>
+				<text><![CDATA[Tingkat Percaya Diri & Inisiatif]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="150" y="30" width="402" height="60" uuid="260cc57d-cde9-4a2e-9db4-d796d014a08d">
@@ -259,7 +259,7 @@
 					<font size="9"/>
 					<paragraph leftIndent="6"/>
 				</textElement>
-				<text><![CDATA[Manajemen emosi]]></text>
+				<text><![CDATA[Manajemen Emosi]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="2" y="260" width="148" height="50" backcolor="#FFFFFF" uuid="23f796f5-0ab3-404b-b260-b3b92c5d613e">
@@ -273,7 +273,7 @@
 					<font size="9"/>
 					<paragraph leftIndent="6"/>
 				</textElement>
-				<text><![CDATA[Motivasi berprestasi & kemauan mengembangkan diri]]></text>
+				<text><![CDATA[Motivasi Berprestasi & Kemauan Mengembangkan Diri]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="150" y="260" width="402" height="50" uuid="2813f67b-ca1c-4eda-8523-73addb22c59e">
