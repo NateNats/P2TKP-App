@@ -98,22 +98,19 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="kemampuanKerjaLabel" max="32767" attributes="0"/>
-                              <Component id="ketekunanLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="motivasiBerprestasiLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="manajemenEmosiLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="konsentrasiLabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="kemampuanAdaptasiLabel" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="ketekunanLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="motivasiBerprestasiLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="manajemenEmosiLabel" alignment="0" pref="394" max="32767" attributes="0"/>
+                          <Component id="konsentrasiLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="kemampuanAdaptasiLabel" max="32767" attributes="0"/>
+                          <Component id="kemampuanKerjaLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="tingkatPercayaDiriLabel" max="32767" attributes="0"/>
+                      <Component id="tingkatPercayaDiriLabel" pref="394" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="kemampuanKerjaInput" pref="180" max="32767" attributes="0"/>
+                      <Component id="kemampuanKerjaInput" pref="267" max="32767" attributes="0"/>
                       <Component id="kemampuanAdaptasiInput" pref="0" max="32767" attributes="0"/>
                       <Component id="ketekunanInput" alignment="0" pref="0" max="32767" attributes="0"/>
                       <Component id="konsentrasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
@@ -174,7 +171,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tingkat percaya diri &amp; Inisiatif"/>
+            <Property name="text" type="java.lang.String" value="Ha vs rata2 ( Ha = Hasil Awal)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="tingkatPercayaDiriInput">
@@ -202,7 +199,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Kemampuan Kerja &amp; Motivasi Kerja"/>
+            <Property name="text" type="java.lang.String" value="Jumlah"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="kemampuanKerjaInput">
@@ -230,7 +227,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Kemampuan Adaptasi"/>
+            <Property name="text" type="java.lang.String" value="Posisi Kolom"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="kemampuanAdaptasiInput">
@@ -258,7 +255,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ketekunan"/>
+            <Property name="text" type="java.lang.String" value="Tingkat Kesalahan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="ketekunanInput">
@@ -286,7 +283,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Konsentrasi"/>
+            <Property name="text" type="java.lang.String" value="Tingkat Pembenaran"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="konsentrasiInput">
@@ -314,7 +311,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Manajemen Emosi"/>
+            <Property name="text" type="java.lang.String" value="Tingkat Penyimpangan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="manajemenEmosiInput">
@@ -342,7 +339,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Motivasi Berprestasi &amp; Kemampuan Mengembangkan Diri"/>
+            <Property name="text" type="java.lang.String" value="Tingkat Tinggi"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="motivasiBerprestasiInput">
