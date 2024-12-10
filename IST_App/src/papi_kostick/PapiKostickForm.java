@@ -5,6 +5,7 @@
 package papi_kostick;
 
 import common.MainFrame;
+import common.PasswordDialog;
 import papi_kostick.resource.PapiKostickInputFocusAdapter;
 import papi_kostick.resource.PapiKostickInputKeyAdapter;
 import papi_kostick.resource.PapiKostickResource;
@@ -977,7 +978,8 @@ public class PapiKostickForm extends javax.swing.JPanel {
     }// GEN-LAST:event_resetButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
+        PasswordDialog passwordDialog = new PasswordDialog(new PapiKostickEditForm(mainFrame, getFocusTraversalKeysEnabled()));
+        passwordDialog.showDialog();
     }// GEN-LAST:event_editButtonActionPerformed
 
     private void cetakButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cetakButtonActionPerformed
