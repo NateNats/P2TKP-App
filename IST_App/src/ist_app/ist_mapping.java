@@ -5,6 +5,7 @@
 package ist_app;
 
 import common.MainFrame;
+import ist_app.resource.NormaIST;
 import ist_app.resource.KomponenPenilaian;
 import ist_app.resource.KomponenPenilaianTableModel;
 import ist_app.resource.NilaiRubrik;
@@ -22,6 +23,7 @@ import ist_app.resource.IST_ScoreInterpreter.Result;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,8 +40,10 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author nicol
  */
 public class ist_mapping extends javax.swing.JPanel {
+
     private MainFrame mainFrame;
-    
+    private NormaIST norma;
+
     private List<KomponenPenilaian> nilai = new ArrayList<>();
     IST_ScoreInterpreter tarKecerdasan, berpikirKompreheren, kemAnalisis, dayaIngat, kreativitas, menilai, mengambilKeputusan, berbahasa, angka;
     LinkedList<String> fleksibel, jenisKecerdasan, coraBerpikir;
@@ -55,12 +59,14 @@ public class ist_mapping extends javax.swing.JPanel {
     private String nil = "";
     private String Kategori = "";
     private String deskripsi = "";
+    private int[] RWScore;
 
     /**
      * Creates new form ist_mapping
      */
     public ist_mapping(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
+        norma = new NormaIST();
         initComponents();
         tombolBatal.setEnabled(false);
         tombolHasil.setEnabled(false);
@@ -71,6 +77,8 @@ public class ist_mapping extends javax.swing.JPanel {
         initializeIntepretations();
         inisiasill();
         text2ll();
+
+        RWScore = new int[9];
     }
 
     private void setDate() {
@@ -220,77 +228,72 @@ public class ist_mapping extends javax.swing.JPanel {
         WULabel.setText("WU");
 
         FAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        FAInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                FAInputKeyReleased(evt);
+        FAInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FAInputFocusLost(evt);
             }
         });
 
         WUInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        WUInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                WUInputKeyReleased(evt);
+        WUInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                WUInputFocusLost(evt);
             }
         });
 
         RAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        RAInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                RAInputKeyReleased(evt);
+        RAInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RAInputFocusLost(evt);
             }
         });
 
         ZRInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ZRInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ZRInputKeyReleased(evt);
+        ZRInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ZRInputFocusLost(evt);
             }
         });
 
         GEInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        GEInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GEInputActionPerformed(evt);
-            }
-        });
-        GEInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                GEInputKeyReleased(evt);
+        GEInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                GEInputFocusLost(evt);
             }
         });
 
         MEInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        MEInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                MEInputKeyReleased(evt);
+        MEInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                MEInputFocusLost(evt);
             }
         });
 
         WAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        WAInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                WAInputKeyReleased(evt);
+        WAInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                WAInputFocusLost(evt);
             }
         });
 
         ANInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ANInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ANInputKeyReleased(evt);
+        ANInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ANInputFocusLost(evt);
             }
         });
 
         IQInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        IQInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                IQInputKeyReleased(evt);
+        IQInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                IQInputFocusLost(evt);
             }
         });
 
         SEInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        SEInput.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                SEInputKeyReleased(evt);
+        SEInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                SEInputFocusLost(evt);
             }
         });
 
@@ -563,186 +566,6 @@ public class ist_mapping extends javax.swing.JPanel {
 
     }//GEN-LAST:event_namaInputKeyReleased
 
-    private void FAInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FAInputKeyReleased
-        try {
-            if (!FAInput.getText().equals("")) {
-                int data = Integer.parseInt(FAInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        } catch (NumberFormatException eror) {
-            FAInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_FAInputKeyReleased
-
-    private void WUInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WUInputKeyReleased
-        try {
-            if (!WUInput.getText().equals("")) {
-                int data = Integer.parseInt(WUInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        } catch (NumberFormatException eror) {
-            WUInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_WUInputKeyReleased
-
-    private void RAInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RAInputKeyReleased
-        try {
-            if (!RAInput.getText().equals("")) {
-                int data = Integer.parseInt(RAInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    RAInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            RAInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_RAInputKeyReleased
-
-    private void ZRInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ZRInputKeyReleased
-        try {
-            if (!ZRInput.getText().equals("")) {
-                int data = Integer.parseInt(ZRInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    ZRInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            ZRInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_ZRInputKeyReleased
-
-    private void GEInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GEInputKeyReleased
-        try {
-            if (!GEInput.getText().equals("")) {
-                int data = Integer.parseInt(GEInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    GEInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            GEInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_GEInputKeyReleased
-
-    private void MEInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MEInputKeyReleased
-        try {
-            if (!MEInput.getText().equals("")) {
-                int data = Integer.parseInt(MEInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    MEInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            MEInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_MEInputKeyReleased
-
-    private void WAInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WAInputKeyReleased
-        try {
-            if (!WAInput.getText().equals("")) {
-                int data = Integer.parseInt(WAInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    WAInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            WAInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_WAInputKeyReleased
-
-    private void ANInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANInputKeyReleased
-        try {
-            if (!ANInput.getText().equals("")) {
-                int data = Integer.parseInt(ANInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    ANInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            ANInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_ANInputKeyReleased
-
-    private void IQInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IQInputKeyReleased
-        try {
-            if (!IQInput.getText().equals("")) {
-                int data = Integer.parseInt(IQInput.getText());
-
-                // Menambahkan logika untuk cek nilai kurang dari 0 atau lebih dari 20
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    IQInput.setText("");
-                }
-            }
-        } catch (NumberFormatException e) {
-            IQInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_IQInputKeyReleased
-
-    private void SEInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SEInputKeyReleased
-        try {
-            if (!SEInput.getText().equals("")) {
-                int data = Integer.parseInt(SEInput.getText());
-
-                if (data < 0 || data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    SEInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            SEInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        tombolBatalEnableFalse();
-        tombolHasilCetakEnableFalse();
-    }//GEN-LAST:event_SEInputKeyReleased
-
     private void tombolBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolBatalActionPerformed
         setDate();
         clearAllComp();
@@ -753,44 +576,36 @@ public class ist_mapping extends javax.swing.JPanel {
     }//GEN-LAST:event_tombolBatalActionPerformed
 
     private void tombolHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHasilActionPerformed
-        //menampilkan hasil dari input ke dalam tabel
-        /**
-         * IST Mapping
-    aspek yang dipake pada norma:
-    - AN
-    - FA
-    - GE
-    - ME
-    - RA
-    - SE
-    - WA
-    - WU
-    - ZR
-    - GESAMT (untuk dapetin IQ)
+        try {
 
-    keknya perlu bikin input proses masing-masing nilai diatas buat hitung skornya
-
-    note:
-    - skor jenis kecerdasan dan berpikir fleksibel sama
-    - bagaimana cara dapetin skor sw dari tabel yg terbaru
-    - konversi rw ke sw itu pake umur juga, tapi ga tau pengaruhnya besar atau enggak
-    - tambahan input tanggal
-         */
-        
-        int[] score = {
-            Integer.parseInt(IQInput.getText()), 
-            Integer.parseInt(SEInput.getText()), 
-            Integer.parseInt(WAInput.getText()), 
-            Integer.parseInt(ANInput.getText()), 
-            Integer.parseInt(GEInput.getText()), 
-            Integer.parseInt(MEInput.getText()), 
-            Integer.parseInt(RAInput.getText()), 
-            Integer.parseInt(ZRInput.getText()), 
-            Integer.parseInt(FAInput.getText()), 
-            Integer.parseInt(WUInput.getText())};
-        
-        ScoreCount(score);
-        
+            //menampilkan hasil dari input ke dalam tabel
+            /**
+             * IST Mapping aspek yang dipake pada norma: - AN - FA - GE - ME -
+             * RA - SE - WA - WU - ZR - GESAMT (untuk dapetin IQ)
+             *
+             * keknya perlu bikin input proses masing-masing nilai diatas buat
+             * hitung skornya
+             *
+             * note: - skor jenis kecerdasan dan berpikir fleksibel sama -
+             * bagaimana cara dapetin skor sw dari tabel yg terbaru - konversi
+             * rw ke sw itu pake umur juga, tapi ga tau pengaruhnya besar atau
+             * enggak - tambahan input tanggal
+             */
+            int age = countAge();
+            int rwSE = this.norma.getInterpretation("SE", Integer.parseInt(SEInput.getText()), age);
+            int rwWA = this.norma.getInterpretation("WA", Integer.parseInt(WAInput.getText()), age);
+            int rwAN = this.norma.getInterpretation("AN", Integer.parseInt(ANInput.getText()), age);
+            int rwME = this.norma.getInterpretation("ME", Integer.parseInt(MEInput.getText()), age);
+            int rwRA = this.norma.getInterpretation("RA", Integer.parseInt(RAInput.getText()), age);
+            int rwZR = this.norma.getInterpretation("ZR", Integer.parseInt(ZRInput.getText()), age);
+            int rwFA = this.norma.getInterpretation("FA", Integer.parseInt(FAInput.getText()), age);
+            int rwWU = this.norma.getInterpretation("WU", Integer.parseInt(WUInput.getText()), age);
+            int rwGE = this.norma.getInterpretation("GE", Integer.parseInt(GEInput.getText()), age);
+            Integer swGE = this.norma.getStdScore(rwGE);
+            int rwGESAMT = this.norma.getInterpretGESAMT("GESAMT", Integer.parseInt(IQInput.getText()), age);
+            Integer swGESAMT = this.norma.getIqScore(rwGESAMT);
+            
+            // kurang GE dan IQ
 //        evalTarKecerdasan();
 //        evalAnalisa();
 //        evalKomperehensif();
@@ -803,21 +618,16 @@ public class ist_mapping extends javax.swing.JPanel {
 //        evalBerpikir();
 //        evalfleksibel();
 //        evalJenisKecerdasan();
+            //refreshTable();
+            tombolCetak.setEnabled(true);
+            tombolUbah.setEnabled(true);
 
+            JOptionPane.showMessageDialog(this, "Berhasil");
 
-        refreshTable();
-
-        tombolCetak.setEnabled(true);
-        tombolUbah.setEnabled(true);
-
-        JOptionPane.showMessageDialog(this, "Berhasil");
-    }//GEN-LAST:event_tombolHasilActionPerformed
-
-    void ScoreCount(int[] score) {
-        for (int i = 0; i < 10; i++) {
-            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ada kesalahan: " + e.getMessage());
         }
-    }
+    }//GEN-LAST:event_tombolHasilActionPerformed
 
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
         //Mencetak hasil input ke dalam jasper file
@@ -860,11 +670,8 @@ public class ist_mapping extends javax.swing.JPanel {
         parameter.put("rwzr", ZRInput.getText());
         parameter.put("rwfa", FAInput.getText());
         parameter.put("rwwu", WUInput.getText());
-        
 
         //tabel sw
-        
-        
         //kuawu error
         String[] key = {"kuase", "kuawa", "kuaan", "kuage", "kuame", "kuara", "kuazr", "kuafa", "kuawu"};
 
@@ -969,9 +776,175 @@ public class ist_mapping extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tgllahirinputKeyReleased
 
-    private void GEInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GEInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GEInputActionPerformed
+    private void IQInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IQInputFocusLost
+        try {
+            if (!IQInput.getText().equals("")) {
+                int data = Integer.parseInt(IQInput.getText());
+
+                // Menambahkan logika untuk cek nilai kurang dari 0 atau lebih dari 20
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    IQInput.setText("");
+                }
+            }
+        } catch (NumberFormatException e) {
+            IQInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_IQInputFocusLost
+
+    private void SEInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SEInputFocusLost
+        try {
+            if (!SEInput.getText().equals("")) {
+                int data = Integer.parseInt(SEInput.getText());
+
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    SEInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            SEInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_SEInputFocusLost
+
+    private void WAInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WAInputFocusLost
+        try {
+            if (!WAInput.getText().equals("")) {
+                int data = Integer.parseInt(WAInput.getText());
+
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    WAInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            WAInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_WAInputFocusLost
+
+    private void ANInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ANInputFocusLost
+        try {
+            if (!ANInput.getText().equals("")) {
+                int data = Integer.parseInt(ANInput.getText());
+
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    ANInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            ANInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_ANInputFocusLost
+
+    private void GEInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_GEInputFocusLost
+        try {
+            if (!GEInput.getText().equals("")) {
+                int data = Integer.parseInt(GEInput.getText());
+
+                if (data < 12 || data > 31) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 31!", "Error", JOptionPane.ERROR_MESSAGE);
+                    GEInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            GEInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_GEInputFocusLost
+
+    private void MEInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MEInputFocusLost
+        try {
+            if (!MEInput.getText().equals("")) {
+                int data = Integer.parseInt(MEInput.getText());
+
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    MEInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            MEInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_MEInputFocusLost
+
+    private void RAInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RAInputFocusLost
+        try {
+            if (!RAInput.getText().equals("")) {
+                int data = Integer.parseInt(RAInput.getText());
+
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    RAInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            RAInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_RAInputFocusLost
+
+    private void ZRInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ZRInputFocusLost
+        try {
+            if (!ZRInput.getText().equals("")) {
+                int data = Integer.parseInt(ZRInput.getText());
+
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    ZRInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            ZRInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_ZRInputFocusLost
+
+    private void FAInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FAInputFocusLost
+        try {
+            if (!FAInput.getText().equals("")) {
+                int data = Integer.parseInt(FAInput.getText());
+
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (NumberFormatException eror) {
+            FAInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_FAInputFocusLost
+
+    private void WUInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WUInputFocusLost
+        try {
+            if (!WUInput.getText().equals("")) {
+                int data = Integer.parseInt(WUInput.getText());
+
+                if (data < 12 || data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 12 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (NumberFormatException eror) {
+            WUInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_WUInputFocusLost
 
     private void refreshTable() {
         try {
@@ -1000,24 +973,41 @@ public class ist_mapping extends javax.swing.JPanel {
         resetTable();
     }
 
-    private void tombolBatalEnableFalse() {
-        if (tanggalController.getCalendar().equals("") && namaInput.getText().equals("") && ANInput.getText().equals("") && FAInput.getText().equals("") && GEInput.getText().equals("")
-                && IQInput.getText().equals("") && MEInput.getText().equals("") && RAInput.getText().equals("") && SEInput.getText().equals("")
-                && WAInput.getText().equals("") && WUInput.getText().equals("") && ZRInput.getText().equals("")) {
-            tombolBatal.setEnabled(false);
-        } else {
-            tombolBatal.setEnabled(true);
-        }
+    private boolean semuaInputTerisi() {
+        return tgllahirinput.getCalendar() != null
+                && tanggalController.getCalendar() != null
+                && !namaInput.getText().isEmpty()
+                && !ANInput.getText().isEmpty()
+                && !FAInput.getText().isEmpty()
+                && !GEInput.getText().isEmpty()
+                && !IQInput.getText().isEmpty()
+                && !MEInput.getText().isEmpty()
+                && !RAInput.getText().isEmpty()
+                && !SEInput.getText().isEmpty()
+                && !WAInput.getText().isEmpty()
+                && !WUInput.getText().isEmpty()
+                && !ZRInput.getText().isEmpty();
     }
 
-    private void tombolHasilCetakEnableFalse() {
-        if (!tanggalController.getCalendar().equals("") && !namaInput.getText().equals("") && !ANInput.getText().equals("") && !FAInput.getText().equals("") && !GEInput.getText().equals("")
-                && !IQInput.getText().equals("") && !MEInput.getText().equals("") && !RAInput.getText().equals("") && !SEInput.getText().equals("")
-                && !WAInput.getText().equals("") && !WUInput.getText().equals("") && !ZRInput.getText().equals("")) {
-            tombolHasil.setEnabled(true);
-        } else {
-            tombolHasil.setEnabled(false);
-        }
+    private boolean semuaInputKosong() {
+        return tgllahirinput.getCalendar() == null
+                && tanggalController.getCalendar() == null
+                && namaInput.getText().isEmpty()
+                && ANInput.getText().isEmpty()
+                && FAInput.getText().isEmpty()
+                && GEInput.getText().isEmpty()
+                && IQInput.getText().isEmpty()
+                && MEInput.getText().isEmpty()
+                && RAInput.getText().isEmpty()
+                && SEInput.getText().isEmpty()
+                && WAInput.getText().isEmpty()
+                && WUInput.getText().isEmpty()
+                && ZRInput.getText().isEmpty();
+    }
+
+    private void perbaruiStatusTombol() {
+        tombolBatal.setEnabled(!semuaInputKosong());
+        tombolHasil.setEnabled(semuaInputTerisi());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ANInput;
@@ -1331,5 +1321,21 @@ public class ist_mapping extends javax.swing.JPanel {
         } catch (Exception e) {
             System.out.println("error");
         }
+    }
+
+    private int countAge() {
+        Calendar today = Calendar.getInstance();
+        today.setTime(tanggalController.getDate());
+        Calendar bdate = Calendar.getInstance();
+        bdate.setTime(tgllahirinput.getDate());
+
+        int age = today.get(Calendar.YEAR) - bdate.get(Calendar.YEAR);
+
+        if (today.get(Calendar.MONTH) < bdate.get(Calendar.MONTH)
+                || (today.get(Calendar.MONTH) == bdate.get(Calendar.MONTH) && today.get(Calendar.DAY_OF_MONTH) < bdate.get(Calendar.DAY_OF_MONTH))) {
+            age--;
+        }
+
+        return age;
     }
 }

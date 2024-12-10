@@ -3,20 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/pauli/resource/PauliScoreInterpreter.java</file>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/pauli/PauliForm.java</file>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/ist_mapping.java</file>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/papi_kostick/resource/ScoreInterpreter.java</file>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/common/MainFrame.java</file>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/EditForm.java</file>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/resource/NilaiRubrik.java</file>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/msdt/MSDTForm.java</file>
-            <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/resource/NormaIST.java</file>
             <file>file:/C:/backup/Tugas/Reva/IST_App/src/msdt/resource/MSDTScoreInterpreter.java</file>
             <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/resource/KomponenPenilaian.java</file>
             <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/resource/IST_ScoreInterpreter.java</file>
             <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/resource/KomponenPenilaianTableModel.java</file>
+            <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/ist_mapping.java</file>
+            <file>file:/C:/backup/Tugas/Reva/IST_App/src/papi_kostick/resource/ScoreInterpreter.java</file>
+            <file>file:/C:/backup/Tugas/Reva/IST_App/src/common/MainFrame.java</file>
             <file>file:/C:/backup/Tugas/Reva/IST_App/src/common/MainMenuPanel.java</file>
+            <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/EditForm.java</file>
+            <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/resource/NilaiRubrik.java</file>
+            <file>file:/C:/backup/Tugas/Reva/IST_App/src/msdt/MSDTForm.java</file>
+            <file>file:/C:/backup/Tugas/Reva/IST_App/src/ist_app/resource/NormaIST.java</file>
         </group>
     </open-files>
 </project-private>
