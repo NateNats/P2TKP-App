@@ -21,7 +21,7 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="masukanPanel" max="32767" attributes="0"/>
                   <Component id="judulPanel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="aksiPanel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="aksiPanel" alignment="0" pref="903" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -97,34 +97,46 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="ketekunanLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="motivasiBerprestasiLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="manajemenEmosiLabel" alignment="0" pref="394" max="32767" attributes="0"/>
-                          <Component id="konsentrasiLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="kemampuanAdaptasiLabel" max="32767" attributes="0"/>
-                          <Component id="kemampuanKerjaLabel" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="tingkatPercayaDiriLabel" pref="394" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="manajemenEmosiLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="konsentrasiLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ketekunanLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="kemampuanAdaptasiLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="kemampuanKerjaLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="namaLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="tingkatPercayaDiriLabel" alignment="0" pref="255" max="32767" attributes="0"/>
+                      <Component id="motivasiBerprestasiLabel" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="kemampuanKerjaInput" pref="267" max="32767" attributes="0"/>
-                      <Component id="kemampuanAdaptasiInput" pref="0" max="32767" attributes="0"/>
-                      <Component id="ketekunanInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="konsentrasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="manajemenEmosiInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="motivasiBerprestasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="tingkatPercayaDiriInput" pref="0" max="32767" attributes="0"/>
+                      <Component id="namaInput" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="manajemenEmosiInput" alignment="0" pref="175" max="32767" attributes="0"/>
+                                  <Component id="konsentrasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="ketekunanInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="kemampuanAdaptasiInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="kemampuanKerjaInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="tingkatPercayaDiriInput" alignment="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="motivasiBerprestasiInput" min="-2" pref="175" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="namaLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="namaInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tingkatPercayaDiriLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
@@ -135,7 +147,7 @@
                       <Component id="kemampuanKerjaLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="kemampuanKerjaInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="kemampuanAdaptasiLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="kemampuanAdaptasiInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -160,12 +172,27 @@
                       <Component id="motivasiBerprestasiLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="motivasiBerprestasiInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="221" max="32767" attributes="0"/>
+                  <EmptySpace pref="180" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
+        <Component class="javax.swing.JLabel" name="namaLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Nama"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="namaInput">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="tingkatPercayaDiriLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
