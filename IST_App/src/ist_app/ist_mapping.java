@@ -873,8 +873,8 @@ public class ist_mapping extends javax.swing.JPanel {
             if (!GEInput.getText().equals("")) {
                 int data = Integer.parseInt(GEInput.getText());
 
-                if (data < 0 && data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                if (data < 0 && data > 32) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 31!", "Error", JOptionPane.ERROR_MESSAGE);
                     GEInput.setText("");
                 }
             }
