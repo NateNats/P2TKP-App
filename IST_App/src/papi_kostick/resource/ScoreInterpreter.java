@@ -245,4 +245,21 @@ public class ScoreInterpreter {
         });
 
     }
+
+    public static void reloadInterpretations() {
+        interpretations.clear();
+        if (!loadInterpretationsFromFile()) {
+            initializeDefaultInterpretations();
+            saveInterpretationsToFile();
+        }
+    }
+
+    public static void setInterpretation(String key, int score, String interpretation) {
+        NavigableMap<Integer, String> interpretationMap = interpretations.get(key);
+        if (interpretationMap == null) {
+            interpretationMap = new TreeMap<>();
+            interpretations.put(key, interpretationMap);
+        }
+        interpretationMap.put(score, interpretation);
+    }
 }
