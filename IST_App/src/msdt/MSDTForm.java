@@ -4,13 +4,16 @@
  */
 package msdt;
 
+import msdt.resource.AspectScore;
 import common.MainFrame;
 import ist_app.Main;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,11 +35,13 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author nicol
  */
 public class MSDTForm extends javax.swing.JPanel {
+
     private MainFrame mainFrame;
     /**
      * Creates new form mapping_msdt
      */
     MSDTScoreInterpreter score;
+    private List<AspectScore> nilai = new ArrayList<>();
 
     public MSDTForm(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
@@ -252,15 +257,39 @@ public class MSDTForm extends javax.swing.JPanel {
     }//GEN-LAST:event_comboboxActionPerformed
 
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
-        String fileName = "msdt/resources/report/msdtReport.jasper";
-        
+        String fileName = ".src/msdt/resource/report/msdtReport.jasper";
+
         try {
             SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
             String formattedDate = "";
             SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM yyyy");
         } catch (Exception e) {
-
+            System.err.println("Kesalahan format tanggal: " + e);
         }
+
+        Map<String, Object> parameter = new HashMap<>();
+
+        nilai = score.setAspect(hasilTable);
+
+        parameter.put("nama", namaInput.getText());
+        parameter.put("jenis", combobox.getSelectedItem().toString());
+
+        JRBeanCollectionDataSource tabelVal = new JRBeanCollectionDataSource(nilai);
+        parameter.put("msdt", tabelVal);
+
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(fileName);
+        if (stream == null) {
+            System.err.println("File jasper tidak ditemukan di path: " + fileName);
+            return;
+        }
+
+        try {
+            JasperPrint jasperprint = JasperFillManager.fillReport(stream, parameter, new JREmptyDataSource());
+            // Cetak atau tampilkan laporan sesuai kebutuhan
+        } catch (JRException ex) {
+            Logger.getLogger(MSDTForm.class.getName()).log(Level.SEVERE, "Kesalahan saat mencetak laporan: ", ex);
+        }
+
     }//GEN-LAST:event_tombolCetakActionPerformed
 
     private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
