@@ -27,7 +27,7 @@ public class ScoreInterpreter {
         }
     }
 
-    public static void saveInterpretationsToFile() {
+    public static boolean saveInterpretationsToFile() {
         File file = new File(DATA_FILE_PATH);
         File parentDir = file.getParentFile();
         if (!parentDir.exists()) {
@@ -38,7 +38,9 @@ public class ScoreInterpreter {
             oos.writeObject(interpretations);
         } catch (IOException e) {
             System.err.println("Could not save interpretations to file.");
+            return false;
         }
+        return true;
     }
 
     @SuppressWarnings("unchecked")
