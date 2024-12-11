@@ -25,6 +25,7 @@ public class PasswordDialog {
                 try {
                     if (Arrays.equals(inputPassword, realPassword.toCharArray())) {
                         JOptionPane.showMessageDialog(null, "Berhasil masuk");
+                        toDialog.setLocationRelativeTo(null);
                         toDialog.setVisible(true);
                         break;
                     } else {
