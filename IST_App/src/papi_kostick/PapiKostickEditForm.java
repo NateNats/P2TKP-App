@@ -456,7 +456,8 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
     }// GEN-LAST:event_CategoryInputActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
+        ScoreInterpreter.reloadInterpretations();
+        ;
     }// GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
