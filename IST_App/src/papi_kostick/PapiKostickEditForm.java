@@ -13,6 +13,8 @@ import papi_kostick.resource.ScoreInterpreter;
  * @author Trustacean
  */
 public class PapiKostickEditForm extends javax.swing.JDialog {
+    int[] cachedBreakpoints = { -1, -1, -1, -1, -1 };
+    String cachedCategory = "";
 
     /**
      * Creates new form PapiKostickEditForm
@@ -29,7 +31,8 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -137,32 +140,35 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         javax.swing.GroupLayout EditPanelLayout = new javax.swing.GroupLayout(EditPanel);
         EditPanel.setLayout(EditPanelLayout);
         EditPanelLayout.setHorizontalGroup(
-            EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EditPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(firstScroll)
-                    .addComponent(secondScroll)
-                    .addComponent(thirdScroll)
-                    .addComponent(fourthScroll, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fifthScroll))
-                .addContainerGap())
-        );
+                EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(EditPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(firstScroll)
+                                        .addComponent(secondScroll)
+                                        .addComponent(thirdScroll)
+                                        .addComponent(fourthScroll, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(fifthScroll))
+                                .addContainerGap()));
         EditPanelLayout.setVerticalGroup(
-            EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EditPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(firstScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(secondScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(thirdScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fourthScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fifthScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(EditPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(firstScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(secondScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(thirdScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fourthScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fifthScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cancelButton.setText("Batal");
@@ -185,37 +191,45 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CategoryInput, 0, 0, Short.MAX_VALUE)
-                    .addComponent(EditPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 5, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(CategoryInput, 0, 0, Short.MAX_VALUE)
+                                        .addComponent(EditPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 203,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 212,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 5, Short.MAX_VALUE)))
+                                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(CategoryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(EditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(CategoryInput, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(EditPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap()));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CategoryInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CategoryInputActionPerformed
+        // Too lazy to separate this into another helper class, so I'll just put them
+        // here
+        updateInterpretation();
         clearInputs();
         int selectedIndex = CategoryInput.getSelectedIndex();
         if (selectedIndex == 0) {
@@ -232,6 +246,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 5"));
                 secondInput.setText(ScoreInterpreter.getInterpretation("l", 5));
                 secondInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 5;
+                cachedCategory = "l";
+
                 break;
             case NEED_TO_CONTROL_OTHERS:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -240,6 +259,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 5"));
                 secondInput.setText(ScoreInterpreter.getInterpretation("p", 5));
                 secondInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 5;
+                cachedCategory = "p";
+
                 break;
             case EASE_IN_DECISION_MAKING:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -254,6 +278,13 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 fourthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 8"));
                 fourthInput.setText(ScoreInterpreter.getInterpretation("i", 8));
                 fourthInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 3;
+                cachedBreakpoints[2] = 5;
+                cachedBreakpoints[3] = 8;
+                cachedCategory = "i";
+
                 break;
             case NEED_TO_SUPPORT_AUTHORITY:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -268,6 +299,13 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 fourthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 6"));
                 fourthInput.setText(ScoreInterpreter.getInterpretation("f", 6));
                 fourthInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 3;
+                cachedBreakpoints[2] = 4;
+                cachedBreakpoints[3] = 6;
+                cachedCategory = "f";
+
                 break;
             case NEED_FOR_RULES_AND_SUPERVISION:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -279,6 +317,12 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 6"));
                 thirdInput.setText(ScoreInterpreter.getInterpretation("w", 6));
                 thirdInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 4;
+                cachedBreakpoints[2] = 6;
+                cachedCategory = "w";
+
                 break;
             case PACE:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -287,6 +331,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 4"));
                 secondInput.setText(ScoreInterpreter.getInterpretation("t", 4));
                 secondInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 4;
+                cachedCategory = "t";
+
                 break;
             case VIGOROUS_TYPE:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -295,6 +344,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 5"));
                 secondInput.setText(ScoreInterpreter.getInterpretation("v", 5));
                 secondInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 5;
+                cachedCategory = "v";
+
                 break;
             case THEORETICAL_TYPE:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -303,6 +357,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 5"));
                 secondInput.setText(ScoreInterpreter.getInterpretation("r", 5));
                 secondInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 5;
+                cachedCategory = "r";
+
                 break;
             case INTEREST_IN_WORKING_WITH_DETAILS:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -311,6 +370,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 4"));
                 secondInput.setText(ScoreInterpreter.getInterpretation("d", 4));
                 secondInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 4;
+                cachedCategory = "d";
+
                 break;
             case ORGANIZED_TYPE:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -322,6 +386,12 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 6"));
                 thirdInput.setText(ScoreInterpreter.getInterpretation("c", 6));
                 thirdInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 3;
+                cachedBreakpoints[2] = 6;
+                cachedCategory = "c";
+
                 break;
             case NEED_TO_BE_NOTICED:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -336,6 +406,13 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 fourthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 6"));
                 fourthInput.setText(ScoreInterpreter.getInterpretation("x", 6));
                 fourthInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 2;
+                cachedBreakpoints[2] = 4;
+                cachedBreakpoints[3] = 6;
+                cachedCategory = "x";
+
                 break;
             case NEED_TO_BELONG_TO_GROUPS:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -347,6 +424,12 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 6"));
                 thirdInput.setText(ScoreInterpreter.getInterpretation("b", 6));
                 thirdInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 4;
+                cachedBreakpoints[2] = 6;
+                cachedCategory = "b";
+
                 break;
             case NEED_FOR_CLOSENESS_AND_AFFECTION:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -358,6 +441,12 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 5"));
                 thirdInput.setText(ScoreInterpreter.getInterpretation("o", 5));
                 thirdInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 3;
+                cachedBreakpoints[2] = 5;
+                cachedCategory = "o";
+
                 break;
             case SOCIAL_EXTENSION:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -366,6 +455,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 7"));
                 secondInput.setText(ScoreInterpreter.getInterpretation("s", 7));
                 secondInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 7;
+                cachedCategory = "s";
+
                 break;
             case NEED_TO_FINISH_TASK:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -383,6 +477,14 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 fifthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 7"));
                 fifthInput.setText(ScoreInterpreter.getInterpretation("n", 7));
                 fifthInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 4;
+                cachedBreakpoints[2] = 5;
+                cachedBreakpoints[3] = 6;
+                cachedBreakpoints[4] = 7;
+                cachedCategory = "n";
+
                 break;
             case NEED_TO_ACHIEVE:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -391,6 +493,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 6"));
                 secondInput.setText(ScoreInterpreter.getInterpretation("a", 6));
                 secondInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 6;
+                cachedCategory = "a";
+
                 break;
             case HARD_INTENSE_WORKED:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -402,6 +509,12 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 5"));
                 thirdInput.setText(ScoreInterpreter.getInterpretation("g", 5));
                 thirdInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 3;
+                cachedBreakpoints[2] = 5;
+                cachedCategory = "g";
+
                 break;
             case NEED_FOR_CHANGE:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -419,6 +532,14 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 fifthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 8"));
                 fifthInput.setText(ScoreInterpreter.getInterpretation("z", 8));
                 fifthInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 3;
+                cachedBreakpoints[2] = 5;
+                cachedBreakpoints[3] = 6;
+                cachedBreakpoints[4] = 8;
+                cachedCategory = "z";
+
                 break;
             case NEED_TO_BE_FORCEFUL:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -436,6 +557,14 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 fifthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 8"));
                 fifthInput.setText(ScoreInterpreter.getInterpretation("k", 8));
                 fifthInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 3;
+                cachedBreakpoints[2] = 5;
+                cachedBreakpoints[3] = 6;
+                cachedBreakpoints[4] = 8;
+                cachedCategory = "k";
+
                 break;
             case EMOTIONAL_RESISTANT:
                 firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 0"));
@@ -450,6 +579,13 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
                 fourthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥ 7"));
                 fourthInput.setText(ScoreInterpreter.getInterpretation("e", 7));
                 fourthInput.setEnabled(true);
+
+                cachedBreakpoints[0] = 0;
+                cachedBreakpoints[1] = 2;
+                cachedBreakpoints[2] = 4;
+                cachedBreakpoints[3] = 7;
+                cachedCategory = "e";
+
                 break;
 
         }
@@ -461,7 +597,14 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
     }// GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
+        updateInterpretation();
+        if (ScoreInterpreter.saveInterpretationsToFile()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }// GEN-LAST:event_saveButtonActionPerformed
 
     private void clearInputs() {
@@ -480,6 +623,27 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         thirdInput.setText("");
         fourthInput.setText("");
         fifthInput.setText("");
+        for (int i = 0; i < cachedBreakpoints.length; i++) {
+            cachedBreakpoints[i] = -1;
+        }
+    }
+
+    private void updateInterpretation() {
+        if (cachedBreakpoints[0] != -1) {
+            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[0], firstInput.getText());
+        }
+        if (cachedBreakpoints[1] != -1) {
+            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[1], secondInput.getText());
+        }
+        if (cachedBreakpoints[2] != -1) {
+            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[2], thirdInput.getText());
+        }
+        if (cachedBreakpoints[3] != -1) {
+            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[3], fourthInput.getText());
+        }
+        if (cachedBreakpoints[4] != -1) {
+            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[4], fifthInput.getText());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
