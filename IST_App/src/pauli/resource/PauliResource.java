@@ -18,6 +18,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 
 public class PauliResource {
+    public static String nama;
     public static int tingkatPercayaDiri;
     public static int kemampuanKerja;
     public static int kemampuanAdaptasi;
@@ -26,13 +27,14 @@ public class PauliResource {
     public static int manajemenEmosi;
     public static int motivasiBerprestasi;
 
-    private final static String REPORT_PATH = "./src/pauli/resource/report/PauliReport_v1.jasper";
+    private final static String REPORT_PATH = "./src/pauli/resource/report/PauliReport_v2.jasper";
 
     static {
         resetValues();
     }
 
     public static void resetValues() {
+        nama = "";
         tingkatPercayaDiri = 0;
         kemampuanKerja = 0;
         kemampuanAdaptasi = 0;
@@ -47,6 +49,7 @@ public class PauliResource {
 
         if (file.exists()) {
             Map<String, Object> parameters = new HashMap<>();
+            parameters.put("name", nama);
             parameters.put("tingkatPercayaDiri", PauliScoreInterpreter.getInterpretation("tingkat percaya diri", tingkatPercayaDiri));
             parameters.put("kemampuanKerja", PauliScoreInterpreter.getInterpretation("kemampuan kerja", kemampuanKerja));
             parameters.put("kemampuanAdaptasi", PauliScoreInterpreter.getInterpretation("kemampuan adaptasi", kemampuanAdaptasi));

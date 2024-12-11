@@ -5,6 +5,7 @@
 package papi_kostick;
 
 import common.MainFrame;
+import common.PasswordDialog;
 import papi_kostick.resource.PapiKostickInputFocusAdapter;
 import papi_kostick.resource.PapiKostickInputKeyAdapter;
 import papi_kostick.resource.PapiKostickResource;
@@ -112,7 +113,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
         resetButton = new javax.swing.JButton();
         cetakButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
-        keluarButton = new javax.swing.JButton();
+        kembaliButton = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -870,15 +871,15 @@ public class PapiKostickForm extends javax.swing.JPanel {
         });
         aksiPanel.add(editButton, new java.awt.GridBagConstraints());
 
-        keluarButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        keluarButton.setText("Keluar");
-        keluarButton.setPreferredSize(new java.awt.Dimension(120, 40));
-        keluarButton.addActionListener(new java.awt.event.ActionListener() {
+        kembaliButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        kembaliButton.setText("Kembali");
+        kembaliButton.setPreferredSize(new java.awt.Dimension(120, 40));
+        kembaliButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                keluarButtonActionPerformed(evt);
+                kembaliButtonActionPerformed(evt);
             }
         });
-        aksiPanel.add(keluarButton, new java.awt.GridBagConstraints());
+        aksiPanel.add(kembaliButton, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -977,17 +978,18 @@ public class PapiKostickForm extends javax.swing.JPanel {
     }// GEN-LAST:event_resetButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
+        PasswordDialog passwordDialog = new PasswordDialog(new PapiKostickEditForm(mainFrame, getFocusTraversalKeysEnabled()));
+        passwordDialog.showDialog();
     }// GEN-LAST:event_editButtonActionPerformed
 
     private void cetakButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cetakButtonActionPerformed
         PapiKostickResource.produceReport();
     }// GEN-LAST:event_cetakButtonActionPerformed
 
-    private void keluarButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_keluarButtonActionPerformed
+    private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_kembaliButtonActionPerformed
         mainFrame.showCard("MainMenuPanel");
         mainFrame.setTitle("KATEGORISASI MAPPING");
-    }// GEN-LAST:event_keluarButtonActionPerformed
+    }// GEN-LAST:event_kembaliButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aInput;
@@ -1022,7 +1024,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
     private javax.swing.JLabel kLabel;
     private javax.swing.JComboBox<String> kelaminInput;
     private javax.swing.JLabel kelaminLabel;
-    private javax.swing.JButton keluarButton;
+    private javax.swing.JButton kembaliButton;
     private javax.swing.JTextField lInput;
     private javax.swing.JLabel lLabel;
     private javax.swing.JPanel masukanPanel;
