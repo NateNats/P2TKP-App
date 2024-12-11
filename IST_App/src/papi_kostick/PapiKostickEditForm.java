@@ -32,7 +32,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -56,33 +56,10 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                cancelButtonActionPerformed(null);
-                dispose();
-            }
-        });
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        CategoryInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --",
-                "L = PERAN – PEMIMPIN (Leadership Role)",
-                "P = KEBUTUHAN – MENGATUR ORANG LAIN (Need to Control Others)",
-                "I = PERAN – MEMBUAT KEPUTUSAN (Ease in Decision Making)",
-                "F = KEBUTUHAN – MENDUKUNG OTORITAS PEMEGANG KEKUASAAN (Need to Support Authority)",
-                "W = KEBUTUHAN MENGIKUTI ATURAN DAN PENGAWASAN (Need for Rules and Supervision)",
-                "T = PERAN SIBUK (Pace)", "V = PERAN PENUH SEMANGAT (Vigorous Type)",
-                "R = PERAN ORANG YANG TEORITIS (Theoretical Type)",
-                "D = PERAN BEKERJA DENGAN HAL – HAL RINCI (Interest in Working With Details)",
-                "C = PERAN MENGATUR (Organized Type)", "X = KEBUTUHAN UNTUK DIPERHATIKAN (Need to be Noticed)",
-                "B = KEBUTUHAN DITERIMA DALAM KELOMPOK (Need to Belong to Groups)",
-                "O = KEBUTUHAN KEDEKATAN DAN KASIH SAYANG (Need for Closeness and Affection)",
-                "S = PERAN HUBUNGAN SOSIAL (Social Extension)",
-                "N = KEBUTUHAN MENYELESAIKAN TUGAS SECARA MANDIRI (Need to Finish Task)",
-                "A = KEBUTUHAN BERPRESTASI (Need to Achieve)", "G = PERAN PEKERJA KERAS (Hard Intense Worked)",
-                "Z = KEBUTUHAN UNTUK BERUBAH (Need for Change)", "K = KEBUTUHAN UNTUK AGRESIF (Need to be Forceful)",
-                "E = PERAN PENGENDALIAN EMOSI (Emotional Resistant)" }));
+        CategoryInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "L = PERAN – PEMIMPIN (Leadership Role)", "P = KEBUTUHAN – MENGATUR ORANG LAIN (Need to Control Others)", "I = PERAN – MEMBUAT KEPUTUSAN (Ease in Decision Making)", "F = KEBUTUHAN – MENDUKUNG OTORITAS PEMEGANG KEKUASAAN (Need to Support Authority)", "W = KEBUTUHAN MENGIKUTI ATURAN DAN PENGAWASAN (Need for Rules and Supervision)", "T = PERAN SIBUK (Pace)", "V = PERAN PENUH SEMANGAT (Vigorous Type)", "R = PERAN ORANG YANG TEORITIS (Theoretical Type)", "D = PERAN BEKERJA DENGAN HAL – HAL RINCI (Interest in Working With Details)", "C = PERAN MENGATUR (Organized Type)", "X = KEBUTUHAN UNTUK DIPERHATIKAN (Need to be Noticed)", "B = KEBUTUHAN DITERIMA DALAM KELOMPOK (Need to Belong to Groups)", "O = KEBUTUHAN KEDEKATAN DAN KASIH SAYANG (Need for Closeness and Affection)", "S = PERAN HUBUNGAN SOSIAL (Social Extension)", "N = KEBUTUHAN MENYELESAIKAN TUGAS SECARA MANDIRI (Need to Finish Task)", "A = KEBUTUHAN BERPRESTASI (Need to Achieve)", "G = PERAN PEKERJA KERAS (Hard Intense Worked)", "Z = KEBUTUHAN UNTUK BERUBAH (Need for Change)", "K = KEBUTUHAN UNTUK AGRESIF (Need to be Forceful)", "E = PERAN PENGENDALIAN EMOSI (Emotional Resistant)" }));
         CategoryInput.setPreferredSize(new java.awt.Dimension(561, 35));
         CategoryInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +69,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
 
         EditPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
 
         firstInput.setColumns(20);
         firstInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -101,7 +78,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         firstInput.setEnabled(false);
         firstScroll.setViewportView(firstInput);
 
-        secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
 
         secondInput.setColumns(20);
         secondInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -110,7 +87,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         secondInput.setEnabled(false);
         secondScroll.setViewportView(secondInput);
 
-        thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
 
         thirdInput.setColumns(20);
         thirdInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -119,7 +96,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         thirdInput.setEnabled(false);
         thirdScroll.setViewportView(thirdInput);
 
-        fourthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        fourthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
 
         fourthInput.setColumns(20);
         fourthInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -128,7 +105,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         fourthInput.setEnabled(false);
         fourthScroll.setViewportView(fourthInput);
 
-        fifthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        fifthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
 
         fifthInput.setColumns(20);
         fifthInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -140,35 +117,32 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         javax.swing.GroupLayout EditPanelLayout = new javax.swing.GroupLayout(EditPanel);
         EditPanel.setLayout(EditPanelLayout);
         EditPanelLayout.setHorizontalGroup(
-                EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(EditPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(firstScroll)
-                                        .addComponent(secondScroll)
-                                        .addComponent(thirdScroll)
-                                        .addComponent(fourthScroll, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(fifthScroll))
-                                .addContainerGap()));
+            EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(firstScroll)
+                    .addComponent(secondScroll)
+                    .addComponent(thirdScroll)
+                    .addComponent(fourthScroll, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fifthScroll))
+                .addContainerGap())
+        );
         EditPanelLayout.setVerticalGroup(
-                EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(EditPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(firstScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(secondScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(thirdScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fourthScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fifthScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+            EditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(firstScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(secondScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(thirdScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fourthScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fifthScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cancelButton.setText("Batal");
@@ -191,37 +165,32 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(CategoryInput, 0, 0, Short.MAX_VALUE)
-                                        .addComponent(EditPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 203,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 212,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 5, Short.MAX_VALUE)))
-                                .addContainerGap()));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CategoryInput, 0, 0, Short.MAX_VALUE)
+                    .addComponent(EditPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 5, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(CategoryInput, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(EditPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap()));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CategoryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(EditPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -608,11 +577,11 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
     }// GEN-LAST:event_saveButtonActionPerformed
 
     private void clearInputs() {
-        firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        fourthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        fifthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
+        secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
+        thirdScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
+        fourthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
+        fifthScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
         firstInput.setEnabled(false);
         secondInput.setEnabled(false);
         thirdInput.setEnabled(false);
