@@ -63,6 +63,15 @@
 	<parameter name="kuazr" class="java.lang.String"/>
 	<parameter name="kuafa" class="java.lang.String"/>
 	<parameter name="kuawu" class="java.lang.String"/>
+	<parameter name="swse" class="java.lang.String"/>
+	<parameter name="swwa" class="java.lang.String"/>
+	<parameter name="swan" class="java.lang.String"/>
+	<parameter name="swge" class="java.lang.String"/>
+	<parameter name="swme" class="java.lang.String"/>
+	<parameter name="swra" class="java.lang.String"/>
+	<parameter name="swzr" class="java.lang.String"/>
+	<parameter name="swfa" class="java.lang.String"/>
+	<parameter name="swwu" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -569,7 +578,7 @@
 				<textFieldExpression><![CDATA[$P{rwan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="300" y="30" width="42" height="30" uuid="11c992d5-83fe-4b2f-827f-37780b0f28e1"/>
+				<reportElement x="258" y="30" width="42" height="30" uuid="11c992d5-83fe-4b2f-827f-37780b0f28e1"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -591,7 +600,7 @@
 				<textFieldExpression><![CDATA[$P{rwra}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="258" y="30" width="42" height="30" uuid="1220d57c-bc7b-43d2-a9e8-aba43d63ddad"/>
+				<reportElement x="300" y="30" width="42" height="30" uuid="1220d57c-bc7b-43d2-a9e8-aba43d63ddad"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -689,6 +698,51 @@
 				<reportElement x="468" y="90" width="42" height="30" uuid="793be5a4-5b68-4a15-89b7-86f6563c7f4e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{kuawu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="60" width="42" height="30" uuid="1ed16aa3-693e-426c-b5f6-2bf8d7f561dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="60" width="42" height="30" uuid="515b33f6-9522-4da2-86cb-d4b1bb8fa346"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swwa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="60" width="42" height="30" uuid="547d682f-9d08-457f-afac-e895a265aa65"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="258" y="60" width="42" height="30" uuid="665905bd-08c9-4446-af35-6e1e40c1e174"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swge}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="60" width="42" height="30" uuid="b819c31a-e917-4c49-8e77-304001665629"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="60" width="42" height="30" uuid="5f658d5d-6072-4564-9c8d-7118d7211784"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="60" width="42" height="30" uuid="b3b42192-7f61-46bf-bafc-596f9816f9c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swzr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="60" width="42" height="30" uuid="5cebaf78-585b-40c1-89f7-f318ad248d14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swfa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="468" y="60" width="42" height="30" uuid="6930ea45-67fe-45f2-8e41-de73eec35e24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{swwu}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="331">

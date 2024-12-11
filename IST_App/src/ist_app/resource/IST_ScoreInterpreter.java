@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- *
- * @author nicol
- */
 public class IST_ScoreInterpreter {
 
     private List<Range> ranges;
@@ -113,20 +109,17 @@ public class IST_ScoreInterpreter {
         try {
             BufferedReader br = new BufferedReader(new FileReader(this.filename));
             String docs;
-            StringBuilder fullcontent = new StringBuilder();
 
             while ((docs = br.readLine()) != null) {
-                String teks = br.toString();
                 String[] oneLine = docs.split(";");
-
                 for (int i = 0; i < oneLine.length; i++) {
                     ll.add(oneLine[i]);
                 }
             }
-            
             return ll;
         } catch (Exception e) {
-            System.out.println("error");
+            System.out.println("error: " + e.getMessage());
+            e.printStackTrace();
         }
         
         return null;
@@ -136,28 +129,27 @@ public class IST_ScoreInterpreter {
         try {
             BufferedReader br = new BufferedReader(new FileReader(filename));
             String docs;
-            StringBuilder fullcontent = new StringBuilder();
 
             while ((docs = br.readLine()) != null) {
-                String teks = br.toString();
                 String[] oneLine = docs.split(";");
-
                 for (int i = 0; i < oneLine.length; i++) {
                     ll.add(oneLine[i]);
                 }
             }
 
         } catch (Exception e) {
-            System.out.println("error");
+            System.out.println("error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     private void initializeDefaultInterpretations() {
         loadRubrikFile(this.filename, this.link);
 
-        for (int i = 0; i < this.link.size(); i++) {
+        for (int i = 0; i < this.lowerVal.length; i++) {
             try {
                 this.AddRange(this.lowerVal[i], this.upperVal[i], this.link.get(i), this.kategori[i]);
+                //System.out.println(this.link.get(i));
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -172,7 +164,7 @@ public class IST_ScoreInterpreter {
 //
 //        // Inisialisasi interpreter
 //        IST_ScoreInterpreter interpreter = new IST_ScoreInterpreter(
-//        "./src/ist_app/resource/rubrik/kemampuan mengambil keputusan.txt", upperVal, lowerVal, kategori
+//                "./src/ist_app/resource/rubrik/kemampuan mengambil keputusan.txt", upperVal, lowerVal, kategori
 //        );
 //        interpreter.initializeDefaultInterpretations();
 //        double scoreIQ = 95.0; // Contoh skor
@@ -180,3 +172,4 @@ public class IST_ScoreInterpreter {
 //        System.out.println(result);
 //    }
 }
+
