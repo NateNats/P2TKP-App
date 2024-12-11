@@ -161,7 +161,7 @@
           <Properties>
             <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder/>
+                <TitledBorder title="&#x2265;"/>
               </Border>
             </Property>
           </Properties>
@@ -188,7 +188,7 @@
           <Properties>
             <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder/>
+                <TitledBorder title="&#x2265;"/>
               </Border>
             </Property>
           </Properties>
@@ -215,7 +215,7 @@
           <Properties>
             <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder/>
+                <TitledBorder title="&#x2265;"/>
               </Border>
             </Property>
           </Properties>
@@ -242,7 +242,7 @@
           <Properties>
             <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder/>
+                <TitledBorder title="&#x2265;"/>
               </Border>
             </Property>
           </Properties>
@@ -269,7 +269,7 @@
           <Properties>
             <Property name="viewportBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder/>
+                <TitledBorder title="&#x2265;"/>
               </Border>
             </Property>
           </Properties>
