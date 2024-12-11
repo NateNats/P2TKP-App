@@ -585,8 +585,9 @@ public class ist_mapping extends javax.swing.JPanel {
             int swZR = this.norma.getInterpretation("ZR", Integer.parseInt(ZRInput.getText()), age);
             int swFA = this.norma.getInterpretation("FA", Integer.parseInt(FAInput.getText()), age);
             int swWU = this.norma.getInterpretation("WU", Integer.parseInt(WUInput.getText()), age);
-            int swGE = this.norma.getInterpretation("GE", Integer.parseInt(GEInput.getText()), age);
-            Integer GE = this.norma.getStdScore(swGE);
+            Integer GE = this.norma.getStdScore(Integer.parseInt(GEInput.getText()));
+            int swGE = this.norma.getInterpretation("GE", GE, age);
+            
             int rwGESAMT = Integer.parseInt(SEInput.getText())
                     + Integer.parseInt(WAInput.getText())
                     + Integer.parseInt(ANInput.getText())
@@ -1216,7 +1217,7 @@ public class ist_mapping extends javax.swing.JPanel {
 
             double[] nils = {nilaiGE, nilaiRA, nilaiAN, nilaiZR};
 
-            if (nilaiGERA > nilaiANZR) { //ga tau nilainya apa ini
+            if (nilaiGERA > nilaiANZR) {
                 Kategori = "Birokratis-normatif";
                 deskripsi = coraBerpikir.get(0);
             } else if (nilaiGERA < nilaiANZR) {
@@ -1250,7 +1251,7 @@ public class ist_mapping extends javax.swing.JPanel {
                 deskripsi = fleksibel.get(2);
             }
 
-            KomponenPenilaian variabel11 = new KomponenPenilaian("Kemampuan berpikir fleksibel", "", "", deskripsi);
+            KomponenPenilaian variabel11 = new KomponenPenilaian("Kemampuan berpikir fleksibel", "", Kategori, deskripsi);
             nilai.add(variabel11);
 
 //        double nilaiGERA = Double.parseDouble(GEInput.getText()) + Double.parseDouble(RAInput.getText());
