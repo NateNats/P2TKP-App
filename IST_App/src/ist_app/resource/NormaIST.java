@@ -31,7 +31,7 @@ public class NormaIST {
     private static Map<Integer, Integer> stdScoreMap = new HashMap<>();
 
     static {
-        if (!loadInterpretationsFromFile() || loadGESAMTInterpretationsFromFile()) {
+        if (!loadInterpretationsFromFile() || !loadGESAMTInterpretationsFromFile()) {
             initializeDataMap();
             saveInterpretationsToFile();
             saveInterpretGESAMTToFile();
@@ -146,7 +146,7 @@ public class NormaIST {
     public Integer getIqScore(Integer GESAMT) {
         return iqMap.get(GESAMT);
     }
-    
+
     public Integer getStdScore(Integer ge) {
         return stdScoreMap.get(ge);
     }
@@ -163,28 +163,28 @@ public class NormaIST {
     }
 
     private String concateKey(String key, int age) {
-        if (age >= 19 || age <= 20) {
+        if (age >= 19 && age <= 20) {
             key = key.concat("19-20");
 
-        } else if (age >= 21 || age <= 25) {
+        } else if (age >= 21 && age <= 25) {
             key = key.concat("21-25");
 
-        } else if (age >= 26 || age <= 30) {
+        } else if (age >= 26 && age <= 30) {
             key = key.concat("26-30");
 
-        } else if (age >= 31 || age <= 35) {
+        } else if (age >= 31 && age <= 35) {
             key = key.concat("31-35");
 
-        } else if (age >= 36 || age <= 40) {
+        } else if (age >= 36 && age <= 40) {
             key = key.concat("36-40");
 
-        } else if (age >= 41 || age <= 45) {
+        } else if (age >= 41 && age <= 45) {
             key = key.concat("41-45");
 
-        } else if (age >= 46 || age <= 50) {
+        } else if (age >= 46 && age <= 50) {
             key = key.concat("46-50");
 
-        } else if (age >= 51 || age <= 60) {
+        } else if (age >= 51 && age <= 60) {
             key = key.concat("51-60");
 
         } else {
@@ -197,6 +197,7 @@ public class NormaIST {
     public Integer getInterpretGESAMT(String key, int rw, int age) {
 
         key = concateKey(key, age);
+        System.out.println(key);
 
         NavigableMap<Range, Integer> map = interpretGESAMT.get(key);
         if (map != null) {
@@ -211,46 +212,87 @@ public class NormaIST {
 
     private static void initializeDataMap() {
         iqMap.put(140, 160);
+        iqMap.put(139, 157);
         iqMap.put(138, 157);
+        iqMap.put(137, 154);
         iqMap.put(136, 154);
+        iqMap.put(135, 151);
         iqMap.put(134, 151);
+        iqMap.put(133, 148);
         iqMap.put(132, 148);
+        iqMap.put(131, 145);
         iqMap.put(130, 145);
+        iqMap.put(129, 142);
         iqMap.put(128, 142);
+        iqMap.put(127, 139);
         iqMap.put(126, 139);
+        iqMap.put(125, 136);
         iqMap.put(124, 136);
+        iqMap.put(123, 133);
         iqMap.put(122, 133);
+        iqMap.put(121, 130);
         iqMap.put(120, 130);
+        iqMap.put(119, 127);
         iqMap.put(118, 127);
+        iqMap.put(117, 124);
         iqMap.put(116, 124);
+        iqMap.put(115, 121);
         iqMap.put(114, 121);
+        iqMap.put(113, 118);
         iqMap.put(112, 118);
+        iqMap.put(111, 115);
         iqMap.put(110, 115);
+        iqMap.put(109, 112);
         iqMap.put(108, 112);
+        iqMap.put(107, 109);
         iqMap.put(106, 109);
+        iqMap.put(105, 106);
         iqMap.put(104, 106);
+        iqMap.put(103, 103);
         iqMap.put(102, 103);
+        iqMap.put(101, 100);
         iqMap.put(100, 100);
+        iqMap.put(99, 97);
         iqMap.put(98, 97);
+        iqMap.put(97, 94);
         iqMap.put(96, 94);
+        iqMap.put(95, 91);
         iqMap.put(94, 91);
+        iqMap.put(93, 88);
         iqMap.put(92, 88);
+        iqMap.put(91, 85);
         iqMap.put(90, 85);
+        iqMap.put(89, 82);
         iqMap.put(88, 82);
+        iqMap.put(87, 79);
         iqMap.put(86, 79);
+        iqMap.put(85, 76);
         iqMap.put(84, 76);
+        iqMap.put(83, 73);
         iqMap.put(82, 73);
+        iqMap.put(81, 70);
         iqMap.put(80, 70);
+        iqMap.put(79, 67);
         iqMap.put(78, 67);
+        iqMap.put(77, 64);
         iqMap.put(76, 64);
+        iqMap.put(75, 61);
         iqMap.put(74, 61);
+        iqMap.put(73, 58);
         iqMap.put(72, 58);
+        iqMap.put(71, 55);
         iqMap.put(70, 55);
+        iqMap.put(69, 52);
         iqMap.put(68, 52);
+        iqMap.put(67, 49);
         iqMap.put(66, 49);
+        iqMap.put(65, 46);
         iqMap.put(64, 46);
+        iqMap.put(63, 43);
         iqMap.put(62, 43);
+        iqMap.put(61, 40);
         iqMap.put(60, 40);
+        iqMap.put(59, 37);
         iqMap.put(58, 37);
 
         stdScoreMap.put(20, 31);
@@ -4104,7 +4146,12 @@ public class NormaIST {
         });
     }
 
-    public static void main(String[] args) {
-        NormaIST norm = new NormaIST();
-    }
+//    public static void main(String[] args) {
+//        NormaIST norm = new NormaIST();
+//
+//        int swGESAMT = norm.getInterpretGESAMT("GESAMT", 174, 12);
+//        System.out.println("swGESAMT: " + swGESAMT);
+//        int iq = norm.getIqScore(swGESAMT);
+//        System.out.println("IQ: " + iq);
+//    }
 }
