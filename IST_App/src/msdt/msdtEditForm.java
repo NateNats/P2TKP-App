@@ -296,11 +296,12 @@ public class msdtEditForm extends javax.swing.JDialog {
         if (MSDTScoreInterpreter.SaveInterpretationsToFile()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
                     javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
                     javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-        
+
         combobox.setSelectedIndex(0);
         turn(false);
         clearInputs();
