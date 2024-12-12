@@ -4,6 +4,8 @@
  */
 package pauli;
 
+import pauli.resource.PauliScoreInterpreter;
+
 /**
  *
  * @author Trustacean
@@ -49,9 +51,17 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         cancelButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         setTitle("Edit Interpretasi Ketelitian Pauli");
+
+        addWindowListener( new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                cancelButtonActionPerformed(null);
+                dispose();
+            }
+        });
 
         EditPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -62,6 +72,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         rendahRendahInput.setLineWrap(true);
         rendahRendahInput.setRows(5);
         rendahRendahInput.setWrapStyleWord(true);
+        rendahRendahInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(0, 0));
         rendahRendahScroll.setViewportView(rendahRendahInput);
 
         rendahSedangScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Ketekunan Rendah & Konsentrasi Sedang"));
@@ -71,6 +82,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         rendahSedangInput.setLineWrap(true);
         rendahSedangInput.setRows(5);
         rendahSedangInput.setWrapStyleWord(true);
+        rendahSedangInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(0, 1));
         rendahSedangScroll.setViewportView(rendahSedangInput);
 
         rendahTinggiScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Ketekunan Rendah & Konsentrasi Tinggi"));
@@ -80,6 +92,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         rendahTinggiInput.setLineWrap(true);
         rendahTinggiInput.setRows(5);
         rendahTinggiInput.setWrapStyleWord(true);
+        rendahTinggiInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(0, 2));
         rendahTinggiScroll.setViewportView(rendahTinggiInput);
 
         sedangRendahScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Ketekunan Sedang & Konsentrasi Rendah"));
@@ -89,6 +102,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         sedangRendahInput.setLineWrap(true);
         sedangRendahInput.setRows(5);
         sedangRendahInput.setWrapStyleWord(true);
+        sedangRendahInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(1, 0));
         sedangRendahScroll.setViewportView(sedangRendahInput);
 
         sedangSedangScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Ketekunan Sedang & Konsentrasi Sedang"));
@@ -98,6 +112,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         sedangSedangInput.setLineWrap(true);
         sedangSedangInput.setRows(5);
         sedangSedangInput.setWrapStyleWord(true);
+        sedangSedangInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(1, 1));
         sedangSedangScroll.setViewportView(sedangSedangInput);
 
         sedangTinggiScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Ketekunan Sedang & Konsentrasi Tinggi"));
@@ -107,6 +122,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         sedangTinggiInput.setLineWrap(true);
         sedangTinggiInput.setRows(5);
         sedangTinggiInput.setWrapStyleWord(true);
+        sedangTinggiInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(1, 2));
         sedangTinggiScroll.setViewportView(sedangTinggiInput);
 
         tinggiRendahScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Ketekunan Tinggi & Konsentrasi Rendah"));
@@ -116,6 +132,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         tinggiRendahInput.setLineWrap(true);
         tinggiRendahInput.setRows(5);
         tinggiRendahInput.setWrapStyleWord(true);
+        tinggiRendahInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(2, 0));
         tinggiRendahScroll.setViewportView(tinggiRendahInput);
 
         tinggiSedangScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Ketekunan Tinggi & Konsentrasi Sedang"));
@@ -125,6 +142,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         tinggiSedangInput.setLineWrap(true);
         tinggiSedangInput.setRows(5);
         tinggiSedangInput.setWrapStyleWord(true);
+        tinggiSedangInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(2, 1));
         tinggiSedangScroll.setViewportView(tinggiSedangInput);
 
         tinggiTinggiScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Ketekunan Sedang & Konsentrasi Tinggi"));
@@ -134,6 +152,7 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         tinggiTinggiInput.setLineWrap(true);
         tinggiTinggiInput.setRows(5);
         tinggiTinggiInput.setWrapStyleWord(true);
+        tinggiTinggiInput.setText(PauliScoreInterpreter.getKetelitianInterpretation(2, 2));
         tinggiTinggiScroll.setViewportView(tinggiTinggiInput);
 
         javax.swing.GroupLayout EditPanelLayout = new javax.swing.GroupLayout(EditPanel);
@@ -187,8 +206,20 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cancelButton.setText("Batal");
 
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
         saveButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         saveButton.setText("Simpan");
+
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,46 +250,28 @@ public class PauliKetelitianEditForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PauliKetelitianEditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PauliKetelitianEditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PauliKetelitianEditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PauliKetelitianEditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        PauliScoreInterpreter.setKetelitianInterpretation(0,0,rendahRendahInput.getText());
+        PauliScoreInterpreter.setKetelitianInterpretation(0,1,rendahSedangInput.getText());
+        PauliScoreInterpreter.setKetelitianInterpretation(0,2,rendahTinggiInput.getText());
+        PauliScoreInterpreter.setKetelitianInterpretation(1,0,sedangRendahInput.getText());
+        PauliScoreInterpreter.setKetelitianInterpretation(1,1,sedangSedangInput.getText());
+        PauliScoreInterpreter.setKetelitianInterpretation(1,2,sedangTinggiInput.getText());
+        PauliScoreInterpreter.setKetelitianInterpretation(2,0,tinggiRendahInput.getText());
+        PauliScoreInterpreter.setKetelitianInterpretation(2,1,tinggiSedangInput.getText());
+        PauliScoreInterpreter.setKetelitianInterpretation(2,2,tinggiTinggiInput.getText());
+        if (PauliScoreInterpreter.saveKetelitianInterpretationsToFile()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
+            javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-        //</editor-fold>
+    }
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                PauliKetelitianEditForm dialog = new PauliKetelitianEditForm(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        PauliScoreInterpreter.reloadInterpretations();
+        this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
