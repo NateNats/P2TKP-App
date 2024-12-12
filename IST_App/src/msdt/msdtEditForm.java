@@ -4,11 +4,22 @@
  */
 package msdt;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.NavigableMap;
+import msdt.resource.MSDTCategory;
+import msdt.resource.MSDTScoreInterpreter;
+import msdt.resource.Pair;
+
 /**
  *
  * @author nicol
  */
 public class msdtEditForm extends javax.swing.JDialog {
+
+    List<String> first = new ArrayList<>();
+    String key;
 
     /**
      * Creates new form msdtEditForm
@@ -39,17 +50,17 @@ public class msdtEditForm extends javax.swing.JDialog {
         MemimpinKelompok = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        dampakNpengaruh = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        kesadaran = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        membangun = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        mengembangkan = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        mengarahkan = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea6 = new javax.swing.JTextArea();
+        memimpin = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -136,53 +147,52 @@ public class msdtEditForm extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Uraian"));
         jPanel3.setLayout(new java.awt.GridLayout(6, 0));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Enggan memahami tata cara dan tata kelola organisasi karena ada keenganan tersendiri untuk menyelesaikan tugasnya sendiri sehingga terkesan mengabaikan anggota timnya.");
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(jTextArea1);
+        dampakNpengaruh.setColumns(20);
+        dampakNpengaruh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dampakNpengaruh.setLineWrap(true);
+        dampakNpengaruh.setRows(5);
+        dampakNpengaruh.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(dampakNpengaruh);
 
         jPanel3.add(jScrollPane1);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jTextArea2.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(jTextArea2);
+        kesadaran.setColumns(20);
+        kesadaran.setLineWrap(true);
+        kesadaran.setRows(5);
+        kesadaran.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(kesadaran);
 
         jPanel3.add(jScrollPane2);
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
-        jTextArea3.setWrapStyleWord(true);
-        jScrollPane3.setViewportView(jTextArea3);
+        membangun.setColumns(20);
+        membangun.setLineWrap(true);
+        membangun.setRows(5);
+        membangun.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(membangun);
 
         jPanel3.add(jScrollPane3);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setLineWrap(true);
-        jTextArea4.setRows(5);
-        jTextArea4.setWrapStyleWord(true);
-        jScrollPane4.setViewportView(jTextArea4);
+        mengembangkan.setColumns(20);
+        mengembangkan.setLineWrap(true);
+        mengembangkan.setRows(5);
+        mengembangkan.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(mengembangkan);
 
         jPanel3.add(jScrollPane4);
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setLineWrap(true);
-        jTextArea5.setRows(5);
-        jTextArea5.setWrapStyleWord(true);
-        jScrollPane5.setViewportView(jTextArea5);
+        mengarahkan.setColumns(20);
+        mengarahkan.setLineWrap(true);
+        mengarahkan.setRows(5);
+        mengarahkan.setWrapStyleWord(true);
+        jScrollPane5.setViewportView(mengarahkan);
 
         jPanel3.add(jScrollPane5);
 
-        jTextArea6.setColumns(20);
-        jTextArea6.setLineWrap(true);
-        jTextArea6.setRows(5);
-        jTextArea6.setWrapStyleWord(true);
-        jScrollPane6.setViewportView(jTextArea6);
+        memimpin.setColumns(20);
+        memimpin.setLineWrap(true);
+        memimpin.setRows(5);
+        memimpin.setWrapStyleWord(true);
+        jScrollPane6.setViewportView(memimpin);
 
         jPanel3.add(jScrollPane6);
 
@@ -216,10 +226,84 @@ public class msdtEditForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
+        int selectedIndex = combobox.getSelectedIndex();
+        if (selectedIndex == 0) {
+            turn(false);
+            clearInputs();
+            return;
+        }
 
+        clearInputs();
+        turn(true);
+        MSDTCategory selectedCategory = MSDTCategory.values()[selectedIndex - 1];
+        key = selectedCategory.getLabel();
+        NavigableMap<String, Pair<String, String>> val = MSDTScoreInterpreter.getInterpretations(key);
+
+        dampakNpengaruh.setText(val.get("Dampak dan pengaruh").getFirst());
+        kesadaran.setText(val.get("Kesadaran berorganisasi").getFirst());
+        membangun.setText(val.get("Membangun Hubungan Kerja").getFirst());
+        mengembangkan.setText(val.get("Mengembangkan orang lain").getFirst());
+        mengarahkan.setText(val.get("Mengarahkan orang lain").getFirst());
+        memimpin.setText(val.get("Memimpin kelompok").getFirst());
     }//GEN-LAST:event_comboboxActionPerformed
 
+    private void turn(boolean call) {
+        dampakNpengaruh.setEnabled(call);
+        kesadaran.setEnabled(call);
+        membangun.setEnabled(call);
+        mengembangkan.setEnabled(call);
+        mengarahkan.setEnabled(call);
+        memimpin.setEnabled(call);
+    }
+
+    private void clearInputs() {
+        dampakNpengaruh.setText("");
+        kesadaran.setText("");
+        membangun.setText("");
+        mengembangkan.setText("");
+        mengarahkan.setText("");
+        memimpin.setText("");
+    }
+
+    private void updateInterpretation() {
+//        if (cachedBreakpoints[0] != -1) {
+//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[0], firstInput.getText());
+//        }
+//        if (cachedBreakpoints[1] != -1) {
+//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[1], secondInput.getText());
+//        }
+//        if (cachedBreakpoints[2] != -1) {
+//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[2], thirdInput.getText());
+//        }
+//        if (cachedBreakpoints[3] != -1) {
+//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[3], fourthInput.getText());
+//        }
+//        if (cachedBreakpoints[4] != -1) {
+//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[4], fifthInput.getText());
+//        }
+    }
+
     private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
+        first.add(dampakNpengaruh.getText());
+        first.add(kesadaran.getText());
+        first.add(membangun.getText());
+        first.add(mengembangkan.getText());
+        first.add(mengarahkan.getText());
+        first.add(memimpin.getText());
+
+        MSDTScoreInterpreter.setInterpretation(key, first);
+
+        if (MSDTScoreInterpreter.SaveInterpretationsToFile()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        
+        combobox.setSelectedIndex(0);
+        turn(false);
+        clearInputs();
 
     }//GEN-LAST:event_simpanbuttonActionPerformed
 
@@ -273,6 +357,7 @@ public class msdtEditForm extends javax.swing.JDialog {
     private javax.swing.JLabel MengembangkanOrangLain;
     private javax.swing.JComboBox<String> combobox;
     private javax.swing.JLabel dampakDanPengaruh;
+    private javax.swing.JTextArea dampakNpengaruh;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -282,12 +367,11 @@ public class msdtEditForm extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JTextArea kesadaran;
+    private javax.swing.JTextArea membangun;
+    private javax.swing.JTextArea memimpin;
+    private javax.swing.JTextArea mengarahkan;
+    private javax.swing.JTextArea mengembangkan;
     private javax.swing.JButton simpanbutton;
     // End of variables declaration//GEN-END:variables
 }

@@ -48,7 +48,7 @@ public class MSDTScoreInterpreter {
         }
     }
 
-    public static void SaveInterpretationsToFile() {
+    public static boolean SaveInterpretationsToFile() {
         File file = new File(DATA_FILE_PATH);
         File parentDir = file.getParentFile();
         if (!parentDir.exists()) {
@@ -59,7 +59,10 @@ public class MSDTScoreInterpreter {
             oos.writeObject(interpretations);
         } catch (IOException e) {
             System.err.println("could not save interpretations to file.");
+            return false;
         }
+        
+        return true;
     }
 
     private static void initializeDefaultInterpretations() {
@@ -164,24 +167,14 @@ public class MSDTScoreInterpreter {
 
     }
 
-    static class Pair<T, U> implements Serializable {
+    public static NavigableMap<String, Pair<String, String>> getInterpretations(String key) {
+        NavigableMap<String, Pair<String, String>> interpretation = interpretations.get(key);
 
-        private T first;
-        private U second;
-
-        public Pair(T first, U second) {
-            this.first = first;
-            this.second = second;
-
+        if (interpretation == null) {
+            throw new IllegalArgumentException("No interpretation found for key " + key);
         }
 
-        public T getFirst() {
-            return first;
-        }
-
-        public U getSecond() {
-            return second;
-        }
+        return interpretation;
     }
 
     @SuppressWarnings("unchecked")
@@ -199,11 +192,11 @@ public class MSDTScoreInterpreter {
     public DefaultTableModel chooseCombo(String choice) {
         if (choice == null || choice.isEmpty()) {
             System.err.println("Error: The choice parameter is null or empty.");
-            return new DefaultTableModel(new String[]{"Aspek", "Deskripsi", "Skor"}, 0);
+            return new DefaultTableModel(new String[]{"Aspek Psikologis", "Deskripsi", "Skor"}, 0);
         }
 
         try {
-            String[] columns = {"Aspek", "Deskripsi", "Skor"};
+            String[] columns = {"Aspek Psikologis", "Deskripsi", "Skor"};
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             for (Map.Entry<String, NavigableMap<String, Pair<String, String>>> entry : interpretations.entrySet()) {
                 if (choice.equals(entry.getKey())) {
@@ -230,8 +223,14 @@ public class MSDTScoreInterpreter {
         }
     }
 
-    public static void setInterpretation() {
-
+    public static void setInterpretation(String key, List<String> val) {
+        NavigableMap<String, Pair<String, String>> interpretationMap = interpretations.get(key);
+        interpretationMap.get("Dampak dan pengaruh").setFirst(val.get(0));
+        interpretationMap.get("Kesadaran berorganisasi").setFirst(val.get(1));
+        interpretationMap.get("Membangun Hubungan Kerja").setFirst(val.get(2));
+        interpretationMap.get("Mengembangkan orang lain").setFirst(val.get(3));
+        interpretationMap.get("Mengarahkan orang lain").setFirst(val.get(4));
+        interpretationMap.get("Memimpin kelompok").setFirst(val.get(5));
     }
 
     public List<AspectScore> setAspect(JTable table) {
@@ -249,15 +248,15 @@ public class MSDTScoreInterpreter {
         return score;
     }
 
-    public static void produceReport() {
-        String fileName = "msdt/resources/report/msdtReport.jasper";
-
-        try {
-            SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-            String formattedDate = "";
-            SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM yyyy");
-        } catch (Exception e) {
-            System.err.println("1: " + e);
-        }
-    }
+//    public static void produceReport() {
+//        String fileName = "msdt/resources/report/msdtReport.jasper";
+//
+//        try {
+//            SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+//            String formattedDate = "";
+//            SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM yyyy");
+//        } catch (Exception e) {
+//            System.err.println("1: " + e);
+//        }
+//    }
 }
