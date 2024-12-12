@@ -215,6 +215,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         clearInputs();
         int selectedIndex = CategoryInput.getSelectedIndex();
         if (selectedIndex == 0) {
+            cachedCategory = null;
             return;
         }
 
