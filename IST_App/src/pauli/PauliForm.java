@@ -303,6 +303,14 @@ public class PauliForm extends javax.swing.JPanel {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         PauliResource.resetValues();
+        namaInput.setText("");
+        tingkatPercayaDiriInput.setSelectedIndex(0);
+        kemampuanKerjaInput.setSelectedIndex(0);
+        kemampuanAdaptasiInput.setSelectedIndex(0);
+        ketekunanInput.setSelectedIndex(0);
+        konsentrasiInput.setSelectedIndex(0);
+        manajemenEmosiInput.setSelectedIndex(0);
+        motivasiBerprestasiInput.setSelectedIndex(0);
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void cetakButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakButtonActionPerformed
