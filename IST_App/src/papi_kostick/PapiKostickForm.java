@@ -17,6 +17,7 @@ import papi_kostick.resource.PapiKostickResource;
  */
 public class PapiKostickForm extends javax.swing.JPanel {
     private MainFrame mainFrame;
+
     /**
      * Creates new form PapiKostickForm
      */
@@ -184,7 +185,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
         pendidikanInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SD",
                 "SMP", "SMA", "D1",
                 "D2", "D3", "D4", "S1",
-                "S2", "S3", "Tidak Bersekolah" }));
+                "S2", "S3", "Lainnya" }));
         pendidikanInput.setPreferredSize(new java.awt.Dimension(260, 35));
         pendidikanInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -978,7 +979,8 @@ public class PapiKostickForm extends javax.swing.JPanel {
     }// GEN-LAST:event_resetButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editButtonActionPerformed
-        PasswordDialog passwordDialog = new PasswordDialog(new PapiKostickEditForm(mainFrame, getFocusTraversalKeysEnabled()));
+        PasswordDialog passwordDialog = new PasswordDialog(
+                new PapiKostickEditForm(mainFrame, getFocusTraversalKeysEnabled()));
         passwordDialog.showDialog();
     }// GEN-LAST:event_editButtonActionPerformed
 
