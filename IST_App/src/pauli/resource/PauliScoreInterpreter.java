@@ -138,6 +138,10 @@ public class PauliScoreInterpreter {
         return ketelitianInterpretations.getOrDefault(ketekunan, new HashMap<>()).get(konsentrasi);
     }
 
+    public static void setInterpretation(PauliCategory key, int value, String interpretation) {
+        interpretations.get(key).put(value, interpretation);
+    }
+
     @SuppressWarnings("unchecked")
     private static boolean loadInterpretationsFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH))) {
