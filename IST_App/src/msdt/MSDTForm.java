@@ -6,6 +6,7 @@ package msdt;
 
 import msdt.resource.AspectScore;
 import common.MainFrame;
+import common.PasswordDialog;
 import ist_app.Main;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -18,6 +19,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +31,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
+import papi_kostick.PapiKostickEditForm;
 
 /**
  *
@@ -68,9 +71,10 @@ public class MSDTForm extends javax.swing.JPanel {
         hasilScrollPane = new javax.swing.JScrollPane();
         hasilTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        tombolCetak = new javax.swing.JButton();
+        tombolBatal = new javax.swing.JButton();
         tombolUbah = new javax.swing.JButton();
-        tombolKeluar = new javax.swing.JButton();
+        tombolKembali = new javax.swing.JButton();
+        tombolCetak = new javax.swing.JButton();
 
         judul.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -129,7 +133,7 @@ public class MSDTForm extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Aspek Psikologis", "Uraian", "Skor"
+                "Aspek Psikologis", "Deskripsi", "Skor"
             }
         ) {
             Class[] types = new Class [] {
@@ -161,12 +165,12 @@ public class MSDTForm extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Aksi"));
 
-        tombolCetak.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tombolCetak.setText("Cetak");
-        tombolCetak.setPreferredSize(new java.awt.Dimension(120, 40));
-        tombolCetak.addActionListener(new java.awt.event.ActionListener() {
+        tombolBatal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tombolBatal.setText("Batal");
+        tombolBatal.setPreferredSize(new java.awt.Dimension(120, 40));
+        tombolBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolCetakActionPerformed(evt);
+                tombolBatalActionPerformed(evt);
             }
         });
 
@@ -179,12 +183,21 @@ public class MSDTForm extends javax.swing.JPanel {
             }
         });
 
-        tombolKeluar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tombolKeluar.setText("Keluar");
-        tombolKeluar.setPreferredSize(new java.awt.Dimension(120, 40));
-        tombolKeluar.addActionListener(new java.awt.event.ActionListener() {
+        tombolKembali.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tombolKembali.setText("Kembali");
+        tombolKembali.setPreferredSize(new java.awt.Dimension(120, 40));
+        tombolKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tombolKeluarActionPerformed(evt);
+                tombolKembaliActionPerformed(evt);
+            }
+        });
+
+        tombolCetak.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tombolCetak.setText("Cetak");
+        tombolCetak.setPreferredSize(new java.awt.Dimension(120, 40));
+        tombolCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolCetakActionPerformed(evt);
             }
         });
 
@@ -192,24 +205,27 @@ public class MSDTForm extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(tombolBatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tombolKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(239, 239, 239))
+                .addComponent(tombolKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolBatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolUbah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(tombolKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolCetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -243,7 +259,7 @@ public class MSDTForm extends javax.swing.JPanel {
     private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
         String val = combobox.getSelectedItem().toString();
         //TableModel dataModel = new AbstractTableModel();
-        String[] cols = {"Aspek Psikologis", "Uraian", "Skor"};
+        String[] cols = {"Aspek Psikologis", "Deskripsi", "Skor"};
 
         if (val.equals("-- PILIH --")) {
             DefaultTableModel model = new DefaultTableModel(cols, 0);
@@ -256,6 +272,23 @@ public class MSDTForm extends javax.swing.JPanel {
         //hasilTable.setModel(dataModel);
     }//GEN-LAST:event_comboboxActionPerformed
 
+    private void tombolBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolBatalActionPerformed
+        namaInput.setText("");
+        combobox.setSelectedIndex(0);
+        hasilTable.setModel(new DefaultTableModel(new String[]{"Aspek Psikologis", "Deskripsi", "Skor"}, 0));
+
+    }//GEN-LAST:event_tombolBatalActionPerformed
+
+    private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
+        PasswordDialog passwordDialog = new PasswordDialog(new msdtEditForm(mainFrame, getFocusTraversalKeysEnabled()));
+        passwordDialog.showDialog();
+    }//GEN-LAST:event_tombolUbahActionPerformed
+
+    private void tombolKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKembaliActionPerformed
+        mainFrame.showCard("MainMenuPanel");
+        mainFrame.setTitle("KATEGORISASI MAPPING");
+    }//GEN-LAST:event_tombolKembaliActionPerformed
+
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
         String fileName = "msdt/resource/report/msdtReport.jasper";
 
@@ -266,13 +299,13 @@ public class MSDTForm extends javax.swing.JPanel {
         } catch (Exception e) {
             System.err.println("Kesalahan format tanggal: " + e);
         }
-        
+
         nilai = score.setAspect(hasilTable);
-        
+
         for (AspectScore sc : nilai) {
             System.out.println(sc);
         }
-        
+
         Map<String, Object> parameter = new HashMap<>();
 
         parameter.put("nama", namaInput.getText());
@@ -289,7 +322,6 @@ public class MSDTForm extends javax.swing.JPanel {
         parameter.put("mengarahkanSkor", nilai.get(4).getSkor());
         parameter.put("memimpin", nilai.get(5).getUraian());
         parameter.put("memimpinSkor", nilai.get(5).getSkor());
-        
 
         InputStream stream = getClass().getClassLoader().getResourceAsStream(fileName);
         if (stream == null) {
@@ -304,17 +336,7 @@ public class MSDTForm extends javax.swing.JPanel {
         } catch (JRException ex) {
             Logger.getLogger(MSDTForm.class.getName()).log(Level.SEVERE, "Kesalahan saat mencetak laporan: ", ex);
         }
-
     }//GEN-LAST:event_tombolCetakActionPerformed
-
-    private void tombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolUbahActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tombolUbahActionPerformed
-
-    private void tombolKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKeluarActionPerformed
-        mainFrame.showCard("MainMenuPanel");
-        mainFrame.setTitle("KATEGORISASI MAPPING");
-    }//GEN-LAST:event_tombolKeluarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel aksiPanel;
@@ -327,8 +349,9 @@ public class MSDTForm extends javax.swing.JPanel {
     private javax.swing.JLabel kepemimpinan;
     private javax.swing.JTextField namaInput;
     private javax.swing.JLabel namaLabel;
+    private javax.swing.JButton tombolBatal;
     private javax.swing.JButton tombolCetak;
-    private javax.swing.JButton tombolKeluar;
+    private javax.swing.JButton tombolKembali;
     private javax.swing.JButton tombolUbah;
     // End of variables declaration//GEN-END:variables
 }
