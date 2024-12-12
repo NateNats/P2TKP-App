@@ -198,7 +198,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ha vs rata2 ( Ha = Hasil Awal)"/>
+            <Property name="text" type="java.lang.String" value="Ha vs Rata-rata"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="tingkatPercayaDiriInput">
@@ -282,7 +282,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tingkat Kesalahan"/>
+            <Property name="text" type="java.lang.String" value="Kesalahan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="ketekunanInput">
@@ -310,7 +310,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tingkat Pembenaran"/>
+            <Property name="text" type="java.lang.String" value="Pembenaran"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="konsentrasiInput">
@@ -338,7 +338,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tingkat Penyimpangan"/>
+            <Property name="text" type="java.lang.String" value="Penyimpangan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="manajemenEmosiInput">
@@ -366,7 +366,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tingkat Tinggi"/>
+            <Property name="text" type="java.lang.String" value="Tinggi"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="motivasiBerprestasiInput">

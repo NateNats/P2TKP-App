@@ -88,7 +88,7 @@ public class PauliForm extends javax.swing.JPanel {
         namaInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         tingkatPercayaDiriLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tingkatPercayaDiriLabel.setText("Ha vs rata2 ( Ha = Hasil Awal)");
+        tingkatPercayaDiriLabel.setText("Ha vs Rata-rata");
 
         tingkatPercayaDiriInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ha < Rata-rata", "Ha = Rata-rata", "Ha > Rata-rata" }));
         tingkatPercayaDiriInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -121,7 +121,7 @@ public class PauliForm extends javax.swing.JPanel {
         });
 
         ketekunanLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ketekunanLabel.setText("Tingkat Kesalahan");
+        ketekunanLabel.setText("Kesalahan");
 
         ketekunanInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rendah", "Sedang", "Tinggi" }));
         ketekunanInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -132,7 +132,7 @@ public class PauliForm extends javax.swing.JPanel {
         });
 
         konsentrasiLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        konsentrasiLabel.setText("Tingkat Pembenaran");
+        konsentrasiLabel.setText("Pembenaran");
 
         konsentrasiInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rendah", "Sedang", "Tinggi" }));
         konsentrasiInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -143,7 +143,7 @@ public class PauliForm extends javax.swing.JPanel {
         });
 
         manajemenEmosiLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        manajemenEmosiLabel.setText("Tingkat Penyimpangan");
+        manajemenEmosiLabel.setText("Penyimpangan");
 
         manajemenEmosiInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rendah", "Sedang", "Tinggi" }));
         manajemenEmosiInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -154,7 +154,7 @@ public class PauliForm extends javax.swing.JPanel {
         });
 
         motivasiBerprestasiLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        motivasiBerprestasiLabel.setText("Tingkat Tinggi");
+        motivasiBerprestasiLabel.setText("Tinggi");
 
         motivasiBerprestasiInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rendah", "Sedang", "Tinggi" }));
         motivasiBerprestasiInput.setPreferredSize(new java.awt.Dimension(260, 35));
