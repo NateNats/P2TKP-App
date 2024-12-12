@@ -4,17 +4,33 @@
  */
 package msdt.resource;
 
+import ist_app.Main;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import msdt.MSDTForm;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
  *
@@ -213,8 +229,35 @@ public class MSDTScoreInterpreter {
             return new DefaultTableModel(new String[]{"Aspek", "Deskripsi", "Skor"}, 0);
         }
     }
-    
-    public static void main(String[] args) {
-        MSDTScoreInterpreter cc = new MSDTScoreInterpreter();
+
+    public static void setInterpretation() {
+
+    }
+
+    public List<AspectScore> setAspect(JTable table) {
+        List<AspectScore> score = new ArrayList<>();
+        TableModel model = table.getModel();
+
+        for (int row = 0; row < model.getRowCount(); row++) {
+            String aspek = (String) model.getValueAt(row, 0);
+            String uraian = (String) model.getValueAt(row, 1);
+            String skor = (String) model.getValueAt(row, 2);
+
+            score.add(new AspectScore(aspek, uraian, skor));
+        }
+
+        return score;
+    }
+
+    public static void produceReport() {
+        String fileName = "msdt/resources/report/msdtReport.jasper";
+
+        try {
+            SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+            String formattedDate = "";
+            SimpleDateFormat newFormat = new SimpleDateFormat("dd MMMM yyyy");
+        } catch (Exception e) {
+            System.err.println("1: " + e);
+        }
     }
 }
