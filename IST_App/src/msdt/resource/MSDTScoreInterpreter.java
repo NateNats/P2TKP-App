@@ -38,7 +38,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
  */
 public class MSDTScoreInterpreter {
 
-    private static final String DATA_FILE_PATH = "./src/storage/MSDT_interpretation.dat";
+    private static final String DATA_FILE_PATH = "./storage/MSDT_interpretation.dat";
     private static Map<String, NavigableMap<String, Pair<String, String>>> interpretations = new TreeMap<>();
 
     static {
