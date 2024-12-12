@@ -28,7 +28,7 @@ public class PauliScoreInterpreter {
         }
     }
 
-    public static void saveInterpretationsToFile() {
+    public static boolean saveInterpretationsToFile() {
         File file = new File(DATA_FILE_PATH);
         File parentDir = file.getParentFile();
         if (!parentDir.exists()) {
@@ -39,15 +39,25 @@ public class PauliScoreInterpreter {
             oos.writeObject(interpretations);
         } catch (IOException e) {
             System.err.println("Could not save interpretations to file.");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean saveKetelitianInterpretationsToFile() {
+        File file = new File(K_DATA_FILE_PATH);
+        File parentDir = file.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
         }
 
-        file = new File(K_DATA_FILE_PATH);
-        parentDir = file.getParentFile();
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(ketelitianInterpretations);
         } catch (IOException e) {
             System.err.println("Could not save interpretations to file.");
+            return false;
         }
+        return true;
     }
 
     private static void initializeDefaultInterpretations() {
