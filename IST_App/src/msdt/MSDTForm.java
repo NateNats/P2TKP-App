@@ -285,6 +285,7 @@ public class MSDTForm extends javax.swing.JPanel {
     }//GEN-LAST:event_tombolUbahActionPerformed
 
     private void tombolKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKembaliActionPerformed
+        tombolBatalActionPerformed(evt);
         mainFrame.showCard("MainMenuPanel");
         mainFrame.setTitle("KATEGORISASI MAPPING");
     }//GEN-LAST:event_tombolKembaliActionPerformed
