@@ -16,8 +16,8 @@ import java.util.HashMap;
  */
 
 public class PauliScoreInterpreter {
-    private static final String DATA_FILE_PATH = "./src/storage/pauli_interpretation.dat";
-    private static final String K_DATA_FILE_PATH = "./src/storage/pauli_ketelitian_interpretation.dat";
+    private static final String DATA_FILE_PATH = "./storage/pauli_interpretation.dat";
+    private static final String K_DATA_FILE_PATH = "./storage/pauli_ketelitian_interpretation.dat";
     private static Map<PauliCategory, Map<Integer, String>> interpretations = new HashMap<>();
     private static Map<Integer, Map<Integer, String>> ketelitianInterpretations = new HashMap<>();
 
