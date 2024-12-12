@@ -44,6 +44,7 @@ public class PauliEditForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
+        setTitle("Edit Interpretasi Pauli");
 
         addWindowListener( new java.awt.event.WindowAdapter() {
             @Override
