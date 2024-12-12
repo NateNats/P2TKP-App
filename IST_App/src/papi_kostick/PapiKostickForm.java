@@ -989,6 +989,7 @@ public class PapiKostickForm extends javax.swing.JPanel {
     }// GEN-LAST:event_cetakButtonActionPerformed
 
     private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_kembaliButtonActionPerformed
+        resetButtonActionPerformed(evt);
         mainFrame.showCard("MainMenuPanel");
         mainFrame.setTitle("KATEGORISASI MAPPING");
     }// GEN-LAST:event_kembaliButtonActionPerformed
