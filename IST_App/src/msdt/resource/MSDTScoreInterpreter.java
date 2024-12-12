@@ -259,26 +259,5 @@ public class MSDTScoreInterpreter {
         } catch (Exception e) {
             System.err.println("1: " + e);
         }
-//
-//        Map<String, Object> parameter = new HashMap<String, Object>();
-//
-//        nilai = score.setAspect(hasilTable);
-//
-//        parameter.put("nama", namaInput.getText());
-//        parameter.put("jenis", combobox.getSelectedItem().toString());
-//
-//        JRBeanCollectionDataSource tabelVal
-//                = new JRBeanCollectionDataSource(nilai);
-//
-//        parameter.put("msdt", tabelVal);
-//
-//        InputStream stream = Main.class.getResourceAsStream(fileName);
-//        try {
-//            JasperPrint jasperprint = JasperFillManager.fillReport(
-//                    ClassLoader.getSystemResourceAsStream(fileName),
-//                    parameter, new JREmptyDataSource());
-//        } catch (JRException ex) {
-//            Logger.getLogger(MSDTForm.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 }

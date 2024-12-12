@@ -257,7 +257,7 @@ public class MSDTForm extends javax.swing.JPanel {
     }//GEN-LAST:event_comboboxActionPerformed
 
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
-        String fileName = ".src/msdt/resource/report/msdtReport.jasper";
+        String fileName = "msdt/resource/report/msdtReport.jasper";
 
         try {
             SimpleDateFormat originalFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
@@ -266,16 +266,30 @@ public class MSDTForm extends javax.swing.JPanel {
         } catch (Exception e) {
             System.err.println("Kesalahan format tanggal: " + e);
         }
-
-        Map<String, Object> parameter = new HashMap<>();
-
+        
         nilai = score.setAspect(hasilTable);
+        
+        for (AspectScore sc : nilai) {
+            System.out.println(sc);
+        }
+        
+        Map<String, Object> parameter = new HashMap<>();
 
         parameter.put("nama", namaInput.getText());
         parameter.put("jenis", combobox.getSelectedItem().toString());
-
-        JRBeanCollectionDataSource tabelVal = new JRBeanCollectionDataSource(nilai);
-        parameter.put("msdt", tabelVal);
+        parameter.put("dampakdanpengaruh", nilai.get(0).getUraian());
+        parameter.put("dampakskor", nilai.get(0).getSkor());
+        parameter.put("kesadaran", nilai.get(1).getUraian());
+        parameter.put("kesadaranSkor", nilai.get(1).getSkor());
+        parameter.put("membangun", nilai.get(2).getUraian());
+        parameter.put("membangunSkor", nilai.get(2).getSkor());
+        parameter.put("mengembangkan", nilai.get(3).getUraian());
+        parameter.put("mengembangkanSkor", nilai.get(3).getSkor());
+        parameter.put("mengarahkan", nilai.get(4).getUraian());
+        parameter.put("mengarahkanSkor", nilai.get(4).getSkor());
+        parameter.put("memimpin", nilai.get(5).getUraian());
+        parameter.put("memimpinSkor", nilai.get(5).getSkor());
+        
 
         InputStream stream = getClass().getClassLoader().getResourceAsStream(fileName);
         if (stream == null) {
@@ -285,6 +299,7 @@ public class MSDTForm extends javax.swing.JPanel {
 
         try {
             JasperPrint jasperprint = JasperFillManager.fillReport(stream, parameter, new JREmptyDataSource());
+            JasperViewer.viewReport(jasperprint, false);
             // Cetak atau tampilkan laporan sesuai kebutuhan
         } catch (JRException ex) {
             Logger.getLogger(MSDTForm.class.getName()).log(Level.SEVERE, "Kesalahan saat mencetak laporan: ", ex);
