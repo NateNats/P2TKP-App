@@ -5,6 +5,7 @@
 package pauli;
 
 import common.MainFrame;
+import common.PasswordDialog;
 import pauli.resource.PauliResource;
 
 /**
@@ -319,7 +320,8 @@ public class PauliForm extends javax.swing.JPanel {
     }//GEN-LAST:event_cetakButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
+        PasswordDialog passwordDialog = new PasswordDialog(new PauliEditForm(mainFrame, getFocusTraversalKeysEnabled()));
+        passwordDialog.showDialog();
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliButtonActionPerformed
