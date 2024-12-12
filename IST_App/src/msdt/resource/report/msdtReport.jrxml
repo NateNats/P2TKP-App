@@ -1,38 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="msdtReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b5e9284e-0add-4e62-8219-7060aafbd2a5">
-	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-			<topPen lineWidth="0.5" lineColor="#000000"/>
-			<leftPen lineWidth="0.5" lineColor="#000000"/>
-			<bottomPen lineWidth="0.5" lineColor="#000000"/>
-			<rightPen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-		<conditionalStyle>
-			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
-			<style backcolor="#FBFDFF"/>
-		</conditionalStyle>
-	</style>
 	<subDataset name="msdt" uuid="fb316b31-4816-4f62-9690-4199f3987495">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 		<queryString>
 			<![CDATA[]]>
 		</queryString>
@@ -42,6 +12,18 @@
 	</subDataset>
 	<parameter name="jenis" class="java.lang.String"/>
 	<parameter name="nama" class="java.lang.String"/>
+	<parameter name="dampakdanpengaruh" class="java.lang.String"/>
+	<parameter name="kesadaran" class="java.lang.String"/>
+	<parameter name="kesadaranSkor" class="java.lang.String"/>
+	<parameter name="membangun" class="java.lang.String"/>
+	<parameter name="mengembangkan" class="java.lang.String"/>
+	<parameter name="mengarahkan" class="java.lang.String"/>
+	<parameter name="memimpin" class="java.lang.String"/>
+	<parameter name="membangunSkor" class="java.lang.String"/>
+	<parameter name="mengembangkanSkor" class="java.lang.String"/>
+	<parameter name="mengarahkanSkor" class="java.lang.String"/>
+	<parameter name="memimpinSkor" class="java.lang.String"/>
+	<parameter name="dampakskor" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -62,7 +44,7 @@
 	<columnHeader>
 		<band height="80">
 			<staticText>
-				<reportElement x="-10" y="40" width="150" height="30" uuid="22274cb8-c04d-44e2-8567-c93e83c2f269">
+				<reportElement x="-12" y="40" width="150" height="30" uuid="22274cb8-c04d-44e2-8567-c93e83c2f269">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
@@ -101,85 +83,255 @@
 	</columnHeader>
 	<detail>
 		<band height="277" splitType="Stretch">
-			<componentElement>
-				<reportElement x="-10" y="0" width="575" height="240" uuid="557f658a-8522-4b73-b3a9-8b6b05dfcb1f">
-					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
-					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
-					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+			<staticText>
+				<reportElement mode="Opaque" x="167" y="10" width="310" height="20" backcolor="#BDD7EE" uuid="9e800133-c995-45ab-8985-66e46d681b34">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="msdt" uuid="62b3cc10-ccc9-41b9-b3ca-e89215437ef9">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:column width="170" uuid="38b71ecc-f7b6-4d97-a917-a73871f0e22b">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="170" height="30" uuid="de2fd904-5372-4d51-9f78-3f1dd890741b"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Aspek Psikologis]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="170" height="30" uuid="c71d9587-c18a-426b-b84e-66b298798055">
-									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
-								</reportElement>
-								<textElement verticalAlignment="Middle">
-									<paragraph leftIndent="3" rightIndent="3"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{aspek}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="260" uuid="fc766d4f-8a83-4d85-b45d-294064fa6977">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="260" height="30" uuid="b05dc84e-fab5-48a7-8b1b-46b3437e2387"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Uraian]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="260" height="30" uuid="da9d56e9-68f3-4e31-ab03-d61e870b658a">
-									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
-								</reportElement>
-								<textElement verticalAlignment="Middle">
-									<paragraph leftIndent="3" rightIndent="3"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{uraian}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="145" uuid="3f449125-7e64-4533-84f3-b9fa89c5c990">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="145" height="30" uuid="dab17e0f-032f-48f3-875c-bfa0473fad07"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Skor]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="145" height="30" uuid="b1c9a881-f4d3-427f-b4bc-904c73e53e93">
-									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
-								</reportElement>
-								<textElement verticalAlignment="Middle">
-									<paragraph leftIndent="3" rightIndent="3"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{skor}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isItalic="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Uraian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="10" width="168" height="20" backcolor="#BDD7EE" uuid="5c7aeb99-2a88-4dea-97a4-5925a4cfb9ff">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="477" y="10" width="79" height="20" backcolor="#BDD7EE" uuid="9ad36a7d-9fb7-44c5-a32d-dc3ac047b3c3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isItalic="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Skor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="30" width="168" height="30" uuid="346450a0-5a3f-41e7-adf0-f2ccfedebc90">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Dampak dan pengaruh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="60" width="168" height="30" uuid="31a818cc-24f9-4cc6-b617-88f45d530980">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Kesadaran berorganisasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="90" width="168" height="30" uuid="d3f42928-ec6c-4835-82d5-d02c323d3dd2"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Membangun Hubungan Kerja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="120" width="168" height="30" uuid="7840116b-b970-4cb2-af70-e4784ada75da"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Mengembangkan orang lain]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="150" width="168" height="30" uuid="173c2ca5-ccd1-44e4-b5ff-8020f7689fb2"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Mengarahkan orang lain]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="180" width="168" height="30" uuid="43d7d190-9a12-4bc7-ac2f-717bd1d7c5be"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Memimpin kelompok]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="30" width="310" height="30" uuid="9c7c801b-513d-4481-b100-589e8f212d44">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dampakdanpengaruh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="60" width="310" height="30" uuid="fb64d191-1ba2-4206-a1b2-c10e31aafcc1">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kesadaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="60" width="79" height="30" uuid="ef0eccbc-63da-4a1e-96cb-9941cab79bac">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kesadaranSkor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="90" width="310" height="30" uuid="7ddf031c-a943-43e7-89f4-a1d30dae4d2a">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{membangun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="120" width="310" height="30" uuid="dad9f641-ba12-4bba-b14d-f8b7cacfccf5">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mengembangkan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="150" width="310" height="30" uuid="4236e7dc-b696-467a-aadd-d0d370396575">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mengarahkan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="180" width="310" height="30" uuid="0ba7b033-0a12-4b71-8450-2e085d6636c9">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{memimpin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="90" width="79" height="30" uuid="431ed8d2-1daa-4b03-af49-3c08f78dfa87">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{membangunSkor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="120" width="79" height="30" uuid="cbc47b03-848b-43be-9a04-7fdd249e00c7">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mengembangkanSkor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="150" width="79" height="30" uuid="d612b1af-50ab-43bf-bab1-cd47f8f5dfea">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mengarahkanSkor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="180" width="79" height="30" uuid="1f32d97d-eee1-4dea-b1ef-d276ee4a5a5a"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{memimpinSkor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="30" width="79" height="30" uuid="6d7db01b-bdf6-4dff-853e-039594f87288"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{dampakskor}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
