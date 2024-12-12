@@ -1,7 +1,5 @@
 package pauli.resource;
 
-// Could have also used this for the TreeMap, Too late to implement now
-
 public enum PauliCategory {
     HA_VS_RATA_RATA("Ha vs Rata-rata (Tingkat Percaya Diri & Inisiatif)", 1),
     JUMLAH("Jumlah (Kemampuan Kerja & Motivasi Kerja)", 2),
