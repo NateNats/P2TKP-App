@@ -59,6 +59,14 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        addWindowListener( new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                cancelButtonActionPerformed(null);
+                dispose();
+            }
+        });
+
         CategoryInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "L = PERAN – PEMIMPIN (Leadership Role)", "P = KEBUTUHAN – MENGATUR ORANG LAIN (Need to Control Others)", "I = PERAN – MEMBUAT KEPUTUSAN (Ease in Decision Making)", "F = KEBUTUHAN – MENDUKUNG OTORITAS PEMEGANG KEKUASAAN (Need to Support Authority)", "W = KEBUTUHAN MENGIKUTI ATURAN DAN PENGAWASAN (Need for Rules and Supervision)", "T = PERAN SIBUK (Pace)", "V = PERAN PENUH SEMANGAT (Vigorous Type)", "R = PERAN ORANG YANG TEORITIS (Theoretical Type)", "D = PERAN BEKERJA DENGAN HAL – HAL RINCI (Interest in Working With Details)", "C = PERAN MENGATUR (Organized Type)", "X = KEBUTUHAN UNTUK DIPERHATIKAN (Need to be Noticed)", "B = KEBUTUHAN DITERIMA DALAM KELOMPOK (Need to Belong to Groups)", "O = KEBUTUHAN KEDEKATAN DAN KASIH SAYANG (Need for Closeness and Affection)", "S = PERAN HUBUNGAN SOSIAL (Social Extension)", "N = KEBUTUHAN MENYELESAIKAN TUGAS SECARA MANDIRI (Need to Finish Task)", "A = KEBUTUHAN BERPRESTASI (Need to Achieve)", "G = PERAN PEKERJA KERAS (Hard Intense Worked)", "Z = KEBUTUHAN UNTUK BERUBAH (Need for Change)", "K = KEBUTUHAN UNTUK AGRESIF (Need to be Forceful)", "E = PERAN PENGENDALIAN EMOSI (Emotional Resistant)" }));
         CategoryInput.setPreferredSize(new java.awt.Dimension(561, 35));
         CategoryInput.addActionListener(new java.awt.event.ActionListener() {
