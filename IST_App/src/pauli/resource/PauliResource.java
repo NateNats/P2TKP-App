@@ -50,13 +50,13 @@ public class PauliResource {
         if (file.exists()) {
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("name", nama);
-            parameters.put("tingkatPercayaDiri", PauliScoreInterpreter.getInterpretation("tingkat percaya diri", tingkatPercayaDiri));
-            parameters.put("kemampuanKerja", PauliScoreInterpreter.getInterpretation("kemampuan kerja", kemampuanKerja));
-            parameters.put("kemampuanAdaptasi", PauliScoreInterpreter.getInterpretation("kemampuan adaptasi", kemampuanAdaptasi));
-            parameters.put("ketekunan", PauliScoreInterpreter.getInterpretation("ketekunan", ketekunan));
-            parameters.put("konsentrasi", PauliScoreInterpreter.getInterpretation("konsentrasi", konsentrasi));
-            parameters.put("manajemenEmosi", PauliScoreInterpreter.getInterpretation("manajemen emosi", manajemenEmosi));
-            parameters.put("motivasiBerprestasi", PauliScoreInterpreter.getInterpretation("motivasi berprestasi", motivasiBerprestasi));
+            parameters.put("tingkatPercayaDiri", PauliScoreInterpreter.getInterpretation(PauliCategory.HA_VS_RATA_RATA, tingkatPercayaDiri));
+            parameters.put("kemampuanKerja", PauliScoreInterpreter.getInterpretation(PauliCategory.JUMLAH, kemampuanKerja));
+            parameters.put("kemampuanAdaptasi", PauliScoreInterpreter.getInterpretation(PauliCategory.POSISI_KOLOM, kemampuanAdaptasi));
+            parameters.put("ketekunan", PauliScoreInterpreter.getInterpretation(PauliCategory.KESALAHAN, ketekunan));
+            parameters.put("konsentrasi", PauliScoreInterpreter.getInterpretation(PauliCategory.PEMBENARAN, konsentrasi));
+            parameters.put("manajemenEmosi", PauliScoreInterpreter.getInterpretation(PauliCategory.PENYIMPANGAN, manajemenEmosi));
+            parameters.put("motivasiBerprestasi", PauliScoreInterpreter.getInterpretation(PauliCategory.TINGGI, motivasiBerprestasi));
             parameters.put("ketelitian", PauliScoreInterpreter.getKetelitianInterpretation(ketekunan, konsentrasi));
 
             try {

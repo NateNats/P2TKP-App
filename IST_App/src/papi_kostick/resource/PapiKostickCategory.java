@@ -1,5 +1,7 @@
 package papi_kostick.resource;
 
+// Could have also used this for the TreeMap, Too late to implement now
+
 public enum PapiKostickCategory {
     LEADERSHIP_ROLE("L = PERAN – PEMIMPIN (Leadership Role)", 1),
     NEED_TO_CONTROL_OTHERS("P = KEBUTUHAN – MENGATUR ORANG LAIN (Need to Control Others)", 2),

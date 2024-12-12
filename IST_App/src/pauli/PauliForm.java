@@ -5,6 +5,7 @@
 package pauli;
 
 import common.MainFrame;
+import common.PasswordDialog;
 import pauli.resource.PauliResource;
 
 /**
@@ -88,7 +89,7 @@ public class PauliForm extends javax.swing.JPanel {
         namaInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         tingkatPercayaDiriLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tingkatPercayaDiriLabel.setText("Ha vs rata2 ( Ha = Hasil Awal)");
+        tingkatPercayaDiriLabel.setText("Ha vs Rata-rata");
 
         tingkatPercayaDiriInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ha < Rata-rata", "Ha = Rata-rata", "Ha > Rata-rata" }));
         tingkatPercayaDiriInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -121,7 +122,7 @@ public class PauliForm extends javax.swing.JPanel {
         });
 
         ketekunanLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ketekunanLabel.setText("Tingkat Kesalahan");
+        ketekunanLabel.setText("Kesalahan");
 
         ketekunanInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rendah", "Sedang", "Tinggi" }));
         ketekunanInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -132,7 +133,7 @@ public class PauliForm extends javax.swing.JPanel {
         });
 
         konsentrasiLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        konsentrasiLabel.setText("Tingkat Pembenaran");
+        konsentrasiLabel.setText("Pembenaran");
 
         konsentrasiInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rendah", "Sedang", "Tinggi" }));
         konsentrasiInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -143,7 +144,7 @@ public class PauliForm extends javax.swing.JPanel {
         });
 
         manajemenEmosiLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        manajemenEmosiLabel.setText("Tingkat Penyimpangan");
+        manajemenEmosiLabel.setText("Penyimpangan");
 
         manajemenEmosiInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rendah", "Sedang", "Tinggi" }));
         manajemenEmosiInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -154,7 +155,7 @@ public class PauliForm extends javax.swing.JPanel {
         });
 
         motivasiBerprestasiLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        motivasiBerprestasiLabel.setText("Tingkat Tinggi");
+        motivasiBerprestasiLabel.setText("Tinggi");
 
         motivasiBerprestasiInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rendah", "Sedang", "Tinggi" }));
         motivasiBerprestasiInput.setPreferredSize(new java.awt.Dimension(260, 35));
@@ -303,6 +304,14 @@ public class PauliForm extends javax.swing.JPanel {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         PauliResource.resetValues();
+        namaInput.setText("");
+        tingkatPercayaDiriInput.setSelectedIndex(0);
+        kemampuanKerjaInput.setSelectedIndex(0);
+        kemampuanAdaptasiInput.setSelectedIndex(0);
+        ketekunanInput.setSelectedIndex(0);
+        konsentrasiInput.setSelectedIndex(0);
+        manajemenEmosiInput.setSelectedIndex(0);
+        motivasiBerprestasiInput.setSelectedIndex(0);
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void cetakButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakButtonActionPerformed
@@ -311,7 +320,8 @@ public class PauliForm extends javax.swing.JPanel {
     }//GEN-LAST:event_cetakButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
+        PasswordDialog passwordDialog = new PasswordDialog(new PauliEditForm(mainFrame, getFocusTraversalKeysEnabled()));
+        passwordDialog.showDialog();
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliButtonActionPerformed
