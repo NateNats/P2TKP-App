@@ -331,6 +331,7 @@ public class PauliForm extends javax.swing.JPanel {
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliButtonActionPerformed
+        resetButtonActionPerformed(evt);
         mainFrame.showCard("MainMenuPanel");
         mainFrame.setTitle("KATEGORISASI MAPPING");
     }//GEN-LAST:event_kembaliButtonActionPerformed
