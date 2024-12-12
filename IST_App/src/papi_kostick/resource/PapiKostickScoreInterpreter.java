@@ -18,7 +18,7 @@ import java.util.TreeMap;
 
 public class PapiKostickScoreInterpreter {
     private static final String DATA_FILE_PATH = "./src/storage/kostick_interpretation.dat";
-    private static Map<String, NavigableMap<Integer, String>> interpretations = new TreeMap<>();
+    private static Map<PapiKostickCategory, NavigableMap<Integer, String>> interpretations = new TreeMap<>();
 
     static {
         if (!loadInterpretationsFromFile()) {
@@ -46,7 +46,7 @@ public class PapiKostickScoreInterpreter {
     @SuppressWarnings("unchecked")
     private static boolean loadInterpretationsFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH))) {
-            interpretations = (Map<String, NavigableMap<Integer, String>>) ois.readObject();
+            interpretations = (Map<PapiKostickCategory, NavigableMap<Integer, String>>) ois.readObject();
             return true;
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Could not load interpretations from file, using defaults.");
@@ -54,7 +54,7 @@ public class PapiKostickScoreInterpreter {
         }
     }
 
-    public static String getInterpretation(String key, int score) {
+    public static String getInterpretation(PapiKostickCategory key, int score) {
         NavigableMap<Integer, String> interpretation = interpretations.get(key);
         if (interpretation == null) {
             return "No interpretation found for key " + key;
@@ -65,7 +65,7 @@ public class PapiKostickScoreInterpreter {
     private static void initializeDefaultInterpretations() {
 
         // L- Leadership Role
-        interpretations.put("l", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.LEADERSHIP_ROLE, new TreeMap<Integer, String>() {
             {
                 put(0, "Cenderung enggan menerima peran pemimpin, disertai kurangnya inisiatif menjalankannya.");
                 put(5, "Cenderung mau menerima peran pemimpin serta penuh inisiatif dalam menjalankannya.");
@@ -73,7 +73,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // P - Need to Control Others
-        interpretations.put("p", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_TO_CONTROL_OTHERS, new TreeMap<Integer, String>() {
             {
                 put(0, "Enggan mengendalikan orang lain atau tim.");
                 put(5, "Butuh mengendalikan orang lain atau tim.");
@@ -81,7 +81,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // I - Ease in Decision Making
-        interpretations.put("i", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.EASE_IN_DECISION_MAKING, new TreeMap<Integer, String>() {
             {
                 put(0, "Enggan untuk berperan sebagai pengambil suatu keputusan.");
                 put(3, "Seringkali tampak sangat ragu saat berperan mengambil keputusan, meski sesekali masih ragu-ragu.");
@@ -91,7 +91,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // F - Need to Support Authority
-        interpretations.put("f", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_TO_SUPPORT_AUTHORITY, new TreeMap<Integer, String>() {
             {
                 put(0, "Tidak butuh mendukung pemegang otoritas, karena secara terbuka akan menolak permintaan mengabdikan diri pada kepentingan perusahaan.");
                 put(3, "Kurang butuh mendukung pemegang otoritas, karena lebih memilih mendahulukan kepentingannya sendiri terlebih dahulu, setiap kali ada kesempatan.");
@@ -101,7 +101,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // W - Need for Rules and Supervision
-        interpretations.put("w", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_FOR_RULES_AND_SUPERVISION, new TreeMap<Integer, String>() {
             {
                 put(0, "Kurang butuh aturan dan pengawasan, karena ingin mandiri dalam mencapai suatu tujuan yang diberikan kepadanya.");
                 put(4, "Butuh arahan dan bimbingan terlebih dahulu, baru berani memulai sendiri hingga selesai.");
@@ -110,7 +110,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // T - Pace
-        interpretations.put("t", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.PACE, new TreeMap<Integer, String>() {
             {
                 put(0, "Tampak santai, karena ingin tugas diselesaikan menurut ukuran dan kemauannya sendiri.");
                 put(4, "Tampak sibuk, karena ingin tugas diselesaikan secara efektif dan efisien.");
@@ -118,7 +118,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // V - Vigorous Type
-        interpretations.put("v", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.VIGOROUS_TYPE, new TreeMap<Integer, String>() {
             {
                 put(0, "Tampak kurang berdaya dan cenderung akan pasif secara fisik.");
                 put(5, "Tampak penuh semangat dan cenderung akan aktif secara fisik.");
@@ -126,7 +126,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // R - Theoretical Type
-        interpretations.put("r", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.THEORETICAL_TYPE, new TreeMap<Integer, String>() {
             {
                 put(0, "Tampak sebagai praktisi, cenderung mengandalkan pendekatan praktis dalam memecahkan masalah.");
                 put(5, "Tampak sebagai analis-teoris, cenderung mengandalkan penalaran yang logis dalam memecahkan masalah.");
@@ -134,7 +134,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // D - Interest in Working With Details
-        interpretations.put("d", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.INTEREST_IN_WORKING_WITH_DETAILS, new TreeMap<Integer, String>() {
             {
                 put(0, "Tampak suka gambaran besar, karena sadar perlu bertindak cermat namun enggan memperhatikan detil tindakannya.");
                 put(4, "Tampak suka gambaran detil, karena sadar perlu bertindak cermat disertai upaya untuk memperhatikan detil tindakannya.");
@@ -142,7 +142,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // C - Organized Type
-        interpretations.put("c", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.ORGANIZED_TYPE, new TreeMap<Integer, String>() {
             {
                 put(0, "Tampak suka mengalah, karena penuh kompromi dalam melakukan pengaturan, disertai kurangnya perhatian pada sistematika tindakan.");
                 put(3, "Tampak suka bernegosiasi, karena ada beberapa kompromi dalam melakukan pengaturan, namun lebih fokus pada sistematika tindakan.");
@@ -151,7 +151,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // X - Need to be Noticed
-        interpretations.put("x", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_TO_BE_NOTICED, new TreeMap<Integer, String>() {
             {
                 put(0, "Tampak menyendiri, karena cenderung pemalu, serta enggan jadi pusat perhatian.");
                 put(2, "Tampak membuka diri sepenuhnya, karena membuka diri secara tulus, tanpa dilandasi keinginan jadi pusat perhatian.");
@@ -161,7 +161,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // B - Need to Belong to Groups
-        interpretations.put("b", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_TO_BELONG_TO_GROUPS, new TreeMap<Integer, String>() {
             {
                 put(0, "Tampak menjaga jarak dalam kelompok, pemilih dalam hal bergabung ke kelompok.");
                 put(4, "Tampak membuka diri secara hati-hati dalam kelompok, karena agak pemilih dalam hal bergabung dalam kelompok, yang mana di satu sisi ingin diterima namun tidak serta merta mau menerima pengaruh dari kelompok yang diikuti.");
@@ -170,7 +170,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // O - Need for Closeness and Affection
-        interpretations.put("o", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_FOR_CLOSENESS_AND_AFFECTION, new TreeMap<Integer, String>() {
             {
                 put(0, "Tampak enggan dekat secara personal, karena tidak suka terlalu dekat secara perorangan.");
                 put(3, "Tampak mau dekat secara personal namun disertai kehati-hatian, karena tidak terlalu kesepian jika tidak ada yang dekat secara perorangan, serta tidak menolak jika ada yang ingin dekat secara perorangan.");
@@ -179,7 +179,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // S - Social Extension
-        interpretations.put("s", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.SOCIAL_EXTENSION, new TreeMap<Integer, String>() {
             {
                 put(0, "Kurang berminat pada hubungan sosial, karena sulit percaya orang lain.");
                 put(7, "Sangat berminat pada hubungan sosial, karena mudah percaya orang lain.");
@@ -187,7 +187,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // N - Need to Finish Task
-        interpretations.put("n", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_TO_FINISH_TASK, new TreeMap<Integer, String>() {
             {
                 put(0, "Butuh menghindari penyelesaian tugas secara mandiri, karena ingin menunda atau menghindari menyelesaikan pekerjaan, saat diminta menyelesaikan suatu tugas.");
                 put(4, "Butuh menyelesaikan beberapa tugas secara mandiri, karena cenderung ingin mengerjakan sebagian kecil pekerjaan sampai tuntas, saat diminta menyelesaikan suatu tugas.");
@@ -198,7 +198,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // A - Need to Achieve
-        interpretations.put("a", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_TO_ACHIEVE, new TreeMap<Integer, String>() {
             {
                 put(0, "Tidak butuh berprestasi, karena prestasi seringkali tidak ingin dicapai karena tujuannya tidak pasti, kurang berambisi, serta mudah puas pada suatu pencapaian yang kurang tinggi.");
                 put(6, "Butuh berprestasi, karena prestasi seringkali mudah dicapai karena tujuannya jelas, berambisi tinggi, serta sangat menginginkan kesuksesan.");
@@ -206,7 +206,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // G - Hard Intense Worked
-        interpretations.put("g", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.HARD_INTENSE_WORKED, new TreeMap<Integer, String>() {
             {
                 put(0, "Enggan bekerja keras.");
                 put(3, "Bekerja untuk kesenangan saja.");
@@ -215,7 +215,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // Z - Need for Change
-        interpretations.put("z", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_FOR_CHANGE, new TreeMap<Integer, String>() {
             {
                 put(0, "Butuh kestabilan, karena suka hal-hal yang pasti dan tetap tanpa perubahan sama sekali.");
                 put(3, "Butuh kestabilan namun sedikit terbuka pada hal dinamis, karena bisa menerima perubahan asalkan tidak disertai paksaan untuk segera mengikuti perubahan tersebut.");
@@ -226,7 +226,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // K - Need to be Forceful
-        interpretations.put("k", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.NEED_TO_BE_FORCEFUL, new TreeMap<Integer, String>() {
             {
                 put(0, "Tidak butuh kendali, karena ingin menjauhi segala hal yang bisa melibatkannya dalam pusat permasalahan.");
                 put(3, "Butuh sedikit kendali, karena ingin tahu mengenai konflik yang terjadi terkait suatu permasalahan, dalam tujuan bisa memastikan posisi dan tindakannya yang bisa menjamin diperolehnya suasana aman dan minim konflik.");
@@ -237,7 +237,7 @@ public class PapiKostickScoreInterpreter {
         });
 
         // E - Emotional Resistant
-        interpretations.put("e", new TreeMap<Integer, String>() {
+        interpretations.put(PapiKostickCategory.EMOTIONAL_RESISTANT, new TreeMap<Integer, String>() {
             {
                 put(0, "Reaktif, bertindak tergesa-gesa tanpa pikir panjang, sehingga tampak kurang mampu mengontrol gejolak perasaannya.");
                 put(2, "Reaktif, bertindak tergesa-gesa tapi mulai mempertimbangkan beberapa situasi dan kondisi yang dihadapi, sehingga tampak mulai ada upaya mengontrol beberapa gejolak perasaannya.");
@@ -256,7 +256,7 @@ public class PapiKostickScoreInterpreter {
         }
     }
 
-    public static void setInterpretation(String key, int score, String interpretation) {
+    public static void setInterpretation(PapiKostickCategory key, int score, String interpretation) {
         NavigableMap<Integer, String> interpretationMap = interpretations.get(key);
         if (interpretationMap == null) {
             interpretationMap = new TreeMap<>();
