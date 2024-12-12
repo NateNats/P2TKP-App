@@ -431,7 +431,7 @@ public class ist_mapping extends javax.swing.JPanel {
         });
 
         tombolKeluar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tombolKeluar.setText("Keluar");
+        tombolKeluar.setText("kembali");
         tombolKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tombolKeluarActionPerformed(evt);
