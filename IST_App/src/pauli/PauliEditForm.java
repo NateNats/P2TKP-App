@@ -13,7 +13,7 @@ import pauli.resource.PauliScoreInterpreter;
  * @author Trustacean
  */
 public class PauliEditForm extends javax.swing.JDialog {
-
+    PauliCategory cachedCategory;
     /**
      * Creates new form PauliEditForm
      */
@@ -42,7 +42,16 @@ public class PauliEditForm extends javax.swing.JDialog {
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
+
+        addWindowListener( new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                cancelButtonActionPerformed(null);
+                dispose();
+            }
+        });
 
         categoryInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Ha vs Rata-rata (Tingkat Percaya Diri & Inisiatif)", "Jumlah (Kemampuan Kerja & Motivasi Kerja)", "Posisi Kolom (Kemampuan Adaptasi)", "Kesalahan (Ketekunan)", "Pembenaran (Konsentrasi)", "Penyimpangan (Manajemen Emosi)", "Tinggi (Motivasi Berprestasi & Kemauan Mengembangkan Diri)", "Ketekunan & Konsentrasi (Ketelitian)" }));
         categoryInput.setPreferredSize(new java.awt.Dimension(561, 35));
@@ -112,8 +121,20 @@ public class PauliEditForm extends javax.swing.JDialog {
         saveButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         saveButton.setText("Simpan");
 
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cancelButton.setText("Batal");
+
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,8 +168,19 @@ public class PauliEditForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        updateInterpretation();
+        PauliScoreInterpreter.saveInterpretationsToFile();
+        
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        PauliScoreInterpreter.reloadInterpretations();
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
     private void CategoryInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryInputActionPerformed
-        // TODO add your handling code here:
+        updateInterpretation();
         clearInputs();
         int selectedCategory = categoryInput.getSelectedIndex();
         if (selectedCategory == 0) {
@@ -158,6 +190,14 @@ public class PauliEditForm extends javax.swing.JDialog {
             return;
         }
         PauliCategory category = PauliCategory.values()[selectedCategory - 1];
+        cachedCategory = category;
+        if (category == PauliCategory.KETEKUNAN_KONSENTRASI) {
+            System.out.println("erm");
+            rendahInput.setEnabled(false);
+            sedangInput.setEnabled(false);
+            tinggiInput.setEnabled(false);
+            return;
+        }
         rendahInput.setText(PauliScoreInterpreter.getInterpretation(category, 0));
         sedangInput.setText(PauliScoreInterpreter.getInterpretation(category, 1));
         tinggiInput.setText(PauliScoreInterpreter.getInterpretation(category, 2));
@@ -171,6 +211,15 @@ public class PauliEditForm extends javax.swing.JDialog {
         rendahInput.setText("");
         sedangInput.setText("");
         tinggiInput.setText("");
+    }
+
+    private void updateInterpretation() {
+        if (cachedCategory == null || cachedCategory == PauliCategory.KETEKUNAN_KONSENTRASI) {
+            return;
+        }
+        PauliScoreInterpreter.setInterpretation(cachedCategory, 0, rendahInput.getText());
+        PauliScoreInterpreter.setInterpretation(cachedCategory, 1, sedangInput.getText());
+        PauliScoreInterpreter.setInterpretation(cachedCategory, 2, tinggiInput.getText());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
