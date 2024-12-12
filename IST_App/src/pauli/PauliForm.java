@@ -22,6 +22,7 @@ public class PauliForm extends javax.swing.JPanel {
     public PauliForm(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         initComponents();
+        cetakButton.setEnabled(false);
     }
 
     /**
@@ -87,6 +88,11 @@ public class PauliForm extends javax.swing.JPanel {
         namaLabel.setText("Nama");
 
         namaInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        namaInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                namaInputKeyReleased(evt);
+            }
+        });
 
         tingkatPercayaDiriLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tingkatPercayaDiriLabel.setText("Ha vs Rata-rata");
@@ -356,6 +362,14 @@ public class PauliForm extends javax.swing.JPanel {
     private void tingkatPercayaDiriInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tingkatPercayaDiriInputActionPerformed
         PauliResource.tingkatPercayaDiri = tingkatPercayaDiriInput.getSelectedIndex();
     }//GEN-LAST:event_tingkatPercayaDiriInputActionPerformed
+
+    private void namaInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaInputKeyReleased
+        if (!namaInput.getText().equals("")) {
+            cetakButton.setEnabled(true);
+        } else {
+            cetakButton.setEnabled(false);
+        }
+    }//GEN-LAST:event_namaInputKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
