@@ -75,6 +75,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         firstInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         firstInput.setLineWrap(true);
         firstInput.setRows(5);
+        firstInput.setWrapStyleWord(true);
         firstInput.setEnabled(false);
         firstScroll.setViewportView(firstInput);
 
@@ -84,6 +85,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         secondInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         secondInput.setLineWrap(true);
         secondInput.setRows(5);
+        secondInput.setWrapStyleWord(true);
         secondInput.setEnabled(false);
         secondScroll.setViewportView(secondInput);
 
@@ -93,6 +95,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         thirdInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         thirdInput.setLineWrap(true);
         thirdInput.setRows(5);
+        thirdInput.setWrapStyleWord(true);
         thirdInput.setEnabled(false);
         thirdScroll.setViewportView(thirdInput);
 
@@ -102,6 +105,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         fourthInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fourthInput.setLineWrap(true);
         fourthInput.setRows(5);
+        fourthInput.setWrapStyleWord(true);
         fourthInput.setEnabled(false);
         fourthScroll.setViewportView(fourthInput);
 
@@ -111,6 +115,7 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         fifthInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fifthInput.setLineWrap(true);
         fifthInput.setRows(5);
+        fifthInput.setWrapStyleWord(true);
         fifthInput.setEnabled(false);
         fifthScroll.setViewportView(fifthInput);
 
