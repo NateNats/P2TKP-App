@@ -152,6 +152,10 @@ public class PauliScoreInterpreter {
         interpretations.get(key).put(value, interpretation);
     }
 
+    public static void setKetelitianInterpretation(int ketekunan, int konsentrasi, String interpretation) {
+        ketelitianInterpretations.get(ketekunan).put(konsentrasi, interpretation);
+    }
+
     @SuppressWarnings("unchecked")
     private static boolean loadInterpretationsFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH))) {
