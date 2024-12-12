@@ -197,10 +197,12 @@ public class PauliEditForm extends javax.swing.JDialog {
         PauliCategory category = PauliCategory.values()[selectedCategory - 1];
         cachedCategory = category;
         if (category == PauliCategory.KETEKUNAN_KONSENTRASI) {
-            System.out.println("erm");
             rendahInput.setEnabled(false);
             sedangInput.setEnabled(false);
             tinggiInput.setEnabled(false);
+            PauliKetelitianEditForm ketelitianEditForm = new PauliKetelitianEditForm(null, true);
+            ketelitianEditForm.setLocationRelativeTo(null);
+            ketelitianEditForm.setVisible(true);
             return;
         }
         rendahInput.setText(PauliScoreInterpreter.getInterpretation(category, 0));
