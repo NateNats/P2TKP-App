@@ -190,6 +190,7 @@ public class PauliEditForm extends javax.swing.JDialog {
         clearInputs();
         int selectedCategory = categoryInput.getSelectedIndex();
         if (selectedCategory == 0) {
+            cachedCategory = null;
             rendahInput.setEnabled(false);
             sedangInput.setEnabled(false);
             tinggiInput.setEnabled(false);
