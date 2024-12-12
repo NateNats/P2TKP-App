@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class PauliScoreInterpreter {
     private static final String DATA_FILE_PATH = "./src/storage/pauli_interpretation.dat";
     private static final String K_DATA_FILE_PATH = "./src/storage/pauli_ketelitian_interpretation.dat";
-    private static Map<String, Map<Integer, String>> interpretations = new HashMap<>();
+    private static Map<PauliCategory, Map<Integer, String>> interpretations = new HashMap<>();
     private static Map<Integer, Map<Integer, String>> ketelitianInterpretations = new HashMap<>();
 
     static {
@@ -54,49 +54,49 @@ public class PauliScoreInterpreter {
         // 0 Rendah
         // 1 Sedang
         // 2 Tinggi
-        interpretations.put("tingkat percaya diri", new HashMap<Integer, String>() {
+        interpretations.put(PauliCategory.HA_VS_RATA_RATA, new HashMap<Integer, String>() {
             {
-                put(0, "Kurang percaya pada kemampuan diri dan kurang mampu memaksimalkan potensi diri di awal kerja. Cenderungk lamban membuat keputusan karena sama sekali enggan mengambil resiko. Cenderung enggan berinisiatif.");
+                put(0, "Kurang percaya pada kemampuan diri dan kurang mampu memaksimalkan potensi diri di awal kerja. Cenderung lamban membuat keputusan karena sama sekali enggan mengambil resiko. Cenderung enggan berinisiatif.");
                 put(1, "Cukup percaya pada kemampuan diri dan cukup mampu memaksimalkan sebagian potensi diri di awal kerja. Cukup cepat membuat keputusan karena cukup berani mengambil resiko, meski masih menyisakan beberapa keraguan. Cenderung menimbang beberapa hal sebelum berinisiatif.");
                 put(2, "Percaya pada kemampuan diri dan mampu memaksimalkan potensi diri di awal kerja di tingkat paling optimal. Cenderung cepat membuat keputusan karena berani mengambil resiko. Cenderung cepat berinisiatif. Risk taker.");
             }
         });
-        interpretations.put("kemampuan kerja", new HashMap<Integer, String>() {
+        interpretations.put(PauliCategory.JUMLAH, new HashMap<Integer, String>() {
             {
                 put(0, "Kesulitan menyelesaikan target kerja; motivasi kerja rendah.");
                 put(1, "Cukup mampu menyelesaikan sebagian target kerja; motivasi kerja cukup tinggi.");
                 put(2, "Mampu menyelesaikan target kerja seoptimal mungkin; motivasi kerja tinggi.");
             }
         });
-        interpretations.put("kemampuan adaptasi", new HashMap<Integer, String>() {
+        interpretations.put(PauliCategory.POSISI_KOLOM, new HashMap<Integer, String>() {
             {
                 put(0, "Kesulitan menyesuaikan diri dengan tekanan kerja yang tinggi.");
                 put(1, "Cukup mampu menyesuaikan diri dengan tekanan kerja yang sedang.");
                 put(2, "Sulit menyesuaikan diri dengan berbagai tingkat tekanan kerja.");
             }
         });
-        interpretations.put("ketekunan", new HashMap<Integer, String>() {
+        interpretations.put(PauliCategory.KESALAHAN, new HashMap<Integer, String>() {
             {
                 put(0, "Kurang tekun dalam mengelola setiap detil persoalan yang tengah dihadapi.");
                 put(1, "Cukup tekun dalam mengelola sebagian detil persoalan yang tengah dihadapi.");
                 put(2, "Tekun dalam mengelola setiap detil persoalan yang tengah dihadapi.");
             }
         });
-        interpretations.put("konsentrasi", new HashMap<Integer, String>() {
+        interpretations.put(PauliCategory.PEMBENARAN, new HashMap<Integer, String>() {
             {
                 put(0, "Sulit berkonsentrasi pada berbagai potensi kesalahan di persoalan yang tengah dihadapi.");
                 put(1, "Mampu berkonsentrasi pada sebagian potensi kesalahan di persoalan yang tengah dihadapi.");
                 put(2, "Mampu berkonsentrasi pada berbagai potensi kesalahan di persoalan yang tengah dihadapi.");
             }
         });
-        interpretations.put("manajemen emosi", new HashMap<Integer, String>() {
+        interpretations.put(PauliCategory.PENYIMPANGAN, new HashMap<Integer, String>() {
             {
                 put(0, "Memiliki emosi yang cenderung kurang stabil, sehingga sangat berpengaruh pada hasil pekerjaannya. Kurang memiliki kemauan mengatasi dampak dari gejolak perasaannya; kurang mampu mengendalikan perasaannya dalam bekerja.");
                 put(1, "Memiliki emosi yang cenderung cukup stabil, meski masih cukup berpengaruh pada hasil pekerjaannya; Memiliki cukup kemauan untuk mengatasi beberapa dampak gejolak perasaannya; cukup mampu mengendalikan sebagian gejolak perasaannya dalam bekerja.");
                 put(2, "Memiliki emosi yang cenderung stabil, sehingga tidak berpengaruh pada hasil pekerjaannya; memiliki kemauan besar untuk mengatasi dampak gejolak perasaannya; Mampu mengendalikan gejolak perasaannya dalam bekerja.");
             }
         });
-        interpretations.put("motivasi berprestasi", new HashMap<Integer, String>() {
+        interpretations.put(PauliCategory.TINGGI, new HashMap<Integer, String>() {
             {
                 put(0, "Kurang memiliki motivasi dan hasrat berprestasi dalam meningkatkan potensi kerja, sehingga sulit mencapai hasil kerja bahkan yang paling minimal. Cenderung enggan mengembangkan diri dalam motif mencapai prestasi.");
                 put(1, "Memiliki motivasi dan hasrat berprestasi dalam meningkatkan potensi kerja yang bisa memenuhi norma prestasi rata-rata, sehingga hasil kerja cenderung akan tercapai sebagian dari hasil yang diharapkan. Cenderung akan tergerak mengembangkan diri dalam motif mencapai prestasi rata-rata.");
@@ -130,7 +130,7 @@ public class PauliScoreInterpreter {
 
     }
 
-    public static String getInterpretation(String key, int value) {
+    public static String getInterpretation(PauliCategory key, int value) {
         return interpretations.get(key).get(value);
     }
 
@@ -141,7 +141,7 @@ public class PauliScoreInterpreter {
     @SuppressWarnings("unchecked")
     private static boolean loadInterpretationsFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH))) {
-            interpretations = (Map<String, Map<Integer, String>>) ois.readObject();
+            interpretations = (Map<PauliCategory, Map<Integer, String>>) ois.readObject();
             return true;
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Could not load interpretations from file, using defaults.");
