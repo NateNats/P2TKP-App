@@ -1,5 +1,8 @@
 package pauli;
 
+import pauli.resource.PauliCategory;
+import pauli.resource.PauliScoreInterpreter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
@@ -28,7 +31,7 @@ public class PauliEditForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        categoryInput = new javax.swing.JComboBox<>();
         editPanel = new javax.swing.JPanel();
         rendahScroll = new javax.swing.JScrollPane();
         rendahInput = new javax.swing.JTextArea();
@@ -41,8 +44,14 @@ public class PauliEditForm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Ha vs Rata-rata (Tingkat Percaya Diri & Inisiatif)", "Jumlah (Kemampuan Kerja & Motivasi Kerja)", "Posisi Kolom (Kemampuan Adaptasi)", "Kesalahan (Ketekunan)", "Pembenaran (Konsentrasi)", "Penyimpangan (Manajemen Emosi)", "Tinggi (Motivasi Berprestasi & Kemauan Mengembangkan Diri)", "Ketekunan & Konsentrasi (Ketelitian)" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(561, 35));
+        categoryInput.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Ha vs Rata-rata (Tingkat Percaya Diri & Inisiatif)", "Jumlah (Kemampuan Kerja & Motivasi Kerja)", "Posisi Kolom (Kemampuan Adaptasi)", "Kesalahan (Ketekunan)", "Pembenaran (Konsentrasi)", "Penyimpangan (Manajemen Emosi)", "Tinggi (Motivasi Berprestasi & Kemauan Mengembangkan Diri)", "Ketekunan & Konsentrasi (Ketelitian)" }));
+        categoryInput.setPreferredSize(new java.awt.Dimension(561, 35));
+
+        categoryInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CategoryInputActionPerformed(evt);
+            }
+        });
 
         editPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -50,21 +59,30 @@ public class PauliEditForm extends javax.swing.JDialog {
 
         rendahInput.setColumns(20);
         rendahInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rendahInput.setLineWrap(true);
         rendahInput.setRows(5);
+        rendahInput.setWrapStyleWord(true);
+        rendahInput.setEnabled(false);
         rendahScroll.setViewportView(rendahInput);
 
         sedangScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Sedang"));
 
         sedangInput.setColumns(20);
         sedangInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sedangInput.setLineWrap(true);
         sedangInput.setRows(5);
+        sedangInput.setWrapStyleWord(true);
+        sedangInput.setEnabled(false);
         sedangScroll.setViewportView(sedangInput);
 
         tinggiScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Sedang"));
 
         tinggiInput.setColumns(20);
         tinggiInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tinggiInput.setLineWrap(true);
         tinggiInput.setRows(5);
+        tinggiInput.setWrapStyleWord(true);
+        tinggiInput.setEnabled(false);
         tinggiScroll.setViewportView(tinggiInput);
 
         javax.swing.GroupLayout editPanelLayout = new javax.swing.GroupLayout(editPanel);
@@ -105,7 +123,7 @@ public class PauliEditForm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, 0, Short.MAX_VALUE)
+                    .addComponent(categoryInput, 0, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -116,7 +134,7 @@ public class PauliEditForm extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(categoryInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(editPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -129,10 +147,36 @@ public class PauliEditForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CategoryInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryInputActionPerformed
+        // TODO add your handling code here:
+        clearInputs();
+        int selectedCategory = categoryInput.getSelectedIndex();
+        if (selectedCategory == 0) {
+            rendahInput.setEnabled(false);
+            sedangInput.setEnabled(false);
+            tinggiInput.setEnabled(false);
+            return;
+        }
+        PauliCategory category = PauliCategory.values()[selectedCategory - 1];
+        rendahInput.setText(PauliScoreInterpreter.getInterpretation(category, 0));
+        sedangInput.setText(PauliScoreInterpreter.getInterpretation(category, 1));
+        tinggiInput.setText(PauliScoreInterpreter.getInterpretation(category, 2));
+
+    }//GEN-LAST:event_CategoryInputActionPerformed
+
+    private void clearInputs() {
+        rendahInput.setEnabled(true);
+        sedangInput.setEnabled(true);
+        tinggiInput.setEnabled(true);
+        rendahInput.setText("");
+        sedangInput.setText("");
+        tinggiInput.setText("");
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
+    private javax.swing.JComboBox<String> categoryInput;
     private javax.swing.JPanel editPanel;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JTextArea rendahInput;
     private javax.swing.JScrollPane rendahScroll;
     private javax.swing.JButton saveButton;
