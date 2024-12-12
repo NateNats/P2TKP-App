@@ -170,8 +170,13 @@ public class PauliEditForm extends javax.swing.JDialog {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         updateInterpretation();
-        PauliScoreInterpreter.saveInterpretationsToFile();
-        
+        if (PauliScoreInterpreter.saveInterpretationsToFile()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
+            javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
