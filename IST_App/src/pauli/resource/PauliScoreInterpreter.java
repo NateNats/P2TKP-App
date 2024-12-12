@@ -163,4 +163,12 @@ public class PauliScoreInterpreter {
             return false;
         }
     }
+
+    public static void reloadInterpretations() {
+        if (!loadInterpretationsFromFile()) {
+            initializeDefaultInterpretations();
+            saveInterpretationsToFile();
+            System.err.println("Could not reload interpretations.");
+        }
+    }
 }
