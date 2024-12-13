@@ -39,7 +39,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author nicol
  */
-public class ist_mapping extends javax.swing.JPanel {
+public class ISTForm extends javax.swing.JPanel {
 
     private MainFrame mainFrame;
     private NormaIST norma;
@@ -66,7 +66,7 @@ public class ist_mapping extends javax.swing.JPanel {
     /**
      * Creates new form ist_mapping
      */
-    public ist_mapping(MainFrame mainFrame) {
+    public ISTForm(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         norma = new NormaIST();
         initComponents();
@@ -779,7 +779,7 @@ public class ist_mapping extends javax.swing.JPanel {
                 if (pw.equals(real)) {
                     JOptionPane.showMessageDialog(null, "Berhasil masuk");
                     //mengubah isi file rubrik
-                    EditForm dialog = new EditForm(null, true);
+                    ISTEditForm dialog = new ISTEditForm(null, true);
                     dialog.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal masuk");

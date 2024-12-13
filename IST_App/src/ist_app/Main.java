@@ -888,7 +888,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tombolBatalActionPerformed
 
     private void tombolEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolEditActionPerformed
-        EditForm dialog = new EditForm(Main.this, true);
+        ISTEditForm dialog = new ISTEditForm(Main.this, true);
         //dialog.nilai = this.nilai;
         dialog.setVisible(true);
         inisiasill();
