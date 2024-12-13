@@ -23,6 +23,7 @@ public class IST_ScoreInterpreterV2 {
 
     private static final String DATA_FILE_PATH = "./storage/IST_rubrik_interpretation.dat";
     private static Map<RubrikCategory, NavigableMap<Range, String>> interpretations = new TreeMap<>();
+    private static Map<RubrikCategory, NavigableMap<Double, String>> interpretFleksibel = new TreeMap<>();
 
     static {
         if (!loadInterpretationsFromFile()) {
@@ -167,7 +168,42 @@ public class IST_ScoreInterpreterV2 {
             }
         });
 
-        // kemampuan berpikir fleksible, cara /corak berpikir, jenis kecerdasan beda ya 
+        interpretFleksibel.put(RubrikCategory.BERPIKIR_FLEKSIBEL, new TreeMap<Double, String>() {
+                {
+                    put(-10.0, "Cepat mencari jalan keluar ketika ada hambatan");
+                    put(10.0, "Menggunakan satu jalan keluar yang biasa digunakan ketika ada hambatan");
+                    put(0.0, "Corak berpikir belum terarah karena masih dalam taraf perkembangan");
+                }
+
+                /*
+                 * nanti bandingin GERA dan ANZR, kalo selisih -10, bakal muncul fleksibel
+                 * kalo selisih 10, nanti muncul kaku
+                 * kalo selisih ga sampe 10, nanti bakal muncul belum terarah-belum konsisten
+                 * */
+        });
+
+        interpretations.put(RubrikCategory.JENIS_KECERDASAN, new TreeMap<Range, String>() {
+            {
+
+
+                /*
+                WA & GE cenderung lebih tinggi SE & AN => Tipe pemikiran teoritis-konseptual
+                SE & AN cenderung lebih tinggi WA & GE => Tipe pemikiran praktis
+                 */
+            }
+        });
+
+        interpretations.put(RubrikCategory.CORAK_BERPIKIR, new TreeMap<Range, String>() {
+            {
+                /*
+                  pake GE RA AN ZR, terus dibandingkan antara GERA dengan ANZR
+                  Jika GERA mendekati ANZR, nanti muncul birokratis-normatif
+                  Kalo ANZR mendekati GERA, nanti muncul fleksible
+                  kalo GERA mendekati ANZR, nanti belum terarah-belum konsisten
+                  **/
+            }
+        });
+
     }
 
     public static String getInterpretation(String aspect, double score) {
@@ -191,7 +227,7 @@ public class IST_ScoreInterpreterV2 {
     }
 
     public static void setInterpretation() {
-
+        
     }
 
     public static class Range {
