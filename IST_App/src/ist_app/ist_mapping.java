@@ -225,65 +225,70 @@ public class ist_mapping extends javax.swing.JPanel {
         WULabel.setText("WU");
 
         FAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        FAInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                FAInputFocusLost(evt);
+        FAInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                FAInputKeyReleased(evt);
             }
         });
 
         WUInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        WUInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                WUInputFocusLost(evt);
+        WUInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                WUInputKeyReleased(evt);
             }
         });
 
         RAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        RAInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                RAInputFocusLost(evt);
+        RAInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                RAInputKeyReleased(evt);
             }
         });
 
         ZRInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ZRInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                ZRInputFocusLost(evt);
+        ZRInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ZRInputKeyReleased(evt);
             }
         });
 
         GEInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        GEInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                GEInputFocusLost(evt);
+        GEInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                GEInputKeyReleased(evt);
             }
         });
 
         MEInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        MEInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                MEInputFocusLost(evt);
+        MEInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                MEInputKeyReleased(evt);
             }
         });
 
         WAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        WAInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                WAInputFocusLost(evt);
+        WAInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WAInputActionPerformed(evt);
+            }
+        });
+        WAInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                WAInputKeyReleased(evt);
             }
         });
 
         ANInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ANInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                ANInputFocusLost(evt);
+        ANInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANInputKeyReleased(evt);
             }
         });
 
         SEInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        SEInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                SEInputFocusLost(evt);
+        SEInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                SEInputKeyReleased(evt);
             }
         });
 
@@ -551,6 +556,7 @@ public class ist_mapping extends javax.swing.JPanel {
     }//GEN-LAST:event_namaInputKeyReleased
 
     private void tombolBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolBatalActionPerformed
+        tgllahirinput.setDate(null);
         setDate();
         clearAllComp();
         resetTable();
@@ -587,7 +593,7 @@ public class ist_mapping extends javax.swing.JPanel {
             int swWU = this.norma.getInterpretation("WU", Integer.parseInt(WUInput.getText()), age);
             Integer GE = this.norma.getStdScore(Integer.parseInt(GEInput.getText()));
             int swGE = this.norma.getInterpretation("GE", GE, age);
-            
+
             int rwGESAMT = Integer.parseInt(SEInput.getText())
                     + Integer.parseInt(WAInput.getText())
                     + Integer.parseInt(ANInput.getText())
@@ -655,7 +661,7 @@ public class ist_mapping extends javax.swing.JPanel {
                 return kategori[i];
             }
         }
-        
+
         return null;
     }
 
@@ -817,24 +823,7 @@ public class ist_mapping extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tgllahirinputKeyReleased
 
-    private void SEInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SEInputFocusLost
-        try {
-            if (!SEInput.getText().equals("")) {
-                int data = Integer.parseInt(SEInput.getText());
-
-                if (data < 0 && data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    SEInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            SEInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        perbaruiStatusTombol();
-    }//GEN-LAST:event_SEInputFocusLost
-
-    private void WAInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WAInputFocusLost
+    private void WAInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WAInputKeyReleased
         try {
             if (!WAInput.getText().equals("")) {
                 int data = Integer.parseInt(WAInput.getText());
@@ -849,26 +838,9 @@ public class ist_mapping extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
         }
         perbaruiStatusTombol();
-    }//GEN-LAST:event_WAInputFocusLost
+    }//GEN-LAST:event_WAInputKeyReleased
 
-    private void ANInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ANInputFocusLost
-        try {
-            if (!ANInput.getText().equals("")) {
-                int data = Integer.parseInt(ANInput.getText());
-
-                if (data < 0 && data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    ANInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            ANInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        perbaruiStatusTombol();
-    }//GEN-LAST:event_ANInputFocusLost
-
-    private void GEInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_GEInputFocusLost
+    private void GEInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GEInputKeyReleased
         try {
             if (!GEInput.getText().equals("")) {
                 int data = Integer.parseInt(GEInput.getText());
@@ -883,26 +855,9 @@ public class ist_mapping extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
         }
         perbaruiStatusTombol();
-    }//GEN-LAST:event_GEInputFocusLost
+    }//GEN-LAST:event_GEInputKeyReleased
 
-    private void MEInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MEInputFocusLost
-        try {
-            if (!MEInput.getText().equals("")) {
-                int data = Integer.parseInt(MEInput.getText());
-
-                if (data < 0 && data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                    MEInput.setText("");
-                }
-            }
-        } catch (NumberFormatException eror) {
-            MEInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        perbaruiStatusTombol();
-    }//GEN-LAST:event_MEInputFocusLost
-
-    private void RAInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RAInputFocusLost
+    private void RAInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RAInputKeyReleased
         try {
             if (!RAInput.getText().equals("")) {
                 int data = Integer.parseInt(RAInput.getText());
@@ -917,9 +872,76 @@ public class ist_mapping extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
         }
         perbaruiStatusTombol();
-    }//GEN-LAST:event_RAInputFocusLost
+    }//GEN-LAST:event_RAInputKeyReleased
 
-    private void ZRInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ZRInputFocusLost
+    private void FAInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FAInputKeyReleased
+        try {
+            if (!FAInput.getText().equals("")) {
+                int data = Integer.parseInt(FAInput.getText());
+
+                if (data < 0 && data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (NumberFormatException eror) {
+            FAInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_FAInputKeyReleased
+
+    private void SEInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SEInputKeyReleased
+        try {
+            if (!SEInput.getText().equals("")) {
+                int data = Integer.parseInt(SEInput.getText());
+
+                if (data < 0 && data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    SEInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            SEInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_SEInputKeyReleased
+
+    private void ANInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANInputKeyReleased
+        try {
+            if (!ANInput.getText().equals("")) {
+                int data = Integer.parseInt(ANInput.getText());
+
+                if (data < 0 && data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    ANInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            ANInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_ANInputKeyReleased
+
+    private void MEInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MEInputKeyReleased
+        try {
+            if (!MEInput.getText().equals("")) {
+                int data = Integer.parseInt(MEInput.getText());
+
+                if (data < 0 && data > 20) {
+                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    MEInput.setText("");
+                }
+            }
+        } catch (NumberFormatException eror) {
+            MEInput.setText("");
+            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
+        }
+        perbaruiStatusTombol();
+    }//GEN-LAST:event_MEInputKeyReleased
+
+    private void ZRInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ZRInputKeyReleased
         try {
             if (!ZRInput.getText().equals("")) {
                 int data = Integer.parseInt(ZRInput.getText());
@@ -934,25 +956,9 @@ public class ist_mapping extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
         }
         perbaruiStatusTombol();
-    }//GEN-LAST:event_ZRInputFocusLost
+    }//GEN-LAST:event_ZRInputKeyReleased
 
-    private void FAInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FAInputFocusLost
-        try {
-            if (!FAInput.getText().equals("")) {
-                int data = Integer.parseInt(FAInput.getText());
-
-                if (data < 0 && data > 20) {
-                    JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        } catch (NumberFormatException eror) {
-            FAInput.setText("");
-            JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
-        }
-        perbaruiStatusTombol();
-    }//GEN-LAST:event_FAInputFocusLost
-
-    private void WUInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WUInputFocusLost
+    private void WUInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WUInputKeyReleased
         try {
             if (!WUInput.getText().equals("")) {
                 int data = Integer.parseInt(WUInput.getText());
@@ -966,7 +972,11 @@ public class ist_mapping extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Nilai harus angka!", "Error", ERROR_MESSAGE);
         }
         perbaruiStatusTombol();
-    }//GEN-LAST:event_WUInputFocusLost
+    }//GEN-LAST:event_WUInputKeyReleased
+
+    private void WAInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WAInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WAInputActionPerformed
 
     private void refreshTable() {
         try {
