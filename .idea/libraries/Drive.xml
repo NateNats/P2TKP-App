@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Drive">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/IST_App/Drive/jasperreports-6.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/Drive/commons-collections4-4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/Drive/commons-beanutils-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/Drive/com.lowagie.text-2.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/Drive/commons-digester-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/Drive/commons-logging-1.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/Drive/commons-javaflow-20060411.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -4,7 +4,7 @@
  */
 package msdt.resource;
 
-import ist_app.Main;
+import IST.Main;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

@@ -3,7 +3,7 @@ package common;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
 import papi_kostick.PapiKostickForm;
-import ist_app.ISTForm;
+import IST.ISTForm;
 import pauli.PauliForm;
 import msdt.MSDTForm;
 

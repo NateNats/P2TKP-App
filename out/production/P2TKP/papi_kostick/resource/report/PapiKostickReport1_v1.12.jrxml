@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PapiKostickReport_v1.12" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="414f783e-20d3-4660-96ed-45da522d37bd">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="interpretations" uuid="7a5fac79-b2a4-4fde-8ec2-76c27bc60738">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="category" class="java.lang.String"/>
+		<field name="categoryDescription" class="java.lang.String"/>
+		<field name="subCategory" class="java.lang.String"/>
+		<field name="subCategoryDescription" class="java.lang.String"/>
+		<field name="subCategoryInterpretation" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="birthDate" class="java.lang.String"/>
+	<parameter name="testDate" class="java.lang.String"/>
+	<parameter name="education" class="java.lang.String"/>
+	<parameter name="gender" class="java.lang.String"/>
+	<parameter name="purpose" class="java.lang.String"/>
+	<parameter name="interpretations" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="n" class="java.lang.String"/>
+	<parameter name="g" class="java.lang.String"/>
+	<parameter name="a" class="java.lang.String"/>
+	<parameter name="l" class="java.lang.String"/>
+	<parameter name="p" class="java.lang.String"/>
+	<parameter name="i" class="java.lang.String"/>
+	<parameter name="t" class="java.lang.String"/>
+	<parameter name="v" class="java.lang.String"/>
+	<parameter name="o" class="java.lang.String"/>
+	<parameter name="b" class="java.lang.String"/>
+	<parameter name="s" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="58" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="0" width="550" height="50" uuid="05268f26-5420-4c02-8d11-2bdf661086a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN INTERPRETASI TES PAPI KOSTICK]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="106">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="2" y="0" width="116" height="15" uuid="e64da443-40bb-4e11-b2d9-df76873a04da">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="0" width="12" height="15" uuid="6f158ce9-384b-4f8f-9fd7-70ac28fbbc07">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="0" width="422" height="15" uuid="51347b79-8379-4477-812e-81551c6a8ba5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="15" width="116" height="15" uuid="e9440864-0c7e-4dbd-99b4-056cede09968">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Tanggal Lahir]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="15" width="422" height="15" uuid="fd1185c0-76fd-49c1-88b4-198589e57b3c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{birthDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="118" y="15" width="12" height="15" uuid="5c58c190-c6ad-4797-8179-baece490d262">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="30" width="422" height="15" uuid="8e292cbc-0f28-410c-9b14-d1cb21ac9336">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{testDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="30" width="116" height="15" uuid="19461abe-d145-45f2-aec7-914bec415f63">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Tanggal Tes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="30" width="12" height="15" uuid="071058be-cd84-4d01-9bf5-8658842824ed">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="45" width="422" height="15" uuid="120b5ebb-6ce5-438b-a8f6-4daa0ac6e764">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{education}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="45" width="116" height="15" uuid="35b5f7c0-a033-4eeb-adf4-0c402fb6fa32">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Pendidikan Terakhir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="45" width="12" height="15" uuid="8cbcf859-847a-465d-a98d-914b2837e568">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="60" width="12" height="15" uuid="b5d9c51c-074d-41cb-8bd0-776e0687ceaf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="60" width="116" height="15" uuid="299aa8ff-f3c6-4402-abbd-0c5cf6f9ab13">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="60" width="422" height="15" uuid="72334284-5c85-4fd7-8b2f-ab7d8d464a67">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="75" width="422" height="15" uuid="c6040f77-cc6c-4612-b139-9ca765a8d3f8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="118" y="75" width="12" height="15" uuid="c0003f88-301d-446c-8bde-a726733641ca">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="75" width="116" height="15" uuid="80d93c66-b3fc-46a7-a41a-3aec92fad7e9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Tujuan Pemeriksaan]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band/>
+		<band height="611">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="10" width="148" height="20" backcolor="#BDD7EE" uuid="a8281173-f8e2-4e65-be10-80325ae53220">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Work Direction atau Arah Kerja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="30" width="148" height="50" backcolor="#FFFFFF" uuid="092d845e-db82-41d1-a855-6e0e62416205">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Need to finish task (N)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="30" width="180" height="50" backcolor="#FFFFFF" uuid="e073098a-51f4-4c0a-9de4-2b14cf3b13ae">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk menyelesaikan tugas dengan cepat dan efektif.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="10" width="400" height="20" backcolor="#BDD7EE" uuid="f9156d41-4589-407b-923d-a050bf99320f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[mengukur seberapa besar seseorang memiliki kebutuhan untuk mengetahui arah kerja yang jelas dan terstruktur.	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="80" width="148" height="40" backcolor="#FFFFFF" uuid="947d5ce4-7558-4a06-80ae-60b983c63019">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Hard intense worked (G)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="80" width="180" height="40" backcolor="#FFFFFF" uuid="752a0dfe-e4f3-41d9-92a7-7f6f89bd93bd">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk bekerja keras dan intens.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="120" width="148" height="50" backcolor="#FFFFFF" uuid="43d8712f-5856-45d1-bd80-ceed9bbba453">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Need to achieve (A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="120" width="180" height="50" backcolor="#FFFFFF" uuid="be96518e-d55c-42e1-bb2f-0f334a1cfd80">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk diakui oleh orang lain atas prestasi yang telah dicapai.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="170" width="400" height="20" backcolor="#BDD7EE" uuid="13f952ab-21ab-4d17-bd6f-bb0e12fa2216">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[mengukur seberapa besar seseorang memiliki kebutuhan untuk memimpin dan mempengaruhi orang lain.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="170" width="148" height="20" backcolor="#BDD7EE" uuid="5f8d6554-b20f-4261-9746-4b86f17089df">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Leadership atau Kepemimpinan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="260" width="180" height="40" backcolor="#FFFFFF" uuid="e638d33c-79a4-4708-bd22-3eaefbee0af0">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk membuat keputusan sendiri tanpa campur tangan orang lain.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="260" width="148" height="40" backcolor="#FFFFFF" uuid="a1d0d39e-c309-4041-b1f6-12aa220a25b4">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Ease in decision making (I)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="230" width="148" height="30" backcolor="#FFFFFF" uuid="3d5c4948-1a30-4865-8452-1cb7df6e9a78">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Need to control others (P)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="230" width="180" height="30" backcolor="#FFFFFF" uuid="c7383438-54cf-4412-95bc-12ae240ab1f9">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk mengontrol orang lain.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="190" width="148" height="40" backcolor="#FFFFFF" uuid="9a255381-2673-4802-b094-a0e7d2cb9166">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Leadership role (L)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="190" width="180" height="40" backcolor="#FFFFFF" uuid="dcfdbfeb-3070-43f5-a38c-636fd2ef8089">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk memimpin dan mempengaruhi orang lain.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="300" width="400" height="25" backcolor="#BDD7EE" uuid="2d741f78-7611-4248-8aae-865ce2c5c656">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[mengukur seberapa besar seseorang memiliki kebutuhan untuk melakukan aktivitas yang berbeda-beda dan menantang.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="300" width="148" height="25" backcolor="#BDD7EE" uuid="8c43c8c5-cf6e-462b-95fb-5a482d8b9703">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Activity atau Aktivitas Kerja Aspek ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="325" width="180" height="40" backcolor="#FFFFFF" uuid="58d1180a-69d6-4872-b675-17687b39e2af">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk bekerja dengan tempo yang cepat atau lambat.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="325" width="148" height="40" backcolor="#FFFFFF" uuid="8f164688-1d70-41b6-8715-81d6856f2c3a">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Pace (T)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="365" width="180" height="40" backcolor="#FFFFFF" uuid="18046718-a536-4028-91cf-02a33aa5a252">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk melakukan aktivitas fisik yang berat.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="365" width="148" height="40" backcolor="#FFFFFF" uuid="b1b13234-4fd6-4f4a-8fcf-eb07f484c0d1">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Vigorous type (V)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="405" width="400" height="25" backcolor="#BDD7EE" uuid="0ad1789a-2d83-49f5-a679-e09f8fa12f12">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[mengukur seberapa besar seseorang memiliki kebutuhan untuk berinteraksi dengan orang lain dan membangun hubungan sosial.	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="405" width="148" height="25" backcolor="#BDD7EE" uuid="83fd0a13-59c0-45e2-ba94-bd614452ed50">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Social Nature atau Relasi Sosial ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="430" width="148" height="40" backcolor="#FFFFFF" uuid="273d7608-ee3f-4c35-b78e-5bad66b8872a">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Need for closeness and affection (O)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="430" width="180" height="40" backcolor="#FFFFFF" uuid="2fc38cf2-1774-4bc0-8c0b-287d4ae3d5e4">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk mendapatkan kasih sayang dan kedekatan dari orang lain]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="470" width="148" height="40" backcolor="#FFFFFF" uuid="ce3812ba-b141-4dac-ba8d-5c1ace5a46df">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Need to belong to groups (B)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="470" width="180" height="40" backcolor="#FFFFFF" uuid="7c176fa4-66cb-48a6-a139-18c8aa54c330">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk diterima dan menjadi bagian dari kelompok ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="510" width="148" height="40" backcolor="#FFFFFF" uuid="55f7eadf-f5e0-4e00-9acb-08967297ae1d">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="6"/>
+				</textElement>
+				<text><![CDATA[Social extension (S)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="510" width="180" height="40" backcolor="#FFFFFF" uuid="8a394204-0e0a-45dc-b552-24d2234d689a">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Aspek ini mengukur seberapa besar seseorang memiliki kebutuhan untuk berinteraksi dengan orang lain dan membangun hubungan sosial.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="330" y="30" width="220" height="50" uuid="65430e92-201a-49ae-a69c-442f5a181e0f">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="80" width="220" height="40" uuid="2e943fa0-32bb-4d72-8879-eed33d3e05f6">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{g}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="120" width="220" height="50" uuid="e209e668-7bd7-4544-8811-f5ee5be4f3c9">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{a}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="190" width="220" height="40" uuid="31abc854-f3e0-4260-83dc-4702b6f2ab9b">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{l}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="230" width="220" height="30" uuid="bbdc7a03-bb4e-47ea-b110-454ab018c040">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="260" width="220" height="40" uuid="77836091-deae-4d07-bcdb-bd8cc9acaa94">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{i}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="325" width="220" height="40" uuid="ec0f131b-5a3a-41a4-982e-179cabf2b8ac">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{t}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="365" width="220" height="40" uuid="768bcf93-7d25-43f7-832f-1405a7ba7b7d">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{v}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="430" width="220" height="40" uuid="ef8dc37f-04e4-4535-8d81-dca16f84f32a">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{o}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="470" width="220" height="40" uuid="c4c1a9d0-e887-412e-bc71-3ef6654f853e">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{b}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="510" width="220" height="40" uuid="5686e1c5-40b7-4f8f-bced-1338224ae5c0">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{s}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="0" width="550" height="54" uuid="c7d56d65-2b12-4dac-aa1d-f9fea4bb0553"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P2TKP Universitas Sanata Dharma]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

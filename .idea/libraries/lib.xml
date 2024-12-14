@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/jgoodies-common-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/jasperreports-6.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/commons-digester-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/com.lowagie.text-2.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/commons-javaflow-20060411.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/commons-logging-1.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/junit-4.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/jgoodies-looks-2.4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/commons-beanutils-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/lib/commons-collections4-4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
