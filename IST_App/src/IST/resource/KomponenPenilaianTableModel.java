@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ist_app.resource;
+package IST.resource;
 
-import ist_app.resource.KomponenPenilaian;
+import IST.resource.KomponenPenilaian;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;

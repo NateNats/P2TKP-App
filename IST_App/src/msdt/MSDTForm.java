@@ -7,7 +7,7 @@ package msdt;
 import msdt.resource.AspectScore;
 import common.MainFrame;
 import common.PasswordDialog;
-import ist_app.Main;
+import IST.Main;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

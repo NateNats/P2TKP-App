@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ist_app;
+package IST;
 
-import ist_app.resource.NilaiRubrik;
-import ist_app.resource.KomponenPenilaianTableModel;
-import ist_app.resource.KomponenPenilaian;
+import IST.resource.NilaiRubrik;
+import IST.resource.KomponenPenilaianTableModel;
+import IST.resource.KomponenPenilaian;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStream;
@@ -888,7 +888,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tombolBatalActionPerformed
 
     private void tombolEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolEditActionPerformed
-        EditForm dialog = new EditForm(Main.this, true);
+        ISTEditForm dialog = new ISTEditForm(Main.this, true);
         //dialog.nilai = this.nilai;
         dialog.setVisible(true);
         inisiasill();

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="IST_App">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/IST_App/dist/IST_App.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

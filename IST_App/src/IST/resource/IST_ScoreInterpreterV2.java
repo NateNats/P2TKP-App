@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ist_app.resource;
+package IST.resource;
 
-import ist_app.resource.RubrikCategory;
+import IST.resource.RubrikCategory;
 
 import java.io.*;
 import java.util.Map;
@@ -306,7 +306,7 @@ public class IST_ScoreInterpreterV2 {
         */
     }
 
-    public static String[] getInterpretation(RubrikCategory aspect, double score) {
+    public String[] getInterpretation(RubrikCategory aspect, double score) {
         if (aspect.getLabel().equals(RubrikCategory.BERPIKIR_FLEKSIBEL.getLabel())) {
             return getInterpretFleksibel(score);
         } else if (aspect.getLabel().equals(RubrikCategory.JENIS_KECERDASAN.getLabel())) {
@@ -319,7 +319,7 @@ public class IST_ScoreInterpreterV2 {
 
         for (Range range : interpretation.keySet()) {
             if (range.isInRange(score)) {
-                return new String[]{getNumScore(score), interpretation.get(range)};
+                return new String[]{String.valueOf(score), getNumScore(score), interpretation.get(range)};
             }
         }
 
@@ -370,7 +370,11 @@ public class IST_ScoreInterpreterV2 {
             saveInterpretKecerdasanToFile();
         }
     }
-
+    
+    public NavigableMap<Range, String> getCategoryInterpretation(RubrikCategory category) {
+        return interpretations.get(category);
+    }
+    
     //  change the value of the interpretation
     public static void setInterpretation(RubrikCategory key, String[] val) {
         if (key.equals(RubrikCategory.BERPIKIR_FLEKSIBEL)) {
@@ -451,10 +455,11 @@ public class IST_ScoreInterpreterV2 {
     }
 
 
-    public static void main(String[] args) {
-        String[] score = getInterpretation(RubrikCategory.BERBAHASA, 100);
-        System.out.println("nilai: " + score[0]);
-        System.out.println("interpretasi: " + score[1]);
-
-    }
+//    public static void main(String[] args) {
+//        IST_ScoreInterpreterV2 interpreter = new IST_ScoreInterpreterV2();
+//        String[] score = interpreter.getInterpretation(RubrikCategory.BERBAHASA, 100);
+//        System.out.println("nilai: " + score[0]);
+//        System.out.println("interpretasi: " + score[1]);
+//
+//    }
 }
