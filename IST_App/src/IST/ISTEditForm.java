@@ -4,7 +4,9 @@
  */
 package IST;
 
+import javax.swing.BorderFactory;
 import IST.resource.IST_ScoreInterpreterV2;
+import static IST.resource.IST_ScoreInterpreterV2.setInterpretation;
 import IST.resource.RubrikCategory;
 import java.awt.Color;
 import java.awt.Font;
@@ -16,6 +18,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import javax.swing.JTextArea;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ListIterator;
 import java.util.Map;
@@ -33,17 +36,17 @@ import javax.swing.border.TitledBorder;
  */
 public class ISTEditForm extends javax.swing.JDialog {
 
-    LinkedList<String> tarKecerdasan, berpikirKompreheren, kemAnalisis, dayaIngat, kreativitas, menilai, mengambilKeputusan, berbahasa, coraBerpikir, jenisKecerdasan, fleksibel, angka;
+    private Map<String, String[]> inputCache;
+
     int startIndex;
     int endIndex;
     JTextArea[] textAreas;
     IST_ScoreInterpreterV2 interpretation;
     String key;
     IST_ScoreInterpreterV2.Range k, ks, c, cMin, cPlus, b, bs;
-    
 
     /**
-     * Creates new form test_2
+     * @author <a href="https://github.com/NateNats">Reva</a>
      */
     @SuppressWarnings("empty-statement")
     public ISTEditForm(java.awt.Frame parent, boolean modal) {
@@ -53,7 +56,8 @@ public class ISTEditForm extends javax.swing.JDialog {
         this.setResizable(false);
         textAreas = new JTextArea[7];
         interpretation = new IST_ScoreInterpreterV2();
-        
+        inputCache = new HashMap<>();
+
         ks = new IST_ScoreInterpreterV2.Range(0, 83.9999);
         k = new IST_ScoreInterpreterV2.Range(84, 89.9999);
         cMin = new IST_ScoreInterpreterV2.Range(90, 98.9999);
@@ -61,6 +65,7 @@ public class ISTEditForm extends javax.swing.JDialog {
         cPlus = new IST_ScoreInterpreterV2.Range(110, 119.9999);
         b = new IST_ScoreInterpreterV2.Range(120, 129.9999);
         bs = new IST_ScoreInterpreterV2.Range(130, Double.MAX_VALUE);
+        matikan();
     }
 
     /**
@@ -90,10 +95,16 @@ public class ISTEditForm extends javax.swing.JDialog {
         BSInput = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         simpanbutton = new javax.swing.JButton();
+        batalButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Taraf Kecerdasan", "Kemampuan berpikir komprehensif", "Kemampuan berpikir fleksibel", "Kemampuan berhitung / mengolah angka", "Daya ingat / konsentrasi", "Kreativitas", "Kemampuan menilai / judgement", "Kemampuan analisis", "Kemampuan mengambil keputusan", "Kemampuan berbahasa", "Cara / corak berpikir", "Jenis kecerdasan" }));
+        combobox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comboboxMouseClicked(evt);
+            }
+        });
         combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboboxActionPerformed(evt);
@@ -229,6 +240,14 @@ public class ISTEditForm extends javax.swing.JDialog {
             }
         });
 
+        batalButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        batalButton.setText("Batal");
+        batalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                batalButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,8 +259,10 @@ public class ISTEditForm extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(simpanbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(batalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(simpanbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -255,7 +276,8 @@ public class ISTEditForm extends javax.swing.JDialog {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(simpanbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(simpanbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(batalButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -270,35 +292,271 @@ public class ISTEditForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
+        hidupkan();
+        kosong();
         int selected = combobox.getSelectedIndex();
 
         if (selected == 0) {
-            matikan();
+            KSInput.setEnabled(false);
+            KInput.setEnabled(false);
+            CMinInput.setEnabled(false);
+            CInput.setEnabled(false);
+            CPlusInput.setEnabled(false);
+            BInput.setEnabled(false);
+            BSInput.setEnabled(false);
+
             return;
         }
 
         RubrikCategory selectedCategory = RubrikCategory.values()[selected - 1];
         key = selectedCategory.getLabel();
 
+        System.out.println(key);
+
         if (!key.equals("Jenis kecerdasan")
-                || !key.equals("Cara / corak berpikir")
-                || !key.equals("Kemampuan berpikir fleksibel")) {
+                && !key.equals("Cara / corak berpikir")
+                && !key.equals("Kemampuan berpikir fleksibel")) {
+            setTitleBorder();
+            hidupkan();
 
             NavigableMap<IST_ScoreInterpreterV2.Range, String> val = interpretation.getCategoryInterpretation(selectedCategory);
-            KSInput.setText(val.get(ks));
-            KInput.setText(val.get(k));
-            CMinInput.setText(val.get(cMin));
-            CInput.setText(val.get(c));
-            CPlusInput.setText(val.get(cPlus));
-            BInput.setText(val.get(b));
-            BSInput.setText(val.get(bs));
+
+            if (loadToCache(key) == false) {
+                KSInput.setText(val.get(ks));
+                KInput.setText(val.get(k));
+                CMinInput.setText(val.get(cMin));
+                CInput.setText(val.get(c));
+                CPlusInput.setText(val.get(cPlus));
+                BInput.setText(val.get(b));
+                BSInput.setText(val.get(bs));
+            }
+
+        } else if (key.equals("Jenis kecerdasan")) {
+
+            String[] val = interpretation.getInterpretation(RubrikCategory.JENIS_KECERDASAN, 0.0);
+            String[] val2 = interpretation.getInterpretation(RubrikCategory.JENIS_KECERDASAN, 10.0);
+
+            KSScroll.setViewportBorder(BorderFactory.createTitledBorder("WA & GE cenderung lebih tinggi SE & AN"));
+            KScroll.setViewportBorder(BorderFactory.createTitledBorder("SE & AN cenderung lebih tinggi WA & GE "));
+
+            if (loadToCache(key) == false) {
+                KSInput.setText(val[0]);
+                KInput.setText(val2[1]);
+            }
+
+            CMinScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            CScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            CPlusScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            BScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            BSScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+
+            CMinInput.setEnabled(false);
+            CInput.setEnabled(false);
+            CPlusInput.setEnabled(false);
+            BInput.setEnabled(false);
+            BSInput.setEnabled(false);
+
+        } else if (key.equals("Cara / corak berpikir")) {
+
+            String[] val = interpretation.getInterpretation(RubrikCategory.CORAK_BERPIKIR, 0);
+            String[] val2 = interpretation.getInterpretation(RubrikCategory.CORAK_BERPIKIR, 10.0);
+            String[] val3 = interpretation.getInterpretation(RubrikCategory.CORAK_BERPIKIR, -10.0);
+
+            KSScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA >> AN+ZR"));
+            KScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA << AN+ZR"));
+            CMinScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA mendekati AN+ZR"));
+
+            if (loadToCache(key) == false) {
+                KSInput.setText(val[1]);
+                KInput.setText(val2[1]);
+                CMinInput.setText(val3[1]);
+            }
+
+            CScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            CPlusScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            BScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            BSScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+
+            CInput.setEnabled(false);
+            CPlusInput.setEnabled(false);
+            BInput.setEnabled(false);
+            BSInput.setEnabled(false);
+
+        } else if (key.equals("Kemampuan berpikir fleksibel")) {
+            String[] val = interpretation.getInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, -10.0);
+            String[] val2 = interpretation.getInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, 10.0);
+            String[] val3 = interpretation.getInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, 0.0);
+
+            KSScroll.setViewportBorder(BorderFactory.createTitledBorder("Selisih -10"));
+            KSInput.setText(val[1]);
+            KScroll.setViewportBorder(BorderFactory.createTitledBorder("Selisih +10"));
+            KInput.setText(val2[1]);
+            CMinScroll.setViewportBorder(BorderFactory.createTitledBorder("Selisih tidak sampai 10"));
+            CMinInput.setText(val3[1]);
+
+            CScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            CPlusScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            BScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+            BSScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
+
+            CInput.setEnabled(false);
+            CPlusInput.setEnabled(false);
+            BInput.setEnabled(false);
+            BSInput.setEnabled(false);
+
         }
 
     }//GEN-LAST:event_comboboxActionPerformed
 
-    private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
+    private boolean loadToCache(String key) {
+        if (inputCache.containsKey(key)) {
 
+            String[] cacheValues = inputCache.get(key);
+
+            if (!key.equals("Jenis kecerdasan")
+                    && !key.equals("Cara / corak berpikir")
+                    && !key.equals("Kemampuan berpikir fleksibel")) {
+
+                KSInput.setText(cacheValues[0]);
+                KInput.setText(cacheValues[1]);
+                CMinInput.setText(cacheValues[2]);
+                CInput.setText(cacheValues[3]);
+                CPlusInput.setText(cacheValues[4]);
+                BInput.setText(cacheValues[5]);
+                BSInput.setText(cacheValues[6]);
+
+            } else if (key.equals("Jenis kecerdasan")) {
+                KSInput.setText(cacheValues[0]);
+                KInput.setText(cacheValues[1]);
+
+            } else if (key.equals("Cara / corak berpikir") || key.equals("Kemampuan berpikir fleksibel")) {
+                KSInput.setText(cacheValues[0]);
+                KInput.setText(cacheValues[1]);
+                CMinInput.setText(cacheValues[2]);
+
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void saveToCache(String key) {
+        String[] cacheValues = null;
+
+        if (!key.equals("Jenis kecerdasan")
+                && !key.equals("Cara / corak berpikir")
+                && !key.equals("Kemampuan berpikir fleksibel")) {
+            cacheValues = new String[7];
+
+            cacheValues[0] = KSInput.getText();
+            cacheValues[1] = KInput.getText();
+            cacheValues[2] = CMinInput.getText();
+            cacheValues[3] = CInput.getText();
+            cacheValues[4] = CPlusInput.getText();
+            cacheValues[5] = BInput.getText();
+            cacheValues[6] = BSInput.getText();
+            
+            inputCache.put(key, cacheValues);
+            return;
+
+        } else if (key.equals("Cara / corak berpikir")) {
+            cacheValues = new String[3];
+
+            cacheValues[0] = KSInput.getText();
+            cacheValues[1] = KInput.getText();
+            cacheValues[2] = CMinInput.getText();
+            
+            inputCache.put(key, cacheValues);
+            return;
+
+        } else if (key.equals("Jenis kecerdasan")) {
+            cacheValues = new String[2];
+
+            cacheValues[0] = KSInput.getText();
+            cacheValues[1] = KInput.getText();
+            
+            inputCache.put(key, cacheValues);
+            return;
+
+        } else if (key.equals("Kemampuan berpikir fleksibel")) {
+            cacheValues = new String[3];
+
+            cacheValues[0] = KSInput.getText();
+            cacheValues[1] = KInput.getText();
+            cacheValues[2] = CMinInput.getText();
+            
+            inputCache.put(key, cacheValues);
+            return;
+
+        }
+        
+        System.out.println("error:" + key);
+    }
+
+    private void setTitleBorder() {
+        KSScroll.setViewportBorder(BorderFactory.createTitledBorder("Kurang Sekali (KS)"));
+        KScroll.setViewportBorder(BorderFactory.createTitledBorder("Kurang (K)"));
+        CMinScroll.setViewportBorder(BorderFactory.createTitledBorder("Rata-rata bawah (C-)"));
+        CScroll.setViewportBorder(BorderFactory.createTitledBorder("Rata-rata (C)"));
+        CPlusScroll.setViewportBorder(BorderFactory.createTitledBorder("Diatas rata-rata (C+)"));
+        BScroll.setViewportBorder(BorderFactory.createTitledBorder("Baik (B)"));
+        BSScroll.setViewportBorder(BorderFactory.createTitledBorder("Baik Sekali (BS)"));
+    }
+
+    private void resetInput() {
+        kosong();
+    }
+
+    private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            setInterpretation(RubrikCategory.TARAF_KECERDASAN, inputCache.get("Taraf Kecerdasan"));
+            System.out.println("1");
+            setInterpretation(RubrikCategory.BERPIKIR_KOMPREHENSIF, inputCache.get("Kemampuan berpikir komprehensif"));
+            System.out.println("2");
+            setInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, inputCache.get("Kemampuan berpikir fleksibel"));
+            System.out.println("3");
+            setInterpretation(RubrikCategory.MENGOLAH_ANGKA, inputCache.get("Kemampuan berhitung / mengolah angka"));
+            System.out.println("4");
+            setInterpretation(RubrikCategory.DAYA_INGAT, inputCache.get("Daya ingat / konsentrasi"));
+            System.out.println("5");
+            setInterpretation(RubrikCategory.KREATIVITAS, inputCache.get("Kreativitas"));
+            System.out.println("6");
+            setInterpretation(RubrikCategory.MENILAI, inputCache.get("Kemampuan menilai / judgement"));
+            System.out.println("7");
+            setInterpretation(RubrikCategory.ANALISIS, inputCache.get("Kemampuan analisis"));
+            System.out.println("8");
+            setInterpretation(RubrikCategory.MENGAMBIL_KEPUTUSAN, inputCache.get("Kemampuan mengambil keputusan"));
+            System.out.println("9");
+            setInterpretation(RubrikCategory.BERBAHASA, inputCache.get("Kemampuan berbahasa"));
+            System.out.println("10");
+            setInterpretation(RubrikCategory.CORAK_BERPIKIR, inputCache.get("Cara / corak berpikir"));
+            System.out.println("11");
+            setInterpretation(RubrikCategory.JENIS_KECERDASAN, inputCache.get("Jenis kecerdasan"));
+            System.out.println("12");
+        }
+        
     }//GEN-LAST:event_simpanbuttonActionPerformed
+
+    private void batalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalButtonActionPerformed
+        dispose();
+    }//GEN-LAST:event_batalButtonActionPerformed
+
+    private void comboboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboboxMouseClicked
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        KSInput.setText("");
+        KInput.setText("");
+        CMinInput.setText("");
+        CInput.setText("");
+        CPlusInput.setText("");
+        BInput.setText("");
+        BSInput.setText("");
+    }//GEN-LAST:event_comboboxMouseClicked
 
     void add2F(LinkedList<String> ll) {
         for (int i = 0; i < ll.size(); i++) {
@@ -323,15 +581,23 @@ public class ISTEditForm extends javax.swing.JDialog {
     }
 
     void matikan() {
-        for (int i = 0; i < textAreas.length; i++) {
-            textAreas[i].setEditable(false);
-        }
+        KSInput.setEnabled(false);
+        KInput.setEnabled(false);
+        CMinInput.setEnabled(false);
+        CInput.setEnabled(false);
+        CPlusInput.setEnabled(false);
+        BInput.setEnabled(false);
+        BSInput.setEnabled(false);
     }
 
     void hidupkan() {
-        for (int i = 0; i < textAreas.length; i++) {
-            textAreas[i].setEditable(true);
-        }
+        KSInput.setEnabled(true);
+        KInput.setEnabled(true);
+        CMinInput.setEnabled(true);
+        CInput.setEnabled(true);
+        CPlusInput.setEnabled(true);
+        BInput.setEnabled(true);
+        BSInput.setEnabled(true);
     }
 
     /**
@@ -422,9 +688,15 @@ public class ISTEditForm extends javax.swing.JDialog {
     private javax.swing.JTextArea KSInput;
     private javax.swing.JScrollPane KSScroll;
     private javax.swing.JScrollPane KScroll;
+    private javax.swing.JButton batalButton;
     private javax.swing.JComboBox<String> combobox;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton simpanbutton;
     // End of variables declaration//GEN-END:variables
+
+    private void updateInterpretation() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
