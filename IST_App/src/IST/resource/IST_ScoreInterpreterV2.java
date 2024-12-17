@@ -454,6 +454,16 @@ public class IST_ScoreInterpreterV2 {
         }
     }
 
+    public void showAllInterpretations() {
+        for (RubrikCategory key : interpretations.keySet()) {
+            System.out.println(key.getLabel());
+            NavigableMap<Range, String> interpretation = interpretations.get(key);
+            for (Range range : interpretation.keySet()) {
+                System.out.println(range + " -> " + interpretation.get(range));
+            }
+            System.out.println();
+        }
+    }
 
 //    public static void main(String[] args) {
 //        IST_ScoreInterpreterV2 interpreter = new IST_ScoreInterpreterV2();

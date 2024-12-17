@@ -538,7 +538,7 @@ public class ISTForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void namaInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaInputKeyReleased
-
+        perbaruiStatusTombol();
     }//GEN-LAST:event_namaInputKeyReleased
 
     private void tombolBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolBatalActionPerformed

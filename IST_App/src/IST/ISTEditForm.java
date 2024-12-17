@@ -10,20 +10,13 @@ import static IST.resource.IST_ScoreInterpreterV2.setInterpretation;
 import IST.resource.RubrikCategory;
 import java.awt.Color;
 import java.awt.Font;
-import java.util.LinkedList;
+import java.util.*;
 import java.awt.TextArea;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import javax.swing.JTextArea;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -121,6 +114,11 @@ public class ISTEditForm extends javax.swing.JDialog {
         KSInput.setLineWrap(true);
         KSInput.setRows(5);
         KSInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        KSInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                KSInputKeyReleased(evt);
+            }
+        });
         KSScroll.setViewportView(KSInput);
 
         KScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Kurang (K)"));
@@ -130,6 +128,11 @@ public class ISTEditForm extends javax.swing.JDialog {
         KInput.setLineWrap(true);
         KInput.setRows(5);
         KInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        KInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                KInputKeyReleased(evt);
+            }
+        });
         KScroll.setViewportView(KInput);
 
         CMinScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata bawah (C-)"));
@@ -139,6 +142,11 @@ public class ISTEditForm extends javax.swing.JDialog {
         CMinInput.setLineWrap(true);
         CMinInput.setRows(5);
         CMinInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        CMinInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CMinInputKeyReleased(evt);
+            }
+        });
         CMinScroll.setViewportView(CMinInput);
 
         CScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Rata-rata (C)"));
@@ -148,6 +156,11 @@ public class ISTEditForm extends javax.swing.JDialog {
         CInput.setLineWrap(true);
         CInput.setRows(5);
         CInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        CInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CInputKeyReleased(evt);
+            }
+        });
         CScroll.setViewportView(CInput);
 
         CPlusScroll.setToolTipText("");
@@ -158,6 +171,11 @@ public class ISTEditForm extends javax.swing.JDialog {
         CPlusInput.setLineWrap(true);
         CPlusInput.setRows(5);
         CPlusInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        CPlusInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CPlusInputKeyReleased(evt);
+            }
+        });
         CPlusScroll.setViewportView(CPlusInput);
 
         BScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Baik (B)"));
@@ -168,6 +186,11 @@ public class ISTEditForm extends javax.swing.JDialog {
         BInput.setRows(5);
         BInput.setAutoscrolls(false);
         BInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        BInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                BInputKeyReleased(evt);
+            }
+        });
         BScroll.setViewportView(BInput);
 
         BSScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("Baik Sekali (BS)"));
@@ -178,6 +201,11 @@ public class ISTEditForm extends javax.swing.JDialog {
         BSInput.setLineWrap(true);
         BSInput.setRows(5);
         BSInput.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        BSInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                BSInputKeyReleased(evt);
+            }
+        });
         BSScroll.setViewportView(BSInput);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -297,13 +325,14 @@ public class ISTEditForm extends javax.swing.JDialog {
         int selected = combobox.getSelectedIndex();
 
         if (selected == 0) {
-            KSInput.setEnabled(false);
-            KInput.setEnabled(false);
-            CMinInput.setEnabled(false);
-            CInput.setEnabled(false);
-            CPlusInput.setEnabled(false);
-            BInput.setEnabled(false);
-            BSInput.setEnabled(false);
+            interpretation.showAllInterpretations();
+//            KSInput.setEnabled(false);
+//            KInput.setEnabled(false);
+//            CMinInput.setEnabled(false);
+//            CInput.setEnabled(false);
+//            CPlusInput.setEnabled(false);
+//            BInput.setEnabled(false);
+//            BSInput.setEnabled(false);
 
             return;
         }
@@ -457,7 +486,7 @@ public class ISTEditForm extends javax.swing.JDialog {
             cacheValues[4] = CPlusInput.getText();
             cacheValues[5] = BInput.getText();
             cacheValues[6] = BSInput.getText();
-            
+
             inputCache.put(key, cacheValues);
             return;
 
@@ -467,7 +496,7 @@ public class ISTEditForm extends javax.swing.JDialog {
             cacheValues[0] = KSInput.getText();
             cacheValues[1] = KInput.getText();
             cacheValues[2] = CMinInput.getText();
-            
+
             inputCache.put(key, cacheValues);
             return;
 
@@ -476,7 +505,7 @@ public class ISTEditForm extends javax.swing.JDialog {
 
             cacheValues[0] = KSInput.getText();
             cacheValues[1] = KInput.getText();
-            
+
             inputCache.put(key, cacheValues);
             return;
 
@@ -486,12 +515,12 @@ public class ISTEditForm extends javax.swing.JDialog {
             cacheValues[0] = KSInput.getText();
             cacheValues[1] = KInput.getText();
             cacheValues[2] = CMinInput.getText();
-            
+
             inputCache.put(key, cacheValues);
             return;
 
         }
-        
+
         System.out.println("error:" + key);
     }
 
@@ -510,53 +539,138 @@ public class ISTEditForm extends javax.swing.JDialog {
     }
 
     private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
-        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
-            setInterpretation(RubrikCategory.TARAF_KECERDASAN, inputCache.get("Taraf Kecerdasan"));
-            System.out.println("1");
-            setInterpretation(RubrikCategory.BERPIKIR_KOMPREHENSIF, inputCache.get("Kemampuan berpikir komprehensif"));
-            System.out.println("2");
-            setInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, inputCache.get("Kemampuan berpikir fleksibel"));
-            System.out.println("3");
-            setInterpretation(RubrikCategory.MENGOLAH_ANGKA, inputCache.get("Kemampuan berhitung / mengolah angka"));
-            System.out.println("4");
-            setInterpretation(RubrikCategory.DAYA_INGAT, inputCache.get("Daya ingat / konsentrasi"));
-            System.out.println("5");
-            setInterpretation(RubrikCategory.KREATIVITAS, inputCache.get("Kreativitas"));
-            System.out.println("6");
-            setInterpretation(RubrikCategory.MENILAI, inputCache.get("Kemampuan menilai / judgement"));
-            System.out.println("7");
-            setInterpretation(RubrikCategory.ANALISIS, inputCache.get("Kemampuan analisis"));
-            System.out.println("8");
-            setInterpretation(RubrikCategory.MENGAMBIL_KEPUTUSAN, inputCache.get("Kemampuan mengambil keputusan"));
-            System.out.println("9");
-            setInterpretation(RubrikCategory.BERBAHASA, inputCache.get("Kemampuan berbahasa"));
-            System.out.println("10");
-            setInterpretation(RubrikCategory.CORAK_BERPIKIR, inputCache.get("Cara / corak berpikir"));
-            System.out.println("11");
-            setInterpretation(RubrikCategory.JENIS_KECERDASAN, inputCache.get("Jenis kecerdasan"));
-            System.out.println("12");
+        if (!Objects.equals(combobox.getSelectedItem(), "-- PILIH --")) {
+
+            if(inputCache.containsKey("Taraf Kecerdasan")) {
+                setInterpretation(RubrikCategory.TARAF_KECERDASAN, inputCache.get("Taraf Kecerdasan"));
+            }
+
+            if (inputCache.containsKey("Kemampuan berpikir komprehensif")) {
+                setInterpretation(RubrikCategory.BERPIKIR_KOMPREHENSIF, inputCache.get("Kemampuan berpikir komprehensif"));
+            }
+
+            if (inputCache.containsKey("Kemampuan berpikir fleksibel")) {
+                setInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, inputCache.get("Kemampuan berpikir fleksibel"));
+            }
+
+            if (inputCache.containsKey("Kemampuan berhitung / mengolah angka")) {
+                setInterpretation(RubrikCategory.MENGOLAH_ANGKA, inputCache.get("Kemampuan berhitung / mengolah angka"));
+            }
+
+            if (inputCache.containsKey("Daya ingat / konsentrasi")) {
+                setInterpretation(RubrikCategory.DAYA_INGAT, inputCache.get("Daya ingat / konsentrasi"));
+            }
+
+            if (inputCache.containsKey("Kreativitas")) {
+                setInterpretation(RubrikCategory.KREATIVITAS, inputCache.get("Kreativitas"));
+            }
+
+            if (inputCache.containsKey("Kemampuan menilai / judgement")) {
+                setInterpretation(RubrikCategory.MENILAI, inputCache.get("Kemampuan menilai / judgement"));
+            }
+
+            if (inputCache.containsKey("Kemampuan analisis")) {
+                setInterpretation(RubrikCategory.ANALISIS, inputCache.get("Kemampuan analisis"));
+            }
+
+            if (inputCache.containsKey("Kemampuan mengambil keputusan")) {
+                setInterpretation(RubrikCategory.MENGAMBIL_KEPUTUSAN, inputCache.get("Kemampuan mengambil keputusan"));
+            }
+
+            if (inputCache.containsKey("Kemampuan berbahasa")) {
+                setInterpretation(RubrikCategory.BERBAHASA, inputCache.get("Kemampuan berbahasa"));
+            }
+
+            if (inputCache.containsKey("Cara / corak berpikir")) {
+                setInterpretation(RubrikCategory.CORAK_BERPIKIR, inputCache.get("Cara / corak berpikir"));
+            }
+
+            if (inputCache.containsKey("Jenis kecerdasan")) {
+                setInterpretation(RubrikCategory.JENIS_KECERDASAN, inputCache.get("Jenis kecerdasan"));
+            }
+
+            inputCache.clear();
+            kosong();
         }
-        
+
     }//GEN-LAST:event_simpanbuttonActionPerformed
 
     private void batalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalButtonActionPerformed
+        inputCache.remove(key);
         dispose();
     }//GEN-LAST:event_batalButtonActionPerformed
 
     private void comboboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboboxMouseClicked
+//        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+//            saveToCache(key);
+//            return;
+//        }
+//
+//        kosong();
+    }//GEN-LAST:event_comboboxMouseClicked
+
+    private void KSInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KSInputKeyReleased
         if (!combobox.getSelectedItem().equals("-- PILIH --")) {
             saveToCache(key);
             return;
         }
 
-        KSInput.setText("");
-        KInput.setText("");
-        CMinInput.setText("");
-        CInput.setText("");
-        CPlusInput.setText("");
-        BInput.setText("");
-        BSInput.setText("");
-    }//GEN-LAST:event_comboboxMouseClicked
+        kosong();
+    }//GEN-LAST:event_KSInputKeyReleased
+
+    private void CMinInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CMinInputKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        kosong();
+    }//GEN-LAST:event_CMinInputKeyReleased
+
+    private void KInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KInputKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        kosong();
+    }//GEN-LAST:event_KInputKeyReleased
+
+    private void CInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CInputKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        kosong();
+    }//GEN-LAST:event_CInputKeyReleased
+
+    private void CPlusInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CPlusInputKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        kosong();
+    }//GEN-LAST:event_CPlusInputKeyReleased
+
+    private void BInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BInputKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        kosong();
+    }//GEN-LAST:event_BInputKeyReleased
+
+    private void BSInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BSInputKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        kosong();
+    }//GEN-LAST:event_BSInputKeyReleased
 
     void add2F(LinkedList<String> ll) {
         for (int i = 0; i < ll.size(); i++) {
