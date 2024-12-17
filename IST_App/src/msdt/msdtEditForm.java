@@ -5,8 +5,10 @@
 package msdt;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.NavigableMap;
 import msdt.resource.MSDTCategory;
 import msdt.resource.MSDTScoreInterpreter;
@@ -18,6 +20,8 @@ import msdt.resource.Pair;
  */
 public class msdtEditForm extends javax.swing.JDialog {
 
+    private Map<String, String[]> inputCache;
+
     List<String> first = new ArrayList<>();
     String key;
 
@@ -27,6 +31,8 @@ public class msdtEditForm extends javax.swing.JDialog {
     public msdtEditForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        inputCache = new HashMap<>();
+        turn(false);
     }
 
     /**
@@ -41,6 +47,7 @@ public class msdtEditForm extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         combobox = new javax.swing.JComboBox<>();
         simpanbutton = new javax.swing.JButton();
+        tombolBatal = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         dampakDanPengaruh = new javax.swing.JLabel();
         KesadaranBerorganisasi = new javax.swing.JLabel();
@@ -82,6 +89,14 @@ public class msdtEditForm extends javax.swing.JDialog {
             }
         });
 
+        tombolBatal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tombolBatal.setText("Batal");
+        tombolBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tombolBatalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -89,9 +104,11 @@ public class msdtEditForm extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(simpanbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(tombolBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(simpanbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +116,8 @@ public class msdtEditForm extends javax.swing.JDialog {
                 .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(simpanbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -152,6 +170,11 @@ public class msdtEditForm extends javax.swing.JDialog {
         dampakNpengaruh.setLineWrap(true);
         dampakNpengaruh.setRows(5);
         dampakNpengaruh.setWrapStyleWord(true);
+        dampakNpengaruh.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                dampakNpengaruhKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(dampakNpengaruh);
 
         jPanel3.add(jScrollPane1);
@@ -160,6 +183,11 @@ public class msdtEditForm extends javax.swing.JDialog {
         kesadaran.setLineWrap(true);
         kesadaran.setRows(5);
         kesadaran.setWrapStyleWord(true);
+        kesadaran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                kesadaranKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(kesadaran);
 
         jPanel3.add(jScrollPane2);
@@ -168,6 +196,11 @@ public class msdtEditForm extends javax.swing.JDialog {
         membangun.setLineWrap(true);
         membangun.setRows(5);
         membangun.setWrapStyleWord(true);
+        membangun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                membangunKeyReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(membangun);
 
         jPanel3.add(jScrollPane3);
@@ -176,6 +209,11 @@ public class msdtEditForm extends javax.swing.JDialog {
         mengembangkan.setLineWrap(true);
         mengembangkan.setRows(5);
         mengembangkan.setWrapStyleWord(true);
+        mengembangkan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                mengembangkanKeyReleased(evt);
+            }
+        });
         jScrollPane4.setViewportView(mengembangkan);
 
         jPanel3.add(jScrollPane4);
@@ -184,6 +222,11 @@ public class msdtEditForm extends javax.swing.JDialog {
         mengarahkan.setLineWrap(true);
         mengarahkan.setRows(5);
         mengarahkan.setWrapStyleWord(true);
+        mengarahkan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                mengarahkanKeyReleased(evt);
+            }
+        });
         jScrollPane5.setViewportView(mengarahkan);
 
         jPanel3.add(jScrollPane5);
@@ -192,6 +235,11 @@ public class msdtEditForm extends javax.swing.JDialog {
         memimpin.setLineWrap(true);
         memimpin.setRows(5);
         memimpin.setWrapStyleWord(true);
+        memimpin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                memimpinKeyReleased(evt);
+            }
+        });
         jScrollPane6.setViewportView(memimpin);
 
         jPanel3.add(jScrollPane6);
@@ -239,13 +287,46 @@ public class msdtEditForm extends javax.swing.JDialog {
         key = selectedCategory.getLabel();
         NavigableMap<String, Pair<String, String>> val = MSDTScoreInterpreter.getInterpretations(key);
 
-        dampakNpengaruh.setText(val.get("Dampak dan pengaruh").getFirst());
-        kesadaran.setText(val.get("Kesadaran berorganisasi").getFirst());
-        membangun.setText(val.get("Membangun Hubungan Kerja").getFirst());
-        mengembangkan.setText(val.get("Mengembangkan orang lain").getFirst());
-        mengarahkan.setText(val.get("Mengarahkan orang lain").getFirst());
-        memimpin.setText(val.get("Memimpin kelompok").getFirst());
+        if (loadToCache(key) == false) {
+            dampakNpengaruh.setText(val.get("Dampak dan pengaruh").getFirst());
+            kesadaran.setText(val.get("Kesadaran berorganisasi").getFirst());
+            membangun.setText(val.get("Membangun Hubungan Kerja").getFirst());
+            mengembangkan.setText(val.get("Mengembangkan orang lain").getFirst());
+            mengarahkan.setText(val.get("Mengarahkan orang lain").getFirst());
+            memimpin.setText(val.get("Memimpin kelompok").getFirst());
+        }
     }//GEN-LAST:event_comboboxActionPerformed
+
+    private boolean loadToCache(String key) {
+        if (inputCache.containsKey(key)) {
+
+            String[] cacheValues = inputCache.get(key);
+
+            dampakNpengaruh.setText(cacheValues[0]);
+            kesadaran.setText(cacheValues[1]);
+            membangun.setText(cacheValues[2]);
+            mengembangkan.setText(cacheValues[3]);
+            mengarahkan.setText(cacheValues[4]);
+            memimpin.setText(cacheValues[5]);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void saveToCache(String key) {
+        String[] cacheValues = new String[7];
+
+        cacheValues[0] = dampakNpengaruh.getText();
+        cacheValues[1] = kesadaran.getText();
+        cacheValues[2] = membangun.getText();
+        cacheValues[3] = mengembangkan.getText();
+        cacheValues[4] = dampakNpengaruh.getText();
+        cacheValues[5] = memimpin.getText();
+
+        inputCache.put(key, cacheValues);
+    }
 
     private void turn(boolean call) {
         dampakNpengaruh.setEnabled(call);
@@ -265,33 +346,46 @@ public class msdtEditForm extends javax.swing.JDialog {
         memimpin.setText("");
     }
 
-    private void updateInterpretation() {
-//        if (cachedBreakpoints[0] != -1) {
-//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[0], firstInput.getText());
-//        }
-//        if (cachedBreakpoints[1] != -1) {
-//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[1], secondInput.getText());
-//        }
-//        if (cachedBreakpoints[2] != -1) {
-//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[2], thirdInput.getText());
-//        }
-//        if (cachedBreakpoints[3] != -1) {
-//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[3], fourthInput.getText());
-//        }
-//        if (cachedBreakpoints[4] != -1) {
-//            ScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[4], fifthInput.getText());
-//        }
-    }
+    /**
+     *
+     * Deserter Compromiser Missionary Buereaucrat Autocrat Benevolent Autocrat
+     * Developer Executive
+     *
+     */
 
     private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
-        first.add(dampakNpengaruh.getText());
-        first.add(kesadaran.getText());
-        first.add(membangun.getText());
-        first.add(mengembangkan.getText());
-        first.add(mengarahkan.getText());
-        first.add(memimpin.getText());
 
-        MSDTScoreInterpreter.setInterpretation(key, first);
+        if (inputCache.containsKey("Deserter")) {
+            MSDTScoreInterpreter.setInterpretation("Deserter", inputCache.get("Deserter"));
+        }
+
+        if (inputCache.containsKey("Compromiser")) {
+            MSDTScoreInterpreter.setInterpretation("Compromiser", inputCache.get("Compromiser"));
+        }
+
+        if (inputCache.containsKey("Missionary")) {
+            MSDTScoreInterpreter.setInterpretation("Missionary", inputCache.get("Missionary"));
+        }
+
+        if (inputCache.containsKey("Buereaucrat")) {
+            MSDTScoreInterpreter.setInterpretation("Buereaucrat", inputCache.get("Buereaucrat"));
+        }
+
+        if (inputCache.containsKey("Autocrat")) {
+            MSDTScoreInterpreter.setInterpretation("Autocrat", inputCache.get("Autocrat"));
+        }
+
+        if (inputCache.containsKey("Benevolent Autocrat")) {
+            MSDTScoreInterpreter.setInterpretation("Benevolent Autocrat", inputCache.get("Benevolent Autocrat"));
+        }
+
+        if (inputCache.containsKey("Developer")) {
+            MSDTScoreInterpreter.setInterpretation("Developer", inputCache.get("Developer"));
+        }
+
+        if (inputCache.containsKey("Executive")) {
+            MSDTScoreInterpreter.setInterpretation("Executive", inputCache.get("Executive"));
+        }
 
         if (MSDTScoreInterpreter.SaveInterpretationsToFile()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
@@ -307,6 +401,72 @@ public class msdtEditForm extends javax.swing.JDialog {
         clearInputs();
 
     }//GEN-LAST:event_simpanbuttonActionPerformed
+
+    private void dampakNpengaruhKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dampakNpengaruhKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        clearInputs();
+    }//GEN-LAST:event_dampakNpengaruhKeyReleased
+
+    private void kesadaranKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kesadaranKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        clearInputs();
+    }//GEN-LAST:event_kesadaranKeyReleased
+
+    private void membangunKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_membangunKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        clearInputs();
+    }//GEN-LAST:event_membangunKeyReleased
+
+    private void mengembangkanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mengembangkanKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        clearInputs();
+    }//GEN-LAST:event_mengembangkanKeyReleased
+
+    private void mengarahkanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mengarahkanKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        clearInputs();
+    }//GEN-LAST:event_mengarahkanKeyReleased
+
+    private void memimpinKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_memimpinKeyReleased
+        if (!combobox.getSelectedItem().equals("-- PILIH --")) {
+            saveToCache(key);
+            return;
+        }
+
+        clearInputs();
+    }//GEN-LAST:event_memimpinKeyReleased
+
+    private void tombolBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolBatalActionPerformed
+        inputCache.remove("Deserter");
+        inputCache.remove("Compromiser");
+        inputCache.remove("Missionary");
+        inputCache.remove("Buereaucrat");
+        inputCache.remove("Autocrat");
+        inputCache.remove("Benevolent Autocrat");
+        inputCache.remove("Developer");
+        inputCache.remove("Executive");
+        dispose();
+    }//GEN-LAST:event_tombolBatalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,5 +534,6 @@ public class msdtEditForm extends javax.swing.JDialog {
     private javax.swing.JTextArea mengarahkan;
     private javax.swing.JTextArea mengembangkan;
     private javax.swing.JButton simpanbutton;
+    private javax.swing.JButton tombolBatal;
     // End of variables declaration//GEN-END:variables
 }
