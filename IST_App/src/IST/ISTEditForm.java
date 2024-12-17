@@ -86,7 +86,6 @@ public class ISTEditForm extends javax.swing.JDialog {
         BInput = new javax.swing.JTextArea();
         BSScroll = new javax.swing.JScrollPane();
         BSInput = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
         simpanbutton = new javax.swing.JButton();
         batalButton = new javax.swing.JButton();
 
@@ -249,17 +248,6 @@ public class ISTEditForm extends javax.swing.JDialog {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         simpanbutton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         simpanbutton.setText("Simpan");
         simpanbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -292,11 +280,6 @@ public class ISTEditForm extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(simpanbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 375, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 375, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,11 +292,6 @@ public class ISTEditForm extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 263, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 263, Short.MAX_VALUE)))
         );
 
         pack();
@@ -325,14 +303,14 @@ public class ISTEditForm extends javax.swing.JDialog {
         int selected = combobox.getSelectedIndex();
 
         if (selected == 0) {
-            interpretation.showAllInterpretations();
-//            KSInput.setEnabled(false);
-//            KInput.setEnabled(false);
-//            CMinInput.setEnabled(false);
-//            CInput.setEnabled(false);
-//            CPlusInput.setEnabled(false);
-//            BInput.setEnabled(false);
-//            BSInput.setEnabled(false);
+//            interpretation.showAllInterpretations();
+            KSInput.setEnabled(false);
+            KInput.setEnabled(false);
+            CMinInput.setEnabled(false);
+            CInput.setEnabled(false);
+            CPlusInput.setEnabled(false);
+            BInput.setEnabled(false);
+            BSInput.setEnabled(false);
 
             return;
         }
@@ -596,7 +574,18 @@ public class ISTEditForm extends javax.swing.JDialog {
     }//GEN-LAST:event_simpanbuttonActionPerformed
 
     private void batalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalButtonActionPerformed
-        inputCache.remove(key);
+        inputCache.remove("Taraf Kecerdasan");
+        inputCache.remove("Kemampuan berpikir komprehensif");
+        inputCache.remove("Kemampuan berpikir fleksibel");
+        inputCache.remove("Kemampuan berhitung / mengolah angka");
+        inputCache.remove("Daya ingat / konsentrasi");
+        inputCache.remove("Kreativitas");
+        inputCache.remove("Kemampuan menilai / judgement");
+        inputCache.remove("Kemampuan analisis");
+        inputCache.remove("Kemampuan mengambil keputusa");
+        inputCache.remove("Kemampuan berbahasa");
+        inputCache.remove("Cara / corak berpikir");
+        inputCache.remove("Jenis kecerdasan");
         dispose();
     }//GEN-LAST:event_batalButtonActionPerformed
 
@@ -805,7 +794,6 @@ public class ISTEditForm extends javax.swing.JDialog {
     private javax.swing.JButton batalButton;
     private javax.swing.JComboBox<String> combobox;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton simpanbutton;
     // End of variables declaration//GEN-END:variables
 

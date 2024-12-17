@@ -223,14 +223,14 @@ public class MSDTScoreInterpreter {
         }
     }
 
-    public static void setInterpretation(String key, List<String> val) {
+    public static void setInterpretation(String key, String[] val) {
         NavigableMap<String, Pair<String, String>> interpretationMap = interpretations.get(key);
-        interpretationMap.get("Dampak dan pengaruh").setFirst(val.get(0));
-        interpretationMap.get("Kesadaran berorganisasi").setFirst(val.get(1));
-        interpretationMap.get("Membangun Hubungan Kerja").setFirst(val.get(2));
-        interpretationMap.get("Mengembangkan orang lain").setFirst(val.get(3));
-        interpretationMap.get("Mengarahkan orang lain").setFirst(val.get(4));
-        interpretationMap.get("Memimpin kelompok").setFirst(val.get(5));
+        interpretationMap.get("Dampak dan pengaruh").setFirst(val[0]);
+        interpretationMap.get("Kesadaran berorganisasi").setFirst(val[1]);
+        interpretationMap.get("Membangun Hubungan Kerja").setFirst(val[2]);
+        interpretationMap.get("Mengembangkan orang lain").setFirst(val[3]);
+        interpretationMap.get("Mengarahkan orang lain").setFirst(val[4]);
+        interpretationMap.get("Memimpin kelompok").setFirst(val[5]);
     }
 
     public List<AspectScore> setAspect(JTable table) {
