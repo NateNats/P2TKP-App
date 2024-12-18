@@ -151,9 +151,19 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
 
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cancelButton.setText("Batal");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         saveButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         saveButton.setText("Simpan");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,6 +197,38 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Reloads the interpretation of the selected category from the file
+     * Completely discarding any changes made
+     * @param evt
+     */
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelButtonActionPerformed
+        PapiKostickScoreInterpreter.reloadInterpretations();
+        dispose();
+    }// GEN-LAST:event_cancelButtonActionPerformed
+
+    /**
+     * Update the interpretation of the selected category based on the input fields
+     * Saves any changes made to file
+     * @param evt
+     */
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
+        updateInterpretation();
+        if (PapiKostickScoreInterpreter.saveInterpretationsToFile()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }// GEN-LAST:event_saveButtonActionPerformed
+
+    /**
+     * Update the interpretation of the selected category based on the input fields
+     * Also calls updateInterpretation() to save the cached interpretation
+     * 
+     * @param evt
+     */
     private void CategoryInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CategoryInputActionPerformed
         // Too lazy to separate this into another helper class, so I'll just put them
         // here
@@ -514,22 +556,6 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_CategoryInputActionPerformed
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelButtonActionPerformed
-        PapiKostickScoreInterpreter.reloadInterpretations();
-        dispose();
-    }// GEN-LAST:event_cancelButtonActionPerformed
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
-        updateInterpretation();
-        if (PapiKostickScoreInterpreter.saveInterpretationsToFile()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
-                    javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-    }// GEN-LAST:event_saveButtonActionPerformed
-
     private void clearInputs() {
         firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
         secondScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
@@ -551,6 +577,10 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         }
     }
 
+    /**
+     * Update the interpretation of the selected category based on the input fields and cached breakpoints
+     * the updated values will be stored in the PapiKostickScoreInterpreter Map
+     */
     private void updateInterpretation() {
         if (cachedBreakpoints[0] != -1) {
             PapiKostickScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[0], firstInput.getText());
