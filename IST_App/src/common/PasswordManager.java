@@ -203,16 +203,4 @@ public class PasswordManager {
 
         return false;
     }
-
-    public static void main(String[] args) {
-        try {
-            // Store master password
-            storeMasterPassword("Master");
-
-            // Store admin password
-            storeAdminPassword("Admin");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
