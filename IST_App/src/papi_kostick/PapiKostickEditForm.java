@@ -151,9 +151,19 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
 
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cancelButton.setText("Batal");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         saveButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         saveButton.setText("Simpan");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,6 +196,22 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelButtonActionPerformed
+        PapiKostickScoreInterpreter.reloadInterpretations();
+        dispose();
+    }// GEN-LAST:event_cancelButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
+        updateInterpretation();
+        if (PapiKostickScoreInterpreter.saveInterpretationsToFile()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }// GEN-LAST:event_saveButtonActionPerformed
 
     private void CategoryInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CategoryInputActionPerformed
         // Too lazy to separate this into another helper class, so I'll just put them
@@ -513,22 +539,6 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
 
         }
     }// GEN-LAST:event_CategoryInputActionPerformed
-
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelButtonActionPerformed
-        PapiKostickScoreInterpreter.reloadInterpretations();
-        dispose();
-    }// GEN-LAST:event_cancelButtonActionPerformed
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
-        updateInterpretation();
-        if (PapiKostickScoreInterpreter.saveInterpretationsToFile()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
-                    javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-    }// GEN-LAST:event_saveButtonActionPerformed
 
     private void clearInputs() {
         firstScroll.setViewportBorder(javax.swing.BorderFactory.createTitledBorder("≥"));
