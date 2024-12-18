@@ -192,12 +192,12 @@ public class MSDTScoreInterpreter {
     public DefaultTableModel chooseCombo(String choice) {
         if (choice == null || choice.isEmpty()) {
             System.err.println("Error: The choice parameter is null or empty.");
-            return new DefaultTableModel(new String[]{"Aspek Psikologis", "Deskripsi", "Skor"}, 0);
+            return new NonEditableTableModel(new String[]{"Aspek Psikologis", "Deskripsi", "Skor"}, 0);
         }
 
         try {
             String[] columns = {"Aspek Psikologis", "Deskripsi", "Skor"};
-            DefaultTableModel model = new DefaultTableModel(columns, 0);
+            NonEditableTableModel model = new NonEditableTableModel(columns, 0);
             for (Map.Entry<String, NavigableMap<String, Pair<String, String>>> entry : interpretations.entrySet()) {
                 if (choice.equals(entry.getKey())) {
                     NavigableMap<String, Pair<String, String>> aspects = entry.getValue();
@@ -219,9 +219,23 @@ public class MSDTScoreInterpreter {
 
         } catch (Exception e) {
             System.err.println("Error: Could not input interpretations to table. " + e.getMessage());
-            return new DefaultTableModel(new String[]{"Aspek", "Deskripsi", "Skor"}, 0);
+            return new NonEditableTableModel(new String[]{"Aspek", "Deskripsi", "Skor"}, 0);
         }
     }
+
+    class NonEditableTableModel extends DefaultTableModel {
+        public NonEditableTableModel(Object[] columnNames, int rowCount) {
+            super(columnNames, rowCount);
+        }
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            // Semua sel tidak dapat diedit
+            return false;
+        }
+    }
+
+
 
     public static void setInterpretation(String key, String[] val) {
         NavigableMap<String, Pair<String, String>> interpretationMap = interpretations.get(key);

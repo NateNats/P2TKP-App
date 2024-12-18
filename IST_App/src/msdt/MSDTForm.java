@@ -139,12 +139,27 @@ public class MSDTForm extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        hasilTable.setMinimumSize(new java.awt.Dimension(60, 120));
+        hasilTable.setPreferredSize(new java.awt.Dimension(300, 120));
+        hasilTable.setRowHeight(30);
         hasilScrollPane.setViewportView(hasilTable);
+        if (hasilTable.getColumnModel().getColumnCount() > 0) {
+            hasilTable.getColumnModel().getColumn(0).setResizable(false);
+            hasilTable.getColumnModel().getColumn(1).setResizable(false);
+            hasilTable.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         javax.swing.GroupLayout hasilPanelLayout = new javax.swing.GroupLayout(hasilPanel);
         hasilPanel.setLayout(hasilPanelLayout);
@@ -264,13 +279,21 @@ public class MSDTForm extends javax.swing.JPanel {
         if (val.equals("-- PILIH --")) {
             DefaultTableModel model = new DefaultTableModel(cols, 0);
             hasilTable.setModel(model);
-
         } else {
             hasilTable.setModel(score.chooseCombo(val));
         }
 
+        setTableProperties();
+
         //hasilTable.setModel(dataModel);
     }//GEN-LAST:event_comboboxActionPerformed
+
+    private void setTableProperties() {
+//        tabelHasil.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        hasilTable.getColumnModel().getColumn(0).setPreferredWidth(400);
+        hasilTable.getColumnModel().getColumn(1).setPreferredWidth(650);
+        hasilTable.getColumnModel().getColumn(2).setPreferredWidth(150);
+    }
 
     private void tombolBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolBatalActionPerformed
         namaInput.setText("");
