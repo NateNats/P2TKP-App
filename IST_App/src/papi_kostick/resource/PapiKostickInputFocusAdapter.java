@@ -2,7 +2,6 @@ package papi_kostick.resource;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
