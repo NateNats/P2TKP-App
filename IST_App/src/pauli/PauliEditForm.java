@@ -169,6 +169,11 @@ public class PauliEditForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Update the interpretation of the selected category based on the input fields
+     * Saves any changes made to file
+     * @param evt
+     */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         updateInterpretation();
         if (PauliScoreInterpreter.saveInterpretationsToFile()) {
@@ -180,11 +185,22 @@ public class PauliEditForm extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    /**
+     * Reloads the interpretation of the selected category from the file
+     * Completely discarding any changes made
+     * @param evt
+     */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         PauliScoreInterpreter.reloadInterpretations();
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    /**
+     * Update the interpretation of the selected category based on the input fields
+     * Also calls updateInterpretation() to save the cached interpretation
+     * 
+     * @param evt
+     */
     private void CategoryInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryInputActionPerformed
         updateInterpretation();
         clearInputs();
@@ -222,6 +238,10 @@ public class PauliEditForm extends javax.swing.JDialog {
         tinggiInput.setText("");
     }
 
+    /**
+     * Update the interpretation of the selected category based on the input fields and cached breakpoints
+     * the updated values will be stored in the PapiKostickScoreInterpreter Map
+     */
     private void updateInterpretation() {
         if (cachedCategory == null || cachedCategory == PauliCategory.KETEKUNAN_KONSENTRASI) {
             return;

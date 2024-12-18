@@ -29,6 +29,7 @@ public class PauliResource {
 
     private final static String REPORT_PATH = "./src/pauli/resource/report/PauliReport_v2.jasper";
 
+    // Initialize
     static {
         resetValues();
     }
