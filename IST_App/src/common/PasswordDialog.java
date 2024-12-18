@@ -1,5 +1,7 @@
 package common;
 
+import java.io.IOException;
+
 import javax.swing.*;
 
 /**
@@ -48,6 +50,9 @@ public class PasswordDialog {
         }
     }
 
+    /**
+     * @param password The password to validate
+     */
     private boolean validateAndProcessPassword(char[] password) {
         try {
             if (validatePassword(password)) {
@@ -63,6 +68,9 @@ public class PasswordDialog {
         return false;
     }
 
+    /**
+     * @throws IOException If file reading fails
+     */
     private boolean validatePassword(char[] password) throws Exception {
         String passwordString = new String(password);
         for (String validPassword : VALID_PASSWORDS) {
