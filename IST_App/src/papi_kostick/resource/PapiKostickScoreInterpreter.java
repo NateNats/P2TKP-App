@@ -258,6 +258,9 @@ public class PapiKostickScoreInterpreter {
 
     }
 
+    /**
+     * Reload the interpretations from file
+     */
     public static void reloadInterpretations() {
         interpretations.clear();
         if (!loadInterpretationsFromFile()) {
