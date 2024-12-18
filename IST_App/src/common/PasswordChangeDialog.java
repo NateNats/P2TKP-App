@@ -4,6 +4,10 @@
  */
 package common;
 
+import java.util.Arrays;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Trustacean
@@ -110,7 +114,26 @@ public class PasswordChangeDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (PasswordManager.validatePassword(new String(masterPasswordInput.getPassword()), "master")) {
+                if (Arrays.equals(newAdminPasswordInput.getPassword(), repeatPasswordInput.getPassword())) {
+                    PasswordManager.storeAdminPassword(new String(newAdminPasswordInput.getPassword()));
+                    JOptionPane.showMessageDialog(null, "Kata sandi admin berhasil diubah");
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Kata sandi baru tidak cocok");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Kata sandi utama salah");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan");
+        } finally {
+            // Explicitly clear the passwords from memory
+            Arrays.fill(masterPasswordInput.getPassword(), '0');
+            Arrays.fill(newAdminPasswordInput.getPassword(), '0');
+            Arrays.fill(repeatPasswordInput.getPassword(), '0');
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
