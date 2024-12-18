@@ -20,6 +20,9 @@ public class PapiKostickScoreInterpreter {
     private static final String DATA_FILE_PATH = "./storage/kostick_interpretation.dat";
     private static Map<PapiKostickCategory, NavigableMap<Integer, String>> interpretations = new TreeMap<>();
 
+    /**
+     * Initialize the interpretations from file if possible, otherwise use default
+     */
     static {
         if (!loadInterpretationsFromFile()) {
             initializeDefaultInterpretations();
@@ -54,6 +57,13 @@ public class PapiKostickScoreInterpreter {
         }
     }
 
+    /**
+     * Get the interpretation of a score for a given key
+     * 
+     * @param key   The key to get the interpretation for
+     * @param score The score to interpret
+     * @return The interpretation of the score
+     */
     public static String getInterpretation(PapiKostickCategory key, int score) {
         NavigableMap<Integer, String> interpretation = interpretations.get(key);
         if (interpretation == null) {
@@ -256,6 +266,13 @@ public class PapiKostickScoreInterpreter {
         }
     }
 
+    /**
+     * Set the interpretation for a given key and score
+     * 
+     * @param key            The key to set the interpretation for
+     * @param score          The score to set the interpretation for
+     * @param interpretation The interpretation to set
+     */
     public static void setInterpretation(PapiKostickCategory key, int score, String interpretation) {
         NavigableMap<Integer, String> interpretationMap = interpretations.get(key);
         if (interpretationMap == null) {
