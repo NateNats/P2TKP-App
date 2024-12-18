@@ -2,52 +2,86 @@ package common;
 
 import javax.swing.*;
 
-import java.util.Arrays;
-
 /**
- * this class is a dialog used to verify the password before allowing access to
- * the editing panels
+ * Dialog to verify the password before allowing access to editing panels.
  * 
  * @author <a href="https://github.com/Trustacean">Edward</a>
  */
 public class PasswordDialog {
-    private JDialog toDialog;
+    private final JDialog toDialog;
 
+    // Constants for dialog messages
+    private static final String PASSWORD_PROMPT = "Masukkan Password:";
+    private static final String DIALOG_TITLE = "Konfirmasi untuk mengubah";
+    private static final String ACCESS_GRANTED = "Berhasil masuk";
+    private static final String ACCESS_DENIED = "Gagal masuk";
+    private static final String ERROR_MESSAGE = "Terjadi kesalahan";
+    private static final String[] VALID_PASSWORDS = { "admin", "master" };
+
+    /**
+     * @param toDialog The dialog to show after the password is verified
+     */
     public PasswordDialog(JDialog toDialog) {
         this.toDialog = toDialog;
     }
 
     public void showDialog() {
         JPasswordField passwordField = new JPasswordField();
-        Object[] message = { "Masukkan Password: ", passwordField };
+        Object[] message = { PASSWORD_PROMPT, passwordField };
 
-        // Loop until the user enters the correct password or cancels
         while (true) {
             int option = JOptionPane.showConfirmDialog(
-                    null, message, "Konfirmasi untuk mengubah", JOptionPane.OK_CANCEL_OPTION);
+                    null, message, DIALOG_TITLE, JOptionPane.OK_CANCEL_OPTION);
 
             if (option == JOptionPane.OK_OPTION) {
                 char[] inputPassword = passwordField.getPassword();
+                boolean validated = validateAndProcessPassword(inputPassword);
+                clearPassword(inputPassword);
+                passwordField.setText(""); // Clear the field for security
 
-                try {
-                    if (PasswordManager.validatePassword(new String(inputPassword), "admin")
-                            || PasswordManager.validatePassword(new String(inputPassword), "master")) {
-                        JOptionPane.showMessageDialog(null, "Berhasil masuk");
-                        toDialog.setLocationRelativeTo(null);
-                        toDialog.setVisible(true);
-                        return;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Gagal masuk");
-                        passwordField.setText("");
-                    }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Terjadi kesalahan");
-                } finally {
-                    // Explicitly clear the password from memory
-                    Arrays.fill(inputPassword, '0');
+                if (validated) {
+                    break;
                 }
             } else {
-                return;
+                return; // Exit if the user cancels
+            }
+        }
+    }
+
+    private boolean validateAndProcessPassword(char[] password) {
+        try {
+            if (validatePassword(password)) {
+                JOptionPane.showMessageDialog(null, ACCESS_GRANTED);
+                showTargetDialog();
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, ACCESS_DENIED);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    private boolean validatePassword(char[] password) throws Exception {
+        String passwordString = new String(password);
+        for (String validPassword : VALID_PASSWORDS) {
+            if (PasswordManager.validatePassword(passwordString, validPassword)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void showTargetDialog() {
+        toDialog.setLocationRelativeTo(null);
+        toDialog.setVisible(true);
+    }
+
+    private void clearPassword(char[] password) {
+        if (password != null) {
+            for (int i = 0; i < password.length; i++) {
+                password[i] = '\0'; // Clear sensitive data
             }
         }
     }
