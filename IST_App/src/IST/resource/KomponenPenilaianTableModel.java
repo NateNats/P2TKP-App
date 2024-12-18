@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class KomponenPenilaianTableModel extends AbstractTableModel {
 
-    private List<KomponenPenilaian> nilai = new ArrayList();
+    private List<KomponenPenilaian> nilai = new ArrayList<>();
 
     public KomponenPenilaianTableModel(List<KomponenPenilaian> nilai) {
         this.nilai = nilai;

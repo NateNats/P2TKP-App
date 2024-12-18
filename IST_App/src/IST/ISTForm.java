@@ -508,6 +508,12 @@ public class ISTForm extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tabelHasil);
+        if (tabelHasil.getColumnModel().getColumnCount() > 0) {
+            tabelHasil.getColumnModel().getColumn(0).setResizable(false);
+            tabelHasil.getColumnModel().getColumn(1).setResizable(false);
+            tabelHasil.getColumnModel().getColumn(2).setResizable(false);
+            tabelHasil.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -772,7 +778,7 @@ public class ISTForm extends javax.swing.JPanel {
             if (!WAInput.getText().equals("")) {
                 int data = Integer.parseInt(WAInput.getText());
 
-                if (data < 0 && data > 20) {
+                if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
                     WAInput.setText("");
                 }
@@ -789,7 +795,7 @@ public class ISTForm extends javax.swing.JPanel {
             if (!GEInput.getText().equals("")) {
                 int data = Integer.parseInt(GEInput.getText());
 
-                if (data < 0 && data > 32) {
+                if (data < 0 || data > 31) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 31!", "Error", JOptionPane.ERROR_MESSAGE);
                     GEInput.setText("");
                 }
@@ -806,7 +812,7 @@ public class ISTForm extends javax.swing.JPanel {
             if (!RAInput.getText().equals("")) {
                 int data = Integer.parseInt(RAInput.getText());
 
-                if (data < 0 && data > 20) {
+                if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
                     RAInput.setText("");
                 }
@@ -823,8 +829,9 @@ public class ISTForm extends javax.swing.JPanel {
             if (!FAInput.getText().equals("")) {
                 int data = Integer.parseInt(FAInput.getText());
 
-                if (data < 0 && data > 20) {
+                if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
+                    FAInput.setText("");
                 }
             }
         } catch (NumberFormatException eror) {
@@ -839,7 +846,7 @@ public class ISTForm extends javax.swing.JPanel {
             if (!SEInput.getText().equals("")) {
                 int data = Integer.parseInt(SEInput.getText());
 
-                if (data < 0 && data > 20) {
+                if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
                     SEInput.setText("");
                 }
@@ -856,7 +863,7 @@ public class ISTForm extends javax.swing.JPanel {
             if (!ANInput.getText().equals("")) {
                 int data = Integer.parseInt(ANInput.getText());
 
-                if (data < 0 && data > 20) {
+                if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
                     ANInput.setText("");
                 }
@@ -873,7 +880,7 @@ public class ISTForm extends javax.swing.JPanel {
             if (!MEInput.getText().equals("")) {
                 int data = Integer.parseInt(MEInput.getText());
 
-                if (data < 0 && data > 20) {
+                if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
                     MEInput.setText("");
                 }
@@ -907,7 +914,7 @@ public class ISTForm extends javax.swing.JPanel {
             if (!WUInput.getText().equals("")) {
                 int data = Integer.parseInt(WUInput.getText());
 
-                if (data < 0 && data > 20) {
+                if (data < 0 || data > 20) {
                     JOptionPane.showMessageDialog(this, "Nilai harus antara 0 dan 20!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
