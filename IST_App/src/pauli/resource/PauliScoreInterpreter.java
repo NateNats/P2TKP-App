@@ -21,6 +21,9 @@ public class PauliScoreInterpreter {
     private static Map<PauliCategory, Map<Integer, String>> interpretations = new HashMap<>();
     private static Map<Integer, Map<Integer, String>> ketelitianInterpretations = new HashMap<>();
 
+    /**
+     * Initialize the interpretations from file if possible, otherwise use default
+     */
     static {
         if (!loadInterpretationsFromFile() || !loadKetelitianInterpretationsFromFile()) {
             initializeDefaultInterpretations();
@@ -140,18 +143,46 @@ public class PauliScoreInterpreter {
 
     }
 
+    /**
+     * Get the interpretation of the input value
+     * 
+     * @param key   The category of the input
+     * @param value The input value
+     * @return The interpretation of the input value
+     */
     public static String getInterpretation(PauliCategory key, int value) {
         return interpretations.get(key).get(value);
     }
 
+    /**
+     * Get the interpretation of the ketelitian input value
+     * 
+     * @param ketekunan    The ketekunan value
+     * @param konsentrasi  The konsentrasi value
+     * @return The interpretation of the ketelitian input value
+     */
     public static String getKetelitianInterpretation(int ketekunan, int konsentrasi) {
         return ketelitianInterpretations.getOrDefault(ketekunan, new HashMap<>()).get(konsentrasi);
     }
 
+    /**
+     * Set the interpretation of the input value
+     * 
+     * @param key           The category of the input
+     * @param value         The input value
+     * @param interpretation The interpretation of the input value
+     */
     public static void setInterpretation(PauliCategory key, int value, String interpretation) {
         interpretations.get(key).put(value, interpretation);
     }
 
+    /**
+     * Set the interpretation of the ketelitian input value
+     * 
+     * @param ketekunan     The ketekunan value
+     * @param konsentrasi   The konsentrasi value
+     * @param interpretation The interpretation of the ketelitian input value
+     */
     public static void setKetelitianInterpretation(int ketekunan, int konsentrasi, String interpretation) {
         ketelitianInterpretations.get(ketekunan).put(konsentrasi, interpretation);
     }
@@ -178,6 +209,9 @@ public class PauliScoreInterpreter {
         }
     }
 
+    /**
+     * Reload the interpretations from file
+     */
     public static void reloadInterpretations() {
         if (!loadInterpretationsFromFile()) {
             initializeDefaultInterpretations();
