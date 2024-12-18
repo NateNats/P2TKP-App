@@ -37,6 +37,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
         papiButton = new javax.swing.JButton();
         msdtButton = new javax.swing.JButton();
         pauliButton = new javax.swing.JButton();
+        settingsButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(915, 734));
 
@@ -117,8 +118,15 @@ public class MainMenuPanel extends javax.swing.JPanel {
             .addGroup(containerLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(insetContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
+
+        settingsButton.setText("⚙");
+        settingsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -128,7 +136,10 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(judulPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(settingsButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -137,9 +148,18 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(judulPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(settingsButton)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
+        PasswordChangeDialog dialog = new PasswordChangeDialog(mainFrame, true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void istButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         mainFrame.showCard("ist_mapping");
@@ -170,5 +190,6 @@ public class MainMenuPanel extends javax.swing.JPanel {
     private javax.swing.JButton msdtButton;
     private javax.swing.JButton papiButton;
     private javax.swing.JButton pauliButton;
+    private javax.swing.JButton settingsButton;
     // End of variables declaration//GEN-END:variables
 }
