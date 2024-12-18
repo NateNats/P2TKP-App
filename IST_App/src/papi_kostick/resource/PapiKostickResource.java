@@ -37,6 +37,7 @@ public class PapiKostickResource {
     private final static String REPORT1_PATH = "./src/papi_kostick/resource/report/PapiKostickReport1_v1.12.jasper";
     private final static String REPORT2_PATH = "./src/papi_kostick/resource/report/PapiKostickReport2_v1.12.jasper";
 
+    // Initialize
     static {
         for (char key : new char[] { 'g', 'l', 'i', 't', 'v', 's', 'r', 'd', 'c', 'e' }) {
             topRow.put(key, 0);
@@ -95,6 +96,15 @@ public class PapiKostickResource {
         return true;
     }
 
+    /**
+     * Handle the input for the PAPI Kostick form
+     * 
+     * @param inputField The input field to handle
+     * @param key        The key to handle
+     * @param isTopRow   Whether the input field is in the top row
+     * @param panel      The panel to handle
+     * @param button     The button to handle
+     */
     public static void handleIntegerInput(JTextField inputField, char key, boolean isTopRow, JPanel panel,
             JButton button) {
         try {
@@ -112,10 +122,22 @@ public class PapiKostickResource {
         }
     }
 
+    /**
+     * enable or disable the button based on the input validity
+     * 
+     * @param button The button to handle
+     */
     public static void handleInput(JButton button) {
         button.setEnabled(isTopRowValueValid() && isBottomRowValueValid() && isInputValid());
     }
 
+    /**
+     * Update the value of the map
+     * 
+     * @param key      The key to update
+     * @param value    The value to update
+     * @param isTopRow Whether the value is in the top row
+     */
     private static void updateMapValue(char key, int value, boolean isTopRow) {
         if (isTopRow) {
             topRow.put(key, value);
@@ -124,6 +146,12 @@ public class PapiKostickResource {
         }
     }
 
+    /**
+     * Handle the date input
+     * 
+     * @param date The date to handle
+     * @return The formatted date
+     */
     public static String handleDateInput(Date date) {
         if (date == null) {
             return "";
@@ -153,28 +181,48 @@ public class PapiKostickResource {
             parameter1.put("education", education);
             parameter1.put("gender", gender);
             parameter1.put("purpose", purpose);
-            parameter1.put("n", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_FINISH_TASK, bottomRow.get('n')));
-            parameter1.put("g", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.HARD_INTENSE_WORKED, topRow.get('g')));
-            parameter1.put("a", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_ACHIEVE, bottomRow.get('a')));
-            parameter1.put("l", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.LEADERSHIP_ROLE, topRow.get('l')));
-            parameter1.put("p", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_CONTROL_OTHERS, bottomRow.get('p')));
-            parameter1.put("i", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.EASE_IN_DECISION_MAKING, topRow.get('i')));
-            parameter1.put("t", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.PACE, topRow.get('t')));
-            parameter1.put("v", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.VIGOROUS_TYPE, topRow.get('v')));
-            parameter1.put("o", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_FOR_CLOSENESS_AND_AFFECTION, bottomRow.get('o')));
-            parameter1.put("b", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_BELONG_TO_GROUPS, bottomRow.get('b')));
-            parameter1.put("s", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.SOCIAL_EXTENSION, topRow.get('s')));
+            parameter1.put("n", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_FINISH_TASK,
+                    bottomRow.get('n')));
+            parameter1.put("g", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.HARD_INTENSE_WORKED,
+                    topRow.get('g')));
+            parameter1.put("a", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_ACHIEVE,
+                    bottomRow.get('a')));
+            parameter1.put("l", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.LEADERSHIP_ROLE,
+                    topRow.get('l')));
+            parameter1.put("p", PapiKostickScoreInterpreter
+                    .getInterpretation(PapiKostickCategory.NEED_TO_CONTROL_OTHERS, bottomRow.get('p')));
+            parameter1.put("i", PapiKostickScoreInterpreter
+                    .getInterpretation(PapiKostickCategory.EASE_IN_DECISION_MAKING, topRow.get('i')));
+            parameter1.put("t",
+                    PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.PACE, topRow.get('t')));
+            parameter1.put("v",
+                    PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.VIGOROUS_TYPE, topRow.get('v')));
+            parameter1.put("o", PapiKostickScoreInterpreter
+                    .getInterpretation(PapiKostickCategory.NEED_FOR_CLOSENESS_AND_AFFECTION, bottomRow.get('o')));
+            parameter1.put("b", PapiKostickScoreInterpreter
+                    .getInterpretation(PapiKostickCategory.NEED_TO_BELONG_TO_GROUPS, bottomRow.get('b')));
+            parameter1.put("s", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.SOCIAL_EXTENSION,
+                    topRow.get('s')));
 
             Map<String, Object> parameter2 = new HashMap<>();
-            parameter2.put("x", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_BE_NOTICED, bottomRow.get('x')));
-            parameter2.put("c", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.ORGANIZED_TYPE, topRow.get('c')));
-            parameter2.put("d", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.INTEREST_IN_WORKING_WITH_DETAILS, topRow.get('d')));
-            parameter2.put("r", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.THEORETICAL_TYPE, topRow.get('r')));
-            parameter2.put("z", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_FOR_CHANGE, bottomRow.get('z')));
-            parameter2.put("e", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.EMOTIONAL_RESISTANT, topRow.get('e')));
-            parameter2.put("k", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_BE_FORCEFUL, bottomRow.get('k')));
-            parameter2.put("f", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_SUPPORT_AUTHORITY, bottomRow.get('f')));
-            parameter2.put("w", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_FOR_RULES_AND_SUPERVISION, bottomRow.get('w')));
+            parameter2.put("x", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_BE_NOTICED,
+                    bottomRow.get('x')));
+            parameter2.put("c",
+                    PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.ORGANIZED_TYPE, topRow.get('c')));
+            parameter2.put("d", PapiKostickScoreInterpreter
+                    .getInterpretation(PapiKostickCategory.INTEREST_IN_WORKING_WITH_DETAILS, topRow.get('d')));
+            parameter2.put("r", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.THEORETICAL_TYPE,
+                    topRow.get('r')));
+            parameter2.put("z", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_FOR_CHANGE,
+                    bottomRow.get('z')));
+            parameter2.put("e", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.EMOTIONAL_RESISTANT,
+                    topRow.get('e')));
+            parameter2.put("k", PapiKostickScoreInterpreter.getInterpretation(PapiKostickCategory.NEED_TO_BE_FORCEFUL,
+                    bottomRow.get('k')));
+            parameter2.put("f", PapiKostickScoreInterpreter
+                    .getInterpretation(PapiKostickCategory.NEED_TO_SUPPORT_AUTHORITY, bottomRow.get('f')));
+            parameter2.put("w", PapiKostickScoreInterpreter
+                    .getInterpretation(PapiKostickCategory.NEED_FOR_RULES_AND_SUPERVISION, bottomRow.get('w')));
 
             try {
                 JasperPrint jasperPrint1 = JasperFillManager.fillReport(REPORT1_PATH, parameter1,
