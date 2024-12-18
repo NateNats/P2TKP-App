@@ -52,6 +52,7 @@ public class PasswordDialog {
 
     /**
      * @param password The password to validate
+     * @return True if the password is valid
      */
     private boolean validateAndProcessPassword(char[] password) {
         try {
