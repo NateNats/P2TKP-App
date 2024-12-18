@@ -197,11 +197,21 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Reloads the interpretation of the selected category from the file
+     * Completely discarding any changes made
+     * @param evt
+     */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelButtonActionPerformed
         PapiKostickScoreInterpreter.reloadInterpretations();
         dispose();
     }// GEN-LAST:event_cancelButtonActionPerformed
 
+    /**
+     * Update the interpretation of the selected category based on the input fields
+     * Saves any changes made to file
+     * @param evt
+     */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
         updateInterpretation();
         if (PapiKostickScoreInterpreter.saveInterpretationsToFile()) {
@@ -213,6 +223,12 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_saveButtonActionPerformed
 
+    /**
+     * Update the interpretation of the selected category based on the input fields
+     * Also calls updateInterpretation() to save the cached interpretation
+     * 
+     * @param evt
+     */
     private void CategoryInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CategoryInputActionPerformed
         // Too lazy to separate this into another helper class, so I'll just put them
         // here
@@ -561,6 +577,10 @@ public class PapiKostickEditForm extends javax.swing.JDialog {
         }
     }
 
+    /**
+     * Update the interpretation of the selected category based on the input fields and cached breakpoints
+     * the updated values will be stored in the PapiKostickScoreInterpreter Map
+     */
     private void updateInterpretation() {
         if (cachedBreakpoints[0] != -1) {
             PapiKostickScoreInterpreter.setInterpretation(cachedCategory, cachedBreakpoints[0], firstInput.getText());
