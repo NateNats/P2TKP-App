@@ -340,15 +340,15 @@ public class ISTEditForm extends javax.swing.JDialog {
 
         } else if (key.equals("Jenis kecerdasan")) {
 
-            String[] val = interpretation.getInterpretation(RubrikCategory.JENIS_KECERDASAN, 0.0);
-            String[] val2 = interpretation.getInterpretation(RubrikCategory.JENIS_KECERDASAN, 10.0);
+            String val = IST_ScoreInterpreterV2.otherInterpretation(RubrikCategory.JENIS_KECERDASAN.getLabel(), "Tipe pemikiran teoritis-konseptual");
+            String val2 = IST_ScoreInterpreterV2.otherInterpretation(RubrikCategory.JENIS_KECERDASAN.getLabel(), "Tipe pemikiran praktis");
 
             KSScroll.setViewportBorder(BorderFactory.createTitledBorder("WA & GE cenderung lebih tinggi SE & AN"));
             KScroll.setViewportBorder(BorderFactory.createTitledBorder("SE & AN cenderung lebih tinggi WA & GE "));
 
             if (loadToCache(key) == false) {
-                KSInput.setText(val[0]);
-                KInput.setText(val2[1]);
+                KSInput.setText(val);
+                KInput.setText(val2);
             }
 
             CMinScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
@@ -365,18 +365,18 @@ public class ISTEditForm extends javax.swing.JDialog {
 
         } else if (key.equals("Cara / corak berpikir")) {
 
-            String[] val = interpretation.getInterpretation(RubrikCategory.CORAK_BERPIKIR, 0);
-            String[] val2 = interpretation.getInterpretation(RubrikCategory.CORAK_BERPIKIR, 10.0);
-            String[] val3 = interpretation.getInterpretation(RubrikCategory.CORAK_BERPIKIR, -10.0);
+            String val = IST_ScoreInterpreterV2.otherInterpretation(RubrikCategory.CORAK_BERPIKIR.getLabel(), "Birokratis-normatif");
+            String val2 = IST_ScoreInterpreterV2.otherInterpretation(RubrikCategory.CORAK_BERPIKIR.getLabel(), "Fleksibel");
+            String val3 = IST_ScoreInterpreterV2.otherInterpretation(RubrikCategory.CORAK_BERPIKIR.getLabel(), "Belum terarah-belum berkembang");
 
-            KSScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA >> AN+ZR"));
-            KScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA << AN+ZR"));
-            CMinScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA mendekati AN+ZR"));
+            KSScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA >> AN+ZR (Birokratis-normatif)"));
+            KScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA << AN+ZR (Fleksibel)"));
+            CMinScroll.setViewportBorder(BorderFactory.createTitledBorder("GE+RA mendekati AN+ZR (Belum terarah-belum berkembang)"));
 
             if (loadToCache(key) == false) {
-                KSInput.setText(val[1]);
-                KInput.setText(val2[1]);
-                CMinInput.setText(val3[1]);
+                KSInput.setText(val);
+                KInput.setText(val2);
+                CMinInput.setText(val3);
             }
 
             CScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
@@ -390,16 +390,16 @@ public class ISTEditForm extends javax.swing.JDialog {
             BSInput.setEnabled(false);
 
         } else if (key.equals("Kemampuan berpikir fleksibel")) {
-            String[] val = interpretation.getInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, -10.0);
-            String[] val2 = interpretation.getInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, 10.0);
-            String[] val3 = interpretation.getInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL, 0.0);
+            String val = IST_ScoreInterpreterV2.otherInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL.getLabel(), "Fleksibel");
+            String val2 = IST_ScoreInterpreterV2.otherInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL.getLabel(), "Kaku");
+            String val3 = IST_ScoreInterpreterV2.otherInterpretation(RubrikCategory.BERPIKIR_FLEKSIBEL.getLabel(), "Belum terarah-belum berkembang");
 
-            KSScroll.setViewportBorder(BorderFactory.createTitledBorder("Selisih -10"));
-            KSInput.setText(val[1]);
-            KScroll.setViewportBorder(BorderFactory.createTitledBorder("Selisih +10"));
-            KInput.setText(val2[1]);
-            CMinScroll.setViewportBorder(BorderFactory.createTitledBorder("Selisih tidak sampai 10"));
-            CMinInput.setText(val3[1]);
+            KSScroll.setViewportBorder(BorderFactory.createTitledBorder("Fleksibel"));
+            KSInput.setText(val);
+            KScroll.setViewportBorder(BorderFactory.createTitledBorder("Kaku"));
+            KInput.setText(val2);
+            CMinScroll.setViewportBorder(BorderFactory.createTitledBorder("Belum terarah-belum berkembang"));
+            CMinInput.setText(val3);
 
             CScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
             CPlusScroll.setViewportBorder(BorderFactory.createTitledBorder(""));
@@ -569,6 +569,12 @@ public class ISTEditForm extends javax.swing.JDialog {
 
             inputCache.clear();
             kosong();
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi berhasil disimpan", "Berhasil",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Interpretasi gagal disimpan", "Gagal",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_simpanbuttonActionPerformed

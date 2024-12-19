@@ -10,20 +10,15 @@ import common.PasswordDialog;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
+import IST.resource.IST_ScoreInterpreterV2;
 import IST.resource.IST_ScoreInterpreter.Result;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPasswordField;
@@ -42,7 +37,6 @@ public class ISTForm extends javax.swing.JPanel {
 
     private MainFrame mainFrame;
     private NormaIST norma;
-    private IST_ScoreInterpreterV2 interpreter;
 
     private List<KomponenPenilaian> nilai = new ArrayList<>();
     private HashMap<String, String> nilaiKategori = new HashMap<>();
@@ -59,7 +53,6 @@ public class ISTForm extends javax.swing.JPanel {
     public ISTForm(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         norma = new NormaIST();
-        interpreter = new IST_ScoreInterpreterV2();
         initComponents();
         tombolBatal.setEnabled(false);
         tombolHasil.setEnabled(false);
@@ -129,6 +122,12 @@ public class ISTForm extends javax.swing.JPanel {
         namaLabel1 = new javax.swing.JLabel();
         namaLabel2 = new javax.swing.JLabel();
         tgllahirinput = new com.toedter.calendar.JDateChooser();
+        berpikirFleksibelCombo = new javax.swing.JComboBox<>();
+        corakBerpikirCombo = new javax.swing.JComboBox<>();
+        namaLabel3 = new javax.swing.JLabel();
+        namaLabel4 = new javax.swing.JLabel();
+        namaLabel5 = new javax.swing.JLabel();
+        jenisKecerdasanCombo = new javax.swing.JComboBox<>();
         controller = new javax.swing.JPanel();
         tombolBatal = new javax.swing.JButton();
         tombolHasil = new javax.swing.JButton();
@@ -225,6 +224,11 @@ public class ISTForm extends javax.swing.JPanel {
         });
 
         RAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        RAInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RAInputActionPerformed(evt);
+            }
+        });
         RAInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 RAInputKeyReleased(evt);
@@ -232,6 +236,11 @@ public class ISTForm extends javax.swing.JPanel {
         });
 
         ZRInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ZRInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZRInputActionPerformed(evt);
+            }
+        });
         ZRInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ZRInputKeyReleased(evt);
@@ -296,6 +305,36 @@ public class ISTForm extends javax.swing.JPanel {
             }
         });
 
+        berpikirFleksibelCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Fleksibel", "Kaku", "Belum terarah-belum berkembang" }));
+        berpikirFleksibelCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                berpikirFleksibelComboActionPerformed(evt);
+            }
+        });
+
+        corakBerpikirCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Birokratis-normatif", "Fleksibel", "Belum terarah-belum konsisten" }));
+        corakBerpikirCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                corakBerpikirComboActionPerformed(evt);
+            }
+        });
+
+        namaLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        namaLabel3.setText("Kemampuan berpikir fleksibel");
+
+        namaLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        namaLabel4.setText("Cara / corak berpikir");
+
+        namaLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        namaLabel5.setText("Jenis Kecerdasan");
+
+        jenisKecerdasanCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- PILIH --", "Tipe pemikiran teoritis-konseptual", "Tipe pemikiran praktis" }));
+        jenisKecerdasanCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jenisKecerdasanComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout masukanLayout = new javax.swing.GroupLayout(masukan);
         masukan.setLayout(masukanLayout);
         masukanLayout.setHorizontalGroup(
@@ -305,55 +344,69 @@ public class ISTForm extends javax.swing.JPanel {
                     .addGroup(masukanLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(namaLabel1)
-                            .addComponent(namaLabel)
-                            .addComponent(namaLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tanggalController, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tgllahirinput, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(masukanLayout.createSequentialGroup()
+                                .addComponent(namaLabel)
+                                .addGap(60, 60, 60)
+                                .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(masukanLayout.createSequentialGroup()
+                                .addComponent(namaLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tgllahirinput, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(namaLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tanggalController, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(masukanLayout.createSequentialGroup()
-                        .addGap(199, 199, 199)
+                        .addGap(41, 41, 41)
+                        .addComponent(WALabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(WAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(GELabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(RALabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(FALabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(SELabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(WALabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ANLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ANInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(WAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ANLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ANInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(MELabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(GELabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(MELabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ZRLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ZRInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(WULabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(WUInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(masukanLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(MEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(GEInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(masukanLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(RALabel))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masukanLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(ZRLabel)))
+                            .addComponent(namaLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(namaLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(berpikirFleksibelCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(corakBerpikirCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(namaLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ZRInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(RAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FALabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(WULabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(WUInput, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(FAInput, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(230, Short.MAX_VALUE))
+                        .addComponent(jenisKecerdasanCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         masukanLayout.setVerticalGroup(
             masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,12 +415,10 @@ public class ISTForm extends javax.swing.JPanel {
                 .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namaLabel)
                     .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(namaLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tgllahirinput, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tgllahirinput, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(namaLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tanggalController, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -379,11 +430,7 @@ public class ISTForm extends javax.swing.JPanel {
                     .addComponent(GEInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(GELabel)
                     .addComponent(WAInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(WALabel))
-                .addGap(7, 7, 7)
-                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(WUInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(WULabel)
+                    .addComponent(WALabel)
                     .addComponent(ZRInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ZRLabel)
                     .addComponent(MEInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,8 +438,20 @@ public class ISTForm extends javax.swing.JPanel {
                     .addComponent(ANInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ANLabel)
                     .addComponent(SEInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SELabel))
-                .addGap(10, 10, 10))
+                    .addComponent(SELabel)
+                    .addComponent(WUInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WULabel))
+                .addGap(18, 29, Short.MAX_VALUE)
+                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(berpikirFleksibelCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jenisKecerdasanCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(masukanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(corakBerpikirCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         controller.setBorder(javax.swing.BorderFactory.createTitledBorder("Aksi"));
@@ -445,7 +504,7 @@ public class ISTForm extends javax.swing.JPanel {
         controllerLayout.setHorizontalGroup(
             controllerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controllerLayout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tombolBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tombolHasil, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -538,8 +597,8 @@ public class ISTForm extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(controller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -598,15 +657,15 @@ public class ISTForm extends javax.swing.JPanel {
             int swGESAMT = this.norma.getInterpretGESAMT("GESAMT", rwGESAMT, age);
             int iq = this.norma.getIqScore(swGESAMT);
 
-            String[] evalKomperehensif = interpreter.getInterpretation(RubrikCategory.BERPIKIR_KOMPREHENSIF, ((double) (swGE + rwFA) /2));
+            String[] evalKomperehensif = IST_ScoreInterpreterV2.getInterpretation(RubrikCategory.BERPIKIR_KOMPREHENSIF, ((double) (swGE + rwFA) / 2));
             // evalfleksibel(swGE, rwRA, rwAN, rwZR);
-            String[] evalMengolahAngka = interpreter.getInterpretation(RubrikCategory.MENGOLAH_ANGKA, ((double) (rwRA + rwZR) /2));
-            String[] evalDayaIngat = interpreter.getInterpretation(RubrikCategory.DAYA_INGAT, (swME));
-            String[] evalKreativitas = interpreter.getInterpretation(RubrikCategory.KREATIVITAS, ((double) (rwFA + rwWU) /2));
-            String[] evalMenilai = interpreter.getInterpretation(RubrikCategory.TARAF_KECERDASAN, (double) rwSE);
-            String[] evalAnalisa = interpreter.getInterpretation(RubrikCategory.ANALISIS, ((double) (rwAN + rwWU) /2));
-            String[] evalkeputusan = interpreter.getInterpretation(RubrikCategory.MENGAMBIL_KEPUTUSAN, ((double) (rwSE + rwAN + rwWU + rwRA + rwZR) /5));
-            String[] evalBahasa = interpreter.getInterpretation(RubrikCategory.BERBAHASA, ((double) rwWA + rwSE) /2);
+            String[] evalMengolahAngka = IST_ScoreInterpreterV2.getInterpretation(RubrikCategory.MENGOLAH_ANGKA, ((double) (rwRA + rwZR) / 2));
+            String[] evalDayaIngat = IST_ScoreInterpreterV2.getInterpretation(RubrikCategory.DAYA_INGAT, (swME));
+            String[] evalKreativitas = IST_ScoreInterpreterV2.getInterpretation(RubrikCategory.KREATIVITAS, ((double) (rwFA + rwWU) / 2));
+            String[] evalMenilai = IST_ScoreInterpreterV2.getInterpretation(RubrikCategory.TARAF_KECERDASAN, (double) rwSE);
+            String[] evalAnalisa = IST_ScoreInterpreterV2.getInterpretation(RubrikCategory.ANALISIS, ((double) (rwAN + rwWU) / 2));
+            String[] evalkeputusan = IST_ScoreInterpreterV2.getInterpretation(RubrikCategory.MENGAMBIL_KEPUTUSAN, ((double) (rwSE + rwAN + rwWU + rwRA + rwZR) / 5));
+            String[] evalBahasa = IST_ScoreInterpreterV2.getInterpretation(RubrikCategory.BERBAHASA, ((double) rwWA + rwSE) / 2);
             // evalBerpikir(swGE, rwRA, rwAN, rwZR);
             // evalJenisKecerdasan(rwWA, swGE, rwSE, rwAN);
             inputToTabel("Kemampuan berpikir komprehensif", evalKomperehensif[0], evalKomperehensif[1], evalKomperehensif[2]);
@@ -929,6 +988,33 @@ public class ISTForm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_WAInputActionPerformed
 
+    private void RAInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RAInputActionPerformed
+
+    private void ZRInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZRInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ZRInputActionPerformed
+
+    private void berpikirFleksibelComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_berpikirFleksibelComboActionPerformed
+        String val = IST_ScoreInterpreterV2.otherInterpretation("Kemampuan berpikir fleksibel", Objects.requireNonNull(berpikirFleksibelCombo.getSelectedItem()).toString());
+        System.out.println(val);
+        // String aspect, String skor, String kategori, String deskripsi
+        inputToTabel("Kemampuan berpikir fleksibel", null, berpikirFleksibelCombo.getSelectedItem().toString(), val);
+    }//GEN-LAST:event_berpikirFleksibelComboActionPerformed
+
+    private void corakBerpikirComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corakBerpikirComboActionPerformed
+        String val = IST_ScoreInterpreterV2.otherInterpretation("Cara / corak berpikir", Objects.requireNonNull(corakBerpikirCombo.getSelectedItem()).toString());
+
+        inputToTabel("Cara/corak berpikir", null, corakBerpikirCombo.getSelectedItem().toString(), val);
+    }//GEN-LAST:event_corakBerpikirComboActionPerformed
+
+    private void jenisKecerdasanComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisKecerdasanComboActionPerformed
+        String val = IST_ScoreInterpreterV2.otherInterpretation("Jenis kecerdasan", Objects.requireNonNull(jenisKecerdasanCombo.getSelectedItem()).toString());
+
+        inputToTabel("Jenis kecerdasan", null, jenisKecerdasanCombo.getSelectedItem().toString(), val);
+    }//GEN-LAST:event_jenisKecerdasanComboActionPerformed
+
     private void refreshTable() {
         try {
             KomponenPenilaianTableModel model = new KomponenPenilaianTableModel(this.nilai);
@@ -1008,15 +1094,21 @@ public class ISTForm extends javax.swing.JPanel {
     private javax.swing.JLabel WULabel;
     private javax.swing.JTextField ZRInput;
     private javax.swing.JLabel ZRLabel;
+    private javax.swing.JComboBox<String> berpikirFleksibelCombo;
     private javax.swing.JPanel controller;
+    private javax.swing.JComboBox<String> corakBerpikirCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> jenisKecerdasanCombo;
     private javax.swing.JPanel judul;
     private javax.swing.JPanel masukan;
     private javax.swing.JTextField namaInput;
     private javax.swing.JLabel namaLabel;
     private javax.swing.JLabel namaLabel1;
     private javax.swing.JLabel namaLabel2;
+    private javax.swing.JLabel namaLabel3;
+    private javax.swing.JLabel namaLabel4;
+    private javax.swing.JLabel namaLabel5;
     private javax.swing.JTable tabelHasil;
     private com.toedter.calendar.JDateChooser tanggalController;
     private com.toedter.calendar.JDateChooser tgllahirinput;

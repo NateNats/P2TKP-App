@@ -22,11 +22,13 @@ public class IST_ScoreInterpreterV2 {
     private static final String DATA_FILE_PATH3 = "./storage/IST_rubrik_interpretCorakBerpikir.dat";
     private static final String DATA_FILE_PATH4 = "./storage/IST_rubrik_interpretKecerdasan.dat";
     private static Map<RubrikCategory, NavigableMap<Range, String>> interpretations = new TreeMap<>();
-    private static Map<Double, String> interpretFleksibel = new TreeMap<>();
-    private static Map<Double, String> interpretCorakBerpikir = new TreeMap<>();
-    private static Map<Double, String> interpretKecerdasan = new TreeMap<>();
+
+    private static final Map<String, String> interpretFleksibel = new TreeMap<>();
+    private static final Map<String, String> interpretCorakBerpikir = new TreeMap<>();
+    private static final Map<String, String> interpretKecerdasan = new TreeMap<>();
 
     static {
+
         if (!loadInterpretationsFromFile() || !loadInterpretFleksibelFromFile() || !loadInterpretCorakBerpikirFromFile() || !loadInterpretKecerdasanFromFile()) {
             initializeDefaultInterpretations();
             saveInterpretationsToFile();
@@ -54,55 +56,34 @@ public class IST_ScoreInterpreterV2 {
     }
 
     public static boolean saveInterpretFleksibelToFile() {
-        File file = new File(DATA_FILE_PATH2);
-        File parentDir = file.getParentFile();
-        if (!parentDir.exists()) {
-            parentDir.mkdirs();
-        }
-
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(interpretFleksibel);
-            System.out.println("Fleksibel interpretations saved to file.");
-        } catch (IOException e) {
-            System.err.println("Could not save fleksibel interpretations to file.");
-            return false;
-        }
-        return true;
+        return saveMapToFile(interpretFleksibel, DATA_FILE_PATH2, "Fleksibel");
     }
 
     public static boolean saveInterpretCorakBerpikirToFile() {
-        File file = new File(DATA_FILE_PATH3);
-        File parentDir = file.getParentFile();
-        if (!parentDir.exists()) {
-            parentDir.mkdirs();
-        }
-
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(interpretCorakBerpikir);
-            System.out.println("Corak berpikir interpretations saved to file.");
-        } catch (IOException e) {
-            System.err.println("Could not save corak berpikir interpretations to file.");
-            return false;
-        }
-        return true;
+        return saveMapToFile(interpretCorakBerpikir, DATA_FILE_PATH3, "Corak Berpikir");
     }
 
     public static boolean saveInterpretKecerdasanToFile() {
-        File file = new File(DATA_FILE_PATH4);
+        return saveMapToFile(interpretKecerdasan, DATA_FILE_PATH4, "Kecerdasan");
+    }
+
+    private static boolean saveMapToFile(Map<String, String> map, String filePath, String mapName) {
+        File file = new File(filePath);
         File parentDir = file.getParentFile();
         if (!parentDir.exists()) {
             parentDir.mkdirs();
         }
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(interpretKecerdasan);
-            System.out.println("Kecerdasan interpretations saved to file.");
+            oos.writeObject(map);
+            System.out.println(mapName + " interpretations saved to file.");
         } catch (IOException e) {
-            System.err.println("Could not save kecerdasan interpretations to file.");
+            System.err.println("Could not save " + mapName + " interpretations to file: " + e.getMessage());
             return false;
         }
         return true;
     }
+
 
     @SuppressWarnings("unchecked")
     private static boolean loadInterpretationsFromFile() {
@@ -118,41 +99,57 @@ public class IST_ScoreInterpreterV2 {
 
     @SuppressWarnings("unchecked")
     private static boolean loadInterpretFleksibelFromFile() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH2))) {
-            interpretFleksibel = (Map<Double, String>) ois.readObject();
-            System.out.println("Fleksibel interpretations loaded from file.");
-            return true;
-        } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Could not load fleksbiel interpretations from file, using defaults.");
-            return false;
-        }
+        return loadMapFromFile(DATA_FILE_PATH2, interpretFleksibel, "Fleksibel");
     }
 
-    @SuppressWarnings("unchecked")
     private static boolean loadInterpretCorakBerpikirFromFile() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH3))) {
-            interpretCorakBerpikir = (Map<Double, String>) ois.readObject();
-            System.out.println("Corak berpikir interpretations loaded from file.");
-            return true;
-        } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Could not load interpretations from file, using defaults.");
-            return false;
-        }
+        return loadMapFromFile(DATA_FILE_PATH3, interpretCorakBerpikir, "Corak Berpikir");
     }
 
-    @SuppressWarnings("unchecked")
     private static boolean loadInterpretKecerdasanFromFile() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH4))) {
-            interpretKecerdasan = (Map<Double, String>) ois.readObject();
-            System.out.println("Kecerdasan interpretations loaded from file.");
-            return true;
-        } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Could not load fleksbiel interpretations from file, using defaults.");
-            return false;
-        }
+        return loadMapFromFile(DATA_FILE_PATH4, interpretKecerdasan, "Corak Berpikir");
     }
+
+    private static boolean loadMapFromFile(String filePath, Map<String, String> map, String mapName) {
+        File file = new File(filePath);
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            Object data = ois.readObject();
+            if (data instanceof Map) {
+                Map<?, ?> rawMap = (Map<?, ?>) data;
+                map.clear();
+                for (Map.Entry<?, ?> entry : rawMap.entrySet()) {
+                    if (entry.getKey() instanceof String && entry.getValue() instanceof String) {
+                        map.put((String) entry.getKey(), (String) entry.getValue());
+                    } else {
+                        System.err.println("Invalid entry skipped in " + mapName + ": " + entry);
+                    }
+                }
+                System.out.println(mapName + " interpretations loaded successfully.");
+                return true;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Could not load " + mapName + " interpretations from file: " + e.getMessage());
+        }
+        return false;
+    }
+
 
     public static void initializeDefaultInterpretations() {
+        // Berpikir fleksibel
+        interpretFleksibel.put("Fleksibel", "Cepat mencari jalan keluar ketika ada hambatan");
+        interpretFleksibel.put("Kaku", "Menggunakan satu jalan keluar yang biasa digunakan ketika ada hambatan");
+        interpretFleksibel.put("Belum terarah-belum berkembang", "Corak berpikir belum terarah karena masih dalam taraf perkembangan");
+
+        // Corak berpikir
+        interpretCorakBerpikir.put("Birokratis-normatif", "Pola berpikirnya adalah normatif, dimana caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, mayoritas mengandalkan pendekatan konsep atau rujukan teori yang sudah mapan.");
+        interpretCorakBerpikir.put("Fleksibel", "Cara berpikirnya adalah fleksibel, dimana caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, mayoritas mengandalkan pengenalannya dari sisi kebiasaan sehari-hari dan mengandalkan pendekatan pengalaman yang terbukti pernah berhasil.");
+        interpretCorakBerpikir.put("Belum terarah-belum berkembanng", "Corak cara berpikirnya terhitung belumg jelas. Hal tersebut ditandai oleh caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, yang masih belum konsisten untuk diulang kembali di kesempatan lain.");
+
+        // Jenis kecerdasan
+        interpretKecerdasan.put("Tipe pemikiran teoritis-konseptual", "Menemukan pemecahan masalah tanpa hadirnya objek permasalahan secara nyata, sehingga cenderung efektif dalam menggunakan konsep serta simbol ketika menyelesaikan masalah.");
+        interpretKecerdasan.put("Tipe pemikiran praktis", "Menemukan pemecahan masalah wajib menghadirkan objek permasalahan secara nyata, sehingga cenderung efektif dalam menggunakan temuan konkrit ketika menyelesaikan masalah.");
+
 
         // Taraf Kecerdasan
         interpretations.put(RubrikCategory.TARAF_KECERDASAN, new TreeMap<Range, String>() {
@@ -270,51 +267,9 @@ public class IST_ScoreInterpreterV2 {
                 put(new Range(130, Double.MAX_VALUE), "Mampu menangkap dan mengekspresikan gagasan, kemauan, dan perasaan dalam bentuk bahasa (verbal), dalam berbagai konteks komunikasi.");
             }
         });
-
-
-        // Berpikir fleksibel
-
-        interpretFleksibel.put(-10.0, "Cepat mencari jalan keluar ketika ada hambatan");
-        interpretFleksibel.put(10.0, "Menggunakan satu jalan keluar yang biasa digunakan ketika ada hambatan");
-        interpretFleksibel.put(0.0, "Corak berpikir belum terarah karena masih dalam taraf perkembangan");
-        /*
-         * nanti bandingin GERA dan ANZR, kalo selisih -10, bakal muncul fleksibel
-         * kalo selisih 10, nanti muncul kaku
-         * kalo selisih ga sampe 10, nanti bakal muncul belum terarah-belum konsisten
-         * */
-
-        // Jenis kecerdasan
-
-        // Corak berpikir
-        interpretCorakBerpikir.put(0.0, "Pola berpikirnya adalah normatif, dimana caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, mayoritas mengandalkan pendekatan konsep atau rujukan teori yang sudah mapan.");
-        interpretCorakBerpikir.put(10.0, "Cara berpikirnya adalah fleksibel, dimana caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, mayoritas mengandalkan pengenalannya dari sisi kebiasaan sehari-hari dan mengandalkan pendekatan pengalaman yang terbukti pernah berhasil.");
-        interpretCorakBerpikir.put(-10.0, "Corak cara berpikirnya terhitung belumg jelas. Hal tersebut ditandai oleh caranya mengenali, mengurai, hingga menyusun alternatif solusi pada permasalahan yang dihadapi, yang masih belum konsisten untuk diulang kembali di kesempatan lain.");
-        /*
-                  pake GE RA AN ZR, terus dibandingkan antara GERA dengan ANZR
-                  Jika GERA mendekati ANZR, nanti muncul birokratis-normatif
-                  Kalo ANZR mendekati GERA, nanti muncul fleksible
-                  kalo GERA mendekati ANZR, nanti belum terarah-belum konsisten
-        **/
-
-
-        // Jenis kecerdasan
-        interpretKecerdasan.put(0.0, "Menemukan pemecahan masalah tanpa hadirnya objek permasalahan secara nyata, sehingga cenderung efektif dalam menggunakan konsep serta simbol ketika menyelesaikan masalah.");
-        interpretKecerdasan.put(10.0, "Menemukan pemecahan masalah wajib menghadirkan objek permasalahan secara nyata, sehingga cenderung efektif dalam menggunakan temuan konkrit ketika menyelesaikan masalah.");
-        /*
-                WA & GE cenderung lebih tinggi SE & AN => Tipe pemikiran teoritis-konseptual
-                SE & AN cenderung lebih tinggi WA & GE => Tipe pemikiran praktis
-        */
     }
 
-    public String[] getInterpretation(RubrikCategory aspect, double score) {
-        if (aspect.getLabel().equals(RubrikCategory.BERPIKIR_FLEKSIBEL.getLabel())) {
-            return getInterpretFleksibel(score);
-        } else if (aspect.getLabel().equals(RubrikCategory.JENIS_KECERDASAN.getLabel())) {
-            return getInterpretJenisKecerdasan(score);
-        } else if (aspect.getLabel().equals(RubrikCategory.CORAK_BERPIKIR.getLabel())) {
-            return getInterpretCorakBerpikir(score);
-        }
-
+    public static String[] getInterpretation(RubrikCategory aspect, double score) {
         NavigableMap<Range, String> interpretation = interpretations.get(aspect);
 
         for (Range range : interpretation.keySet()) {
@@ -326,16 +281,32 @@ public class IST_ScoreInterpreterV2 {
         return null;
     }
 
-    private static String[] getInterpretFleksibel(double score) {
-        return new String[]{getNumScore(score), interpretFleksibel.get(score)};
+    public static String otherInterpretation(String interpret, String val) {
+
+        switch (interpret) {
+            case "Kemampuan berpikir fleksibel":
+                return interpretFleksibel.getOrDefault(val, "Interpretasi tidak ditemukan");
+            case "Jenis kecerdasan":
+                return interpretKecerdasan.getOrDefault(val, "Interpretasi tidak ditemukan");
+            case "Cara / corak berpikir":
+                return interpretCorakBerpikir.getOrDefault(val, "Interpretasi tidak ditemukan");
+            default:
+                System.err.println("Interpret not recognized: " + interpret);
+                return null;
+        }
     }
 
-    private static String[] getInterpretJenisKecerdasan(double score) {
-        return new String[]{getNumScore(score), interpretKecerdasan.get(score)};
+
+    private static String getInterpretFleksibel(String val) {
+        return interpretFleksibel.get(val);
     }
 
-    private static String[] getInterpretCorakBerpikir(double score) {
-        return new String[]{getNumScore(score), interpretCorakBerpikir.get(score)};
+    private static String getInterpretJenisKecerdasan(String val) {
+        return interpretKecerdasan.get(val);
+    }
+
+    private static String getInterpretCorakBerpikir(String val) {
+        return interpretCorakBerpikir.get(val);
     }
 
     private static String getNumScore(double score) {
@@ -356,6 +327,13 @@ public class IST_ScoreInterpreterV2 {
         return "BS";
     }
 
+    private static void debugMapContent(Map<String, String> map, String mapName) {
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + " (" + entry.getKey().getClass().getName() + ")");
+            System.out.println("Value: " + entry.getValue() + " (" + entry.getValue().getClass().getName() + ")");
+        }
+    }
+
     public static void reloadInterpretations() {
         interpretations.clear();
         interpretFleksibel.clear();
@@ -370,17 +348,17 @@ public class IST_ScoreInterpreterV2 {
             saveInterpretKecerdasanToFile();
         }
     }
-    
+
     public NavigableMap<Range, String> getCategoryInterpretation(RubrikCategory category) {
         return interpretations.get(category);
     }
-    
+
     //  change the value of the interpretation
     public static void setInterpretation(RubrikCategory key, String[] val) {
         if (key.equals(RubrikCategory.BERPIKIR_FLEKSIBEL)) {
-            interpretFleksibel.put(-10.0, val[0]);
-            interpretFleksibel.put(10.0, val[1]);
-            interpretFleksibel.put(0.0, val[2]);
+            interpretFleksibel.put("Fleksibel", val[0]);
+            interpretFleksibel.put("Kaku", val[1]);
+            interpretFleksibel.put("Belum terarah-belum berkembang", val[2]);
             if (saveInterpretFleksibelToFile()) {
                 System.out.println("Interpretation saved to file.");
             } else {
@@ -388,9 +366,9 @@ public class IST_ScoreInterpreterV2 {
             }
 
         } else if (key.equals(RubrikCategory.JENIS_KECERDASAN)) {
-            interpretKecerdasan.put(0.0, val[0]);
-            interpretKecerdasan.put(10.0, val[1]);
 
+            interpretKecerdasan.put("Tipe pemikiran teoritis-konseptual", val[0]);
+            interpretKecerdasan.put("Tipe pemikiran praktis", val[1]);
             if (saveInterpretationsToFile()) {
                 System.out.println("Interpretation saved to file.");
             } else {
@@ -398,9 +376,10 @@ public class IST_ScoreInterpreterV2 {
             }
 
         } else if (key.equals(RubrikCategory.CORAK_BERPIKIR)) {
-            interpretCorakBerpikir.put(0.0, val[0]);
-            interpretCorakBerpikir.put(10.0, val[1]);
-            interpretCorakBerpikir.put(-10.0, val[2]);
+
+            interpretCorakBerpikir.put("Birokratis-normatif", val[0]);
+            interpretCorakBerpikir.put("Fleksibel", val[1]);
+            interpretCorakBerpikir.put("Belum terarah-belum berkembang", val[2]);
 
             if (saveInterpretCorakBerpikirToFile()) {
                 System.out.println("Interpretation saved to file.");
@@ -466,10 +445,11 @@ public class IST_ScoreInterpreterV2 {
     }
 
 //    public static void main(String[] args) {
-//        IST_ScoreInterpreterV2 interpreter = new IST_ScoreInterpreterV2();
-//        String[] score = interpreter.getInterpretation(RubrikCategory.BERBAHASA, 100);
-//        System.out.println("nilai: " + score[0]);
-//        System.out.println("interpretasi: " + score[1]);
+//        initializeDefaultInterpretations();
+//
+//        System.out.println("Keys in interpretFleksibel: " + interpretFleksibel.keySet());
+//        System.out.println("Keys in interpretKecerdasan: " + interpretKecerdasan.keySet());
+//        System.out.println("Keys in interpretCorakBerpikir: " + interpretCorakBerpikir.keySet());
 //
 //    }
 }
