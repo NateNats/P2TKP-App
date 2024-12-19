@@ -38,8 +38,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="controller" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="260" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="220" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,73 +109,81 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="namaLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="namaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="namaLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tanggalController" min="-2" pref="289" max="-2" attributes="0"/>
-                              <Component id="namaInput" min="-2" pref="289" max="-2" attributes="0"/>
-                              <Component id="tgllahirinput" min="-2" pref="289" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="namaLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Component id="namaInput" min="-2" pref="289" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="namaLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tgllahirinput" min="-2" pref="289" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="namaLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tanggalController" min="-2" pref="289" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="WALabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="WAInput" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="GELabel" min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="GEInput" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="RALabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="RAInput" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="FALabel" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="FAInput" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="SELabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="SEInput" min="-2" pref="42" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="WALabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="ANLabel" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="ANLabel" min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ANInput" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="MELabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="MEInput" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ZRLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ZRInput" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="WULabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="WUInput" min="-2" pref="42" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="ANInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="WAInput" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="namaLabel3" max="32767" attributes="0"/>
+                              <Component id="namaLabel4" min="-2" pref="207" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="berpikirFleksibelCombo" max="32767" attributes="0"/>
+                              <Component id="corakBerpikirCombo" min="-2" pref="230" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="MELabel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="GELabel" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="namaLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="MEInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="GEInput" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="RALabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Component id="ZRLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="ZRInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="RAInput" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="FALabel" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="WULabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="WUInput" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="FAInput" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jenisKecerdasanCombo" min="-2" pref="230" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="230" max="32767" attributes="0"/>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -187,17 +195,14 @@
                       <Component id="namaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="namaInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="namaLabel2" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="tgllahirinput" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="namaLabel1" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="tanggalController" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="FAInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="FALabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -207,11 +212,6 @@
                       <Component id="GELabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="WAInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="WALabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="WUInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="WULabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ZRInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ZRLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="MEInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -220,8 +220,22 @@
                       <Component id="ANLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="SEInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="SELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="WUInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="WULabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" pref="29" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="berpikirFleksibelCombo" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="namaLabel3" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="namaLabel5" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jenisKecerdasanCombo" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="corakBerpikirCombo" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="namaLabel4" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -345,6 +359,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RAInputActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RAInputKeyReleased"/>
           </Events>
         </Component>
@@ -355,6 +370,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ZRInputActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ZRInputKeyReleased"/>
           </Events>
         </Component>
@@ -435,6 +451,83 @@
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tgllahirinputKeyReleased"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JComboBox" name="berpikirFleksibelCombo">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="-- PILIH --"/>
+                <StringItem index="1" value="Fleksibel"/>
+                <StringItem index="2" value="Kaku"/>
+                <StringItem index="3" value="Belum terarah-belum berkembang"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="berpikirFleksibelComboActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="corakBerpikirCombo">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="-- PILIH --"/>
+                <StringItem index="1" value="Birokratis-normatif"/>
+                <StringItem index="2" value="Fleksibel"/>
+                <StringItem index="3" value="Belum terarah-belum konsisten"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="corakBerpikirComboActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="namaLabel3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Kemampuan berpikir fleksibel"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="namaLabel4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cara / corak berpikir"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="namaLabel5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Jenis Kecerdasan"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jenisKecerdasanCombo">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="-- PILIH --"/>
+                <StringItem index="1" value="Tipe pemikiran teoritis-konseptual"/>
+                <StringItem index="2" value="Tipe pemikiran praktis"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jenisKecerdasanComboActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="controller">
@@ -450,7 +543,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="119" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="tombolBatal" min="-2" pref="121" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="tombolHasil" min="-2" pref="120" max="-2" attributes="0"/>
