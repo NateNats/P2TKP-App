@@ -224,11 +224,6 @@ public class ISTForm extends javax.swing.JPanel {
         });
 
         RAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        RAInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RAInputActionPerformed(evt);
-            }
-        });
         RAInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 RAInputKeyReleased(evt);
@@ -236,11 +231,6 @@ public class ISTForm extends javax.swing.JPanel {
         });
 
         ZRInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ZRInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZRInputActionPerformed(evt);
-            }
-        });
         ZRInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ZRInputKeyReleased(evt);
@@ -262,11 +252,6 @@ public class ISTForm extends javax.swing.JPanel {
         });
 
         WAInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        WAInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WAInputActionPerformed(evt);
-            }
-        });
         WAInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 WAInputKeyReleased(evt);
@@ -794,6 +779,10 @@ public class ISTForm extends javax.swing.JPanel {
 
     private void tombolKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKeluarActionPerformed
         //keluar dari panel ist dan kembali ke main
+        
+        berpikirFleksibelCombo.setSelectedIndex(0);
+        corakBerpikirCombo.setSelectedIndex(0);
+        jenisKecerdasanCombo.setSelectedIndex(0);
         mainFrame.showCard("MainMenuPanel");
         mainFrame.setTitle("KATEGORISASI MAPPING");
     }//GEN-LAST:event_tombolKeluarActionPerformed
@@ -984,35 +973,26 @@ public class ISTForm extends javax.swing.JPanel {
         perbaruiStatusTombol();
     }//GEN-LAST:event_WUInputKeyReleased
 
-    private void WAInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WAInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_WAInputActionPerformed
-
-    private void RAInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RAInputActionPerformed
-
-    private void ZRInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZRInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ZRInputActionPerformed
-
     private void berpikirFleksibelComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_berpikirFleksibelComboActionPerformed
         String val = IST_ScoreInterpreterV2.otherInterpretation("Kemampuan berpikir fleksibel", Objects.requireNonNull(berpikirFleksibelCombo.getSelectedItem()).toString());
         System.out.println(val);
         // String aspect, String skor, String kategori, String deskripsi
-        inputToTabel("Kemampuan berpikir fleksibel", null, berpikirFleksibelCombo.getSelectedItem().toString(), val);
+        inputToTabel("Kemampuan berpikir fleksibel", "-", berpikirFleksibelCombo.getSelectedItem().toString(), val);
+        perbaruiStatusTombol();
     }//GEN-LAST:event_berpikirFleksibelComboActionPerformed
 
     private void corakBerpikirComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corakBerpikirComboActionPerformed
         String val = IST_ScoreInterpreterV2.otherInterpretation("Cara / corak berpikir", Objects.requireNonNull(corakBerpikirCombo.getSelectedItem()).toString());
 
-        inputToTabel("Cara/corak berpikir", null, corakBerpikirCombo.getSelectedItem().toString(), val);
+        inputToTabel("Cara/corak berpikir", "-", corakBerpikirCombo.getSelectedItem().toString(), val);
+        perbaruiStatusTombol();
     }//GEN-LAST:event_corakBerpikirComboActionPerformed
 
     private void jenisKecerdasanComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisKecerdasanComboActionPerformed
         String val = IST_ScoreInterpreterV2.otherInterpretation("Jenis kecerdasan", Objects.requireNonNull(jenisKecerdasanCombo.getSelectedItem()).toString());
 
-        inputToTabel("Jenis kecerdasan", null, jenisKecerdasanCombo.getSelectedItem().toString(), val);
+        inputToTabel("Jenis kecerdasan", "-", jenisKecerdasanCombo.getSelectedItem().toString(), val);
+        perbaruiStatusTombol();
     }//GEN-LAST:event_jenisKecerdasanComboActionPerformed
 
     private void refreshTable() {
@@ -1053,7 +1033,10 @@ public class ISTForm extends javax.swing.JPanel {
                 && !SEInput.getText().isEmpty()
                 && !WAInput.getText().isEmpty()
                 && !WUInput.getText().isEmpty()
-                && !ZRInput.getText().isEmpty();
+                && !ZRInput.getText().isEmpty() 
+                && (berpikirFleksibelCombo.getSelectedIndex() != 0) 
+                && (corakBerpikirCombo.getSelectedIndex() != 0)
+                && (jenisKecerdasanCombo.getSelectedIndex() != 0);
     }
 
     private boolean semuaInputKosong() {
@@ -1068,7 +1051,10 @@ public class ISTForm extends javax.swing.JPanel {
                 && SEInput.getText().isEmpty()
                 && WAInput.getText().isEmpty()
                 && WUInput.getText().isEmpty()
-                && ZRInput.getText().isEmpty();
+                && ZRInput.getText().isEmpty() 
+                && (berpikirFleksibelCombo.getSelectedIndex() == 0) 
+                && (corakBerpikirCombo.getSelectedIndex() == 0)
+                && (jenisKecerdasanCombo.getSelectedIndex() == 0);
     }
 
     private void perbaruiStatusTombol() {

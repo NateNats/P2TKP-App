@@ -355,52 +355,46 @@ public class IST_ScoreInterpreterV2 {
 
     //  change the value of the interpretation
     public static void setInterpretation(RubrikCategory key, String[] val) {
-        if (key.equals(RubrikCategory.BERPIKIR_FLEKSIBEL)) {
-            interpretFleksibel.put("Fleksibel", val[0]);
-            interpretFleksibel.put("Kaku", val[1]);
-            interpretFleksibel.put("Belum terarah-belum berkembang", val[2]);
-            if (saveInterpretFleksibelToFile()) {
-                System.out.println("Interpretation saved to file.");
-            } else {
-                System.err.println("Could not save interpretation to file.");
-            }
-
-        } else if (key.equals(RubrikCategory.JENIS_KECERDASAN)) {
-
-            interpretKecerdasan.put("Tipe pemikiran teoritis-konseptual", val[0]);
-            interpretKecerdasan.put("Tipe pemikiran praktis", val[1]);
-            if (saveInterpretationsToFile()) {
-                System.out.println("Interpretation saved to file.");
-            } else {
-                System.err.println("Could not save interpretation to file.");
-            }
-
-        } else if (key.equals(RubrikCategory.CORAK_BERPIKIR)) {
-
-            interpretCorakBerpikir.put("Birokratis-normatif", val[0]);
-            interpretCorakBerpikir.put("Fleksibel", val[1]);
-            interpretCorakBerpikir.put("Belum terarah-belum berkembang", val[2]);
-
-            if (saveInterpretCorakBerpikirToFile()) {
-                System.out.println("Interpretation saved to file.");
-            } else {
-                System.err.println("Could not save interpretation to file.");
-            }
-
-        } else {
-            interpretations.get(key).put(new Range(0, 83.9999), val[0]);
-            interpretations.get(key).put(new Range(84, 89.9999), val[1]);
-            interpretations.get(key).put(new Range(90, 98.9999), val[2]);
-            interpretations.get(key).put(new Range(99, 109.9999), val[3]);
-            interpretations.get(key).put(new Range(110, 119.9999), val[4]);
-            interpretations.get(key).put(new Range(120, 129.9999), val[5]);
-            interpretations.get(key).put(new Range(130, Double.MAX_VALUE), val[6]);
-
-            if (saveInterpretationsToFile()) {
-                System.out.println("Interpretation saved to file.");
-            } else {
-                System.err.println("Could not save interpretation to file.");
-            }
+        switch (key) {
+            case BERPIKIR_FLEKSIBEL:
+                interpretFleksibel.put("Fleksibel", val[0]);
+                interpretFleksibel.put("Kaku", val[1]);
+                interpretFleksibel.put("Belum terarah-belum berkembang", val[2]);
+                if (saveInterpretFleksibelToFile()) {
+                    System.out.println("Interpretation saved to file.");
+                } else {
+                    System.err.println("Could not save interpretation to file.");
+                }   break;
+            case JENIS_KECERDASAN:
+                interpretKecerdasan.put("Tipe pemikiran teoritis-konseptual", val[0]);
+                interpretKecerdasan.put("Tipe pemikiran praktis", val[1]);
+                if (saveInterpretKecerdasanToFile()) {
+                    System.out.println("Interpretation saved to file.");
+                } else {
+                    System.err.println("Could not save interpretation to file.");
+                }   break;
+            case CORAK_BERPIKIR:
+                interpretCorakBerpikir.put("Birokratis-normatif", val[0]);
+                interpretCorakBerpikir.put("Fleksibel", val[1]);
+                interpretCorakBerpikir.put("Belum terarah-belum berkembang", val[2]);
+                if (saveInterpretCorakBerpikirToFile()) {
+                    System.out.println("Interpretation saved to file.");
+                } else {
+                    System.err.println("Could not save interpretation to file.");
+                }   break;
+            default:
+                interpretations.get(key).put(new Range(0, 83.9999), val[0]);
+                interpretations.get(key).put(new Range(84, 89.9999), val[1]);
+                interpretations.get(key).put(new Range(90, 98.9999), val[2]);
+                interpretations.get(key).put(new Range(99, 109.9999), val[3]);
+                interpretations.get(key).put(new Range(110, 119.9999), val[4]);
+                interpretations.get(key).put(new Range(120, 129.9999), val[5]);
+                interpretations.get(key).put(new Range(130, Double.MAX_VALUE), val[6]);
+                if (saveInterpretationsToFile()) {
+                    System.out.println("Interpretation saved to file.");
+                } else {
+                    System.err.println("Could not save interpretation to file.");
+                }   break;
         }
     }
 
